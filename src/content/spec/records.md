@@ -1,3 +1,3 @@
 # Records / 记录
 
-[Galgame](/records/galgame/)
+- [Galgame](/records/galgame/)
