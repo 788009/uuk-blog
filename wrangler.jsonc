@@ -3,8 +3,7 @@
 	"name": "uuk-blog",
 	"compatibility_date": "2024-04-01",
 	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
+		"directory": "./dist"
 	},
 	"observability": {
 		"enabled": true
