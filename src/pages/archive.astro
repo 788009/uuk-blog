@@ -7,13 +7,14 @@ import {
 	getCategoryList,
 	getSortedPostsList,
 	getTagList,
-} from "../utils/content-utils"; // 补充导入这两个函数
+} from "../utils/content-utils";
 
 const rawPostsList = await getSortedPostsList();
-const tags = await getTagList(); // 获取所有标签
-const categories = await getCategoryList(); // 获取所有分类
 
-// 修复之前的 null 问题
+// 核心修复点：使用 .map() 只提取名称字符串
+const tags = (await getTagList()).map((t) => t.name);
+const categories = (await getCategoryList()).map((c) => c.name);
+
 const sortedPostsList = rawPostsList.map((post) => ({
 	...post,
 	data: {
