@@ -3,11 +3,13 @@ title: Galgame 记录
 published: 2026-03-15
 description: ' '
 image: ''
-tags: ['Galgame']
-category: '游戏'
+tags: []
+category: ''
 draft: false 
 lang: ''
 ---
+
+> 更新于 2026.3.20
 
 1. **千恋＊万花**
     - 会社：Yuzusoft
