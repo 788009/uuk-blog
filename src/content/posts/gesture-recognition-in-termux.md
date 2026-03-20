@@ -6,7 +6,7 @@ image: ''
 tags: ['Termux', '机器学习', '折腾']
 category: '技术'
 draft: false 
-lang: 'en'
+lang: ''
 ---
 
 ::github{repo="788009/gesture-recognition-in-termux"}
