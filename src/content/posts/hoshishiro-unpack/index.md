@@ -2,7 +2,7 @@
 title: 《星空列车与白的旅行》拆包细节
 published: 2026-03-16
 description: ' '
-image: './cover.png'
+image: './cover.webp'
 tags: ['Galgame', '拆包', '星空列车与白的旅行']
 category: '游戏'
 draft: false 
