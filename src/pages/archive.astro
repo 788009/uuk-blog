@@ -5,10 +5,18 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPostsList } from "../utils/content-utils";
 
-const sortedPostsList = await getSortedPostsList();
+const rawPostsList = await getSortedPostsList();
+
+// 修复类型冲突：将 category 中的 null 转换为 undefined
+const sortedPostsList = rawPostsList.map((post) => ({
+	...post,
+	data: {
+		...post.data,
+		category: post.data.category ?? undefined,
+	},
+}));
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
     <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
 </MainGridLayout>
-

@@ -77,7 +77,7 @@ lang: ''
 
 用 AssetStudio 可直接获取所有素材，不需要手动解密。
 
-涉及到角色的 `tgtEng` 值[见上](https://github.com/788009/hoshishiro?tab=readme-ov-file#extractcharspy)。
+涉及到角色的 `tgtEng` 值[见上](#extractcharspy)。
 
 ### 文本
 
