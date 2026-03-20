@@ -20,7 +20,7 @@
     "@astrojs/mdx": "^5.0.0",
     "@astrojs/react": "^5.0.0",
     "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.1",
     "@astrojs/svelte": "7.2.3",
     "@astrojs/tailwind": "^6.0.2",
     "@expressive-code/core": "^0.41.4",
