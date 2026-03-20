@@ -1,0 +1,8728 @@
+---
+title: 歌单
+published: 2026-03-20
+description: ' '
+image: 'cover.png'
+tags: ['Galgame']
+category: '游戏'
+draft: false 
+lang: ''
+---
+
+import InteractiveTable from '/src/components/InteractiveTable.jsx';
+
+export const columns = [
+  { accessorKey: 'name', header: '歌曲' },
+  { accessorKey: 'artists', header: '作者' },
+  { accessorKey: 'category', header: '分类', size: 130 },
+  { accessorKey: 'date', header: '收录日期', size: 130 },
+];
+
+export const data = [
+    {
+        "name": "オーダーメイド（定制品）",
+        "artists": "傘村トータ/巡音ルカ/初音ミク/KAITO/鏡音レン/鏡音リン/v flower/kakone/紲星あかり/IA/洛天依/Ken/Kaori/Fukase/猫村いろは/GUMI/Mew/結月ゆかり",
+        "category": "日语歌/2",
+        "date": "2026-03-17"
+    },
+    {
+        "name": "Axium Divergence",
+        "artists": "ak+q",
+        "category": "纯音乐/1",
+        "date": "2026-03-17"
+    },
+    {
+        "name": "SIROSUNA",
+        "artists": "小高光太郎/Ceui",
+        "category": "日语歌/1",
+        "date": "2026-03-09"
+    },
+    {
+        "name": "恋夢",
+        "artists": "松岡純也/須谷尚子/Suara",
+        "category": "日语歌/1",
+        "date": "2026-03-09"
+    },
+    {
+        "name": "かぐやと彩葉",
+        "artists": "コーニッシュ",
+        "category": "纯音乐/2",
+        "date": "2026-03-09"
+    },
+    {
+        "name": "eXi' N'o FooKah",
+        "artists": "近藤佑輔",
+        "category": "其他歌",
+        "date": "2026-03-04"
+    },
+    {
+        "name": "Sar-gedy-動-",
+        "artists": "近藤佑輔",
+        "category": "其他歌",
+        "date": "2026-03-04"
+    },
+    {
+        "name": "Sar-gedy-流-",
+        "artists": "近藤佑輔",
+        "category": "其他歌",
+        "date": "2026-03-04"
+    },
+    {
+        "name": "LaVI-Bavellabion feat. GUMI",
+        "artists": "SLAVE.V-V-R/GUMI",
+        "category": "其他歌",
+        "date": "2026-03-03"
+    },
+    {
+        "name": "LaVI-Bavellabion feat. 三木谷奈々",
+        "artists": "SLAVE.V-V-R/三木谷奈々",
+        "category": "其他歌",
+        "date": "2026-03-03"
+    },
+    {
+        "name": "愛の残滓",
+        "artists": "佐高陵平/石塚陽大/藍月なくる",
+        "category": "日语歌/1",
+        "date": "2026-03-03"
+    },
+    {
+        "name": "救いを求めるヒトの詩",
+        "artists": "近藤佑辅/有世華望",
+        "category": "日语歌/1",
+        "date": "2026-03-03"
+    },
+    {
+        "name": "bloom",
+        "artists": "daiki⛩️/三木谷奈々",
+        "category": "英文歌",
+        "date": "2026-03-03"
+    },
+    {
+        "name": "Goodbye to a World",
+        "artists": "Porter Robinson/AVANNA",
+        "category": "英文歌",
+        "date": "2026-02-24"
+    },
+    {
+        "name": "Remember",
+        "artists": "yuigot/是/真崎エリカ/早見沙織",
+        "category": "日语歌/1",
+        "date": "2026-02-23"
+    },
+    {
+        "name": "Reply",
+        "artists": "livetune/真崎エリカ/夏吉ゆうこ",
+        "category": "日语歌/1",
+        "date": "2026-02-23"
+    },
+    {
+        "name": "星降る海",
+        "artists": "Aqu3ra/早見沙織",
+        "category": "日语歌/1",
+        "date": "2026-02-23"
+    },
+    {
+        "name": "メルト (Melt)",
+        "artists": "supercell/初音ミク",
+        "category": "日语歌/2",
+        "date": "2026-02-23"
+    },
+    {
+        "name": "Undying Macula ~penumbra~",
+        "artists": "Ashrount",
+        "category": "纯音乐/1",
+        "date": "2026-02-23"
+    },
+    {
+        "name": "Der Mond Das Meer -沙羅- ＜夢のつばさ＞",
+        "artists": "阿保剛/植田佳奈",
+        "category": "日语歌/1",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "LeMU ～遙かなるレムリア大陸～",
+        "artists": "志倉千代丸/KAORI.",
+        "category": "日语歌/1",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "lulu.",
+        "artists": "Mrs. GREEN APPLE",
+        "category": "日语歌/1",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "悔_",
+        "artists": "Essbee/花隈千冬",
+        "category": "日语歌/2",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "靈",
+        "artists": "MYTK",
+        "category": "纯音乐/1",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "Der Mond Das Meer",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "Karma",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2026-02-05"
+    },
+    {
+        "name": "Fantasia Sonata Next Ouverture",
+        "artists": "PYKAMIA",
+        "category": "纯音乐/1",
+        "date": "2026-01-11"
+    },
+    {
+        "name": "悲しみの向こうへ",
+        "artists": "KIRIKO/橋本彦士/いとうかなこ",
+        "category": "日语歌/1",
+        "date": "2025-12-29"
+    },
+    {
+        "name": "雨に祈りを",
+        "artists": "onoken/Rin/木下珠子",
+        "category": "日语歌/1",
+        "date": "2025-12-29"
+    },
+    {
+        "name": "涙の理由",
+        "artists": "江幡育子/飯塚昌明/栗林みな実",
+        "category": "日语歌/1",
+        "date": "2025-12-27"
+    },
+    {
+        "name": "Asphodelus",
+        "artists": "Ceui/小高光太郎/スミイ酸",
+        "category": "日语歌/1",
+        "date": "2025-12-20"
+    },
+    {
+        "name": "燐寸と緞帳",
+        "artists": "Juka_Box/綜花",
+        "category": "日语歌/1",
+        "date": "2025-12-13"
+    },
+    {
+        "name": "ふたりの果て",
+        "artists": "西坂恭平/しほり",
+        "category": "日语歌/1",
+        "date": "2025-11-19"
+    },
+    {
+        "name": "Side Effect",
+        "artists": "志倉千代丸/いとうかなこ",
+        "category": "日语歌/1",
+        "date": "2025-11-15"
+    },
+    {
+        "name": "you -ありがとう-",
+        "artists": "M.Graveyard/ラック眼力/詩音",
+        "category": "日语歌/1",
+        "date": "2025-11-15"
+    },
+    {
+        "name": "stop-motion",
+        "artists": "Frums",
+        "category": "纯音乐/1",
+        "date": "2025-11-15"
+    },
+    {
+        "name": "Nostalgia",
+        "artists": "KOKIA",
+        "category": "日语歌/1",
+        "date": "2025-11-09"
+    },
+    {
+        "name": "怪獣になりたい",
+        "artists": "削除/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-10-23"
+    },
+    {
+        "name": "空種",
+        "artists": "永原さくら/kors k/南條愛乃",
+        "category": "日语歌/1",
+        "date": "2025-10-22"
+    },
+    {
+        "name": "すべてを雪に染めて ～never ending snow～",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-10-19"
+    },
+    {
+        "name": "ANDORXOR",
+        "artists": "Sobrem",
+        "category": "纯音乐/1",
+        "date": "2025-10-10"
+    },
+    {
+        "name": "Angel Echo",
+        "artists": "Silentroom",
+        "category": "纯音乐/1",
+        "date": "2025-10-10"
+    },
+    {
+        "name": "Undying Macula",
+        "artists": "Ashrount",
+        "category": "纯音乐/1",
+        "date": "2025-10-10"
+    },
+    {
+        "name": "たった1つの想い",
+        "artists": "KOKIA",
+        "category": "日语歌/1",
+        "date": "2025-10-09"
+    },
+    {
+        "name": "キミガタメ（为了你）",
+        "artists": "須谷尚子/下川直哉/Suara",
+        "category": "日语歌/1",
+        "date": "2025-10-09"
+    },
+    {
+        "name": "物語りのワルツ",
+        "artists": "samayuzame/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2025-10-09"
+    },
+    {
+        "name": "イノチの灯し方",
+        "artists": "西坂恭平/霜月はるか",
+        "category": "日语歌/1",
+        "date": "2025-09-18"
+    },
+    {
+        "name": "小さなてのひら",
+        "artists": "麻枝准/戸越まごめ/riya",
+        "category": "日语歌/1",
+        "date": "2025-09-12"
+    },
+    {
+        "name": "街の残像",
+        "artists": "あばらや/可不",
+        "category": "日语歌/2",
+        "date": "2025-09-12"
+    },
+    {
+        "name": "夢見鳥の恋",
+        "artists": "魁/大橋柊平/高森奈津美",
+        "category": "日语歌/1",
+        "date": "2025-09-10"
+    },
+    {
+        "name": "翠杜",
+        "artists": "隣の庭は青い",
+        "category": "纯音乐/1",
+        "date": "2025-09-10"
+    },
+    {
+        "name": "月に沈む",
+        "artists": "Omochi/可不",
+        "category": "日语歌/2",
+        "date": "2025-09-02"
+    },
+    {
+        "name": "口笛で愛は歌えない",
+        "artists": "古川本舗/和音正人/二村学/DAZBEE",
+        "category": "日语歌/1",
+        "date": "2025-08-28"
+    },
+    {
+        "name": "corps-sans-organes (Extended ver.)",
+        "artists": "cybermiso",
+        "category": "纯音乐/1",
+        "date": "2025-08-28"
+    },
+    {
+        "name": "Ribbon",
+        "artists": "sabio/重音テト",
+        "category": "日语歌/2",
+        "date": "2025-08-26"
+    },
+    {
+        "name": "機械の声 feat. V.I.P",
+        "artists": "香椎モイミ/V.I.P",
+        "category": "日语歌/2",
+        "date": "2025-08-26"
+    },
+    {
+        "name": "機械の声 feat. V.W.P & V.I.P",
+        "artists": "香椎モイミ/V.W.P/V.I.P",
+        "category": "日语歌/2",
+        "date": "2025-08-26"
+    },
+    {
+        "name": "BREATHE",
+        "artists": "香椎モイミ/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2025-08-16"
+    },
+    {
+        "name": "多次元宇宙融合論",
+        "artists": "TAKIO/つぐ",
+        "category": "日语歌/1",
+        "date": "2025-08-13"
+    },
+    {
+        "name": "海岸線",
+        "artists": "金閉開羅巧夢/ハム/高森奈津美",
+        "category": "日语歌/1",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "いますぐ輪廻",
+        "artists": "なきそ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "Fragment of Memories",
+        "artists": "U-Ruri",
+        "category": "纯音乐/1",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "Glacier",
+        "artists": "Laur",
+        "category": "纯音乐/1",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "Regnaissance",
+        "artists": "AiSS/Abit",
+        "category": "纯音乐/1",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "Trap Crow",
+        "artists": "Puru",
+        "category": "纯音乐/1",
+        "date": "2025-08-11"
+    },
+    {
+        "name": "CANOE",
+        "artists": "麻枝准/ANANT-GARDE EYES/多田葵",
+        "category": "日语歌/1",
+        "date": "2025-07-25"
+    },
+    {
+        "name": "その花は世界を紡ぐ",
+        "artists": "Laur/Tia",
+        "category": "日语歌/1",
+        "date": "2025-07-25"
+    },
+    {
+        "name": "硝子の線",
+        "artists": "Tele",
+        "category": "日语歌/1",
+        "date": "2025-07-24"
+    },
+    {
+        "name": "「いい子」でいること",
+        "artists": "omochi/可不",
+        "category": "日语歌/2",
+        "date": "2025-07-24"
+    },
+    {
+        "name": "ギフト (Gift)",
+        "artists": "内緒のピアス/可不",
+        "category": "日语歌/2",
+        "date": "2025-07-24"
+    },
+    {
+        "name": "病名を教えて",
+        "artists": "彼岸/可不",
+        "category": "日语歌/2",
+        "date": "2025-07-24"
+    },
+    {
+        "name": "砂時計",
+        "artists": "omochi/可不",
+        "category": "日语歌/2",
+        "date": "2025-07-24"
+    },
+    {
+        "name": "Lasting Moment",
+        "artists": "新島夕/どんまる/鈴木このみ",
+        "category": "日语歌/1",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "そして愛になる",
+        "artists": "rino/堀江晶太/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "スパークル (Movie Ver.)",
+        "artists": "野田洋次郎/RADWIMPS",
+        "category": "日语歌/1",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "スパークル (Original Ver.)",
+        "artists": "野田洋次郎/RADWIMPS",
+        "category": "日语歌/1",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "時を刻む唄",
+        "artists": "麻枝准/ANANT-GARDE EYES/Lia",
+        "category": "日语歌/1",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "Lasting Moment (Symphonic)",
+        "artists": "どんまる",
+        "category": "纯音乐/2",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "Sea, You & Me (Symphonic)",
+        "artists": "麻枝准",
+        "category": "纯音乐/2",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "ポケットをふくらませて (Symphonic)",
+        "artists": "麻枝准",
+        "category": "纯音乐/2",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "夜奏花 (Symphonic)",
+        "artists": "竹下智博",
+        "category": "纯音乐/2",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "羽のゆりかご (Symphonic)",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-07-22"
+    },
+    {
+        "name": "DEAR MY WAKER (Symphonic)",
+        "artists": "堀江晶太/山口たこ/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "InFINITE Line～Grand ver.～",
+        "artists": "山口卓也/椎名豪/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "Squall (Symphonic)",
+        "artists": "MEGUMI/CHO-NAN/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "DEAR MY WAKER (Piano ver)",
+        "artists": "虻川治",
+        "category": "纯音乐/2",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "dream moments",
+        "artists": "虻川治",
+        "category": "纯音乐/2",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "drowsing morning",
+        "artists": "虻川治",
+        "category": "纯音乐/2",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "under the moon",
+        "artists": "虻川治",
+        "category": "纯音乐/2",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "with sweetness",
+        "artists": "虻川治",
+        "category": "纯音乐/2",
+        "date": "2025-07-21"
+    },
+    {
+        "name": "DEAR MY WAKER",
+        "artists": "山口たこ/堀江晶太/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-20"
+    },
+    {
+        "name": "Squall",
+        "artists": "MEGUMI/CHO-NAN/米倉千尋",
+        "category": "日语歌/1",
+        "date": "2025-07-20"
+    },
+    {
+        "name": "Hacking to the Gate (Symphonic)",
+        "artists": "志倉千代丸/いとうかなこ",
+        "category": "日语歌/1",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Hacking to the Gate",
+        "artists": "志倉千代丸/磯江俊道/いとうかなこ",
+        "category": "日语歌/1",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "ライア (Lyra)",
+        "artists": "志倉千代丸/大島こうすけ/Zwei",
+        "category": "日语歌/1",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "星の奏でる歌 feat. 椎名かがり",
+        "artists": "佐々木恵梨/MANYO/潘めぐみ",
+        "category": "日语歌/1",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "星の奏でる歌 feat. 椎名まゆり&椎名かがり",
+        "artists": "佐々木恵梨/MANYO/花澤香菜/潘めぐみ",
+        "category": "日语歌/1",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Fellowship",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "GATE OF STEINER (Symphonic)",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Messenger -main theme-",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Messenger -piano-",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Messenger from zero",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "The end of messenger",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-07-07"
+    },
+    {
+        "name": "Moonlight Fragrance",
+        "artists": "H△G",
+        "category": "日语歌/1",
+        "date": "2025-07-03"
+    },
+    {
+        "name": "スズラン（铃兰）",
+        "artists": "GARNiDELiA",
+        "category": "日语歌/1",
+        "date": "2025-07-03"
+    },
+    {
+        "name": "Departure!",
+        "artists": "新島夕/折戸伸治/森藤晶司/嶺内ともみ",
+        "category": "日语歌/1",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "ポケットをふくらませて ～Sea, you again～",
+        "artists": "麻枝准/bermei.inazawa/rionos",
+        "category": "日语歌/1",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "ポケットをふくらませて",
+        "artists": "麻枝准/bermei.inazawa/rionos",
+        "category": "日语歌/1",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "比翼の蝶たち",
+        "artists": "魁/折戸伸治/塚越雄一朗/高森奈津美",
+        "category": "日语歌/1",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "羽のゆりかご",
+        "artists": "新島夕/折戸伸治/塚越雄一朗/水谷瑠奈",
+        "category": "日语歌/1",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "再会 feat. 初音ミク",
+        "artists": "はるまきごはん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "Childish White",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "蝉時雨の隙間に…",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-06-26"
+    },
+    {
+        "name": "Sea, You Next",
+        "artists": "麻枝准",
+        "category": "纯音乐/2",
+        "date": "2025-06-23"
+    },
+    {
+        "name": "Sea, Your Memory",
+        "artists": "麻枝准",
+        "category": "纯音乐/2",
+        "date": "2025-06-23"
+    },
+    {
+        "name": "Adventure for Black",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-06-15"
+    },
+    {
+        "name": "アルカテイル -recall-",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-06-15"
+    },
+    {
+        "name": "夏休みの過ごし方",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-06-15"
+    },
+    {
+        "name": "蝉声とともに",
+        "artists": "水月陵",
+        "category": "纯音乐/2",
+        "date": "2025-06-15"
+    },
+    {
+        "name": "刻司ル十二ノ盟約",
+        "artists": "志倉千代丸/林達志/ファンタズム",
+        "category": "日语歌/1",
+        "date": "2025-06-14"
+    },
+    {
+        "name": "アルカテイル -story-",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-05-28"
+    },
+    {
+        "name": "アスタロア (Asterlore)",
+        "artists": "魁/折戸伸治/塚越雄一朗/鈴木このみ",
+        "category": "日语歌/1",
+        "date": "2025-05-26"
+    },
+    {
+        "name": "アルカテイル (ALKA Tale)",
+        "artists": "魁/折戸伸治/中山真斗/鈴木このみ",
+        "category": "日语歌/1",
+        "date": "2025-05-26"
+    },
+    {
+        "name": "夏の砂時計",
+        "artists": "魁/水月陵/水谷瑠奈",
+        "category": "日语歌/1",
+        "date": "2025-05-26"
+    },
+    {
+        "name": "坂の上の陽炎",
+        "artists": "どんまる",
+        "category": "纯音乐/2",
+        "date": "2025-05-26"
+    },
+    {
+        "name": "Sea, You & Me",
+        "artists": "麻枝准",
+        "category": "纯音乐/2",
+        "date": "2025-05-22"
+    },
+    {
+        "name": "Croatian Rhapsody",
+        "artists": "Maksim Mrvica",
+        "category": "纯音乐/1",
+        "date": "2025-05-21"
+    },
+    {
+        "name": "夏の子守歌",
+        "artists": "折戸伸治",
+        "category": "纯音乐/2",
+        "date": "2025-05-21"
+    },
+    {
+        "name": "Saya's Song",
+        "artists": "麻枝准/Lia",
+        "category": "日语歌/1",
+        "date": "2025-05-19"
+    },
+    {
+        "name": "対象a",
+        "artists": "anNina",
+        "category": "日语歌/1",
+        "date": "2025-05-16"
+    },
+    {
+        "name": "空に光る",
+        "artists": "麻枝准/戸越まごめ/riya",
+        "category": "日语歌/1",
+        "date": "2025-05-16"
+    },
+    {
+        "name": "Designant.",
+        "artists": "Designant",
+        "category": "纯音乐/1",
+        "date": "2025-05-04"
+    },
+    {
+        "name": "Believe Me",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-04-30"
+    },
+    {
+        "name": "君の世界は透明なんだね",
+        "artists": "rinri/星界/可不",
+        "category": "日语歌/2",
+        "date": "2025-04-29"
+    },
+    {
+        "name": "Gate of steiner -piano-",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-04-29"
+    },
+    {
+        "name": "GATE OF STEINER",
+        "artists": "阿保剛/佐々木恵梨",
+        "category": "英文歌",
+        "date": "2025-04-29"
+    },
+    {
+        "name": "Gate of Steiner -Main Theme-",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-04-23"
+    },
+    {
+        "name": "Quiet Air",
+        "artists": "阿保剛",
+        "category": "纯音乐/2",
+        "date": "2025-04-23"
+    },
+    {
+        "name": "アイの庭",
+        "artists": "Duca/安瀬聖",
+        "category": "日语歌/1",
+        "date": "2025-04-21"
+    },
+    {
+        "name": "恋文",
+        "artists": "都乃河勇人/折戸伸治/MANYO/やなぎなぎ",
+        "category": "日语歌/1",
+        "date": "2025-04-21"
+    },
+    {
+        "name": "造花の距離感",
+        "artists": "笹川真生/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-04-21"
+    },
+    {
+        "name": "天球(そら)のMúsica",
+        "artists": "Ave Mujica",
+        "category": "日语歌/1",
+        "date": "2025-04-07"
+    },
+    {
+        "name": "漂流 with KIVΛ -CytusⅡ.ver-",
+        "artists": "THE SxPLAY/KIVΛ",
+        "category": "日语歌/1",
+        "date": "2025-04-06"
+    },
+    {
+        "name": "漂流",
+        "artists": "THE SxPLAY",
+        "category": "日语歌/1",
+        "date": "2025-04-06"
+    },
+    {
+        "name": "Spirits",
+        "artists": "KOKIA",
+        "category": "日语歌/1",
+        "date": "2025-04-05"
+    },
+    {
+        "name": "一番の宝物 (Original Version)",
+        "artists": "karuta/麻枝准/光収容/ANANT-GARDE EYES",
+        "category": "日语歌/1",
+        "date": "2025-04-05"
+    },
+    {
+        "name": "終わらない旅",
+        "artists": "project lights",
+        "category": "纯音乐/2",
+        "date": "2025-03-29"
+    },
+    {
+        "name": "Imprisoned XII",
+        "artists": "Ave Mujica",
+        "category": "日语歌/1",
+        "date": "2025-03-25"
+    },
+    {
+        "name": "どうか、この言の葉が巣食わないように",
+        "artists": "kyiku/ナースロボ__タイプT/白寝ねんね",
+        "category": "日语歌/2",
+        "date": "2025-03-25"
+    },
+    {
+        "name": "だから僕は音楽を辞めた",
+        "artists": "ヨルシカ",
+        "category": "日语歌/1",
+        "date": "2025-03-21"
+    },
+    {
+        "name": "ウィアートル（旅人）",
+        "artists": "rionos/ riya",
+        "category": "日语歌/1",
+        "date": "2025-03-21"
+    },
+    {
+        "name": "花弁、それにまつわる音声",
+        "artists": "あばらや/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-03-12"
+    },
+    {
+        "name": "雪のエルフィンリート -arrange-",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-03-10"
+    },
+    {
+        "name": "怪獣",
+        "artists": "サカナクション",
+        "category": "日语歌/1",
+        "date": "2025-03-05"
+    },
+    {
+        "name": "白絵にもならない_U",
+        "artists": "rinri/kyiku/ゲキヤク/カゼヒキ",
+        "category": "日语歌/2",
+        "date": "2025-03-03"
+    },
+    {
+        "name": "白絵にもならない_V",
+        "artists": "rinri/kyiku/ゲキヤク/カゼヒキ",
+        "category": "日语歌/2",
+        "date": "2025-03-03"
+    },
+    {
+        "name": "-遠い空へ-",
+        "artists": "市川淳",
+        "category": "纯音乐/2",
+        "date": "2025-02-25"
+    },
+    {
+        "name": "気ままな日常",
+        "artists": "project lights",
+        "category": "纯音乐/2",
+        "date": "2025-02-22"
+    },
+    {
+        "name": "永遠(とわ)",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-02-21"
+    },
+    {
+        "name": "深い青だった",
+        "artists": "はるまきごはん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-20"
+    },
+    {
+        "name": "After You Sleep",
+        "artists": "麻枝准/rionos",
+        "category": "日语歌/1",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "嘘月",
+        "artists": "CorLeonis",
+        "category": "日语歌/1",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "藍悼花 feat. Lucia",
+        "artists": "酔シグレ/Lucia",
+        "category": "日语歌/1",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "ぼくらのレットイットビー（让我们顺其自然）",
+        "artists": "はりーP/快晴P/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "トーチカ (TOCHKA)",
+        "artists": "sasakure.UK/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "藍悼花 feat. 初音ミク",
+        "artists": "酔シグレ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-08"
+    },
+    {
+        "name": "Georgette Me, Georgette You",
+        "artists": "Ave Mujica",
+        "category": "日语歌/1",
+        "date": "2025-02-03"
+    },
+    {
+        "name": "ゴールデンレイ (Golden Ray)",
+        "artists": "はるまきごはん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-03"
+    },
+    {
+        "name": "僕らのつづき",
+        "artists": "じょん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2025-02-03"
+    },
+    {
+        "name": "Abyssgazer",
+        "artists": "xi/削除",
+        "category": "纯音乐/1",
+        "date": "2025-02-03"
+    },
+    {
+        "name": "新たなる始まり",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-02-03"
+    },
+    {
+        "name": "その想い、インフィニティー",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-01-27"
+    },
+    {
+        "name": "クオリアの想い",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-01-27"
+    },
+    {
+        "name": "白きセカイの因果律",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-01-27"
+    },
+    {
+        "name": "雪空のラメント",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-01-27"
+    },
+    {
+        "name": "でもね",
+        "artists": "水野あつ/可不",
+        "category": "日语歌/2",
+        "date": "2025-01-20"
+    },
+    {
+        "name": "Dear Moments",
+        "artists": "紺野アスタ/松本文紀/赤尾ひかる",
+        "category": "日语歌/1",
+        "date": "2025-01-13"
+    },
+    {
+        "name": "永久に舞う、雪の詩",
+        "artists": "忍",
+        "category": "纯音乐/2",
+        "date": "2025-01-13"
+    },
+    {
+        "name": "雪のエルフィンリート",
+        "artists": "山本美禰子/小高光太郎/Side Connection Music/桃園にな",
+        "category": "日语歌/1",
+        "date": "2025-01-12"
+    },
+    {
+        "name": "かなしばりに遭ったら",
+        "artists": "あばらや/歌愛ユキ/ナースロボ＿タイプT",
+        "category": "日语歌/2",
+        "date": "2025-01-11"
+    },
+    {
+        "name": "棺の中で、",
+        "artists": "GESO/GUMI/カゼヒキβ",
+        "category": "日语歌/2",
+        "date": "2025-01-11"
+    },
+    {
+        "name": "薄れる",
+        "artists": "rinri/裏命",
+        "category": "日语歌/2",
+        "date": "2025-01-11"
+    },
+    {
+        "name": "幸せな記憶 Piano",
+        "artists": "石川真也",
+        "category": "纯音乐/2",
+        "date": "2025-01-08"
+    },
+    {
+        "name": "聖夜",
+        "artists": "石川真也",
+        "category": "纯音乐/2",
+        "date": "2025-01-08"
+    },
+    {
+        "name": "はじまりのしるし（开始的标志）",
+        "artists": "Chima",
+        "category": "日语歌/1",
+        "date": "2024-12-26"
+    },
+    {
+        "name": "第三の心臓",
+        "artists": "はるまきごはん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-12-22"
+    },
+    {
+        "name": "暖かな時間",
+        "artists": "松本文紀",
+        "category": "纯音乐/2",
+        "date": "2024-12-22"
+    },
+    {
+        "name": "ヨミクダリの灯",
+        "artists": "シャノン/GUMI",
+        "category": "日语歌/2",
+        "date": "2024-12-21"
+    },
+    {
+        "name": "運命",
+        "artists": "はるまきごはん/煮ル果実/初音ミク/v flower",
+        "category": "日语歌/2",
+        "date": "2024-12-21"
+    },
+    {
+        "name": "再会 feat. はるまきごはん",
+        "artists": "はるまきごはん",
+        "category": "日语歌/1",
+        "date": "2024-12-18"
+    },
+    {
+        "name": "親愛なるあの日々へ",
+        "artists": "松本文紀",
+        "category": "纯音乐/2",
+        "date": "2024-12-18"
+    },
+    {
+        "name": "浮夸",
+        "artists": "陈奕迅",
+        "category": "中文歌",
+        "date": "2024-12-11"
+    },
+    {
+        "name": "みむかｩわナイストライ (Mimukauwa Nice Try)",
+        "artists": "ぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-12-11"
+    },
+    {
+        "name": "恐竜電力の街",
+        "artists": "シャノン/GUMI",
+        "category": "日语歌/2",
+        "date": "2024-12-11"
+    },
+    {
+        "name": "Emptiness",
+        "artists": "Mwk/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-12-03"
+    },
+    {
+        "name": "おかえりなさい（欢迎回家）",
+        "artists": "project lights",
+        "category": "纯音乐/2",
+        "date": "2024-12-03"
+    },
+    {
+        "name": "スタートリップ (Star Trip) Piano Ver.",
+        "artists": "丸山公詳",
+        "category": "纯音乐/2",
+        "date": "2024-12-03"
+    },
+    {
+        "name": "砕け散る星",
+        "artists": "project lights",
+        "category": "纯音乐/2",
+        "date": "2024-12-03"
+    },
+    {
+        "name": "2U",
+        "artists": "David Guetta/Justin Bieber",
+        "category": "英文歌",
+        "date": "2024-12-03"
+    },
+    {
+        "name": "Astronomy",
+        "artists": "Empty old City",
+        "category": "日语歌/1",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "アポリア(Aporia)",
+        "artists": "ヨルシカ",
+        "category": "日语歌/1",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "時の魔法",
+        "artists": "須谷尚子/下川直哉/小木曽雪菜",
+        "category": "日语歌/1",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "晴る",
+        "artists": "ヨルシカ",
+        "category": "日语歌/1",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "ロストワンの号哭",
+        "artists": "Neru/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "僕なんかいなくても",
+        "artists": "ピノキオピー/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-11-28"
+    },
+    {
+        "name": "夜奏花",
+        "artists": "魁/竹下智博/YURiKA",
+        "category": "日语歌/1",
+        "date": "2024-11-17"
+    },
+    {
+        "name": "愛する心",
+        "artists": "須谷尚子/衣笠道雄/津田朱里",
+        "category": "日语歌/1",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "4nim0sity [99.999999999%]",
+        "artists": "イチ/歌愛ユキ/v flower",
+        "category": "日语歌/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "レムの魔法",
+        "artists": "傘村トータ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "ワンダーラスト (Wanderlast)",
+        "artists": "sasakure.UK/巡音ルカ",
+        "category": "日语歌/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "あの頃のように",
+        "artists": "石川真也",
+        "category": "纯音乐/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "最後に残るもの",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "氷の刃",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-11-16"
+    },
+    {
+        "name": "穏やかに過ぎゆく時",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-11-14"
+    },
+    {
+        "name": "Snowfalls",
+        "artists": "石川真也",
+        "category": "纯音乐/2",
+        "date": "2024-11-12"
+    },
+    {
+        "name": "flos covered by ヰ世界情緒 at CANDY LIVE",
+        "artists": "R Sound Design/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-11-11"
+    },
+    {
+        "name": "幸せな記憶",
+        "artists": "須谷尚子/石川真也/上原れな",
+        "category": "日语歌/1",
+        "date": "2024-11-11"
+    },
+    {
+        "name": "ちゃんとあるよ（有好好活着哦）",
+        "artists": "傘村トータ/可不",
+        "category": "日语歌/2",
+        "date": "2024-11-11"
+    },
+    {
+        "name": "垂直落下",
+        "artists": "傘村トータ/鏡音リン/鏡音レン",
+        "category": "日语歌/2",
+        "date": "2024-11-11"
+    },
+    {
+        "name": "キャンドルライト (Candle Light)",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-11-08"
+    },
+    {
+        "name": "化けの花 feat. 25時、ナイトコードで。&KAITO",
+        "artists": "なきそ/25時、ナイトコードで。/KAITO",
+        "category": "日语歌/2",
+        "date": "2024-11-07"
+    },
+    {
+        "name": "Library of Babel",
+        "artists": "RYOQUCHA",
+        "category": "纯音乐/1",
+        "date": "2024-11-06"
+    },
+    {
+        "name": "The Abyss of Despair (feat. 藍月なくる)",
+        "artists": "Laur/藍月なくる",
+        "category": "日语歌/1",
+        "date": "2024-11-05"
+    },
+    {
+        "name": "化けの花 feat. 初音ミク",
+        "artists": "なきそ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-10-31"
+    },
+    {
+        "name": "少女レイ (いよわ Remix)",
+        "artists": "みきとP/いよわ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-10-31"
+    },
+    {
+        "name": "Lullaby",
+        "artists": "Snail's House",
+        "category": "纯音乐/1",
+        "date": "2024-10-31"
+    },
+    {
+        "name": "POWDER SNOW feat. 冬馬かずさ",
+        "artists": "須谷尚子/下川直哉/冬馬かずさ",
+        "category": "日语歌/1",
+        "date": "2024-10-30"
+    },
+    {
+        "name": "POWDER SNOW feat. 小木曽雪菜",
+        "artists": "須谷尚子/下川直哉/小木曽雪菜",
+        "category": "日语歌/1",
+        "date": "2024-10-30"
+    },
+    {
+        "name": "Twinkle Snow instrumental",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-28"
+    },
+    {
+        "name": "Twinkle Snow Piano quartet",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-28"
+    },
+    {
+        "name": "Twinkle Snow",
+        "artists": "須谷尚子/松岡純也/衣笠道雄/津田朱里",
+        "category": "日语歌/1",
+        "date": "2024-10-27"
+    },
+    {
+        "name": "POWDER SNOW PIANO -kazusa-",
+        "artists": "下川直哉",
+        "category": "纯音乐/2",
+        "date": "2024-10-27"
+    },
+    {
+        "name": "POWDER SNOW PIANO 2010",
+        "artists": "下川直哉",
+        "category": "纯音乐/2",
+        "date": "2024-10-27"
+    },
+    {
+        "name": "静かな冬の夜",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-27"
+    },
+    {
+        "name": "描き続けた君へ",
+        "artists": "香椎モイミ/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-10-26"
+    },
+    {
+        "name": "エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン",
+        "artists": "はるまきごはん/25時、ナイトコードで。/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-10-26"
+    },
+    {
+        "name": "WHITE ALBUM feat. 冬馬かずさ",
+        "artists": "須谷尚子/石川真也/松岡純也/冬馬かずさ",
+        "category": "日语歌/1",
+        "date": "2024-10-24"
+    },
+    {
+        "name": "WHITE ALBUM feat. 小木曽雪菜",
+        "artists": "須谷尚子/石川真也/松岡純也/小木曽雪菜",
+        "category": "日语歌/1",
+        "date": "2024-10-24"
+    },
+    {
+        "name": "エンパープル (Empurple) feat. 初音ミク",
+        "artists": "はるまきごはん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-10-24"
+    },
+    {
+        "name": "天鹅之舞",
+        "artists": "浅蓝",
+        "category": "纯音乐/1",
+        "date": "2024-10-23"
+    },
+    {
+        "name": "After All ～綴る想い～ feat. 上原れな",
+        "artists": "未海/石川真也/衣笠道雄/上原れな",
+        "category": "日语歌/1",
+        "date": "2024-10-17"
+    },
+    {
+        "name": "After All ～綴る想い～ feat. 冬馬かずさ",
+        "artists": "未海/石川真也/衣笠道雄/冬馬かずさ",
+        "category": "日语歌/1",
+        "date": "2024-10-17"
+    },
+    {
+        "name": "Infinite Strife,",
+        "artists": "siromaru/BlackY/Yooh",
+        "category": "纯音乐/1",
+        "date": "2024-10-17"
+    },
+    {
+        "name": "After All ～ 綴る想い ～ instrumental",
+        "artists": "石川真也",
+        "category": "纯音乐/2",
+        "date": "2024-10-17"
+    },
+    {
+        "name": "言葉にできない想い",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-10-17"
+    },
+    {
+        "name": "The Angel's Message (feat. Sennzai)",
+        "artists": "Laur/Sennzai",
+        "category": "日语歌/1",
+        "date": "2024-10-16"
+    },
+    {
+        "name": "願い、君へ",
+        "artists": "アサノマチ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-10-16"
+    },
+    {
+        "name": "イルミネーションタウン(Illumination Town)",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-10-15"
+    },
+    {
+        "name": "綺麗で儚いもの",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-15"
+    },
+    {
+        "name": "胡蝶の夢",
+        "artists": "ベール/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-10-09"
+    },
+    {
+        "name": "Dear Friends",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-09"
+    },
+    {
+        "name": "いつか見た景色",
+        "artists": "松岡純也",
+        "category": "纯音乐/2",
+        "date": "2024-10-09"
+    },
+    {
+        "name": "冬の街路樹",
+        "artists": "衣笠道雄",
+        "category": "纯音乐/2",
+        "date": "2024-10-09"
+    },
+    {
+        "name": "死にたいわけじゃなくて",
+        "artists": "アサノマチ/可不",
+        "category": "日语歌/2",
+        "date": "2024-10-05"
+    },
+    {
+        "name": "死ねない僕は生きていく",
+        "artists": "アサノマチ/可不",
+        "category": "日语歌/2",
+        "date": "2024-10-05"
+    },
+    {
+        "name": "ふたつの影",
+        "artists": "Famishin/春風まゆき",
+        "category": "日语歌/1",
+        "date": "2024-10-03"
+    },
+    {
+        "name": "ふたりで（与子偕老）",
+        "artists": "Famishin/Riryka",
+        "category": "日语歌/1",
+        "date": "2024-10-03"
+    },
+    {
+        "name": "恋ひ恋ふ縁 (Koto Version)",
+        "artists": "Famishin/Angel Note",
+        "category": "纯音乐/2",
+        "date": "2024-10-03"
+    },
+    {
+        "name": "縁結び",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-10-03"
+    },
+    {
+        "name": "とおりゃんせ~甘美風来",
+        "artists": "ゆずひこ/Riryka/遥そら",
+        "category": "日语歌/1",
+        "date": "2024-09-28"
+    },
+    {
+        "name": "キズナヒトツ（一丝羁绊）",
+        "artists": "井ノ原智/KALA/山本希望",
+        "category": "日语歌/1",
+        "date": "2024-09-28"
+    },
+    {
+        "name": "茉子の日常",
+        "artists": "BAL/中山マミ/高森奈津美",
+        "category": "日语歌/1",
+        "date": "2024-09-26"
+    },
+    {
+        "name": "恋ひ恋ふ縁 (Piano Version)",
+        "artists": "Famishin/Angel Note",
+        "category": "纯音乐/2",
+        "date": "2024-09-26"
+    },
+    {
+        "name": "キズナヒトツ (Quiet Version)",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-09-25"
+    },
+    {
+        "name": "茉子の日常 (Quiet Version)",
+        "artists": "ユージ・ナイトー/山田屋カズ",
+        "category": "纯音乐/2",
+        "date": "2024-09-25"
+    },
+    {
+        "name": "運命(さだめ)",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-09-25"
+    },
+    {
+        "name": "限りなく灰色へ feat. 東雲絵名",
+        "artists": "すりぃ/東雲絵名",
+        "category": "日语歌/1",
+        "date": "2024-09-24"
+    },
+    {
+        "name": "とおりゃんせ～甘美風来 (Instrument Version)",
+        "artists": "Angel Note/ゆずひこ",
+        "category": "纯音乐/2",
+        "date": "2024-09-24"
+    },
+    {
+        "name": "とおりゃんせ～甘美風来 (Quiet Version)",
+        "artists": "Angel Note/ゆずひこ",
+        "category": "纯音乐/2",
+        "date": "2024-09-24"
+    },
+    {
+        "name": "眠りゆく芽吹き",
+        "artists": "mopi/下村陽子/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-09-23"
+    },
+    {
+        "name": "くつろぎの間",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-09-23"
+    },
+    {
+        "name": "本日は晴天なり",
+        "artists": "Famishin/Angel Note",
+        "category": "纯音乐/2",
+        "date": "2024-09-23"
+    },
+    {
+        "name": "田心屋",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-09-23"
+    },
+    {
+        "name": "花鳥風月",
+        "artists": "Angel Note/井ノ原智",
+        "category": "纯音乐/2",
+        "date": "2024-09-23"
+    },
+    {
+        "name": "またおいで（请再来吧）",
+        "artists": "South&/可不",
+        "category": "日语歌/2",
+        "date": "2024-09-19"
+    },
+    {
+        "name": "花と、雪と、ドラムンベース",
+        "artists": "kanone/Sennzai",
+        "category": "日语歌/1",
+        "date": "2024-09-13"
+    },
+    {
+        "name": "α煩悩",
+        "artists": "有形ランペイジ",
+        "category": "日语歌/1",
+        "date": "2024-09-11"
+    },
+    {
+        "name": "何もしてないのにイヤホンが壊れた",
+        "artists": "thom/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-09-10"
+    },
+    {
+        "name": "愛を探して",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-09-10"
+    },
+    {
+        "name": "花葬",
+        "artists": "笹川真生/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-09-09"
+    },
+    {
+        "name": "ブルーバード（青鸟）",
+        "artists": "いきものがかり",
+        "category": "日语歌/1",
+        "date": "2024-08-31"
+    },
+    {
+        "name": "月詠に鳴る (feat. 藍月なくる)",
+        "artists": "Feryquitous/藍月なくる",
+        "category": "日语歌/1",
+        "date": "2024-08-31"
+    },
+    {
+        "name": "Rugie",
+        "artists": "Feryquitous/Sennzai",
+        "category": "其他歌",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "無機質世界に彩を",
+        "artists": "MisomyL",
+        "category": "日语歌/1",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "ガランド (Airhead)",
+        "artists": "ピコン/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "人マニア",
+        "artists": "原口沙輔/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "花の名残り",
+        "artists": "ピコン/星界",
+        "category": "日语歌/2",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "黒塗り世界宛て書簡",
+        "artists": "フロクロ/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-08-29"
+    },
+    {
+        "name": "グレーテのいない星",
+        "artists": "傘村トータ/可不",
+        "category": "日语歌/2",
+        "date": "2024-08-28"
+    },
+    {
+        "name": "ノンブレス・オブリージュ（无呼吸义务）",
+        "artists": "ピノキオピー/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-28"
+    },
+    {
+        "name": "哀悼、そして日常は続く",
+        "artists": "卯花ロク/裏命",
+        "category": "日语歌/2",
+        "date": "2024-08-28"
+    },
+    {
+        "name": "ラピスのお人形",
+        "artists": "はるまきごはん/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-08-22"
+    },
+    {
+        "name": "+ERABY+E CONNEC+10N",
+        "artists": "かめりあ",
+        "category": "纯音乐/1",
+        "date": "2024-08-22"
+    },
+    {
+        "name": "Last Night,Good Night",
+        "artists": "livetune/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "あいしていたのに（明明曾爱着你）",
+        "artists": "MARETU/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "とおせんぼ（禁止通行）",
+        "artists": "wowaka/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "エリカの憂い",
+        "artists": "香椎モイミ/星界",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "ロミオとシンデレラ（罗密欧与灰姑娘）",
+        "artists": "doriko/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "初恋日記",
+        "artists": "香椎モイミ/音街ウナ",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "紫色の向日葵",
+        "artists": "香椎モイミ/羽累",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "蛍",
+        "artists": "はりーP/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-16"
+    },
+    {
+        "name": "僕らの記憶を掠わないで covered by ヰ世界情緒",
+        "artists": "rinri/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "恋ひ恋ふ縁",
+        "artists": "Famishin/KOTOKO",
+        "category": "日语歌/1",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "アナベル・リイ (Annabel Lee)",
+        "artists": "Se/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "テオ（将手）",
+        "artists": "Omoi/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "僕らの記憶を掠わないで",
+        "artists": "rinri/鳴花ヒメ/鳴花ミコト",
+        "category": "日语歌/2",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "白塔",
+        "artists": "wowaka/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "uzumakinoharu",
+        "artists": "sasakure.UK",
+        "category": "纯音乐/1",
+        "date": "2024-08-06"
+    },
+    {
+        "name": "届かない恋",
+        "artists": "石川真也/松岡純也/衣笠道雄/須谷尚子/上原れな",
+        "category": "日语歌/1",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "アイディスマイル (IDSMILE) feat. 25時、ナイトコードで。&MEIKO",
+        "artists": "とあ/25時、ナイトコードで。/MEIKO",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン",
+        "artists": "とあ/初音ミク/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "カレンの清掃",
+        "artists": "香椎モイミ/星界",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "キリトリセン（剪切线）",
+        "artists": "40mP/GUMI",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン",
+        "artists": "須田景凪/25時、ナイトコードで。/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "ノマド (Nomad) feat. v flower",
+        "artists": "須田景凪/v flower",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "命に嫌われている。",
+        "artists": "カンザキイオリ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "夜明けと蛍",
+        "artists": "n-buna/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "独りんぼエンヴィー",
+        "artists": "koyori/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "福寿草",
+        "artists": "ぐにょ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "阿吽のビーツ",
+        "artists": "羽生まゐご/v flower",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン",
+        "artists": "すりぃ/25時、ナイトコードで。/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "限りなく灰色へ feat. 鏡音レン",
+        "artists": "すりぃ/鏡音レン",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "青く駆けろ！",
+        "artists": "まらしぃ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-07-30"
+    },
+    {
+        "name": "雑踏、僕らの街",
+        "artists": "トゲナシトゲアリ",
+        "category": "日语歌/1",
+        "date": "2024-07-17"
+    },
+    {
+        "name": "死別",
+        "artists": "シャノン/GUMI",
+        "category": "日语歌/2",
+        "date": "2024-07-16"
+    },
+    {
+        "name": "Fallen",
+        "artists": "pupa/裏命/可不",
+        "category": "日语歌/2",
+        "date": "2024-06-25"
+    },
+    {
+        "name": "空の箱",
+        "artists": "トゲナシトゲアリ",
+        "category": "日语歌/1",
+        "date": "2024-06-23"
+    },
+    {
+        "name": "紫陽花",
+        "artists": "内緒のピアス/可不",
+        "category": "日语歌/2",
+        "date": "2024-06-20"
+    },
+    {
+        "name": "Canon in D",
+        "artists": "Johann Pachelbel",
+        "category": "纯音乐/1",
+        "date": "2024-06-20"
+    },
+    {
+        "name": "flos",
+        "artists": "R Sound Design/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-06-15"
+    },
+    {
+        "name": "Gymnopedie No.3",
+        "artists": "Erik Satie",
+        "category": "纯音乐/1",
+        "date": "2024-06-15"
+    },
+    {
+        "name": "Promising Relationship",
+        "artists": "Kevin MacLeod",
+        "category": "纯音乐/1",
+        "date": "2024-06-15"
+    },
+    {
+        "name": "ネクストドア (Next Door)",
+        "artists": "内緒のピアス/可不",
+        "category": "日语歌/2",
+        "date": "2024-06-08"
+    },
+    {
+        "name": "灯葬",
+        "artists": "MokuzMusic/可不",
+        "category": "日语歌/2",
+        "date": "2024-06-08"
+    },
+    {
+        "name": "Find Me (feat. Shion)",
+        "artists": "Kirara Magic/Shion",
+        "category": "日语歌/1",
+        "date": "2024-05-30"
+    },
+    {
+        "name": "アフターエポックス (After Epochs)",
+        "artists": "sasakure.UK/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-05-23"
+    },
+    {
+        "name": "私は雨",
+        "artists": "稲葉曇/歌愛ユキ",
+        "category": "日语歌/2",
+        "date": "2024-05-14"
+    },
+    {
+        "name": "系ぎて",
+        "artists": "Rintaro Soma",
+        "category": "纯音乐/1",
+        "date": "2024-05-12"
+    },
+    {
+        "name": "メズマライザ一（催眠术）",
+        "artists": "サツキ/初音ミク/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-05-09"
+    },
+    {
+        "name": "春日影",
+        "artists": "CRYCHIC",
+        "category": "日语歌/1",
+        "date": "2024-05-05"
+    },
+    {
+        "name": "栞",
+        "artists": "MyGO!!!!!",
+        "category": "日语歌/1",
+        "date": "2024-05-03"
+    },
+    {
+        "name": "あだぽしゃ（尸蜡）",
+        "artists": "いよわ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-05-03"
+    },
+    {
+        "name": "Désive",
+        "artists": "MisomyL",
+        "category": "纯音乐/1",
+        "date": "2024-05-03"
+    },
+    {
+        "name": "メテオ（流星） feat. Lia",
+        "artists": "じょん/Lia",
+        "category": "日语歌/1",
+        "date": "2024-04-25"
+    },
+    {
+        "name": "アイロニ (irony)",
+        "artists": "すこっぷ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-04-23"
+    },
+    {
+        "name": "天ノ弱",
+        "artists": "GUMI/164",
+        "category": "日语歌/2",
+        "date": "2024-04-23"
+    },
+    {
+        "name": "Buffer",
+        "artists": "Empty old City",
+        "category": "日语歌/1",
+        "date": "2024-04-14"
+    },
+    {
+        "name": "ローリンガール (Rolling Girl)",
+        "artists": "wowaka/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-04-14"
+    },
+    {
+        "name": "〇、",
+        "artists": "Kolaa/熊子",
+        "category": "日语歌/1",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "ヰ世界の宝石譚",
+        "artists": "sasakure.UK/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "ザムザ（萨姆沙）",
+        "artists": "てにをは/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "トワイライトライト（微明暮光）",
+        "artists": "とあ/25時、ナイトコードで。/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "異種",
+        "artists": "rinri/GESO/歌愛ユキ/GUMI/鳴花ヒメ",
+        "category": "日语歌/2",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "MORNINGLOOM",
+        "artists": "saaa",
+        "category": "纯音乐/1",
+        "date": "2024-04-05"
+    },
+    {
+        "name": "メテオ（流星） feat. 初音ミク",
+        "artists": "じょん/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-04-02"
+    },
+    {
+        "name": "君の脈で踊りたかった",
+        "artists": "ピコン/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-03-26"
+    },
+    {
+        "name": "Innocence",
+        "artists": "Powerless/Sennzai",
+        "category": "日语歌/1",
+        "date": "2024-03-24"
+    },
+    {
+        "name": "1000年生きてる",
+        "artists": "いよわ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-03-24"
+    },
+    {
+        "name": "《Ж》",
+        "artists": "LYRi \"Cyanblue\" WHiTE/NIKANON",
+        "category": "纯音乐/1",
+        "date": "2024-03-24"
+    },
+    {
+        "name": "See You Again",
+        "artists": "Wiz Khalifa/Charlie Puth",
+        "category": "英文歌",
+        "date": "2024-03-24"
+    },
+    {
+        "name": "かたちなきもの（无形之物）",
+        "artists": "香椎モイミ/ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2024-03-19"
+    },
+    {
+        "name": "ココロの質量",
+        "artists": "かめりあ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-03-19"
+    },
+    {
+        "name": "ワーストリグレット（遗憾至极）",
+        "artists": "youまん/GUMI",
+        "category": "日语歌/2",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "傷心中",
+        "artists": "ピコン/裏命",
+        "category": "日语歌/2",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "散り散り",
+        "artists": "読谷あかね/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "混沌ブギ",
+        "artists": "jon-YAKITORY/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "転生",
+        "artists": "ATOLS/羽累",
+        "category": "日语歌/2",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "Einherjar Joker (Requiem EXTENDED MIX)",
+        "artists": "DJ Genki/Gram",
+        "category": "纯音乐/1",
+        "date": "2024-03-17"
+    },
+    {
+        "name": "一龠",
+        "artists": "D.J.ァネイロ/v flower",
+        "category": "日语歌/2",
+        "date": "2024-03-12"
+    },
+    {
+        "name": "Einherjar Joker",
+        "artists": "DJ Genki/Gram",
+        "category": "纯音乐/1",
+        "date": "2024-03-10"
+    },
+    {
+        "name": "Old Memory",
+        "artists": "市川淳",
+        "category": "纯音乐/2",
+        "date": "2024-03-05"
+    },
+    {
+        "name": "イガク（医学）",
+        "artists": "原口沙輔/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-03-02"
+    },
+    {
+        "name": "Ascension to Heaven",
+        "artists": "xi",
+        "category": "纯音乐/1",
+        "date": "2024-03-01"
+    },
+    {
+        "name": "Departures ~あなたにおくるアイの歌~",
+        "artists": "EGOIST",
+        "category": "日语歌/1",
+        "date": "2024-02-29"
+    },
+    {
+        "name": "深海少女",
+        "artists": "ゆうゆ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-29"
+    },
+    {
+        "name": "ただ病名が欲しかった",
+        "artists": "kyiku/可不/カゼヒキ/星界",
+        "category": "日语歌/2",
+        "date": "2024-02-27"
+    },
+    {
+        "name": "ようやく君が死んだんだ。",
+        "artists": "Coward Dream/可不",
+        "category": "日语歌/2",
+        "date": "2024-02-27"
+    },
+    {
+        "name": "你先别急 feat.初音未来",
+        "artists": "CヰEL文/初音未来",
+        "category": "中文歌",
+        "date": "2024-02-24"
+    },
+    {
+        "name": "のだ",
+        "artists": "大漠波新/ずんだもん/初音ミク/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-02-24"
+    },
+    {
+        "name": "まにまに（随之任之）",
+        "artists": "r-906/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-24"
+    },
+    {
+        "name": "ウミユリ海底譚",
+        "artists": "n-buna/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-24"
+    },
+    {
+        "name": "転生林檎",
+        "artists": "ピノキオピー/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-24"
+    },
+    {
+        "name": "X.E.N.O",
+        "artists": "sasakure.UK/初音ミク/KAITO",
+        "category": "日语歌/2",
+        "date": "2024-02-21"
+    },
+    {
+        "name": "アンノウン・マザーグース（不为人知的鹅妈妈童谣）",
+        "artists": "wowaka/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-20"
+    },
+    {
+        "name": "君はできない子",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-20"
+    },
+    {
+        "name": "炉心融解",
+        "artists": "iroha(sasaki)/kuma/鏡音リン",
+        "category": "日语歌/2",
+        "date": "2024-02-20"
+    },
+    {
+        "name": "ネジ巻き師と太虚鳥",
+        "artists": "sasakure.UK/lasah",
+        "category": "英文歌",
+        "date": "2024-02-20"
+    },
+    {
+        "name": "ネヴァモア (Nevermore)",
+        "artists": "sasakure.UK/lasah",
+        "category": "英文歌",
+        "date": "2024-02-20"
+    },
+    {
+        "name": "ライアーダンサー (Liar Dancer)",
+        "artists": "マサラダ/重音テト",
+        "category": "日语歌/2",
+        "date": "2024-02-19"
+    },
+    {
+        "name": "ネ土会ェ貝南犬☆カゞんIよ″るノDA!!",
+        "artists": "ぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬ/ずんだもん/東北きりたん",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "マーシャル・マキシマイザー (Marshall Maximizer)",
+        "artists": "柊マグネタイト/可不",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "ラヴィ (Lavie)",
+        "artists": "すりぃ/鏡音レン",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "レプリカ (replica)",
+        "artists": "sasakure.UK/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "巫",
+        "artists": "柊マグネタイト/羽累",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "御伽の国 feat. 可不&裏命",
+        "artists": "ATOLS/可不/裏命",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "春嵐",
+        "artists": "john/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-18"
+    },
+    {
+        "name": "人工呼吸",
+        "artists": "傘村トータ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-14"
+    },
+    {
+        "name": "僕が夢を捨てて大人になるまで",
+        "artists": "傘村トータ/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-14"
+    },
+    {
+        "name": "死ぬにはいい日だった",
+        "artists": "ピコン/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-14"
+    },
+    {
+        "name": "深昏睡",
+        "artists": "春野/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-14"
+    },
+    {
+        "name": "鳥の詩",
+        "artists": "麻枝准/折戸伸治/高瀬一矢/Lia",
+        "category": "日语歌/1",
+        "date": "2024-02-12"
+    },
+    {
+        "name": "きゅうくらりん (Kyu-Kurarin)",
+        "artists": "いよわ/可不",
+        "category": "日语歌/2",
+        "date": "2024-02-12"
+    },
+    {
+        "name": "カナデトモスソラ（奏明天空）",
+        "artists": "ササノマリイ/ねこぼーろ/25時、ナイトコードで。/巡音ルカ",
+        "category": "日语歌/2",
+        "date": "2024-02-12"
+    },
+    {
+        "name": "再生",
+        "artists": "ピコン/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-12"
+    },
+    {
+        "name": "少女レイ",
+        "artists": "みきとP/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-12"
+    },
+    {
+        "name": "プロポーズ (Propose)",
+        "artists": "内緒のピアス/可不",
+        "category": "日语歌/2",
+        "date": "2024-02-05"
+    },
+    {
+        "name": "化孵化",
+        "artists": "sasakure.UK/可不",
+        "category": "日语歌/2",
+        "date": "2024-02-05"
+    },
+    {
+        "name": "Apollo",
+        "artists": "TJ.hangneil",
+        "category": "纯音乐/1",
+        "date": "2024-02-05"
+    },
+    {
+        "name": "Anytime Anywhere",
+        "artists": "milet/中村泰輔/野村陽一郎/Evan Call",
+        "category": "日语歌/1",
+        "date": "2024-02-03"
+    },
+    {
+        "name": "勇者",
+        "artists": "YOASOBI",
+        "category": "日语歌/1",
+        "date": "2024-02-03"
+    },
+    {
+        "name": "くうになる (feat. 可不&初音ミク)",
+        "artists": "MIMI/可不/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-03"
+    },
+    {
+        "name": "しかばねの踊り",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-02-03"
+    },
+    {
+        "name": "Distorted Fate (Extended)",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2024-02-03"
+    },
+    {
+        "name": "bliss",
+        "artists": "milet/Evan Call",
+        "category": "日语歌/1",
+        "date": "2024-02-02"
+    },
+    {
+        "name": "SIZUMU",
+        "artists": "Essbee",
+        "category": "纯音乐/1",
+        "date": "2024-02-02"
+    },
+    {
+        "name": "愛して愛して愛して",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "#1f1e33 (#00102g version)",
+        "artists": "かめりあ",
+        "category": "纯音乐/1",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "Glitched Universe",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "Grassy Turtles and Seed Rats",
+        "artists": "Evan Call",
+        "category": "纯音乐/1",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "Time Flows Ever Onward",
+        "artists": "Evan Call",
+        "category": "纯音乐/1",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "NotToNotice();",
+        "artists": "削除/遠野ひかる",
+        "category": "英文歌",
+        "date": "2024-01-21"
+    },
+    {
+        "name": "Centuries",
+        "artists": "Fall Out Boy",
+        "category": "英文歌",
+        "date": "2024-01-20"
+    },
+    {
+        "name": "anybody can find love (except you.)",
+        "artists": "hkmori",
+        "category": "纯音乐/1",
+        "date": "2024-01-16"
+    },
+    {
+        "name": "神っぽいな",
+        "artists": "ピノキオピー/初音ミク",
+        "category": "日语歌/2",
+        "date": "2024-01-09"
+    },
+    {
+        "name": "felys (final remix)",
+        "artists": "onoken",
+        "category": "纯音乐/1",
+        "date": "2024-01-09"
+    },
+    {
+        "name": "ÅMARA (大未来電脳)",
+        "artists": "sasakure.UK/初音ミク/KAITO",
+        "category": "日语歌/2",
+        "date": "2023-12-29"
+    },
+    {
+        "name": "フォニイ (phony)",
+        "artists": "ツミキ/可不",
+        "category": "日语歌/2",
+        "date": "2023-12-29"
+    },
+    {
+        "name": "我们都拥有海洋",
+        "artists": "吴青峰",
+        "category": "中文歌",
+        "date": "2023-12-25"
+    },
+    {
+        "name": "テリトリーバトル（领土战争）",
+        "artists": "ツユ",
+        "category": "日语歌/1",
+        "date": "2023-12-25"
+    },
+    {
+        "name": "Latent Kingdom",
+        "artists": "Laur/大国奏音",
+        "category": "纯音乐/1",
+        "date": "2023-12-25"
+    },
+    {
+        "name": "TECHNOPOLIS 2085",
+        "artists": "PRASTIK DANCEFLOOR",
+        "category": "纯音乐/1",
+        "date": "2023-12-25"
+    },
+    {
+        "name": "Immutable",
+        "artists": "Juggernaut.",
+        "category": "日语歌/1",
+        "date": "2023-12-19"
+    },
+    {
+        "name": "暮しガスメータ",
+        "artists": "電ǂ鯨/琴葉茜・葵/根音ネネ/ストピくん",
+        "category": "日语歌/2",
+        "date": "2023-12-19"
+    },
+    {
+        "name": "祈 -我ら神祖と共に歩む者なり-",
+        "artists": "光吉猛修/穴山大輔/Kai/水野健治/大国奏音",
+        "category": "纯音乐/1",
+        "date": "2023-12-19"
+    },
+    {
+        "name": "蜘蛛糸モノポリー",
+        "artists": "sasakure.UK/初音ミク",
+        "category": "日语歌/2",
+        "date": "2023-12-11"
+    },
+    {
+        "name": "魔王",
+        "artists": "sasakure.UK/TJ.hangneil",
+        "category": "纯音乐/1",
+        "date": "2023-12-11"
+    },
+    {
+        "name": "Lat Lag Gayee",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2023-12-01"
+    },
+    {
+        "name": "说的道理",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2023-11-28"
+    },
+    {
+        "name": "Logos (feat. 高城みよ)",
+        "artists": "polysha/高城みよ",
+        "category": "日语歌/1",
+        "date": "2023-11-26"
+    },
+    {
+        "name": "Fractured Angle",
+        "artists": "DJ Raisei",
+        "category": "日语歌/1",
+        "date": "2023-11-10"
+    },
+    {
+        "name": "空を満たして (feat. 可不)",
+        "artists": "フロクロ/可不",
+        "category": "日语歌/2",
+        "date": "2023-11-10"
+    },
+    {
+        "name": "Sanctuary",
+        "artists": "t+pazolite",
+        "category": "纯音乐/1",
+        "date": "2023-11-10"
+    },
+    {
+        "name": "Shelter",
+        "artists": "Porter Robinson/Madeon",
+        "category": "英文歌",
+        "date": "2023-10-22"
+    },
+    {
+        "name": "赤伶",
+        "artists": "HITA",
+        "category": "中文歌",
+        "date": "2023-10-14"
+    },
+    {
+        "name": "Arghena",
+        "artists": "Laur/Feryquitous",
+        "category": "纯音乐/1",
+        "date": "2023-10-14"
+    },
+    {
+        "name": "Experience",
+        "artists": "Ludovico Einaudi/Daniel Hope/I Virtuosi Italiani",
+        "category": "纯音乐/1",
+        "date": "2023-09-28"
+    },
+    {
+        "name": "グッバイ宣言",
+        "artists": "Chinozo/初音ミク",
+        "category": "日语歌/2",
+        "date": "2023-09-24"
+    },
+    {
+        "name": "#1f1e33",
+        "artists": "かめりあ",
+        "category": "纯音乐/1",
+        "date": "2023-09-24"
+    },
+    {
+        "name": "S.A.T.E.L.L.I.T.E.",
+        "artists": "かめりあ",
+        "category": "英文歌",
+        "date": "2023-09-24"
+    },
+    {
+        "name": "Abstruse Dilemma",
+        "artists": "Ashrount/打打だいず",
+        "category": "纯音乐/1",
+        "date": "2023-09-11"
+    },
+    {
+        "name": "Euterpe",
+        "artists": "EGOIST",
+        "category": "日语歌/1",
+        "date": "2023-08-21"
+    },
+    {
+        "name": "Lost Desire",
+        "artists": "Powerless/Sennzai",
+        "category": "日语歌/1",
+        "date": "2023-08-21"
+    },
+    {
+        "name": "心做し",
+        "artists": "蝶々P/GUMI",
+        "category": "日语歌/2",
+        "date": "2023-08-16"
+    },
+    {
+        "name": "Loveless Dress",
+        "artists": "かねこちはる",
+        "category": "纯音乐/1",
+        "date": "2023-08-14"
+    },
+    {
+        "name": "花たちに希望を",
+        "artists": "Sound piercer/DAZBEE",
+        "category": "日语歌/1",
+        "date": "2023-08-07"
+    },
+    {
+        "name": "Axium Crisis",
+        "artists": "ak+q",
+        "category": "纯音乐/1",
+        "date": "2023-08-07"
+    },
+    {
+        "name": "El último baile",
+        "artists": "Θ",
+        "category": "纯音乐/1",
+        "date": "2023-07-28"
+    },
+    {
+        "name": "V.",
+        "artists": "Æsir",
+        "category": "纯音乐/1",
+        "date": "2023-07-28"
+    },
+    {
+        "name": "͟͝͞Ⅱ́",
+        "artists": "Cytus",
+        "category": "纯音乐/1",
+        "date": "2023-07-28"
+    },
+    {
+        "name": "The Whole Rest",
+        "artists": "KIVΛ",
+        "category": "英文歌",
+        "date": "2023-07-28"
+    },
+    {
+        "name": "Rainy Heart",
+        "artists": "阿卡姆巫师",
+        "category": "纯音乐/1",
+        "date": "2023-07-11"
+    },
+    {
+        "name": "Realms",
+        "artists": "Hinkik/A Himitsu",
+        "category": "纯音乐/1",
+        "date": "2023-07-10"
+    },
+    {
+        "name": "Dream Flower",
+        "artists": "KLYDIX",
+        "category": "纯音乐/1",
+        "date": "2023-07-05"
+    },
+    {
+        "name": "Halcyon",
+        "artists": "xi",
+        "category": "纯音乐/1",
+        "date": "2023-07-05"
+    },
+    {
+        "name": "Used to Be",
+        "artists": "KIVΛ",
+        "category": "英文歌",
+        "date": "2023-07-05"
+    },
+    {
+        "name": "我在",
+        "artists": "刘欢",
+        "category": "中文歌",
+        "date": "2023-06-26"
+    },
+    {
+        "name": "Antler",
+        "artists": "Juggernaut.",
+        "category": "纯音乐/1",
+        "date": "2023-06-26"
+    },
+    {
+        "name": "PANDORA PARADOXXX",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-06-26"
+    },
+    {
+        "name": "Daisuke",
+        "artists": "横田商会",
+        "category": "英文歌",
+        "date": "2023-06-26"
+    },
+    {
+        "name": "世界第一等",
+        "artists": "刘德华",
+        "category": "中文歌",
+        "date": "2023-06-22"
+    },
+    {
+        "name": "Cross†Over (feat. LyuU)",
+        "artists": "HyuN/LyuU",
+        "category": "其他歌",
+        "date": "2023-06-04"
+    },
+    {
+        "name": "ヒュブリスの頂に聳えるのは",
+        "artists": "qfeileadh/のあ",
+        "category": "日语歌/1",
+        "date": "2023-06-04"
+    },
+    {
+        "name": "Syrinx",
+        "artists": "S9ryne",
+        "category": "纯音乐/1",
+        "date": "2023-06-04"
+    },
+    {
+        "name": "PRAGMATISM -RESURRECTION-",
+        "artists": "Laur",
+        "category": "纯音乐/1",
+        "date": "2023-05-24"
+    },
+    {
+        "name": "7thSense",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-05-20"
+    },
+    {
+        "name": "CHAOS",
+        "artists": "Æsir",
+        "category": "纯音乐/1",
+        "date": "2023-05-20"
+    },
+    {
+        "name": "Kronos",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-05-20"
+    },
+    {
+        "name": "Defection",
+        "artists": "TeddyLoid/DELTA",
+        "category": "纯音乐/1",
+        "date": "2023-05-13"
+    },
+    {
+        "name": "GOODRAGE",
+        "artists": "EBIMAYO",
+        "category": "纯音乐/1",
+        "date": "2023-05-13"
+    },
+    {
+        "name": "Lost Civilization",
+        "artists": "Laur/CK",
+        "category": "纯音乐/1",
+        "date": "2023-05-13"
+    },
+    {
+        "name": "innocent arrogance",
+        "artists": "BiSH",
+        "category": "日语歌/1",
+        "date": "2023-05-07"
+    },
+    {
+        "name": "絆ノ奇跡",
+        "artists": "MAN WITH A MISSION/milet",
+        "category": "日语歌/1",
+        "date": "2023-05-07"
+    },
+    {
+        "name": "誰も彼も何処も何も知らない",
+        "artists": "ASOBI同盟",
+        "category": "日语歌/1",
+        "date": "2023-05-07"
+    },
+    {
+        "name": "六兆年と一夜物語",
+        "artists": "kemu/IA",
+        "category": "日语歌/2",
+        "date": "2023-05-01"
+    },
+    {
+        "name": "Altale",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-04-26"
+    },
+    {
+        "name": "DESTRUCTION 3,2,1",
+        "artists": "Normal1zer/Broken Nerdz",
+        "category": "纯音乐/1",
+        "date": "2023-04-26"
+    },
+    {
+        "name": "Luminescence",
+        "artists": "米虾Fomiki/初云CLoudie",
+        "category": "纯音乐/1",
+        "date": "2023-04-25"
+    },
+    {
+        "name": "Retribution",
+        "artists": "nm-y/Kry.exe",
+        "category": "纯音乐/1",
+        "date": "2023-04-25"
+    },
+    {
+        "name": "The Chariot ~REVIIVAL~",
+        "artists": "Attoclef",
+        "category": "纯音乐/1",
+        "date": "2023-04-25"
+    },
+    {
+        "name": "Distorted Fate",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-04-24"
+    },
+    {
+        "name": "Abiogenesis",
+        "artists": "Juggernaut.",
+        "category": "纯音乐/1",
+        "date": "2023-04-20"
+    },
+    {
+        "name": "Aleph-0 (Long Ver.)",
+        "artists": "LeaF",
+        "category": "纯音乐/1",
+        "date": "2023-04-20"
+    },
+    {
+        "name": "零號車輛",
+        "artists": "seatrus",
+        "category": "纯音乐/1",
+        "date": "2023-04-16"
+    },
+    {
+        "name": "Collapse (feat. 藍月なくる)",
+        "artists": "Laur/藍月なくる",
+        "category": "日语歌/1",
+        "date": "2023-04-01"
+    },
+    {
+        "name": "the EmpErroR",
+        "artists": "sasakure.UK",
+        "category": "英文歌",
+        "date": "2023-04-01"
+    },
+    {
+        "name": "蜘蛛の糸 (feat. 影縫英)",
+        "artists": "きくお/cosMo@暴走P/影縫英",
+        "category": "日语歌/1",
+        "date": "2023-03-28"
+    },
+    {
+        "name": "わたあめ（棉花糖）",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2023-03-28"
+    },
+    {
+        "name": "Le Porteur d'Ombre",
+        "artists": "黒皇帝/AKA",
+        "category": "纯音乐/1",
+        "date": "2023-03-28"
+    },
+    {
+        "name": "Random",
+        "artists": "Sobrem/Silentroom",
+        "category": "英文歌",
+        "date": "2023-03-28"
+    },
+    {
+        "name": "熱異常 (feat. 足立レイ)",
+        "artists": "いよわ/足立レイ",
+        "category": "日语歌/2",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "Chronicle",
+        "artists": "Lime",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "Chronomia",
+        "artists": "Lime",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "nέο κόsmo",
+        "artists": "ak+q/Street",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "Valhalla：0",
+        "artists": "Juggernaut.",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "Vindication",
+        "artists": "Laur",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "驟雨の狭間",
+        "artists": "Silentroom",
+        "category": "纯音乐/1",
+        "date": "2023-03-23"
+    },
+    {
+        "name": "命日",
+        "artists": "LeaF",
+        "category": "纯音乐/1",
+        "date": "2023-03-22"
+    },
+    {
+        "name": "Equilibrium",
+        "artists": "Maozon",
+        "category": "纯音乐/1",
+        "date": "2023-03-15"
+    },
+    {
+        "name": "ignotus",
+        "artists": "ak+q",
+        "category": "纯音乐/1",
+        "date": "2023-03-15"
+    },
+    {
+        "name": "qualia -ideaesthesia-",
+        "artists": "nitro",
+        "category": "纯音乐/1",
+        "date": "2023-03-15"
+    },
+    {
+        "name": "恭喜发财",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2023-03-06"
+    },
+    {
+        "name": "不",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2023-03-02"
+    },
+    {
+        "name": "World Fragments III",
+        "artists": "xi",
+        "category": "纯音乐/1",
+        "date": "2023-02-27"
+    },
+    {
+        "name": "ハサミガール",
+        "artists": "ゴム/メブキユウ/ハコニワリリィ",
+        "category": "日语歌/1",
+        "date": "2023-02-24"
+    },
+    {
+        "name": "Arcana Eden",
+        "artists": "Laur/Team Grimoire/削除",
+        "category": "纯音乐/1",
+        "date": "2023-02-24"
+    },
+    {
+        "name": "Pentiment",
+        "artists": "Nothing But Requiem with Museo",
+        "category": "纯音乐/1",
+        "date": "2023-02-24"
+    },
+    {
+        "name": "月に叢雲華に風",
+        "artists": "かませ虎/ZUN/Iceon/森永真由美",
+        "category": "日语歌/1",
+        "date": "2023-02-01"
+    },
+    {
+        "name": "色は匂へど散りぬるを",
+        "artists": "かませ虎/ZUN/森永真由美",
+        "category": "日语歌/1",
+        "date": "2023-02-01"
+    },
+    {
+        "name": "Sakura Fubuki",
+        "artists": "Street",
+        "category": "纯音乐/1",
+        "date": "2023-02-01"
+    },
+    {
+        "name": "Stasis",
+        "artists": "Maozon",
+        "category": "纯音乐/1",
+        "date": "2023-02-01"
+    },
+    {
+        "name": "ALIVE",
+        "artists": "ClariS",
+        "category": "日语歌/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "なにが悪い",
+        "artists": "結束バンド",
+        "category": "日语歌/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "花の塔",
+        "artists": "さユり",
+        "category": "日语歌/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "青春コンプレックス",
+        "artists": "結束バンド",
+        "category": "日语歌/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "Avantgarde",
+        "artists": "Raimukun",
+        "category": "纯音乐/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "Fracture Ray",
+        "artists": "削除",
+        "category": "纯音乐/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "Nhelv",
+        "artists": "Silentroom",
+        "category": "纯音乐/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "Unwelcome school",
+        "artists": "Mitsukiyo",
+        "category": "纯音乐/1",
+        "date": "2023-01-15"
+    },
+    {
+        "name": "This game",
+        "artists": "eba/深青结希/若林充/鈴木このみ",
+        "category": "日语歌/1",
+        "date": "2023-01-03"
+    },
+    {
+        "name": "オラシオン",
+        "artists": "ナスカ/茅野愛衣",
+        "category": "日语歌/1",
+        "date": "2023-01-03"
+    },
+    {
+        "name": "祝福",
+        "artists": "YOASOBI",
+        "category": "日语歌/1",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "裏切り者のレクイエム",
+        "artists": "藤林聖子/菅野祐悟/長谷川大祐",
+        "category": "日语歌/1",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "ラグトレイン（延误列车）",
+        "artists": "稲葉曇/歌愛ユキ",
+        "category": "日语歌/2",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "Merry Christmas Mr. Lawrence",
+        "artists": "坂本龍一",
+        "category": "纯音乐/1",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "Destr0yer",
+        "artists": "削除/Nikki Simmons",
+        "category": "英文歌",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "Somebody That I Used To Know",
+        "artists": "Gotye/Kimbra",
+        "category": "英文歌",
+        "date": "2022-12-29"
+    },
+    {
+        "name": "さようなら",
+        "artists": "A-39/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-12-23"
+    },
+    {
+        "name": "面壁者",
+        "artists": "G.E.M.邓紫棋/Sihan",
+        "category": "中文歌",
+        "date": "2022-12-18"
+    },
+    {
+        "name": "R.I.P.",
+        "artists": "eicateve",
+        "category": "纯音乐/1",
+        "date": "2022-12-18"
+    },
+    {
+        "name": "Heaven’s falling down",
+        "artists": "sana (sajou no hana)",
+        "category": "日语歌/1",
+        "date": "2022-12-12"
+    },
+    {
+        "name": "色彩",
+        "artists": "くじら/yama",
+        "category": "日语歌/1",
+        "date": "2022-12-12"
+    },
+    {
+        "name": "Ether Strike",
+        "artists": "Akira Complex",
+        "category": "纯音乐/1",
+        "date": "2022-12-12"
+    },
+    {
+        "name": "PUPA",
+        "artists": "モリモリあつし",
+        "category": "纯音乐/1",
+        "date": "2022-12-12"
+    },
+    {
+        "name": "KICK BACK",
+        "artists": "米津玄師/淳君/常田大希",
+        "category": "日语歌/1",
+        "date": "2022-11-20"
+    },
+    {
+        "name": "おくすり飲んで寝よう ver.あむぬeru",
+        "artists": "もちうつね/あむぬeru",
+        "category": "日语歌/1",
+        "date": "2022-11-20"
+    },
+    {
+        "name": "冬の花",
+        "artists": "宮本浩次/小林武史",
+        "category": "日语歌/1",
+        "date": "2022-11-20"
+    },
+    {
+        "name": "のぼれ！すすめ！高い塔",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-11-05"
+    },
+    {
+        "name": "バツ猫",
+        "artists": "きくお/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-11-05"
+    },
+    {
+        "name": "Aegleseeker",
+        "artists": "Silentroom/Frums",
+        "category": "纯音乐/1",
+        "date": "2022-10-07"
+    },
+    {
+        "name": "Arcahv",
+        "artists": "Feryquitous",
+        "category": "纯音乐/1",
+        "date": "2022-10-07"
+    },
+    {
+        "name": "Shades of Light in a Transcendent Realm",
+        "artists": "ak+q",
+        "category": "纯音乐/1",
+        "date": "2022-10-07"
+    },
+    {
+        "name": "Distant Dreamer",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-09-04"
+    },
+    {
+        "name": "Palescreen",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-09-04"
+    },
+    {
+        "name": "ARCADIA",
+        "artists": "香椎モイミ/ ヰ世界情緒/ ",
+        "category": "日语歌/1",
+        "date": "2022-08-29"
+    },
+    {
+        "name": "シリウスの心臓",
+        "artists": "傘村トータ/ ヰ世界情緒",
+        "category": "日语歌/1",
+        "date": "2022-08-29"
+    },
+    {
+        "name": "Sincerely",
+        "artists": "TRUE/堀江晶太/Evan Call",
+        "category": "日语歌/1",
+        "date": "2022-08-26"
+    },
+    {
+        "name": "みちしるべ (路标)",
+        "artists": "茅原実里/菊田大介",
+        "category": "日语歌/1",
+        "date": "2022-08-26"
+    },
+    {
+        "name": "夏夢ノイジー",
+        "artists": "志倉千代丸/悠木真一/亜咲花",
+        "category": "日语歌/1",
+        "date": "2022-08-26"
+    },
+    {
+        "name": "Terrasphere",
+        "artists": "Plum",
+        "category": "纯音乐/1",
+        "date": "2022-08-23"
+    },
+    {
+        "name": "垂直落下 covered by ヰ世界情緒",
+        "artists": "傘村トータ/ ヰ世界情緒/ ",
+        "category": "日语歌/1",
+        "date": "2022-07-30"
+    },
+    {
+        "name": "Chronostasis",
+        "artists": "黒皇帝",
+        "category": "纯音乐/1",
+        "date": "2022-07-28"
+    },
+    {
+        "name": "Infinity Heaven",
+        "artists": "HyuN",
+        "category": "纯音乐/1",
+        "date": "2022-07-28"
+    },
+    {
+        "name": "夜に駆ける",
+        "artists": "YOASOBI",
+        "category": "日语歌/1",
+        "date": "2022-07-25"
+    },
+    {
+        "name": "只要平凡",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Last丨Eternity",
+        "artists": "onoken/木下珠子",
+        "category": "日语歌/1",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Last丨Moment",
+        "artists": "onoken/木下珠子",
+        "category": "日语歌/1",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Last",
+        "artists": "onoken",
+        "category": "纯音乐/1",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "PRAGMATISM",
+        "artists": "Laur",
+        "category": "纯音乐/1",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Ticking",
+        "artists": "TIN",
+        "category": "纯音乐/1",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Bones",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Dusk Till Dawn",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Fire",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Testify",
+        "artists": "void(Mournfinale)/ 星熊南巫",
+        "category": "英文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "There's Nothing Holdin' Me Back",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-07-19"
+    },
+    {
+        "name": "Horizon Blue",
+        "artists": "Nothing But Requiem/Aikapin/ちよこ",
+        "category": "日语歌/1",
+        "date": "2022-07-18"
+    },
+    {
+        "name": "残響散歌",
+        "artists": "Aimer/飛内将大/玉井健二",
+        "category": "日语歌/1",
+        "date": "2022-05-30"
+    },
+    {
+        "name": "群青",
+        "artists": "YOASOBI",
+        "category": "日语歌/1",
+        "date": "2022-05-30"
+    },
+    {
+        "name": "Another Me",
+        "artists": "D_AAN/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-05-30"
+    },
+    {
+        "name": "WATER",
+        "artists": "A-39/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-05-30"
+    },
+    {
+        "name": "星が泳ぐ",
+        "artists": "はっとり/マカロニえんぴつ",
+        "category": "日语歌/1",
+        "date": "2022-05-29"
+    },
+    {
+        "name": "失敗作少女 (MARETU Remix)",
+        "artists": "かいりきベア/MARETU/初音ミク",
+        "category": "日语歌/2",
+        "date": "2022-05-29"
+    },
+    {
+        "name": "Grievous Lady",
+        "artists": "Team Grimoire/ Laur",
+        "category": "纯音乐/1",
+        "date": "2022-05-29"
+    },
+    {
+        "name": "world.execute (me) ;",
+        "artists": "Mili",
+        "category": "英文歌",
+        "date": "2022-03-28"
+    },
+    {
+        "name": "Seclusion (feat. Sennzai)",
+        "artists": "Laur/Sennzai",
+        "category": "日语歌/1",
+        "date": "2022-03-24"
+    },
+    {
+        "name": "Tempestissimo",
+        "artists": "t+pazolite",
+        "category": "纯音乐/1",
+        "date": "2022-03-24"
+    },
+    {
+        "name": "Lemon",
+        "artists": "米津玄師/室屋光一郎",
+        "category": "日语歌/1",
+        "date": "2022-03-23"
+    },
+    {
+        "name": "LOSER",
+        "artists": "米津玄師/蔦谷好位置",
+        "category": "日语歌/1",
+        "date": "2022-03-23"
+    },
+    {
+        "name": "STAY",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-03-23"
+    },
+    {
+        "name": "Wolves",
+        "artists": "Selena Gomez/Marshmello",
+        "category": "英文歌",
+        "date": "2022-03-22"
+    },
+    {
+        "name": "Waiting For Love",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-03-04"
+    },
+    {
+        "name": "dB doll",
+        "artists": "uen/YUE.STEVEN",
+        "category": "日语歌/1",
+        "date": "2022-02-20"
+    },
+    {
+        "name": "如愿",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2022-01-21"
+    },
+    {
+        "name": "フリージア（Freesia）",
+        "artists": "Uru/岩見直明/Tomi Yo",
+        "category": "日语歌/1",
+        "date": "2022-01-20"
+    },
+    {
+        "name": "il vento d'oro",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2022-01-18"
+    },
+    {
+        "name": "云女孩",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2022-01-01"
+    },
+    {
+        "name": "Clock Paradox",
+        "artists": "WyvernP",
+        "category": "纯音乐/1",
+        "date": "2021-10-29"
+    },
+    {
+        "name": "Rrhar'il",
+        "artists": "Team Grimoire",
+        "category": "纯音乐/1",
+        "date": "2021-10-29"
+    },
+    {
+        "name": "The Magnificent Seven",
+        "artists": "Western Texas Films Orchestra",
+        "category": "纯音乐/1",
+        "date": "2021-10-13"
+    },
+    {
+        "name": "unravel",
+        "artists": "TK from 凛として時雨",
+        "category": "日语歌/1",
+        "date": "2021-09-30"
+    },
+    {
+        "name": "Lyrith -迷宮リリス",
+        "artists": "LeaF",
+        "category": "纯音乐/1",
+        "date": "2021-09-26"
+    },
+    {
+        "name": "MARENOL",
+        "artists": "LeaF",
+        "category": "纯音乐/1",
+        "date": "2021-09-26"
+    },
+    {
+        "name": "もぺもぺ",
+        "artists": "LEAF",
+        "category": "纯音乐/1",
+        "date": "2021-09-26"
+    },
+    {
+        "name": "Igallta",
+        "artists": "Se-U-Ra",
+        "category": "纯音乐/1",
+        "date": "2021-09-05"
+    },
+    {
+        "name": "Eltaw",
+        "artists": "Fl00t",
+        "category": "纯音乐/1",
+        "date": "2021-08-28"
+    },
+    {
+        "name": "Spasmodic",
+        "artists": "姜米條",
+        "category": "纯音乐/1",
+        "date": "2021-08-26"
+    },
+    {
+        "name": "打ち上げ花火",
+        "artists": "米津玄師/田中隼人/Daoko",
+        "category": "日语歌/1",
+        "date": "2021-07-17"
+    },
+    {
+        "name": "Firework",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2021-07-17"
+    },
+    {
+        "name": "Monsters",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2021-07-17"
+    },
+    {
+        "name": "Shape of You",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2021-07-17"
+    },
+    {
+        "name": "Redo",
+        "artists": "ミズノゲンキ/宮崎誠/鈴木このみ",
+        "category": "日语歌/1",
+        "date": "2021-07-16"
+    },
+    {
+        "name": "STYX HELIX",
+        "artists": "MYTH & ROID",
+        "category": "日语歌/1",
+        "date": "2021-07-16"
+    },
+    {
+        "name": "彼女は旅に出る",
+        "artists": "鎖那/Misumi",
+        "category": "日语歌/1",
+        "date": "2021-07-16"
+    },
+    {
+        "name": "Intro",
+        "artists": "王备",
+        "category": "纯音乐/1",
+        "date": "2021-07-16"
+    },
+    {
+        "name": "紅蓮華",
+        "artists": "LiSA/草野華余子/江口亮",
+        "category": "日语歌/1",
+        "date": "2021-05-27"
+    },
+    {
+        "name": "Never Gonna Give You Up",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2021-05-27"
+    },
+    {
+        "name": "Bad Apple!!",
+        "artists": "HARUKA/ZUN/Masayoshi Minoshima/のみこ",
+        "category": "日语歌/1",
+        "date": "2021-04-10"
+    },
+    {
+        "name": "極楽浄土",
+        "artists": "GARNiDELiA",
+        "category": "日语歌/1",
+        "date": "2021-04-10"
+    },
+    {
+        "name": "Ievan Polkka",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2021-02-28"
+    },
+    {
+        "name": "aLIEz",
+        "artists": "SawanoHiroyuki[nZk]",
+        "category": "日语歌/1",
+        "date": "2021-02-28"
+    },
+    {
+        "name": "ワールドイズマイン",
+        "artists": "ryo (supercell)/初音ミク",
+        "category": "日语歌/2",
+        "date": "2021-02-28"
+    },
+    {
+        "name": "dual existence",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-21"
+    },
+    {
+        "name": "eternal reality",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-21"
+    },
+    {
+        "name": "final phase",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-21"
+    },
+    {
+        "name": "only my railgun",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-10"
+    },
+    {
+        "name": "病名は愛だった",
+        "artists": "Neru/鏡音リン/鏡音レン",
+        "category": "日语歌/2",
+        "date": "2021-02-08"
+    },
+    {
+        "name": "双十校歌",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2021-02-04"
+    },
+    {
+        "name": "LEVEL5 -judgelight-",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-04"
+    },
+    {
+        "name": "sister's noise",
+        "artists": "fripSide",
+        "category": "日语歌/1",
+        "date": "2021-02-04"
+    },
+    {
+        "name": "Great Days",
+        "artists": "菅野祐悟/Endcape/青木カレン/長谷川大祐",
+        "category": "日语歌/1",
+        "date": "2021-02-01"
+    },
+    {
+        "name": "I Want You",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2021-02-01"
+    },
+    {
+        "name": "ジョジョ その血の記憶〜END OF THE WORLD〜",
+        "artists": "藤林聖子/田中公平/村瀬恭久/橋本仁/Coda/富永TOMMY弘明",
+        "category": "日语歌/1",
+        "date": "2021-01-01"
+    },
+    {
+        "name": "威風堂々",
+        "artists": "梅とら/青柳冬弥",
+        "category": "日语歌/1",
+        "date": "2021-01-01"
+    },
+    {
+        "name": "Last Train Home",
+        "artists": "Pat Metheny Group",
+        "category": "纯音乐/1",
+        "date": "2020-12-26"
+    },
+    {
+        "name": "ジョジョ~その血の運命~",
+        "artists": "藤林聖子/田中公平/大谷幸/富永TOMMY弘明",
+        "category": "日语歌/1",
+        "date": "2020-11-29"
+    },
+    {
+        "name": "Bloody Stream",
+        "artists": "こだまさおり/大森俊之/Coda",
+        "category": "日语歌/1",
+        "date": "2020-11-27"
+    },
+    {
+        "name": "STAND PROUD",
+        "artists": "藤林聖子/若林タカツグ/土橋善太/橋本仁",
+        "category": "日语歌/1",
+        "date": "2020-11-27"
+    },
+    {
+        "name": "Walk Like an Egyption",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-11-27"
+    },
+    {
+        "name": "ハレハレヤ (朗朗晴天) ",
+        "artists": "羽生まゐご/v flower",
+        "category": "日语歌/2",
+        "date": "2020-11-25"
+    },
+    {
+        "name": "来去厦门伴奏",
+        "artists": "Unknown",
+        "category": "中文歌",
+        "date": "2020-11-23"
+    },
+    {
+        "name": "来去厦门",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-11-20"
+    },
+    {
+        "name": "恋爱サーキュレーション",
+        "artists": "日向めぐみ/神前暁/花澤香菜",
+        "category": "日语歌/1",
+        "date": "2020-10-22"
+    },
+    {
+        "name": "青嵐のあとで",
+        "artists": "sajou no hana",
+        "category": "日语歌/1",
+        "date": "2020-10-22"
+    },
+    {
+        "name": "Sold Out",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-10-22"
+    },
+    {
+        "name": "千本桜",
+        "artists": "黒うさP/初音ミク",
+        "category": "日语歌/2",
+        "date": "2020-08-30"
+    },
+    {
+        "name": "Lost Rivers",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-08-30"
+    },
+    {
+        "name": "正义之道",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-08-29"
+    },
+    {
+        "name": "Minecraft",
+        "artists": "C418",
+        "category": "纯音乐/1",
+        "date": "2020-08-29"
+    },
+    {
+        "name": "明天，你好",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-08-15"
+    },
+    {
+        "name": "End of Time",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-08-15"
+    },
+    {
+        "name": "Counting Stars",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-07-28"
+    },
+    {
+        "name": "阿珍爱上了阿强",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-07-20"
+    },
+    {
+        "name": "One Day",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-07-10"
+    },
+    {
+        "name": "凤凰花开的路口",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-06-13"
+    },
+    {
+        "name": "Roundabout",
+        "artists": "Yes",
+        "category": "英文歌",
+        "date": "2020-05-12"
+    },
+    {
+        "name": "Force",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-05-06"
+    },
+    {
+        "name": "Heading Home",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-05-06"
+    },
+    {
+        "name": "Routine",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-05-06"
+    },
+    {
+        "name": "Highscore",
+        "artists": "Teminite/Panda Eyes",
+        "category": "纯音乐/1",
+        "date": "2020-04-06"
+    },
+    {
+        "name": "Buttercup",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-03-30"
+    },
+    {
+        "name": "Revenge(Minecraft Creeper Song)",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-03-30"
+    },
+    {
+        "name": "Alone, Pt II",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2020-02-26"
+    },
+    {
+        "name": "眼保健操",
+        "artists": "",
+        "category": "中文歌",
+        "date": "2020-02-12"
+    },
+    {
+        "name": "Hymn For The Weekend",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-12-05"
+    },
+    {
+        "name": "Are You Lonely",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-12-03"
+    },
+    {
+        "name": "Sing Me to Sleep",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-12-03"
+    },
+    {
+        "name": "I Don't Wanna Go",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-11-13"
+    },
+    {
+        "name": "Lost Control",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-11-13"
+    },
+    {
+        "name": "All Falls Down",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-11-03"
+    },
+    {
+        "name": "Seve",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2019-10-28"
+    },
+    {
+        "name": "Darkside",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-28"
+    },
+    {
+        "name": "Ghost",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-18"
+    },
+    {
+        "name": "Ignite",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-18"
+    },
+    {
+        "name": "Play",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-18"
+    },
+    {
+        "name": "Sad Sometimes",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-18"
+    },
+    {
+        "name": "Tired",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-18"
+    },
+    {
+        "name": "Hop",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2019-10-06"
+    },
+    {
+        "name": "Despacito",
+        "artists": "",
+        "category": "其他歌",
+        "date": "2019-10-02"
+    },
+    {
+        "name": "Diamond Heart",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-02"
+    },
+    {
+        "name": "Different World",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-10-02"
+    },
+    {
+        "name": "Victory",
+        "artists": "Two Steps From Hell",
+        "category": "纯音乐/1",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "Alone",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "Faded",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "Lily",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "On My Way",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "Something Just Like This",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "The Spectre",
+        "artists": "",
+        "category": "英文歌",
+        "date": "2019-09-28"
+    },
+    {
+        "name": "光阴的故事",
+        "artists": "罗大佑",
+        "category": "中文歌",
+        "date": "2012-07-02"
+    }
+];
+
+## 目录
+
+- [总表](#总表)
+- [按作者](#按作者)
+
+## 总表
+
+- 日语歌/2：术曲
+- 日语歌/1：上述以外的歌曲
+- 纯音乐/2：Galgame / 影视 BGM
+- 纯音乐/1：上述以外的歌曲
+
+<InteractiveTable client:load data={data} columns={columns} />
+
+## 按作者
+
+### 87 首
+
+<details>
+<summary>初音ミク</summary>
+
+- 1000年生きてる
+- Another Me
+- Emptiness
+- Last Night,Good Night
+- WATER
+- X.E.N.O
+- flos
+- ÅMARA (大未来電脳)
+- あいしていたのに（明明曾爱着你）
+- あだぽしゃ（尸蜡）
+- いますぐ輪廻
+- くうになる (feat. 可不&初音ミク)
+- さようなら
+- しかばねの踊り
+- とおせんぼ（禁止通行）
+- のだ
+- のぼれ！すすめ！高い塔
+- ぼくらのレットイットビー（让我们顺其自然）
+- まにまに（随之任之）
+- みむかｩわナイストライ (Mimukauwa Nice Try)
+- わたあめ（棉花糖）
+- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン
+- アイロニ (irony)
+- アナベル・リイ (Annabel Lee)
+- アフターエポックス (After Epochs)
+- アンノウン・マザーグース（不为人知的鹅妈妈童谣）
+- ウミユリ海底譚
+- エンパープル (Empurple) feat. 初音ミク
+- オーダーメイド（定制品）
+- ガランド (Airhead)
+- グッバイ宣言
+- ココロの質量
+- ゴールデンレイ (Golden Ray)
+- ザムザ（萨姆沙）
+- テオ（将手）
+- トワイライトライト（微明暮光）
+- トーチカ (TOCHKA)
+- ノンブレス・オブリージュ（无呼吸义务）
+- バツ猫
+- メズマライザ一（催眠术）
+- メテオ（流星） feat. 初音ミク
+- メルト (Melt)
+- レプリカ (replica)
+- レムの魔法
+- ロミオとシンデレラ（罗密欧与灰姑娘）
+- ローリンガール (Rolling Girl)
+- ワールドイズマイン
+- 人工呼吸
+- 僕が夢を捨てて大人になるまで
+- 僕なんかいなくても
+- 僕らのつづき
+- 再会 feat. 初音ミク
+- 再生
+- 化けの花 feat. 初音ミク
+- 千本桜
+- 君の脈で踊りたかった
+- 君はできない子
+- 命に嫌われている。
+- 夜明けと蛍
+- 失敗作少女 (MARETU Remix)
+- 少女レイ
+- 少女レイ (いよわ Remix)
+- 怪獣になりたい
+- 愛して愛して愛して
+- 愛を探して
+- 春嵐
+- 死ぬにはいい日だった
+- 深い青だった
+- 深昏睡
+- 深海少女
+- 混沌ブギ
+- 独りんぼエンヴィー
+- 白塔
+- 神っぽいな
+- 福寿草
+- 第三の心臓
+- 胡蝶の夢
+- 花弁、それにまつわる音声
+- 花葬
+- 藍悼花 feat. 初音ミク
+- 蛍
+- 蜘蛛糸モノポリー
+- 転生林檎
+- 造花の距離感
+- 運命
+- 青く駆けろ！
+- 願い、君へ
+
+</details>
+
+### 27 首
+
+<details>
+<summary>可不</summary>
+
+- Fallen
+- 「いい子」でいること
+- きゅうくらりん (Kyu-Kurarin)
+- くうになる (feat. 可不&初音ミク)
+- ただ病名が欲しかった
+- ちゃんとあるよ（有好好活着哦）
+- でもね
+- またおいで（请再来吧）
+- ようやく君が死んだんだ。
+- ギフト (Gift)
+- グレーテのいない星
+- ネクストドア (Next Door)
+- プロポーズ (Propose)
+- フォニイ (phony)
+- マーシャル・マキシマイザー (Marshall Maximizer)
+- 化孵化
+- 君の世界は透明なんだね
+- 御伽の国 feat. 可不&裏命
+- 月に沈む
+- 死にたいわけじゃなくて
+- 死ねない僕は生きていく
+- 灯葬
+- 病名を教えて
+- 砂時計
+- 空を満たして (feat. 可不)
+- 紫陽花
+- 街の残像
+
+</details>
+
+### 15 首
+
+<details>
+<summary>折戸伸治</summary>
+
+- Adventure for Black
+- Childish White
+- Departure!
+- アスタロア (Asterlore)
+- アルカテイル (ALKA Tale)
+- アルカテイル -recall-
+- アルカテイル -story-
+- 夏の子守歌
+- 夏休みの過ごし方
+- 恋文
+- 比翼の蝶たち
+- 羽のゆりかご
+- 羽のゆりかご (Symphonic)
+- 蝉時雨の隙間に…
+- 鳥の詩
+
+</details>
+
+<details>
+<summary>麻枝准</summary>
+
+- After You Sleep
+- CANOE
+- Saya's Song
+- Sea, You & Me
+- Sea, You & Me (Symphonic)
+- Sea, You Next
+- Sea, Your Memory
+- ポケットをふくらませて
+- ポケットをふくらませて (Symphonic)
+- ポケットをふくらませて ～Sea, you again～
+- 一番の宝物 (Original Version)
+- 小さなてのひら
+- 時を刻む唄
+- 空に光る
+- 鳥の詩
+
+</details>
+
+### 14 首
+
+<details>
+<summary>Laur</summary>
+
+- Arcana Eden
+- Arghena
+- Collapse (feat. 藍月なくる)
+- Glacier
+- Grievous Lady
+- Latent Kingdom
+- Lost Civilization
+- PRAGMATISM
+- PRAGMATISM -RESURRECTION-
+- Seclusion (feat. Sennzai)
+- The Abyss of Despair (feat. 藍月なくる)
+- The Angel's Message (feat. Sennzai)
+- Vindication
+- その花は世界を紡ぐ
+
+</details>
+
+<details>
+<summary>sasakure.UK</summary>
+
+- X.E.N.O
+- the EmpErroR
+- uzumakinoharu
+- ÅMARA (大未来電脳)
+- アフターエポックス (After Epochs)
+- トーチカ (TOCHKA)
+- ネジ巻き師と太虚鳥
+- ネヴァモア (Nevermore)
+- レプリカ (replica)
+- ワンダーラスト (Wanderlast)
+- ヰ世界の宝石譚
+- 化孵化
+- 蜘蛛糸モノポリー
+- 魔王
+
+</details>
+
+<details>
+<summary>阿保剛</summary>
+
+- Believe Me
+- Der Mond Das Meer
+- Der Mond Das Meer -沙羅- ＜夢のつばさ＞
+- Fellowship
+- GATE OF STEINER
+- GATE OF STEINER (Symphonic)
+- Gate of Steiner -Main Theme-
+- Gate of steiner -piano-
+- Karma
+- Messenger -main theme-
+- Messenger -piano-
+- Messenger from zero
+- Quiet Air
+- The end of messenger
+
+</details>
+
+### 13 首
+
+<details>
+<summary>削除</summary>
+
+- 7thSense
+- Abyssgazer
+- Altale
+- Arcana Eden
+- Destr0yer
+- Distorted Fate
+- Distorted Fate (Extended)
+- Fracture Ray
+- Glitched Universe
+- Kronos
+- NotToNotice();
+- PANDORA PARADOXXX
+- 怪獣になりたい
+
+</details>
+
+### 12 首
+
+<details>
+<summary>ヰ世界情緒</summary>
+
+- ARCADIA
+- BREATHE
+- flos covered by ヰ世界情緒 at CANDY LIVE
+- かたちなきもの（无形之物）
+- シリウスの心臓
+- ラピスのお人形
+- ヰ世界の宝石譚
+- 僕らの記憶を掠わないで covered by ヰ世界情緒
+- 垂直落下 covered by ヰ世界情緒
+- 描き続けた君へ
+- 物語りのワルツ
+- 眠りゆく芽吹き
+
+</details>
+
+<details>
+<summary>松岡純也</summary>
+
+- Dear Friends
+- Twinkle Snow
+- Twinkle Snow Piano quartet
+- Twinkle Snow instrumental
+- WHITE ALBUM feat. 冬馬かずさ
+- WHITE ALBUM feat. 小木曽雪菜
+- いつか見た景色
+- 届かない恋
+- 恋夢
+- 最後に残るもの
+- 綺麗で儚いもの
+- 静かな冬の夜
+
+</details>
+
+### 11 首
+
+<details>
+<summary>Alan Walker</summary>
+
+- Alone
+- Alone, Pt II
+- Darkside
+- Diamond Heart
+- Force
+- Heading Home
+- Hymn For The Weekend
+- I Don't Wanna Go
+- Lily
+- Lost Control
+- The Spectre
+
+</details>
+
+<details>
+<summary>Angel Note</summary>
+
+- くつろぎの間
+- とおりゃんせ～甘美風来 (Instrument Version)
+- とおりゃんせ～甘美風来 (Quiet Version)
+- キズナヒトツ (Quiet Version)
+- 恋ひ恋ふ縁 (Koto Version)
+- 恋ひ恋ふ縁 (Piano Version)
+- 本日は晴天なり
+- 田心屋
+- 縁結び
+- 花鳥風月
+- 運命(さだめ)
+
+</details>
+
+<details>
+<summary>GUMI</summary>
+
+- LaVI-Bavellabion feat. GUMI
+- オーダーメイド（定制品）
+- キリトリセン（剪切线）
+- ヨミクダリの灯
+- ワーストリグレット（遗憾至极）
+- 天ノ弱
+- 心做し
+- 恐竜電力の街
+- 棺の中で、
+- 死別
+- 異種
+
+</details>
+
+<details>
+<summary>石川真也</summary>
+
+- After All ～ 綴る想い ～ instrumental
+- After All ～綴る想い～ feat. 上原れな
+- After All ～綴る想い～ feat. 冬馬かずさ
+- Snowfalls
+- WHITE ALBUM feat. 冬馬かずさ
+- WHITE ALBUM feat. 小木曽雪菜
+- あの頃のように
+- 届かない恋
+- 幸せな記憶
+- 幸せな記憶 Piano
+- 聖夜
+
+</details>
+
+<details>
+<summary>衣笠道雄</summary>
+
+- After All ～綴る想い～ feat. 上原れな
+- After All ～綴る想い～ feat. 冬馬かずさ
+- Twinkle Snow
+- イルミネーションタウン(Illumination Town)
+- キャンドルライト (Candle Light)
+- 冬の街路樹
+- 届かない恋
+- 愛する心
+- 氷の刃
+- 穏やかに過ぎゆく時
+- 言葉にできない想い
+
+</details>
+
+<details>
+<summary>須谷尚子</summary>
+
+- POWDER SNOW feat. 冬馬かずさ
+- POWDER SNOW feat. 小木曽雪菜
+- Twinkle Snow
+- WHITE ALBUM feat. 冬馬かずさ
+- WHITE ALBUM feat. 小木曽雪菜
+- キミガタメ（为了你）
+- 届かない恋
+- 幸せな記憶
+- 恋夢
+- 愛する心
+- 時の魔法
+
+</details>
+
+### 10 首
+
+<details>
+<summary>香椎モイミ</summary>
+
+- ARCADIA
+- BREATHE
+- かたちなきもの（无形之物）
+- エリカの憂い
+- カレンの清掃
+- 初恋日記
+- 描き続けた君へ
+- 機械の声 feat. V.I.P
+- 機械の声 feat. V.W.P & V.I.P
+- 紫色の向日葵
+
+</details>
+
+### 9 首
+
+<details>
+<summary>はるまきごはん</summary>
+
+- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン
+- エンパープル (Empurple) feat. 初音ミク
+- ゴールデンレイ (Golden Ray)
+- ラピスのお人形
+- 再会 feat. はるまきごはん
+- 再会 feat. 初音ミク
+- 深い青だった
+- 第三の心臓
+- 運命
+
+</details>
+
+<details>
+<summary>傘村トータ</summary>
+
+- ちゃんとあるよ（有好好活着哦）
+- オーダーメイド（定制品）
+- グレーテのいない星
+- シリウスの心臓
+- レムの魔法
+- 人工呼吸
+- 僕が夢を捨てて大人になるまで
+- 垂直落下
+- 垂直落下 covered by ヰ世界情緒
+
+</details>
+
+<details>
+<summary>忍</summary>
+
+- すべてを雪に染めて ～never ending snow～
+- その想い、インフィニティー
+- クオリアの想い
+- 新たなる始まり
+- 永久に舞う、雪の詩
+- 永遠(とわ)
+- 白きセカイの因果律
+- 雪のエルフィンリート -arrange-
+- 雪空のラメント
+
+</details>
+
+<details>
+<summary>重音テト</summary>
+
+- Ribbon
+- のだ
+- イガク（医学）
+- メズマライザ一（催眠术）
+- ライアーダンサー (Liar Dancer)
+- 人マニア
+- 何もしてないのにイヤホンが壊れた
+- 散り散り
+- 黒塗り世界宛て書簡
+
+</details>
+
+<details>
+<summary>鏡音リン</summary>
+
+- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン
+- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン
+- オーダーメイド（定制品）
+- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン
+- ロストワンの号哭
+- 垂直落下
+- 炉心融解
+- 病名は愛だった
+- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン
+
+</details>
+
+### 8 首
+
+<details>
+<summary>きくお</summary>
+
+- しかばねの踊り
+- のぼれ！すすめ！高い塔
+- わたあめ（棉花糖）
+- バツ猫
+- 君はできない子
+- 愛して愛して愛して
+- 愛を探して
+- 蜘蛛の糸 (feat. 影縫英)
+
+</details>
+
+### 7 首
+
+<details>
+<summary>25時、ナイトコードで。</summary>
+
+- アイディスマイル (IDSMILE) feat. 25時、ナイトコードで。&MEIKO
+- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン
+- カナデトモスソラ（奏明天空）
+- トワイライトライト（微明暮光）
+- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン
+- 化けの花 feat. 25時、ナイトコードで。&KAITO
+- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン
+
+</details>
+
+<details>
+<summary>rinri</summary>
+
+- 僕らの記憶を掠わないで
+- 僕らの記憶を掠わないで covered by ヰ世界情緒
+- 君の世界は透明なんだね
+- 異種
+- 白絵にもならない_U
+- 白絵にもならない_V
+- 薄れる
+
+</details>
+
+<details>
+<summary>v flower</summary>
+
+- 4nim0sity [99.999999999%]
+- オーダーメイド（定制品）
+- ノマド (Nomad) feat. v flower
+- ハレハレヤ (朗朗晴天) 
+- 一龠
+- 運命
+- 阿吽のビーツ
+
+</details>
+
+<details>
+<summary>井ノ原智</summary>
+
+- くつろぎの間
+- キズナヒトツ (Quiet Version)
+- キズナヒトツ（一丝羁绊）
+- 田心屋
+- 縁結び
+- 花鳥風月
+- 運命(さだめ)
+
+</details>
+
+<details>
+<summary>志倉千代丸</summary>
+
+- Hacking to the Gate
+- Hacking to the Gate (Symphonic)
+- LeMU ～遙かなるレムリア大陸～
+- Side Effect
+- ライア (Lyra)
+- 刻司ル十二ノ盟約
+- 夏夢ノイジー
+
+</details>
+
+### 6 首
+
+<details>
+<summary>Famishin</summary>
+
+- ふたつの影
+- ふたりで（与子偕老）
+- 恋ひ恋ふ縁
+- 恋ひ恋ふ縁 (Koto Version)
+- 恋ひ恋ふ縁 (Piano Version)
+- 本日は晴天なり
+
+</details>
+
+<details>
+<summary>Sennzai</summary>
+
+- Innocence
+- Lost Desire
+- Rugie
+- Seclusion (feat. Sennzai)
+- The Angel's Message (feat. Sennzai)
+- 花と、雪と、ドラムンベース
+
+</details>
+
+<details>
+<summary>fripSide</summary>
+
+- LEVEL5 -judgelight-
+- dual existence
+- eternal reality
+- final phase
+- only my railgun
+- sister's noise
+
+</details>
+
+<details>
+<summary>ピコン</summary>
+
+- ガランド (Airhead)
+- 傷心中
+- 再生
+- 君の脈で踊りたかった
+- 死ぬにはいい日だった
+- 花の名残り
+
+</details>
+
+<details>
+<summary>下川直哉</summary>
+
+- POWDER SNOW PIANO -kazusa-
+- POWDER SNOW PIANO 2010
+- POWDER SNOW feat. 冬馬かずさ
+- POWDER SNOW feat. 小木曽雪菜
+- キミガタメ（为了你）
+- 時の魔法
+
+</details>
+
+<details>
+<summary>米倉千尋</summary>
+
+- DEAR MY WAKER
+- DEAR MY WAKER (Symphonic)
+- InFINITE Line～Grand ver.～
+- Squall
+- Squall (Symphonic)
+- そして愛になる
+
+</details>
+
+<details>
+<summary>魁</summary>
+
+- アスタロア (Asterlore)
+- アルカテイル (ALKA Tale)
+- 夏の砂時計
+- 夜奏花
+- 夢見鳥の恋
+- 比翼の蝶たち
+
+</details>
+
+### 5 首
+
+<details>
+<summary>Evan Call</summary>
+
+- Anytime Anywhere
+- Grassy Turtles and Seed Rats
+- Sincerely
+- Time Flows Ever Onward
+- bliss
+
+</details>
+
+<details>
+<summary>Silentroom</summary>
+
+- Aegleseeker
+- Angel Echo
+- Nhelv
+- Random
+- 驟雨の狭間
+
+</details>
+
+<details>
+<summary>ak+q</summary>
+
+- Axium Crisis
+- Axium Divergence
+- Shades of Light in a Transcendent Realm
+- ignotus
+- nέο κόsmo
+
+</details>
+
+<details>
+<summary>onoken</summary>
+
+- Last
+- Last丨Eternity
+- Last丨Moment
+- felys (final remix)
+- 雨に祈りを
+
+</details>
+
+<details>
+<summary>いよわ</summary>
+
+- 1000年生きてる
+- あだぽしゃ（尸蜡）
+- きゅうくらりん (Kyu-Kurarin)
+- 少女レイ (いよわ Remix)
+- 熱異常 (feat. 足立レイ)
+
+</details>
+
+<details>
+<summary>かめりあ</summary>
+
+- #1f1e33
+- #1f1e33 (#00102g version)
+- +ERABY+E CONNEC+10N
+- S.A.T.E.L.L.I.T.E.
+- ココロの質量
+
+</details>
+
+<details>
+<summary>星界</summary>
+
+- ただ病名が欲しかった
+- エリカの憂い
+- カレンの清掃
+- 君の世界は透明なんだね
+- 花の名残り
+
+</details>
+
+<details>
+<summary>歌愛ユキ</summary>
+
+- 4nim0sity [99.999999999%]
+- かなしばりに遭ったら
+- ラグトレイン（延误列车）
+- 異種
+- 私は雨
+
+</details>
+
+<details>
+<summary>虻川治</summary>
+
+- DEAR MY WAKER (Piano ver)
+- dream moments
+- drowsing morning
+- under the moon
+- with sweetness
+
+</details>
+
+<details>
+<summary>裏命</summary>
+
+- Fallen
+- 傷心中
+- 哀悼、そして日常は続く
+- 御伽の国 feat. 可不&裏命
+- 薄れる
+
+</details>
+
+<details>
+<summary>鈴木このみ</summary>
+
+- Lasting Moment
+- Redo
+- This game
+- アスタロア (Asterlore)
+- アルカテイル (ALKA Tale)
+
+</details>
+
+<details>
+<summary>鏡音レン</summary>
+
+- オーダーメイド（定制品）
+- ラヴィ (Lavie)
+- 垂直落下
+- 病名は愛だった
+- 限りなく灰色へ feat. 鏡音レン
+
+</details>
+
+### 4 首
+
+<details>
+<summary>Feryquitous</summary>
+
+- Arcahv
+- Arghena
+- Rugie
+- 月詠に鳴る (feat. 藍月なくる)
+
+</details>
+
+<details>
+<summary>Juggernaut.</summary>
+
+- Abiogenesis
+- Antler
+- Immutable
+- Valhalla：0
+
+</details>
+
+<details>
+<summary>KAITO</summary>
+
+- X.E.N.O
+- ÅMARA (大未来電脳)
+- オーダーメイド（定制品）
+- 化けの花 feat. 25時、ナイトコードで。&KAITO
+
+</details>
+
+<details>
+<summary>LeaF</summary>
+
+- Aleph-0 (Long Ver.)
+- Lyrith -迷宮リリス
+- MARENOL
+- 命日
+
+</details>
+
+<details>
+<summary>Lia</summary>
+
+- Saya's Song
+- メテオ（流星） feat. Lia
+- 時を刻む唄
+- 鳥の詩
+
+</details>
+
+<details>
+<summary>YOASOBI</summary>
+
+- 勇者
+- 夜に駆ける
+- 祝福
+- 群青
+
+</details>
+
+<details>
+<summary>kyiku</summary>
+
+- ただ病名が欲しかった
+- どうか、この言の葉が巣食わないように
+- 白絵にもならない_U
+- 白絵にもならない_V
+
+</details>
+
+<details>
+<summary>project lights</summary>
+
+- おかえりなさい（欢迎回家）
+- 気ままな日常
+- 砕け散る星
+- 終わらない旅
+
+</details>
+
+<details>
+<summary>rionos</summary>
+
+- After You Sleep
+- ウィアートル（旅人）
+- ポケットをふくらませて
+- ポケットをふくらませて ～Sea, you again～
+
+</details>
+
+<details>
+<summary>wowaka</summary>
+
+- とおせんぼ（禁止通行）
+- アンノウン・マザーグース（不为人知的鹅妈妈童谣）
+- ローリンガール (Rolling Girl)
+- 白塔
+
+</details>
+
+<details>
+<summary>xi</summary>
+
+- Abyssgazer
+- Ascension to Heaven
+- Halcyon
+- World Fragments III
+
+</details>
+
+<details>
+<summary>いとうかなこ</summary>
+
+- Hacking to the Gate
+- Hacking to the Gate (Symphonic)
+- Side Effect
+- 悲しみの向こうへ
+
+</details>
+
+<details>
+<summary>すりぃ</summary>
+
+- ラヴィ (Lavie)
+- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン
+- 限りなく灰色へ feat. 東雲絵名
+- 限りなく灰色へ feat. 鏡音レン
+
+</details>
+
+<details>
+<summary>ピノキオピー</summary>
+
+- ノンブレス・オブリージュ（无呼吸义务）
+- 僕なんかいなくても
+- 神っぽいな
+- 転生林檎
+
+</details>
+
+<details>
+<summary>内緒のピアス</summary>
+
+- ギフト (Gift)
+- ネクストドア (Next Door)
+- プロポーズ (Propose)
+- 紫陽花
+
+</details>
+
+<details>
+<summary>堀江晶太</summary>
+
+- DEAR MY WAKER
+- DEAR MY WAKER (Symphonic)
+- Sincerely
+- そして愛になる
+
+</details>
+
+<details>
+<summary>米津玄師</summary>
+
+- KICK BACK
+- LOSER
+- Lemon
+- 打ち上げ花火
+
+</details>
+
+<details>
+<summary>藍月なくる</summary>
+
+- Collapse (feat. 藍月なくる)
+- The Abyss of Despair (feat. 藍月なくる)
+- 愛の残滓
+- 月詠に鳴る (feat. 藍月なくる)
+
+</details>
+
+<details>
+<summary>藤林聖子</summary>
+
+- STAND PROUD
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+- ジョジョ~その血の運命~
+- 裏切り者のレクイエム
+
+</details>
+
+<details>
+<summary>高森奈津美</summary>
+
+- 夢見鳥の恋
+- 比翼の蝶たち
+- 海岸線
+- 茉子の日常
+
+</details>
+
+### 3 首
+
+<details>
+<summary>ANANT-GARDE EYES</summary>
+
+- CANOE
+- 一番の宝物 (Original Version)
+- 時を刻む唄
+
+</details>
+
+<details>
+<summary>Ashrount</summary>
+
+- Abstruse Dilemma
+- Undying Macula
+- Undying Macula ~penumbra~
+
+</details>
+
+<details>
+<summary>Ave Mujica</summary>
+
+- Georgette Me, Georgette You
+- Imprisoned XII
+- 天球(そら)のMúsica
+
+</details>
+
+<details>
+<summary>KIVΛ</summary>
+
+- The Whole Rest
+- Used to Be
+- 漂流 with KIVΛ -CytusⅡ.ver-
+
+</details>
+
+<details>
+<summary>KOKIA</summary>
+
+- Nostalgia
+- Spirits
+- たった1つの想い
+
+</details>
+
+<details>
+<summary>MANYO</summary>
+
+- 恋文
+- 星の奏でる歌 feat. 椎名かがり
+- 星の奏でる歌 feat. 椎名まゆり&椎名かがり
+
+</details>
+
+<details>
+<summary>Team Grimoire</summary>
+
+- Arcana Eden
+- Grievous Lady
+- Rrhar'il
+
+</details>
+
+<details>
+<summary>ZUN</summary>
+
+- Bad Apple!!
+- 月に叢雲華に風
+- 色は匂へど散りぬるを
+
+</details>
+
+<details>
+<summary>milet</summary>
+
+- Anytime Anywhere
+- bliss
+- 絆ノ奇跡
+
+</details>
+
+<details>
+<summary>riya</summary>
+
+- ウィアートル（旅人）
+- 小さなてのひら
+- 空に光る
+
+</details>
+
+<details>
+<summary>あばらや</summary>
+
+- かなしばりに遭ったら
+- 花弁、それにまつわる音声
+- 街の残像
+
+</details>
+
+<details>
+<summary>じょん</summary>
+
+- メテオ（流星） feat. Lia
+- メテオ（流星） feat. 初音ミク
+- 僕らのつづき
+
+</details>
+
+<details>
+<summary>とあ</summary>
+
+- アイディスマイル (IDSMILE) feat. 25時、ナイトコードで。&MEIKO
+- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン
+- トワイライトライト（微明暮光）
+
+</details>
+
+<details>
+<summary>どんまる</summary>
+
+- Lasting Moment
+- Lasting Moment (Symphonic)
+- 坂の上の陽炎
+
+</details>
+
+<details>
+<summary>なきそ</summary>
+
+- いますぐ輪廻
+- 化けの花 feat. 25時、ナイトコードで。&KAITO
+- 化けの花 feat. 初音ミク
+
+</details>
+
+<details>
+<summary>ゆずひこ</summary>
+
+- とおりゃんせ~甘美風来
+- とおりゃんせ～甘美風来 (Instrument Version)
+- とおりゃんせ～甘美風来 (Quiet Version)
+
+</details>
+
+<details>
+<summary>アサノマチ</summary>
+
+- 死にたいわけじゃなくて
+- 死ねない僕は生きていく
+- 願い、君へ
+
+</details>
+
+<details>
+<summary>カゼヒキ</summary>
+
+- ただ病名が欲しかった
+- 白絵にもならない_U
+- 白絵にもならない_V
+
+</details>
+
+<details>
+<summary>シャノン</summary>
+
+- ヨミクダリの灯
+- 恐竜電力の街
+- 死別
+
+</details>
+
+<details>
+<summary>ヨルシカ</summary>
+
+- だから僕は音楽を辞めた
+- アポリア(Aporia)
+- 晴る
+
+</details>
+
+<details>
+<summary>上原れな</summary>
+
+- After All ～綴る想い～ feat. 上原れな
+- 届かない恋
+- 幸せな記憶
+
+</details>
+
+<details>
+<summary>佐々木恵梨</summary>
+
+- GATE OF STEINER
+- 星の奏でる歌 feat. 椎名かがり
+- 星の奏でる歌 feat. 椎名まゆり&椎名かがり
+
+</details>
+
+<details>
+<summary>冬馬かずさ</summary>
+
+- After All ～綴る想い～ feat. 冬馬かずさ
+- POWDER SNOW feat. 冬馬かずさ
+- WHITE ALBUM feat. 冬馬かずさ
+
+</details>
+
+<details>
+<summary>塚越雄一朗</summary>
+
+- アスタロア (Asterlore)
+- 比翼の蝶たち
+- 羽のゆりかご
+
+</details>
+
+<details>
+<summary>小木曽雪菜</summary>
+
+- POWDER SNOW feat. 小木曽雪菜
+- WHITE ALBUM feat. 小木曽雪菜
+- 時の魔法
+
+</details>
+
+<details>
+<summary>小高光太郎</summary>
+
+- Asphodelus
+- SIROSUNA
+- 雪のエルフィンリート
+
+</details>
+
+<details>
+<summary>巡音ルカ</summary>
+
+- オーダーメイド（定制品）
+- カナデトモスソラ（奏明天空）
+- ワンダーラスト (Wanderlast)
+
+</details>
+
+<details>
+<summary>新島夕</summary>
+
+- Departure!
+- Lasting Moment
+- 羽のゆりかご
+
+</details>
+
+<details>
+<summary>木下珠子</summary>
+
+- Last丨Eternity
+- Last丨Moment
+- 雨に祈りを
+
+</details>
+
+<details>
+<summary>松本文紀</summary>
+
+- Dear Moments
+- 暖かな時間
+- 親愛なるあの日々へ
+
+</details>
+
+<details>
+<summary>羽累</summary>
+
+- 巫
+- 紫色の向日葵
+- 転生
+
+</details>
+
+<details>
+<summary>近藤佑輔</summary>
+
+- Sar-gedy-動-
+- Sar-gedy-流-
+- eXi' N'o FooKah
+
+</details>
+
+### 2 首
+
+<details>
+<summary>A-39</summary>
+
+- WATER
+- さようなら
+
+</details>
+
+<details>
+<summary>ATOLS</summary>
+
+- 御伽の国 feat. 可不&裏命
+- 転生
+
+</details>
+
+<details>
+<summary>CHO-NAN</summary>
+
+- Squall
+- Squall (Symphonic)
+
+</details>
+
+<details>
+<summary>Ceui</summary>
+
+- Asphodelus
+- SIROSUNA
+
+</details>
+
+<details>
+<summary>Coda</summary>
+
+- Bloody Stream
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+
+</details>
+
+<details>
+<summary>DAZBEE</summary>
+
+- 口笛で愛は歌えない
+- 花たちに希望を
+
+</details>
+
+<details>
+<summary>DJ Genki</summary>
+
+- Einherjar Joker
+- Einherjar Joker (Requiem EXTENDED MIX)
+
+</details>
+
+<details>
+<summary>EGOIST</summary>
+
+- Departures ~あなたにおくるアイの歌~
+- Euterpe
+
+</details>
+
+<details>
+<summary>Empty old City</summary>
+
+- Astronomy
+- Buffer
+
+</details>
+
+<details>
+<summary>Essbee</summary>
+
+- SIZUMU
+- 悔_
+
+</details>
+
+<details>
+<summary>Frums</summary>
+
+- Aegleseeker
+- stop-motion
+
+</details>
+
+<details>
+<summary>GARNiDELiA</summary>
+
+- スズラン（铃兰）
+- 極楽浄土
+
+</details>
+
+<details>
+<summary>GESO</summary>
+
+- 棺の中で、
+- 異種
+
+</details>
+
+<details>
+<summary>Gram</summary>
+
+- Einherjar Joker
+- Einherjar Joker (Requiem EXTENDED MIX)
+
+</details>
+
+<details>
+<summary>HyuN</summary>
+
+- Cross†Over (feat. LyuU)
+- Infinity Heaven
+
+</details>
+
+<details>
+<summary>IA</summary>
+
+- オーダーメイド（定制品）
+- 六兆年と一夜物語
+
+</details>
+
+<details>
+<summary>Lime</summary>
+
+- Chronicle
+- Chronomia
+
+</details>
+
+<details>
+<summary>MARETU</summary>
+
+- あいしていたのに（明明曾爱着你）
+- 失敗作少女 (MARETU Remix)
+
+</details>
+
+<details>
+<summary>MEGUMI</summary>
+
+- Squall
+- Squall (Symphonic)
+
+</details>
+
+<details>
+<summary>Maozon</summary>
+
+- Equilibrium
+- Stasis
+
+</details>
+
+<details>
+<summary>MisomyL</summary>
+
+- Désive
+- 無機質世界に彩を
+
+</details>
+
+<details>
+<summary>Neru</summary>
+
+- ロストワンの号哭
+- 病名は愛だった
+
+</details>
+
+<details>
+<summary>Porter Robinson</summary>
+
+- Goodbye to a World
+- Shelter
+
+</details>
+
+<details>
+<summary>Powerless</summary>
+
+- Innocence
+- Lost Desire
+
+</details>
+
+<details>
+<summary>R Sound Design</summary>
+
+- flos
+- flos covered by ヰ世界情緒 at CANDY LIVE
+
+</details>
+
+<details>
+<summary>RADWIMPS</summary>
+
+- スパークル (Movie Ver.)
+- スパークル (Original Ver.)
+
+</details>
+
+<details>
+<summary>Riryka</summary>
+
+- とおりゃんせ~甘美風来
+- ふたりで（与子偕老）
+
+</details>
+
+<details>
+<summary>SLAVE.V-V-R</summary>
+
+- LaVI-Bavellabion feat. GUMI
+- LaVI-Bavellabion feat. 三木谷奈々
+
+</details>
+
+<details>
+<summary>Sobrem</summary>
+
+- ANDORXOR
+- Random
+
+</details>
+
+<details>
+<summary>Street</summary>
+
+- Sakura Fubuki
+- nέο κόsmo
+
+</details>
+
+<details>
+<summary>Suara</summary>
+
+- キミガタメ（为了你）
+- 恋夢
+
+</details>
+
+<details>
+<summary>THE SxPLAY</summary>
+
+- 漂流
+- 漂流 with KIVΛ -CytusⅡ.ver-
+
+</details>
+
+<details>
+<summary>TJ.hangneil</summary>
+
+- Apollo
+- 魔王
+
+</details>
+
+<details>
+<summary>V.I.P</summary>
+
+- 機械の声 feat. V.I.P
+- 機械の声 feat. V.W.P & V.I.P
+
+</details>
+
+<details>
+<summary>WyvernP</summary>
+
+- Clock Paradox
+- Palescreen
+
+</details>
+
+<details>
+<summary>bermei.inazawa</summary>
+
+- ポケットをふくらませて
+- ポケットをふくらませて ～Sea, you again～
+
+</details>
+
+<details>
+<summary>lasah</summary>
+
+- ネジ巻き師と太虚鳥
+- ネヴァモア (Nevermore)
+
+</details>
+
+<details>
+<summary>livetune</summary>
+
+- Last Night,Good Night
+- Reply
+
+</details>
+
+<details>
+<summary>n-buna</summary>
+
+- ウミユリ海底譚
+- 夜明けと蛍
+
+</details>
+
+<details>
+<summary>omochi</summary>
+
+- 「いい子」でいること
+- 砂時計
+
+</details>
+
+<details>
+<summary>t+pazolite</summary>
+
+- Sanctuary
+- Tempestissimo
+
+</details>
+
+<details>
+<summary>Æsir</summary>
+
+- CHAOS
+- V.
+
+</details>
+
+<details>
+<summary>かませ虎</summary>
+
+- 月に叢雲華に風
+- 色は匂へど散りぬるを
+
+</details>
+
+<details>
+<summary>ずんだもん</summary>
+
+- のだ
+- ネ土会ェ貝南犬☆カゞんIよ″るノDA!!
+
+</details>
+
+<details>
+<summary>ぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬぬ</summary>
+
+- みむかｩわナイストライ (Mimukauwa Nice Try)
+- ネ土会ェ貝南犬☆カゞんIよ″るノDA!!
+
+</details>
+
+<details>
+<summary>はりーP</summary>
+
+- ぼくらのレットイットビー（让我们顺其自然）
+- 蛍
+
+</details>
+
+<details>
+<summary>みきとP</summary>
+
+- 少女レイ
+- 少女レイ (いよわ Remix)
+
+</details>
+
+<details>
+<summary>ゲキヤク</summary>
+
+- 白絵にもならない_U
+- 白絵にもならない_V
+
+</details>
+
+<details>
+<summary>トゲナシトゲアリ</summary>
+
+- 空の箱
+- 雑踏、僕らの街
+
+</details>
+
+<details>
+<summary>フロクロ</summary>
+
+- 空を満たして (feat. 可不)
+- 黒塗り世界宛て書簡
+
+</details>
+
+<details>
+<summary>三木谷奈々</summary>
+
+- LaVI-Bavellabion feat. 三木谷奈々
+- bloom
+
+</details>
+
+<details>
+<summary>原口沙輔</summary>
+
+- イガク（医学）
+- 人マニア
+
+</details>
+
+<details>
+<summary>大国奏音</summary>
+
+- Latent Kingdom
+- 祈 -我ら神祖と共に歩む者なり-
+
+</details>
+
+<details>
+<summary>富永TOMMY弘明</summary>
+
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+- ジョジョ~その血の運命~
+
+</details>
+
+<details>
+<summary>山口たこ</summary>
+
+- DEAR MY WAKER
+- DEAR MY WAKER (Symphonic)
+
+</details>
+
+<details>
+<summary>市川淳</summary>
+
+- -遠い空へ-
+- Old Memory
+
+</details>
+
+<details>
+<summary>戸越まごめ</summary>
+
+- 小さなてのひら
+- 空に光る
+
+</details>
+
+<details>
+<summary>早見沙織</summary>
+
+- Remember
+- 星降る海
+
+</details>
+
+<details>
+<summary>未海</summary>
+
+- After All ～綴る想い～ feat. 上原れな
+- After All ～綴る想い～ feat. 冬馬かずさ
+
+</details>
+
+<details>
+<summary>柊マグネタイト</summary>
+
+- マーシャル・マキシマイザー (Marshall Maximizer)
+- 巫
+
+</details>
+
+<details>
+<summary>森永真由美</summary>
+
+- 月に叢雲華に風
+- 色は匂へど散りぬるを
+
+</details>
+
+<details>
+<summary>橋本仁</summary>
+
+- STAND PROUD
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+
+</details>
+
+<details>
+<summary>水月陵</summary>
+
+- 夏の砂時計
+- 蝉声とともに
+
+</details>
+
+<details>
+<summary>水谷瑠奈</summary>
+
+- 夏の砂時計
+- 羽のゆりかご
+
+</details>
+
+<details>
+<summary>津田朱里</summary>
+
+- Twinkle Snow
+- 愛する心
+
+</details>
+
+<details>
+<summary>潘めぐみ</summary>
+
+- 星の奏でる歌 feat. 椎名かがり
+- 星の奏でる歌 feat. 椎名まゆり&椎名かがり
+
+</details>
+
+<details>
+<summary>田中公平</summary>
+
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+- ジョジョ~その血の運命~
+
+</details>
+
+<details>
+<summary>真崎エリカ</summary>
+
+- Remember
+- Reply
+
+</details>
+
+<details>
+<summary>稲葉曇</summary>
+
+- ラグトレイン（延误列车）
+- 私は雨
+
+</details>
+
+<details>
+<summary>竹下智博</summary>
+
+- 夜奏花
+- 夜奏花 (Symphonic)
+
+</details>
+
+<details>
+<summary>笹川真生</summary>
+
+- 花葬
+- 造花の距離感
+
+</details>
+
+<details>
+<summary>結束バンド</summary>
+
+- なにが悪い
+- 青春コンプレックス
+
+</details>
+
+<details>
+<summary>羽生まゐご</summary>
+
+- ハレハレヤ (朗朗晴天) 
+- 阿吽のビーツ
+
+</details>
+
+<details>
+<summary>花澤香菜</summary>
+
+- 恋爱サーキュレーション
+- 星の奏でる歌 feat. 椎名まゆり&椎名かがり
+
+</details>
+
+<details>
+<summary>菅野祐悟</summary>
+
+- Great Days
+- 裏切り者のレクイエム
+
+</details>
+
+<details>
+<summary>西坂恭平</summary>
+
+- ふたりの果て
+- イノチの灯し方
+
+</details>
+
+<details>
+<summary>酔シグレ</summary>
+
+- 藍悼花 feat. Lucia
+- 藍悼花 feat. 初音ミク
+
+</details>
+
+<details>
+<summary>野田洋次郎</summary>
+
+- スパークル (Movie Ver.)
+- スパークル (Original Ver.)
+
+</details>
+
+<details>
+<summary>長谷川大祐</summary>
+
+- Great Days
+- 裏切り者のレクイエム
+
+</details>
+
+<details>
+<summary>須田景凪</summary>
+
+- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン
+- ノマド (Nomad) feat. v flower
+
+</details>
+
+<details>
+<summary>鳴花ヒメ</summary>
+
+- 僕らの記憶を掠わないで
+- 異種
+
+</details>
+
+<details>
+<summary>黒皇帝</summary>
+
+- Chronostasis
+- Le Porteur d'Ombre
+
+</details>
+
+### 1 首
+
+<details>
+<summary>164</summary>
+
+- 天ノ弱
+
+</details>
+
+<details>
+<summary>40mP</summary>
+
+- キリトリセン（剪切线）
+
+</details>
+
+<details>
+<summary>A Himitsu</summary>
+
+- Realms
+
+</details>
+
+<details>
+<summary>AKA</summary>
+
+- Le Porteur d'Ombre
+
+</details>
+
+<details>
+<summary>ASOBI同盟</summary>
+
+- 誰も彼も何処も何も知らない
+
+</details>
+
+<details>
+<summary>AVANNA</summary>
+
+- Goodbye to a World
+
+</details>
+
+<details>
+<summary>Abit</summary>
+
+- Regnaissance
+
+</details>
+
+<details>
+<summary>AiSS</summary>
+
+- Regnaissance
+
+</details>
+
+<details>
+<summary>Aikapin</summary>
+
+- Horizon Blue
+
+</details>
+
+<details>
+<summary>Aimer</summary>
+
+- 残響散歌
+
+</details>
+
+<details>
+<summary>Akira Complex</summary>
+
+- Ether Strike
+
+</details>
+
+<details>
+<summary>Aqu3ra</summary>
+
+- 星降る海
+
+</details>
+
+<details>
+<summary>Attoclef</summary>
+
+- The Chariot ~REVIIVAL~
+
+</details>
+
+<details>
+<summary>Au</summary>
+
+- Ghost
+
+</details>
+
+<details>
+<summary>Azis</summary>
+
+- Hop
+
+</details>
+
+<details>
+<summary>BAL</summary>
+
+- 茉子の日常
+
+</details>
+
+<details>
+<summary>Benny Dayal</summary>
+
+- Lat Lag Gayee
+
+</details>
+
+<details>
+<summary>BiSH</summary>
+
+- innocent arrogance
+
+</details>
+
+<details>
+<summary>BlackY</summary>
+
+- Infinite Strife,
+
+</details>
+
+<details>
+<summary>Broken Nerdz</summary>
+
+- DESTRUCTION 3,2,1
+
+</details>
+
+<details>
+<summary>C418</summary>
+
+- Minecraft
+
+</details>
+
+<details>
+<summary>CK</summary>
+
+- Lost Civilization
+
+</details>
+
+<details>
+<summary>CRYCHIC</summary>
+
+- 春日影
+
+</details>
+
+<details>
+<summary>Charlie Puth</summary>
+
+- See You Again
+
+</details>
+
+<details>
+<summary>Chima</summary>
+
+- はじまりのしるし（开始的标志）
+
+</details>
+
+<details>
+<summary>Chinozo</summary>
+
+- グッバイ宣言
+
+</details>
+
+<details>
+<summary>ClariS</summary>
+
+- ALIVE
+
+</details>
+
+<details>
+<summary>CorLeonis</summary>
+
+- 嘘月
+
+</details>
+
+<details>
+<summary>Coward Dream</summary>
+
+- ようやく君が死んだんだ。
+
+</details>
+
+<details>
+<summary>Cytus</summary>
+
+- ͟͝͞Ⅱ́
+
+</details>
+
+<details>
+<summary>CヰEL文</summary>
+
+- 你先别急 feat.初音未来
+
+</details>
+
+<details>
+<summary>D.J.ァネイロ</summary>
+
+- 一龠
+
+</details>
+
+<details>
+<summary>DELTA</summary>
+
+- Defection
+
+</details>
+
+<details>
+<summary>DJ Raisei</summary>
+
+- Fractured Angle
+
+</details>
+
+<details>
+<summary>D_AAN</summary>
+
+- Another Me
+
+</details>
+
+<details>
+<summary>Daniel Hope</summary>
+
+- Experience
+
+</details>
+
+<details>
+<summary>Daoko</summary>
+
+- 打ち上げ花火
+
+</details>
+
+<details>
+<summary>David Guetta</summary>
+
+- 2U
+
+</details>
+
+<details>
+<summary>Designant</summary>
+
+- Designant.
+
+</details>
+
+<details>
+<summary>Duca</summary>
+
+- アイの庭
+
+</details>
+
+<details>
+<summary>EBIMAYO</summary>
+
+- GOODRAGE
+
+</details>
+
+<details>
+<summary>Endcape</summary>
+
+- Great Days
+
+</details>
+
+<details>
+<summary>Erik Satie</summary>
+
+- Gymnopedie No.3
+
+</details>
+
+<details>
+<summary>Fall Out Boy</summary>
+
+- Centuries
+
+</details>
+
+<details>
+<summary>Fl00t</summary>
+
+- Eltaw
+
+</details>
+
+<details>
+<summary>Fukase</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>G.E.M.邓紫棋</summary>
+
+- 面壁者
+
+</details>
+
+<details>
+<summary>Gotye</summary>
+
+- Somebody That I Used To Know
+
+</details>
+
+<details>
+<summary>HARUKA</summary>
+
+- Bad Apple!!
+
+</details>
+
+<details>
+<summary>HITA</summary>
+
+- 赤伶
+
+</details>
+
+<details>
+<summary>Hawk Nelson</summary>
+
+- Sold Out
+
+</details>
+
+<details>
+<summary>Hinkik</summary>
+
+- Realms
+
+</details>
+
+<details>
+<summary>H△G</summary>
+
+- Moonlight Fragrance
+
+</details>
+
+<details>
+<summary>I Virtuosi Italiani</summary>
+
+- Experience
+
+</details>
+
+<details>
+<summary>Iceon</summary>
+
+- 月に叢雲華に風
+
+</details>
+
+<details>
+<summary>Johann Pachelbel</summary>
+
+- Canon in D
+
+</details>
+
+<details>
+<summary>Juka_Box</summary>
+
+- 燐寸と緞帳
+
+</details>
+
+<details>
+<summary>Justin Bieber</summary>
+
+- 2U
+
+</details>
+
+<details>
+<summary>K-391</summary>
+
+- Play
+
+</details>
+
+<details>
+<summary>KALA</summary>
+
+- キズナヒトツ（一丝羁绊）
+
+</details>
+
+<details>
+<summary>KAORI.</summary>
+
+- LeMU ～遙かなるレムリア大陸～
+
+</details>
+
+<details>
+<summary>KIRIKO</summary>
+
+- 悲しみの向こうへ
+
+</details>
+
+<details>
+<summary>KLYDIX</summary>
+
+- Dream Flower
+
+</details>
+
+<details>
+<summary>KOTOKO</summary>
+
+- 恋ひ恋ふ縁
+
+</details>
+
+<details>
+<summary>Kai</summary>
+
+- 祈 -我ら神祖と共に歩む者なり-
+
+</details>
+
+<details>
+<summary>Kaori</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>Katie Sky</summary>
+
+- Monsters
+
+</details>
+
+<details>
+<summary>Ken</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>Kevin MacLeod</summary>
+
+- Promising Relationship
+
+</details>
+
+<details>
+<summary>Kimbra</summary>
+
+- Somebody That I Used To Know
+
+</details>
+
+<details>
+<summary>Kirara Magic</summary>
+
+- Find Me (feat. Shion)
+
+</details>
+
+<details>
+<summary>Kolaa</summary>
+
+- 〇、
+
+</details>
+
+<details>
+<summary>Kry.exe</summary>
+
+- Retribution
+
+</details>
+
+<details>
+<summary>LEAF</summary>
+
+- もぺもぺ
+
+</details>
+
+<details>
+<summary>LYRi "Cyanblue" WHiTE</summary>
+
+- 《Ж》
+
+</details>
+
+<details>
+<summary>LiSA</summary>
+
+- 紅蓮華
+
+</details>
+
+<details>
+<summary>Lucia</summary>
+
+- 藍悼花 feat. Lucia
+
+</details>
+
+<details>
+<summary>Ludovico Einaudi</summary>
+
+- Experience
+
+</details>
+
+<details>
+<summary>Luis Fonsi</summary>
+
+- Despacito
+
+</details>
+
+<details>
+<summary>LyuU</summary>
+
+- Cross†Over (feat. LyuU)
+
+</details>
+
+<details>
+<summary>M.Graveyard</summary>
+
+- you -ありがとう-
+
+</details>
+
+<details>
+<summary>MAN WITH A MISSION</summary>
+
+- 絆ノ奇跡
+
+</details>
+
+<details>
+<summary>MEIKO</summary>
+
+- アイディスマイル (IDSMILE) feat. 25時、ナイトコードで。&MEIKO
+
+</details>
+
+<details>
+<summary>MIMI</summary>
+
+- くうになる (feat. 可不&初音ミク)
+
+</details>
+
+<details>
+<summary>MYTH & ROID</summary>
+
+- STYX HELIX
+
+</details>
+
+<details>
+<summary>MYTK</summary>
+
+- 靈
+
+</details>
+
+<details>
+<summary>Madeon</summary>
+
+- Shelter
+
+</details>
+
+<details>
+<summary>Maksim Mrvica</summary>
+
+- Croatian Rhapsody
+
+</details>
+
+<details>
+<summary>Marshmello</summary>
+
+- Wolves
+
+</details>
+
+<details>
+<summary>Masayoshi Minoshima</summary>
+
+- Bad Apple!!
+
+</details>
+
+<details>
+<summary>Mew</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>Mili</summary>
+
+- world.execute (me) ;
+
+</details>
+
+<details>
+<summary>Misumi</summary>
+
+- 彼女は旅に出る
+
+</details>
+
+<details>
+<summary>Mitsukiyo</summary>
+
+- Unwelcome school
+
+</details>
+
+<details>
+<summary>MokuzMusic</summary>
+
+- 灯葬
+
+</details>
+
+<details>
+<summary>Mrs. GREEN APPLE</summary>
+
+- lulu.
+
+</details>
+
+<details>
+<summary>Mwk</summary>
+
+- Emptiness
+
+</details>
+
+<details>
+<summary>MyGO!!!!!</summary>
+
+- 栞
+
+</details>
+
+<details>
+<summary>NIKANON</summary>
+
+- 《Ж》
+
+</details>
+
+<details>
+<summary>Nikki Simmons</summary>
+
+- Destr0yer
+
+</details>
+
+<details>
+<summary>Normal1zer</summary>
+
+- DESTRUCTION 3,2,1
+
+</details>
+
+<details>
+<summary>Nothing But Requiem</summary>
+
+- Horizon Blue
+
+</details>
+
+<details>
+<summary>Nothing But Requiem with Museo</summary>
+
+- Pentiment
+
+</details>
+
+<details>
+<summary>Omochi</summary>
+
+- 月に沈む
+
+</details>
+
+<details>
+<summary>Omoi</summary>
+
+- テオ（将手）
+
+</details>
+
+<details>
+<summary>OneRepublic</summary>
+
+- Counting Stars
+
+</details>
+
+<details>
+<summary>PRASTIK DANCEFLOOR</summary>
+
+- TECHNOPOLIS 2085
+
+</details>
+
+<details>
+<summary>PYKAMIA</summary>
+
+- Fantasia Sonata Next Ouverture
+
+</details>
+
+<details>
+<summary>Panda Eyes</summary>
+
+- Highscore
+
+</details>
+
+<details>
+<summary>Pat Metheny Group</summary>
+
+- Last Train Home
+
+</details>
+
+<details>
+<summary>Plum</summary>
+
+- Terrasphere
+
+</details>
+
+<details>
+<summary>Puru</summary>
+
+- Trap Crow
+
+</details>
+
+<details>
+<summary>RYOQUCHA</summary>
+
+- Library of Babel
+
+</details>
+
+<details>
+<summary>Ra</summary>
+
+- Ghost
+
+</details>
+
+<details>
+<summary>Raimukun</summary>
+
+- Avantgarde
+
+</details>
+
+<details>
+<summary>Rin</summary>
+
+- 雨に祈りを
+
+</details>
+
+<details>
+<summary>Rintaro Soma</summary>
+
+- 系ぎて
+
+</details>
+
+<details>
+<summary>S9ryne</summary>
+
+- Syrinx
+
+</details>
+
+<details>
+<summary>Sainkho Namtchylak</summary>
+
+- Lost Rivers
+
+</details>
+
+<details>
+<summary>SawanoHiroyuki[nZk]</summary>
+
+- aLIEz
+
+</details>
+
+<details>
+<summary>Se</summary>
+
+- アナベル・リイ (Annabel Lee)
+
+</details>
+
+<details>
+<summary>Se-U-Ra</summary>
+
+- Igallta
+
+</details>
+
+<details>
+<summary>Selena Gomez</summary>
+
+- Wolves
+
+</details>
+
+<details>
+<summary>Shalmali Kholgade</summary>
+
+- Lat Lag Gayee
+
+</details>
+
+<details>
+<summary>Shion</summary>
+
+- Find Me (feat. Shion)
+
+</details>
+
+<details>
+<summary>Side Connection Music</summary>
+
+- 雪のエルフィンリート
+
+</details>
+
+<details>
+<summary>Sihan</summary>
+
+- 面壁者
+
+</details>
+
+<details>
+<summary>Snail's House</summary>
+
+- Lullaby
+
+</details>
+
+<details>
+<summary>Sound piercer</summary>
+
+- 花たちに希望を
+
+</details>
+
+<details>
+<summary>South&</summary>
+
+- またおいで（请再来吧）
+
+</details>
+
+<details>
+<summary>TAKIO</summary>
+
+- 多次元宇宙融合論
+
+</details>
+
+<details>
+<summary>TIN</summary>
+
+- Ticking
+
+</details>
+
+<details>
+<summary>TK from 凛として時雨</summary>
+
+- unravel
+
+</details>
+
+<details>
+<summary>TRUE</summary>
+
+- Sincerely
+
+</details>
+
+<details>
+<summary>TeddyLoid</summary>
+
+- Defection
+
+</details>
+
+<details>
+<summary>Tele</summary>
+
+- 硝子の線
+
+</details>
+
+<details>
+<summary>Teminite</summary>
+
+- Highscore
+
+</details>
+
+<details>
+<summary>The Bangles</summary>
+
+- Walk Like an Egyption
+
+</details>
+
+<details>
+<summary>Tia</summary>
+
+- その花は世界を紡ぐ
+
+</details>
+
+<details>
+<summary>Tomi Yo</summary>
+
+- フリージア（Freesia）
+
+</details>
+
+<details>
+<summary>TryHardNinja</summary>
+
+- Revenge(Minecraft Creeper Song)
+
+</details>
+
+<details>
+<summary>Two Steps From Hell</summary>
+
+- Victory
+
+</details>
+
+<details>
+<summary>U-Ruri</summary>
+
+- Fragment of Memories
+
+</details>
+
+<details>
+<summary>Uru</summary>
+
+- フリージア（Freesia）
+
+</details>
+
+<details>
+<summary>V.W.P</summary>
+
+- 機械の声 feat. V.W.P & V.I.P
+
+</details>
+
+<details>
+<summary>Western Texas Films Orchestra</summary>
+
+- The Magnificent Seven
+
+</details>
+
+<details>
+<summary>Wiz Khalifa</summary>
+
+- See You Again
+
+</details>
+
+<details>
+<summary>YUE.STEVEN</summary>
+
+- dB doll
+
+</details>
+
+<details>
+<summary>YURiKA</summary>
+
+- 夜奏花
+
+</details>
+
+<details>
+<summary>Yes</summary>
+
+- Roundabout
+
+</details>
+
+<details>
+<summary>Yooh</summary>
+
+- Infinite Strife,
+
+</details>
+
+<details>
+<summary>Zwei</summary>
+
+- ライア (Lyra)
+
+</details>
+
+<details>
+<summary>anNina</summary>
+
+- 対象a
+
+</details>
+
+<details>
+<summary>cosMo@暴走P</summary>
+
+- 蜘蛛の糸 (feat. 影縫英)
+
+</details>
+
+<details>
+<summary>cybermiso</summary>
+
+- corps-sans-organes (Extended ver.)
+
+</details>
+
+<details>
+<summary>daiki⛩️</summary>
+
+- bloom
+
+</details>
+
+<details>
+<summary>doriko</summary>
+
+- ロミオとシンデレラ（罗密欧与灰姑娘）
+
+</details>
+
+<details>
+<summary>eba</summary>
+
+- This game
+
+</details>
+
+<details>
+<summary>eicateve</summary>
+
+- R.I.P.
+
+</details>
+
+<details>
+<summary>hkmori</summary>
+
+- anybody can find love (except you.)
+
+</details>
+
+<details>
+<summary>iroha(sasaki)</summary>
+
+- 炉心融解
+
+</details>
+
+<details>
+<summary>john</summary>
+
+- 春嵐
+
+</details>
+
+<details>
+<summary>jon-YAKITORY</summary>
+
+- 混沌ブギ
+
+</details>
+
+<details>
+<summary>kakone</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>kanone</summary>
+
+- 花と、雪と、ドラムンベース
+
+</details>
+
+<details>
+<summary>karuta</summary>
+
+- 一番の宝物 (Original Version)
+
+</details>
+
+<details>
+<summary>kemu</summary>
+
+- 六兆年と一夜物語
+
+</details>
+
+<details>
+<summary>kors k</summary>
+
+- 空種
+
+</details>
+
+<details>
+<summary>koyori</summary>
+
+- 独りんぼエンヴィー
+
+</details>
+
+<details>
+<summary>kuma</summary>
+
+- 炉心融解
+
+</details>
+
+<details>
+<summary>mopi</summary>
+
+- 眠りゆく芽吹き
+
+</details>
+
+<details>
+<summary>nitro</summary>
+
+- qualia -ideaesthesia-
+
+</details>
+
+<details>
+<summary>nm-y</summary>
+
+- Retribution
+
+</details>
+
+<details>
+<summary>polysha</summary>
+
+- Logos (feat. 高城みよ)
+
+</details>
+
+<details>
+<summary>pupa</summary>
+
+- Fallen
+
+</details>
+
+<details>
+<summary>qfeileadh</summary>
+
+- ヒュブリスの頂に聳えるのは
+
+</details>
+
+<details>
+<summary>r-906</summary>
+
+- まにまに（随之任之）
+
+</details>
+
+<details>
+<summary>rino</summary>
+
+- そして愛になる
+
+</details>
+
+<details>
+<summary>ryo (supercell)</summary>
+
+- ワールドイズマイン
+
+</details>
+
+<details>
+<summary>saaa</summary>
+
+- MORNINGLOOM
+
+</details>
+
+<details>
+<summary>sabio</summary>
+
+- Ribbon
+
+</details>
+
+<details>
+<summary>sajou no hana</summary>
+
+- 青嵐のあとで
+
+</details>
+
+<details>
+<summary>samayuzame</summary>
+
+- 物語りのワルツ
+
+</details>
+
+<details>
+<summary>sana (sajou no hana)</summary>
+
+- Heaven’s falling down
+
+</details>
+
+<details>
+<summary>seatrus</summary>
+
+- 零號車輛
+
+</details>
+
+<details>
+<summary>siromaru</summary>
+
+- Infinite Strife,
+
+</details>
+
+<details>
+<summary>supercell</summary>
+
+- メルト (Melt)
+
+</details>
+
+<details>
+<summary>thom</summary>
+
+- 何もしてないのにイヤホンが壊れた
+
+</details>
+
+<details>
+<summary>uen</summary>
+
+- dB doll
+
+</details>
+
+<details>
+<summary>void(Mournfinale)</summary>
+
+- Testify
+
+</details>
+
+<details>
+<summary>yama</summary>
+
+- 色彩
+
+</details>
+
+<details>
+<summary>youまん</summary>
+
+- ワーストリグレット（遗憾至极）
+
+</details>
+
+<details>
+<summary>yuigot</summary>
+
+- Remember
+
+</details>
+
+<details>
+<summary>Θ</summary>
+
+- El último baile
+
+</details>
+
+<details>
+<summary>あむぬeru</summary>
+
+- おくすり飲んで寝よう ver.あむぬeru
+
+</details>
+
+<details>
+<summary>いきものがかり</summary>
+
+- ブルーバード（青鸟）
+
+</details>
+
+<details>
+<summary>かいりきベア</summary>
+
+- 失敗作少女 (MARETU Remix)
+
+</details>
+
+<details>
+<summary>かねこちはる</summary>
+
+- Loveless Dress
+
+</details>
+
+<details>
+<summary>くじら</summary>
+
+- 色彩
+
+</details>
+
+<details>
+<summary>ぐにょ</summary>
+
+- 福寿草
+
+</details>
+
+<details>
+<summary>こだまさおり</summary>
+
+- Bloody Stream
+
+</details>
+
+<details>
+<summary>さユり</summary>
+
+- 花の塔
+
+</details>
+
+<details>
+<summary>しほり</summary>
+
+- ふたりの果て
+
+</details>
+
+<details>
+<summary>すこっぷ</summary>
+
+- アイロニ (irony)
+
+</details>
+
+<details>
+<summary>ちよこ</summary>
+
+- Horizon Blue
+
+</details>
+
+<details>
+<summary>つぐ</summary>
+
+- 多次元宇宙融合論
+
+</details>
+
+<details>
+<summary>てにをは</summary>
+
+- ザムザ（萨姆沙）
+
+</details>
+
+<details>
+<summary>ねこぼーろ</summary>
+
+- カナデトモスソラ（奏明天空）
+
+</details>
+
+<details>
+<summary>のあ</summary>
+
+- ヒュブリスの頂に聳えるのは
+
+</details>
+
+<details>
+<summary>のみこ</summary>
+
+- Bad Apple!!
+
+</details>
+
+<details>
+<summary>はっとり</summary>
+
+- 星が泳ぐ
+
+</details>
+
+<details>
+<summary>まらしぃ</summary>
+
+- 青く駆けろ！
+
+</details>
+
+<details>
+<summary>もちうつね</summary>
+
+- おくすり飲んで寝よう ver.あむぬeru
+
+</details>
+
+<details>
+<summary>やなぎなぎ</summary>
+
+- 恋文
+
+</details>
+
+<details>
+<summary>ゆうゆ</summary>
+
+- 深海少女
+
+</details>
+
+<details>
+<summary>イチ</summary>
+
+- 4nim0sity [99.999999999%]
+
+</details>
+
+<details>
+<summary>カゼヒキβ</summary>
+
+- 棺の中で、
+
+</details>
+
+<details>
+<summary>カンザキイオリ</summary>
+
+- 命に嫌われている。
+
+</details>
+
+<details>
+<summary>コーニッシュ</summary>
+
+- かぐやと彩葉
+
+</details>
+
+<details>
+<summary>ゴム</summary>
+
+- ハサミガール
+
+</details>
+
+<details>
+<summary>サカナクション</summary>
+
+- 怪獣
+
+</details>
+
+<details>
+<summary>ササノマリイ</summary>
+
+- カナデトモスソラ（奏明天空）
+
+</details>
+
+<details>
+<summary>サツキ</summary>
+
+- メズマライザ一（催眠术）
+
+</details>
+
+<details>
+<summary>ストピくん</summary>
+
+- 暮しガスメータ
+
+</details>
+
+<details>
+<summary>スミイ酸</summary>
+
+- Asphodelus
+
+</details>
+
+<details>
+<summary>ツミキ</summary>
+
+- フォニイ (phony)
+
+</details>
+
+<details>
+<summary>ツユ</summary>
+
+- テリトリーバトル（领土战争）
+
+</details>
+
+<details>
+<summary>ナスカ</summary>
+
+- オラシオン
+
+</details>
+
+<details>
+<summary>ナースロボ__タイプT</summary>
+
+- どうか、この言の葉が巣食わないように
+
+</details>
+
+<details>
+<summary>ナースロボ＿タイプT</summary>
+
+- かなしばりに遭ったら
+
+</details>
+
+<details>
+<summary>ハコニワリリィ</summary>
+
+- ハサミガール
+
+</details>
+
+<details>
+<summary>ハム</summary>
+
+- 海岸線
+
+</details>
+
+<details>
+<summary>ファンタズム</summary>
+
+- 刻司ル十二ノ盟約
+
+</details>
+
+<details>
+<summary>ベール</summary>
+
+- 胡蝶の夢
+
+</details>
+
+<details>
+<summary>マカロニえんぴつ</summary>
+
+- 星が泳ぐ
+
+</details>
+
+<details>
+<summary>マサラダ</summary>
+
+- ライアーダンサー (Liar Dancer)
+
+</details>
+
+<details>
+<summary>ミズノゲンキ</summary>
+
+- Redo
+
+</details>
+
+<details>
+<summary>メブキユウ</summary>
+
+- ハサミガール
+
+</details>
+
+<details>
+<summary>モリモリあつし</summary>
+
+- PUPA
+
+</details>
+
+<details>
+<summary>ユージ・ナイトー</summary>
+
+- 茉子の日常 (Quiet Version)
+
+</details>
+
+<details>
+<summary>ラック眼力</summary>
+
+- you -ありがとう-
+
+</details>
+
+<details>
+<summary>下村陽子</summary>
+
+- 眠りゆく芽吹き
+
+</details>
+
+<details>
+<summary>中山マミ</summary>
+
+- 茉子の日常
+
+</details>
+
+<details>
+<summary>中山真斗</summary>
+
+- アルカテイル (ALKA Tale)
+
+</details>
+
+<details>
+<summary>中村泰輔</summary>
+
+- Anytime Anywhere
+
+</details>
+
+<details>
+<summary>丸山公詳</summary>
+
+- スタートリップ (Star Trip) Piano Ver.
+
+</details>
+
+<details>
+<summary>二村学</summary>
+
+- 口笛で愛は歌えない
+
+</details>
+
+<details>
+<summary>五条人</summary>
+
+- 阿珍爱上了阿强
+
+</details>
+
+<details>
+<summary>亜咲花</summary>
+
+- 夏夢ノイジー
+
+</details>
+
+<details>
+<summary>佐高陵平</summary>
+
+- 愛の残滓
+
+</details>
+
+<details>
+<summary>光収容</summary>
+
+- 一番の宝物 (Original Version)
+
+</details>
+
+<details>
+<summary>光吉猛修</summary>
+
+- 祈 -我ら神祖と共に歩む者なり-
+
+</details>
+
+<details>
+<summary>刘德华</summary>
+
+- 世界第一等
+
+</details>
+
+<details>
+<summary>刘欢</summary>
+
+- 我在
+
+</details>
+
+<details>
+<summary>初云CLoudie</summary>
+
+- Luminescence
+
+</details>
+
+<details>
+<summary>初音未来</summary>
+
+- 你先别急 feat.初音未来
+
+</details>
+
+<details>
+<summary>南條愛乃</summary>
+
+- 空種
+
+</details>
+
+<details>
+<summary>卯花ロク</summary>
+
+- 哀悼、そして日常は続く
+
+</details>
+
+<details>
+<summary>古川本舗</summary>
+
+- 口笛で愛は歌えない
+
+</details>
+
+<details>
+<summary>吴青峰</summary>
+
+- 我们都拥有海洋
+
+</details>
+
+<details>
+<summary>和音正人</summary>
+
+- 口笛で愛は歌えない
+
+</details>
+
+<details>
+<summary>土橋善太</summary>
+
+- STAND PROUD
+
+</details>
+
+<details>
+<summary>坂本龍一</summary>
+
+- Merry Christmas Mr. Lawrence
+
+</details>
+
+<details>
+<summary>夏吉ゆうこ</summary>
+
+- Reply
+
+</details>
+
+<details>
+<summary>多田葵</summary>
+
+- CANOE
+
+</details>
+
+<details>
+<summary>大島こうすけ</summary>
+
+- ライア (Lyra)
+
+</details>
+
+<details>
+<summary>大森俊之</summary>
+
+- Bloody Stream
+
+</details>
+
+<details>
+<summary>大橋柊平</summary>
+
+- 夢見鳥の恋
+
+</details>
+
+<details>
+<summary>大漠波新</summary>
+
+- のだ
+
+</details>
+
+<details>
+<summary>大谷幸</summary>
+
+- ジョジョ~その血の運命~
+
+</details>
+
+<details>
+<summary>姜米條</summary>
+
+- Spasmodic
+
+</details>
+
+<details>
+<summary>安瀬聖</summary>
+
+- アイの庭
+
+</details>
+
+<details>
+<summary>室屋光一郎</summary>
+
+- Lemon
+
+</details>
+
+<details>
+<summary>宮崎誠</summary>
+
+- Redo
+
+</details>
+
+<details>
+<summary>宮本浩次</summary>
+
+- 冬の花
+
+</details>
+
+<details>
+<summary>小林武史</summary>
+
+- 冬の花
+
+</details>
+
+<details>
+<summary>山口卓也</summary>
+
+- InFINITE Line～Grand ver.～
+
+</details>
+
+<details>
+<summary>山本希望</summary>
+
+- キズナヒトツ（一丝羁绊）
+
+</details>
+
+<details>
+<summary>山本美禰子</summary>
+
+- 雪のエルフィンリート
+
+</details>
+
+<details>
+<summary>山田屋カズ</summary>
+
+- 茉子の日常 (Quiet Version)
+
+</details>
+
+<details>
+<summary>岩見直明</summary>
+
+- フリージア（Freesia）
+
+</details>
+
+<details>
+<summary>嶺内ともみ</summary>
+
+- Departure!
+
+</details>
+
+<details>
+<summary>常田大希</summary>
+
+- KICK BACK
+
+</details>
+
+<details>
+<summary>影縫英</summary>
+
+- 蜘蛛の糸 (feat. 影縫英)
+
+</details>
+
+<details>
+<summary>彼岸</summary>
+
+- 病名を教えて
+
+</details>
+
+<details>
+<summary>快晴P</summary>
+
+- ぼくらのレットイットビー（让我们顺其自然）
+
+</details>
+
+<details>
+<summary>悠木真一</summary>
+
+- 夏夢ノイジー
+
+</details>
+
+<details>
+<summary>打打だいず</summary>
+
+- Abstruse Dilemma
+
+</details>
+
+<details>
+<summary>日向めぐみ</summary>
+
+- 恋爱サーキュレーション
+
+</details>
+
+<details>
+<summary>星熊南巫</summary>
+
+- Testify
+
+</details>
+
+<details>
+<summary>春野</summary>
+
+- 深昏睡
+
+</details>
+
+<details>
+<summary>春風まゆき</summary>
+
+- ふたつの影
+
+</details>
+
+<details>
+<summary>是</summary>
+
+- Remember
+
+</details>
+
+<details>
+<summary>有世華望</summary>
+
+- 救いを求めるヒトの詩
+
+</details>
+
+<details>
+<summary>有形ランペイジ</summary>
+
+- α煩悩
+
+</details>
+
+<details>
+<summary>村瀬恭久</summary>
+
+- ジョジョ その血の記憶〜END OF THE WORLD〜
+
+</details>
+
+<details>
+<summary>東北きりたん</summary>
+
+- ネ土会ェ貝南犬☆カゞんIよ″るノDA!!
+
+</details>
+
+<details>
+<summary>東雲絵名</summary>
+
+- 限りなく灰色へ feat. 東雲絵名
+
+</details>
+
+<details>
+<summary>林志炫</summary>
+
+- 凤凰花开的路口
+
+</details>
+
+<details>
+<summary>林達志</summary>
+
+- 刻司ル十二ノ盟約
+
+</details>
+
+<details>
+<summary>栗林みな実</summary>
+
+- 涙の理由
+
+</details>
+
+<details>
+<summary>根音ネネ</summary>
+
+- 暮しガスメータ
+
+</details>
+
+<details>
+<summary>桃園にな</summary>
+
+- 雪のエルフィンリート
+
+</details>
+
+<details>
+<summary>梅とら</summary>
+
+- 威風堂々
+
+</details>
+
+<details>
+<summary>森藤晶司</summary>
+
+- Departure!
+
+</details>
+
+<details>
+<summary>植田佳奈</summary>
+
+- Der Mond Das Meer -沙羅- ＜夢のつばさ＞
+
+</details>
+
+<details>
+<summary>椎名豪</summary>
+
+- InFINITE Line～Grand ver.～
+
+</details>
+
+<details>
+<summary>横田商会</summary>
+
+- Daisuke
+
+</details>
+
+<details>
+<summary>橋本彦士</summary>
+
+- 悲しみの向こうへ
+
+</details>
+
+<details>
+<summary>水野あつ</summary>
+
+- でもね
+
+</details>
+
+<details>
+<summary>水野健治</summary>
+
+- 祈 -我ら神祖と共に歩む者なり-
+
+</details>
+
+<details>
+<summary>永原さくら</summary>
+
+- 空種
+
+</details>
+
+<details>
+<summary>江口亮</summary>
+
+- 紅蓮華
+
+</details>
+
+<details>
+<summary>江幡育子</summary>
+
+- 涙の理由
+
+</details>
+
+<details>
+<summary>洛天依</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>浅蓝</summary>
+
+- 天鹅之舞
+
+</details>
+
+<details>
+<summary>深青结希</summary>
+
+- This game
+
+</details>
+
+<details>
+<summary>淳君</summary>
+
+- KICK BACK
+
+</details>
+
+<details>
+<summary>煮ル果実</summary>
+
+- 運命
+
+</details>
+
+<details>
+<summary>熊子</summary>
+
+- 〇、
+
+</details>
+
+<details>
+<summary>猫村いろは</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>玉井健二</summary>
+
+- 残響散歌
+
+</details>
+
+<details>
+<summary>王备</summary>
+
+- Intro
+
+</details>
+
+<details>
+<summary>琴葉茜・葵</summary>
+
+- 暮しガスメータ
+
+</details>
+
+<details>
+<summary>田中隼人</summary>
+
+- 打ち上げ花火
+
+</details>
+
+<details>
+<summary>白寝ねんね</summary>
+
+- どうか、この言の葉が巣食わないように
+
+</details>
+
+<details>
+<summary>石塚陽大</summary>
+
+- 愛の残滓
+
+</details>
+
+<details>
+<summary>磯江俊道</summary>
+
+- Hacking to the Gate
+
+</details>
+
+<details>
+<summary>神前暁</summary>
+
+- 恋爱サーキュレーション
+
+</details>
+
+<details>
+<summary>穴山大輔</summary>
+
+- 祈 -我ら神祖と共に歩む者なり-
+
+</details>
+
+<details>
+<summary>米虾Fomiki</summary>
+
+- Luminescence
+
+</details>
+
+<details>
+<summary>紲星あかり</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>紺野アスタ</summary>
+
+- Dear Moments
+
+</details>
+
+<details>
+<summary>結月ゆかり</summary>
+
+- オーダーメイド（定制品）
+
+</details>
+
+<details>
+<summary>綜花</summary>
+
+- 燐寸と緞帳
+
+</details>
+
+<details>
+<summary>网络歌手</summary>
+
+- 眼保健操
+
+</details>
+
+<details>
+<summary>罗大佑</summary>
+
+- 光阴的故事
+
+</details>
+
+<details>
+<summary>花隈千冬</summary>
+
+- 悔_
+
+</details>
+
+<details>
+<summary>若林タカツグ</summary>
+
+- STAND PROUD
+
+</details>
+
+<details>
+<summary>若林充</summary>
+
+- This game
+
+</details>
+
+<details>
+<summary>茅原実里</summary>
+
+- みちしるべ (路标)
+
+</details>
+
+<details>
+<summary>茅野愛衣</summary>
+
+- オラシオン
+
+</details>
+
+<details>
+<summary>草野華余子</summary>
+
+- 紅蓮華
+
+</details>
+
+<details>
+<summary>菊田大介</summary>
+
+- みちしるべ (路标)
+
+</details>
+
+<details>
+<summary>蔦谷好位置</summary>
+
+- LOSER
+
+</details>
+
+<details>
+<summary>蝶々P</summary>
+
+- 心做し
+
+</details>
+
+<details>
+<summary>詩音</summary>
+
+- you -ありがとう-
+
+</details>
+
+<details>
+<summary>読谷あかね</summary>
+
+- 散り散り
+
+</details>
+
+<details>
+<summary>许诺</summary>
+
+- 来去厦门
+
+</details>
+
+<details>
+<summary>赤尾ひかる</summary>
+
+- Dear Moments
+
+</details>
+
+<details>
+<summary>足立レイ</summary>
+
+- 熱異常 (feat. 足立レイ)
+
+</details>
+
+<details>
+<summary>近藤佑辅</summary>
+
+- 救いを求めるヒトの詩
+
+</details>
+
+<details>
+<summary>遠野ひかる</summary>
+
+- NotToNotice();
+
+</details>
+
+<details>
+<summary>遥そら</summary>
+
+- とおりゃんせ~甘美風来
+
+</details>
+
+<details>
+<summary>都乃河勇人</summary>
+
+- 恋文
+
+</details>
+
+<details>
+<summary>野村陽一郎</summary>
+
+- Anytime Anywhere
+
+</details>
+
+<details>
+<summary>金閉開羅巧夢</summary>
+
+- 海岸線
+
+</details>
+
+<details>
+<summary>鎖那</summary>
+
+- 彼女は旅に出る
+
+</details>
+
+<details>
+<summary>阿卡姆巫师</summary>
+
+- Rainy Heart
+
+</details>
+
+<details>
+<summary>陈奕迅</summary>
+
+- 浮夸
+
+</details>
+
+<details>
+<summary>陈百强</summary>
+
+- 不
+
+</details>
+
+<details>
+<summary>隣の庭は青い</summary>
+
+- 翠杜
+
+</details>
+
+<details>
+<summary>電ǂ鯨</summary>
+
+- 暮しガスメータ
+
+</details>
+
+<details>
+<summary>霜月はるか</summary>
+
+- イノチの灯し方
+
+</details>
+
+<details>
+<summary>青木カレン</summary>
+
+- Great Days
+
+</details>
+
+<details>
+<summary>青柳冬弥</summary>
+
+- 威風堂々
+
+</details>
+
+<details>
+<summary>音街ウナ</summary>
+
+- 初恋日記
+
+</details>
+
+<details>
+<summary>飛内将大</summary>
+
+- 残響散歌
+
+</details>
+
+<details>
+<summary>飯塚昌明</summary>
+
+- 涙の理由
+
+</details>
+
+<details>
+<summary>高城みよ</summary>
+
+- Logos (feat. 高城みよ)
+
+</details>
+
+<details>
+<summary>高瀬一矢</summary>
+
+- 鳥の詩
+
+</details>
+
+<details>
+<summary>鳴花ミコト</summary>
+
+- 僕らの記憶を掠わないで
+
+</details>
+
+<details>
+<summary>黄渤</summary>
+
+- 正义之道
+
+</details>
+
+<details>
+<summary>黒うさP</summary>
+
+- 千本桜
+
+</details>
+

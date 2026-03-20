@@ -26,6 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 import mdx from "@astrojs/mdx";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://fuwari.vercel.app/",
@@ -33,7 +35,7 @@ export default defineConfig({
     trailingSlash: "always",
     integrations: [tailwind({
         nesting: true,
-		}), swup({
+        }), swup({
         theme: false,
         animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
         // the default value `transition-` cause transition delay
@@ -46,14 +48,14 @@ export default defineConfig({
         updateHead: true,
         updateBodyClass: false,
         globalInstance: true,
-		}), icon({
+        }), icon({
         include: {
             "preprocess: vitePreprocess(),": ["*"],
             "fa6-brands": ["*"],
             "fa6-regular": ["*"],
             "fa6-solid": ["*"],
         },
-		}), expressiveCode({
+        }), expressiveCode({
         themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
         plugins: [
             pluginCollapsibleSections(),
@@ -96,7 +98,7 @@ export default defineConfig({
         frames: {
             showCopyToClipboardButton: false,
         }
-		}), svelte(), sitemap(), mdx()],
+        }), svelte(), sitemap(), mdx(), react()],
     markdown: {
         remarkPlugins: [
             remarkMath,
