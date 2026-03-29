@@ -568,3 +568,16 @@ if (window.swup) {
 	document.addEventListener("swup:enable", setup)
 }
 </script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+  // 处理 Fuwari 的视图过渡切换
+  document.addEventListener('astro:page-load', () => {
+    // 检查不蒜子变量是否存在
+    if (typeof busuanzi !== 'undefined') {
+        // 强制不蒜子重新检测页面并发送统计请求
+        busuanzi.fetch();
+    }
+  });
+</script>
