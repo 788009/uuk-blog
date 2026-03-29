@@ -167,7 +167,7 @@ AI 继续发力，让我在 CMD 用 `notepad.exe` 打开记事本，`文件` →
 
 - [HomeStudentRetail 离线镜像直链](https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/HomeStudentRetail.img)
 
-用 WinCDEmu 挂载数据光盘后，运行 Setup.exe 安装。
+用 WinCDEmu 挂载数据光盘后，运行 `Setup.exe` 安装。
 
 安装完成后，用[之前](#激活-windows)下载的 MAS 离线脚本激活 Office，方法选择 Ohook。
 
