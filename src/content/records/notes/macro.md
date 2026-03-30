@@ -24,7 +24,7 @@ lang: ''
 ## Unit 1 - Basics of Economics
 
 1. Scarcity
-    1. 有限的资源无法满足无限的需求 -> 研究如何分配资源
+    1. 有限的资源无法满足无限的需求 → 研究如何分配资源
     2. Choices Trade off 三大基本问题
         - What to produce
         - How to produce
@@ -173,9 +173,9 @@ lang: ''
         1. Price level (PL) ↑, real GDP (Y) ↓
         2. PL ↓, Y ↑
         3. Reasons
-            1. The wealth effect: PL ↑ -> real wealth (钱的实际价值) ↓ -> consumer spending ↓ -> Y ↓
-            2. The interst-rate effect: PL ↑ -> money demand ↑ -> interest rate ↑ -> investment ↓ -> Y ↓
-            3. The exchange-rate effect: PL ↑ -> money demand ↑ -> interest rate ↑ demand for currency ↑ -> appreciate (货币升值) -> net export ↓ -> Y ↓
+            1. The wealth effect: PL ↑ → real wealth (钱的实际价值) ↓ → consumer spending ↓ → Y ↓
+            2. The interst-rate effect: PL ↑ → money demand ↑ → interest rate ↑ → investment ↓ → Y ↓
+            3. The exchange-rate effect: PL ↑ → money demand ↑ → interest rate ↑ → demand for currency ↑ → appreciate (货币升值) → net export ↓ → Y ↓
     2. Shifters
         1. Consumption
             1. Disposable income (Y - tax)
@@ -210,10 +210,10 @@ lang: ''
         3. Reasons
             1. The sticky-wage theory
                 1. Nominal wages are slow to adjust to changing economic condition
-                2. PL ↑ -> output price ↑ but wages sticky -> profitablity ↑ -> Y ↑
+                2. PL ↑ → output price ↑ but wages sticky → profitablity ↑ → Y ↑
             2. The sticky-price theory
                 1. Menu cost
-                2. PL ↑ -> flexible price ↑, sticky price 不变 -> sticky price profitablity ↑ -> Y ↑
+                2. PL ↑ → flexible price ↑, sticky price 不变 → sticky price profitablity ↑ → Y ↑
     2. Shifters
         1. LRAS shifters
         2. production cost (factors 的价格) 

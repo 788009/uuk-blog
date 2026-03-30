@@ -13,6 +13,32 @@ lang: ''
 
 > 2024.12
 
+<details>
+<summary>目录</summary>
+
+- [代码说明](#代码说明)
+    - [extractChars.py](#extractcharspy)
+    - [simpleJoin.py](#simplejoinpy)
+    - [stable.py](#stablepy)
+    - [generate\_frame.py](#generate_framepy)
+    - [processxxx.py](#processxxxpy)
+- [拆包细节](#拆包细节)
+    - [文本](#文本)
+        - [台本](#台本)
+        - [其他](#其他)
+    - [音频](#音频)
+        - [语音](#语音)
+        - [BGM](#bgm)
+        - [音效](#音效)
+    - [视频](#视频)
+    - [图片](#图片)
+        - [BG 与 CG](#bg-与-cg)
+        - [角色立绘](#角色立绘)
+        - [其他](#其他-1)
+- [声明](#声明)
+
+</details>
+
 [游戏官方网站](http://shiratamaco.com/)
 
 初衷是做[这些视频](https://space.bilibili.com/476232350/lists/5105429)（手机可以点[这里](https://www.bilibili.com/video/BV1SSkVYNEDT)）。
