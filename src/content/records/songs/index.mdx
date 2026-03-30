@@ -1,6 +1,6 @@
 ---
 title: 歌单
-published: 2026-03-20
+published: 2026-03-29
 description: ' '
 image: 'cover.webp'
 tags: []
@@ -3716,6 +3716,12 @@ export const data = [
         "date": "2021-05-27"
     },
     {
+        "name": "光阴的故事",
+        "artists": "罗大佑",
+        "category": "中文歌",
+        "date": "2021-05-01"
+    },
+    {
         "name": "Bad Apple!!",
         "artists": "HARUKA / ZUN / Masayoshi Minoshima / のみこ",
         "category": "日语歌/1",
@@ -4140,12 +4146,6 @@ export const data = [
         "artists": "",
         "category": "英文歌",
         "date": "2019-09-28"
-    },
-    {
-        "name": "光阴的故事",
-        "artists": "罗大佑",
-        "category": "中文歌",
-        "date": "2012-07-02"
     }
 ];
 
@@ -4162,6 +4162,8 @@ export const data = [
 - 日语歌/1：上述以外的歌曲
 - 纯音乐/2：Galgame / 影视 BGM
 - 纯音乐/1：上述以外的歌曲
+
+点击列名可以按照该列升序/降序排列，按住 `Shift` 并依次点击多列可以指定多个排序关键字。
 
 <InteractiveTable client:load data={data} columns={columns} />
 
