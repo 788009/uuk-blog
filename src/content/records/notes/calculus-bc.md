@@ -11,6 +11,17 @@ lang: ''
 
 > 2024.9 - 2025.5
 
+<details>
+<summary>目录</summary>
+
+- [一、Limits 极限](#一limits-极限)
+- [二、Differentiation 微分](#二differentiation-微分)
+- [三、微分的应用](#三微分的应用)
+- [四、Integration 积分](#四integration-积分)
+- [五、积分的应用](#五积分的应用)
+
+</details>
+
 ## 一、Limits 极限
 
 1. 表示趋近的值，如 $ \lim_{x \to \infty} \frac{1}{x} = 0 $.
@@ -114,7 +125,7 @@ $ \begin{aligned} f'(x) &= \lim_{h \to 0} \frac{(x+h)^2-x^2}{h} \\
 	2. 求一阶导：$ \frac{{\rm d}y}{{\rm d}x} = \frac{{\rm d}y / {\rm d}t}{{\rm d}x / {\rm d}t} = \frac{g'(t)}{f'(t)} $.
 	3. 求二阶导：$ \frac{{\rm d}^2 y}{{\rm d}x^2} = \frac{{\rm d}y' / {\rm d}t}{{\rm d}x / {\rm d}t} $.
 
-## 三、导数的应用
+## 三、微分的应用
 
 1. 相关变化率（Related Rate）问题：
 	1. 基础形态：$ x, \, y $ 都与 $ t $ 有关（ $ x = g(t), \, y = f(t) $），已知 $ y = f(x) $ 及某一时刻 $ x  $、$ \frac{{\rm d}x}{{\rm d}t} $ 与 $ \frac{{\rm d}y}{{\rm d}t} $ 中的两个值，求第三个值.
