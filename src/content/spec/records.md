@@ -1,4 +1,5 @@
-# Records / 记录
+# Records
 
 - [歌单](/records/songs/)
 - [Galgame](/records/galgame/)
+- [学习笔记](/records/notes/)

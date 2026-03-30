@@ -1,5 +1,5 @@
 ---
-title: AP Calculus BC 学习笔记
+title: Calculus BC
 published: 2026-03-15
 description: ''
 image: ''
