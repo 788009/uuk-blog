@@ -302,8 +302,7 @@ lang: ''
         1. Currency: cash, coins
         2. Demand deposits: 随时可取用，如活期存款 checking account / checkable deposits
             - 无利息
-        3. Savings deposits 有利息
-            - 对比 savings account, 后者不经常取钱
+        3. Savings deposits 有利息，不经常取钱
     3. M2
         1. M1
         2. Small-denomination time deposit 小额定期存款
@@ -330,7 +329,7 @@ lang: ''
             1. Reserve ratio & money multiplier: 若每家银行拿到存款都贷 90\% 出去，而每个人拿到贷款之后都存 90\% 到下一家银行，则 money supply 会变成原来的 10 倍
                 1. Reserve ratio: 存进金库的比例, $\cfrac{\text{Reserve}}{\text{Demand deposit}}$
                     - Required reserve ratio / reserve requirement
-                    - Required reserve = Required reserve ratio \times Demand deposit
+                    - $\text{Required reserve} = \text{Required reserve ratio} \times \text{Demand deposit}$
                     - Excess reserve = Total reserve - Required reserve
                     - Maximum amount of additional loans = Reserve - Required reserve
                 2. Money multiplier: $\cfrac{1}{\text{Reserve ratio}}$
