@@ -7,7 +7,7 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function InteractiveTable({
 	data,
@@ -18,6 +18,18 @@ export default function InteractiveTable({
 	const [columnFilters, setColumnFilters] = useState([]);
 	const [openFilterId, setOpenFilterId] = useState(null);
 
+	const filterConfig = useMemo(() => {
+		const config = {};
+		for (const item of filterableColumns) {
+			if (Array.isArray(item)) {
+				config[item[0]] = item[1];
+			} else {
+				config[item] = null;
+			}
+		}
+		return config;
+	}, [filterableColumns]);
+
 	const table = useReactTable({
 		data,
 		columns,
@@ -27,24 +39,26 @@ export default function InteractiveTable({
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		// 1. 新增自定义筛选逻辑
 		filterFns: {
 			multiSelectOr: (row, columnId, filterValue) => {
-				// 如果没有选择任何过滤项，默认显示所有行
 				if (!filterValue || filterValue.length === 0) return true;
-				// 获取当前单元格的值
+
 				const cellValue = row.getValue(columnId);
-				// 判断当前单元格的值是否在选中的数组列表中（完美的“或”逻辑）
+				const delimiter = filterConfig[columnId];
+
+				if (delimiter && typeof cellValue === "string") {
+					const parts = cellValue.split(delimiter);
+					return parts.some((part) => filterValue.includes(part));
+				}
+
 				return filterValue.includes(cellValue);
 			},
 		},
 		defaultColumn: {
-			// 2. 将 arrIncludes 替换为我们自定义的 multiSelectOr
 			filterFn: "multiSelectOr",
 		},
 	});
 
-	// 点击外部关闭筛选面板
 	useEffect(() => {
 		const handleClickOutside = () => setOpenFilterId(null);
 		document.addEventListener("click", handleClickOutside);
@@ -54,8 +68,24 @@ export default function InteractiveTable({
 	}, []);
 
 	const getUniqueValues = (columnId) => {
-		const values = new Set(data.map((item) => item[columnId]));
-		return Array.from(values).filter(Boolean).sort();
+		const delimiter = filterConfig[columnId];
+		const values = new Set();
+
+		for (const item of data) {
+			const val = item[columnId];
+			if (!val) continue;
+
+			if (delimiter && typeof val === "string") {
+				const parts = val.split(delimiter);
+				for (const part of parts) {
+					values.add(part);
+				}
+			} else {
+				values.add(val);
+			}
+		}
+
+		return Array.from(values).sort();
 	};
 
 	return (
@@ -64,11 +94,14 @@ export default function InteractiveTable({
 				<thead>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<tr key={headerGroup.id}>
-							{headerGroup.headers.map((header) => {
-								const isFilterable = filterableColumns.includes(header.id);
+							{/* 增加 index 索引获取 */}
+							{headerGroup.headers.map((header, index) => {
+								const isFilterable = header.id in filterConfig;
 								const currentFilterValue = header.column.getFilterValue() || [];
 								const isOpen = openFilterId === header.id;
 								const isSorted = header.column.getIsSorted();
+								// 判断是否为最后一列
+								const isLastColumn = index === headerGroup.headers.length - 1;
 
 								return (
 									<th
@@ -77,7 +110,6 @@ export default function InteractiveTable({
 										style={{ width: header.getSize(), padding: "0.5rem" }}
 									>
 										<div className="flex items-center justify-between gap-2">
-											{/* 排序按钮 - 保持优美的样式 */}
 											<button
 												type="button"
 												className={`flex-1 flex transition items-center justify-between w-full btn-plain scale-animation rounded-lg min-h-9 px-3 py-1 font-medium active:scale-95 cursor-pointer select-none ${
@@ -91,7 +123,6 @@ export default function InteractiveTable({
 														header.getContext(),
 													)}
 												</span>
-												{/* 排序指示图标 */}
 												<span className="opacity-40 text-[1rem] ml-1 flex-shrink-0">
 													{{
 														asc: (
@@ -139,18 +170,12 @@ export default function InteractiveTable({
 												</span>
 											</button>
 
-											{/* 筛选区域 - 拦截冒泡 */}
 											{isFilterable && (
 												// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止事件冒泡的容器，非交互元素
+												// biome-ignore lint/a11y/useKeyWithClickEvents: 同上，无需键盘交互
 												<div
 													className="relative"
 													onClick={(e) => e.stopPropagation()}
-													onKeyDown={(e) => {
-														if (e.key === "Enter" || e.key === " ") {
-															e.preventDefault();
-															e.stopPropagation();
-														}
-													}}
 												>
 													<button
 														type="button"
@@ -177,31 +202,37 @@ export default function InteractiveTable({
 														</svg>
 													</button>
 
-													{/* 筛选下拉面板 - 原生相对定位与过渡动画 */}
+													{/* 动态计算面板的对齐方式，并限制最大宽度 */}
 													<div
-														className={`absolute z-[50] top-full -right-2 pt-2 transition-all duration-200 origin-top-right ${
+														className={`absolute z-[50] top-full pt-2 transition-all duration-200 ${
+															isLastColumn
+																? "-right-2 origin-top-right"
+																: "-left-2 origin-top-left"
+														} ${
 															isOpen
 																? "opacity-100 scale-100"
 																: "opacity-0 scale-95 pointer-events-none"
 														}`}
 													>
-														<div className="card-base float-panel p-2 min-w-[180px] shadow-2xl border border-black/5 dark:border-white/10 font-normal">
+														<div className="card-base float-panel p-2 min-w-[180px] max-w-[240px] sm:max-w-[300px] shadow-2xl border border-black/5 dark:border-white/10 font-normal">
 															<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 																筛选: {header.column.columnDef.header}
 															</div>
 															<div className="max-h-[240px] overflow-y-auto custom-scrollbar flex flex-col gap-0.5">
 																{getUniqueValues(header.id).map((val) => (
+																	// 移除了原始的 whitespace-nowrap 避免强行撑大
 																	<label
 																		key={val}
-																		className={`flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 cursor-pointer ${
+																		className={`flex transition items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 cursor-pointer ${
 																			currentFilterValue.includes(val)
 																				? "bg-black/5 dark:bg-white/10 text-[var(--primary)]"
 																				: ""
 																		}`}
 																	>
+																		{/* 增加 flex-shrink-0 保护复选框不被压缩 */}
 																		<input
 																			type="checkbox"
-																			className="rounded border-gray-300 dark:border-gray-600 bg-transparent text-[var(--primary)] focus:ring-0 focus:ring-offset-0 mr-3 cursor-pointer"
+																			className="rounded border-gray-300 dark:border-gray-600 bg-transparent text-[var(--primary)] focus:ring-0 focus:ring-offset-0 mr-3 cursor-pointer flex-shrink-0"
 																			checked={currentFilterValue.includes(val)}
 																			onChange={(e) => {
 																				const checked = e.target.checked;
@@ -217,7 +248,11 @@ export default function InteractiveTable({
 																				);
 																			}}
 																		/>
-																		<span className="text-sm truncate">
+																		{/* 增加 flex-1 min-w-0 并在截断时提供 title 悬浮提示 */}
+																		<span
+																			className="text-sm truncate flex-1 min-w-0 text-left"
+																			title={val}
+																		>
 																			{val}
 																		</span>
 																	</label>
