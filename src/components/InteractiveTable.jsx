@@ -78,19 +78,12 @@ export default function InteractiveTable({
 									>
 										<div className="flex items-center justify-between gap-2">
 											{/* 排序按钮 - 保持优美的样式 */}
-											<div
-												role="button"
-												tabIndex={0}
+											<button
+												type="button"
 												className={`flex-1 flex transition items-center justify-between w-full btn-plain scale-animation rounded-lg min-h-9 px-3 py-1 font-medium active:scale-95 cursor-pointer select-none ${
 													isSorted ? "bg-black/5 dark:bg-white/10" : ""
 												}`}
 												onClick={header.column.getToggleSortingHandler()}
-												onKeyDown={(e) => {
-													if (e.key === "Enter" || e.key === " ") {
-														e.preventDefault();
-														header.column.getToggleSortingHandler()(e);
-													}
-												}}
 											>
 												<span className="truncate">
 													{flexRender(
@@ -144,13 +137,12 @@ export default function InteractiveTable({
 														</svg>
 													)}
 												</span>
-											</div>
+											</button>
 
 											{/* 筛选区域 - 拦截冒泡 */}
 											{isFilterable && (
+												// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止事件冒泡的容器，非交互元素
 												<div
-													role="button"
-													tabIndex={0}
 													className="relative"
 													onClick={(e) => e.stopPropagation()}
 													onKeyDown={(e) => {
