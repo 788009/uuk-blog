@@ -79,10 +79,18 @@ export default function InteractiveTable({
 										<div className="flex items-center justify-between gap-2">
 											{/* 排序按钮 - 保持优美的样式 */}
 											<div
+												role="button"
+												tabIndex={0}
 												className={`flex-1 flex transition items-center justify-between w-full btn-plain scale-animation rounded-lg min-h-9 px-3 py-1 font-medium active:scale-95 cursor-pointer select-none ${
 													isSorted ? "bg-black/5 dark:bg-white/10" : ""
 												}`}
 												onClick={header.column.getToggleSortingHandler()}
+												onKeyDown={(e) => {
+													if (e.key === "Enter" || e.key === " ") {
+														e.preventDefault();
+														header.column.getToggleSortingHandler()(e);
+													}
+												}}
 											>
 												<span className="truncate">
 													{flexRender(
@@ -95,6 +103,7 @@ export default function InteractiveTable({
 													{{
 														asc: (
 															<svg
+																aria-hidden="true"
 																xmlns="http://www.w3.org/2000/svg"
 																width="1.2em"
 																height="1.2em"
@@ -108,6 +117,7 @@ export default function InteractiveTable({
 														),
 														desc: (
 															<svg
+																aria-hidden="true"
 																xmlns="http://www.w3.org/2000/svg"
 																width="1.2em"
 																height="1.2em"
@@ -121,6 +131,7 @@ export default function InteractiveTable({
 														),
 													}[isSorted] ?? (
 														<svg
+															aria-hidden="true"
 															xmlns="http://www.w3.org/2000/svg"
 															width="1.2em"
 															height="1.2em"
@@ -138,10 +149,19 @@ export default function InteractiveTable({
 											{/* 筛选区域 - 拦截冒泡 */}
 											{isFilterable && (
 												<div
+													role="button"
+													tabIndex={0}
 													className="relative"
 													onClick={(e) => e.stopPropagation()}
+													onKeyDown={(e) => {
+														if (e.key === "Enter" || e.key === " ") {
+															e.preventDefault();
+															e.stopPropagation();
+														}
+													}}
 												>
 													<button
+														type="button"
 														onClick={() =>
 															setOpenFilterId(isOpen ? null : header.id)
 														}
@@ -152,6 +172,7 @@ export default function InteractiveTable({
 														}`}
 													>
 														<svg
+															aria-hidden="true"
 															xmlns="http://www.w3.org/2000/svg"
 															width="1.2em"
 															height="1.2em"
@@ -215,6 +236,7 @@ export default function InteractiveTable({
 																<>
 																	<div className="h-[1px] w-full bg-black/10 dark:bg-white/10 my-1.5" />
 																	<button
+																		type="button"
 																		onClick={() =>
 																			header.column.setFilterValue(undefined)
 																		}
