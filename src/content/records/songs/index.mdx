@@ -4185,7 +4185,9 @@ export const data = [
 
 默认按照收录日期降序排列，点击列名可以按照该列升序/降序排列，按住 `Shift` 并依次点击多列可以指定多个排序关键字。
 
-<InteractiveTable client:load data={data} columns={columns} />
+<div style="display: inline-flex; align-items: center;">点击<button class="flex transition items-center justify-center btn-plain scale-animation rounded-lg w-7 h-7 font-medium active:scale-95 opacity-60"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M10 18h4v-2h-4zM3 6v2h18V6zm3 7h12v-2H6z" /></svg></button>可以筛选。</div>
+
+<InteractiveTable client:load data={data} columns={columns} filterableColumns={['category']}/>
 
 ## 按作者
 
