@@ -18,6 +18,7 @@ lang: ''
 - [Unit 4 - Financial Sector](#unit-4---financial-sector)
 - [Unit 5 - Long-Run Consequences of Stabilization Policies](#unit-5---long-run-consequences-of-stabilization-policies)
 - [Unit 6 - Open Economy—International Trade and Finance](#unit-6---open-economyinternational-trade-and-finance)
+- [易错](#易错)
 
 </details>
 
@@ -479,3 +480,9 @@ lang: ''
             2. Foreign income ↑ → export ↑ → demand ↑ → appreciate
     7. Appreciate → 外国人兑换货币变贵 → 外国人认为本国物价变贵 → 本国 export ↓
         1. 升值有利于进口，贬值有利于出口
+
+## 易错
+
+1. Transfer payment 与 GDP 无关，但属于 fiscal policy，用于调控 disposable income
+2. Discretionary fiscal policy = expansionary fiscal policy + contradictionary fiscal policy，与 automatic fiscal policy 不同，无法自动生效
+3. 当 AD 移动时，price level 与 unemployment 负相关；当 AS 移动时，price level 与 unemployment 正相关
