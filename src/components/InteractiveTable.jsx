@@ -9,12 +9,33 @@ import {
 } from "@tanstack/react-table";
 import { useEffect, useMemo, useState } from "react";
 
+// ==========================================
+// 默认原生 Tailwind 主题：纯净、无任何外部依赖
+// ==========================================
+export const genericTheme = {
+	table: "",
+	primaryText: "text-blue-500 dark:text-blue-400",
+	panel:
+		"bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700",
+	btnPlain: "transition-all active:scale-95",
+	activeBg: "bg-gray-100 dark:bg-gray-700",
+	hoverBg: "hover:bg-gray-50 dark:hover:bg-gray-700/50",
+	scrollbar:
+		"[&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600",
+	input:
+		"border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-blue-500 focus:border-blue-500",
+	divider: "bg-gray-200 dark:bg-gray-700",
+	dangerBtn: "text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20",
+	iconHover: "hover:bg-gray-200 dark:hover:bg-gray-600",
+};
+
 export default function InteractiveTable({
 	data,
 	columns,
 	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
+	theme = genericTheme, // 现在默认应用通用原生主题
 }) {
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
@@ -96,7 +117,6 @@ export default function InteractiveTable({
 
 					if (hasRangeFilter) {
 						if (isEmpty) {
-							// 只要范围筛选有值，空数据直接被过滤
 							rangeMatch = false;
 						} else {
 							let p = part;
@@ -145,7 +165,6 @@ export default function InteractiveTable({
 		return () => document.removeEventListener("click", handleClickOutside);
 	}, []);
 
-	// 获取用于分类筛选的唯一值，并处理“无数据”情况
 	const getUniqueValues = (columnId) => {
 		const delimiter = filterConfig[columnId]?.split;
 		const values = new Set();
@@ -175,7 +194,7 @@ export default function InteractiveTable({
 
 		const sorted = Array.from(values).sort();
 		if (hasEmpty) {
-			sorted.push("无数据"); // 置于列表末尾
+			sorted.push("无数据");
 		}
 		return sorted;
 	};
@@ -223,13 +242,11 @@ export default function InteractiveTable({
 				<div className="text-sm opacity-95 font-medium select-none">
 					{showItemCount && (
 						<span>
-							共 <span className="text-[var(--primary)]">{totalCount}</span>{" "}
-							条数据
+							共 <span className={theme.primaryText}>{totalCount}</span> 条数据
 							{filteredCount !== totalCount && (
 								<span className="ml-2">
 									(已筛选出{" "}
-									<span className="text-[var(--primary)]">{filteredCount}</span>{" "}
-									条)
+									<span className={theme.primaryText}>{filteredCount}</span> 条)
 								</span>
 							)}
 						</span>
@@ -237,8 +254,8 @@ export default function InteractiveTable({
 				</div>
 
 				{enableColumnManagement && (
-					// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止事件冒泡的容器，非交互元素
-					// biome-ignore lint/a11y/useKeyWithClickEvents: 同上，无需键盘交互
+					// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止冒泡的容器
+					// biome-ignore lint/a11y/useKeyWithClickEvents: 无需键盘交互
 					<div onClick={(e) => e.stopPropagation()}>
 						<button
 							type="button"
@@ -246,9 +263,9 @@ export default function InteractiveTable({
 								setOpenManager(!openManager);
 								setOpenFilterId(null);
 							}}
-							className={`flex transition items-center justify-center btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 text-sm ${
+							className={`flex transition items-center justify-center rounded-lg h-9 px-3 font-medium text-sm ${theme.btnPlain} ${
 								openManager
-									? "bg-black/5 dark:bg-white/10 text-[var(--primary)]"
+									? `${theme.activeBg} ${theme.primaryText}`
 									: "opacity-70 hover:opacity-100"
 							}`}
 						>
@@ -275,20 +292,22 @@ export default function InteractiveTable({
 									: "opacity-0 scale-95 pointer-events-none"
 							}`}
 						>
-							<div className="card-base float-panel p-2 min-w-[220px] shadow-2xl border border-black/5 dark:border-white/10 font-normal">
+							<div className={`p-2 min-w-[220px] font-normal ${theme.panel}`}>
 								<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 									通用设置
 								</div>
-								<label className="flex items-center gap-3 cursor-pointer w-full btn-plain scale-animation rounded-lg h-9 px-3 mb-1">
+								<label
+									className={`flex items-center gap-3 cursor-pointer w-full rounded-lg h-9 px-3 mb-1 ${theme.btnPlain}`}
+								>
 									<input
 										type="checkbox"
 										checked={showItemCount}
 										onChange={(e) => setShowItemCount(e.target.checked)}
-										className="rounded border-gray-300 dark:border-gray-600 bg-transparent text-[var(--primary)] focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0"
+										className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 									/>
 									<span className="text-sm select-none">显示条目总数</span>
 								</label>
-								<div className="h-[1px] w-full bg-black/10 dark:bg-white/10 my-1.5" />
+								<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
 
 								<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 									可见性与顺序
@@ -303,14 +322,14 @@ export default function InteractiveTable({
 										return (
 											<div
 												key={column.id}
-												className="flex items-center justify-between w-full btn-plain scale-animation rounded-lg h-9 px-3 hover:bg-black/5 dark:hover:bg-white/10"
+												className={`flex items-center justify-between w-full rounded-lg h-9 px-3 ${theme.btnPlain} ${theme.hoverBg}`}
 											>
 												<label className="flex items-center gap-3 cursor-pointer flex-1 min-w-0">
 													<input
 														type="checkbox"
 														checked={column.getIsVisible()}
 														onChange={column.getToggleVisibilityHandler()}
-														className="rounded border-gray-300 dark:border-gray-600 bg-transparent text-[var(--primary)] focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0"
+														className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 													/>
 													<span className="text-sm truncate flex-1 text-left select-none">
 														{headerName}
@@ -322,7 +341,7 @@ export default function InteractiveTable({
 														type="button"
 														onClick={() => handleMoveColumn(index, "up")}
 														disabled={index === 0}
-														className="flex items-center justify-center w-6 h-6 rounded hover:bg-black/10 dark:hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-transparent transition"
+														className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
 													>
 														<svg
 															aria-hidden="true"
@@ -343,7 +362,7 @@ export default function InteractiveTable({
 														disabled={
 															index === table.getAllLeafColumns().length - 1
 														}
-														className="flex items-center justify-center w-6 h-6 rounded hover:bg-black/10 dark:hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-transparent transition"
+														className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
 													>
 														<svg
 															aria-hidden="true"
@@ -363,7 +382,7 @@ export default function InteractiveTable({
 										);
 									})}
 								</div>
-								<div className="h-[1px] w-full bg-black/10 dark:bg-white/10 my-1.5" />
+								<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
 								<button
 									type="button"
 									onClick={() => {
@@ -371,7 +390,7 @@ export default function InteractiveTable({
 										setColumnOrder([]);
 										setShowItemCount(enableItemCount);
 									}}
-									className="flex transition whitespace-nowrap items-center justify-center w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 opacity-70 hover:opacity-100"
+									className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium opacity-70 hover:opacity-100 ${theme.btnPlain}`}
 								>
 									重置表格状态
 								</button>
@@ -382,7 +401,7 @@ export default function InteractiveTable({
 			</div>
 
 			<div className="overflow-x-auto w-full" style={{ minHeight: "300px" }}>
-				<table className="my-generic-table w-full">
+				<table className={`w-full ${theme.table}`}>
 					<thead>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<tr key={headerGroup.id}>
@@ -412,8 +431,8 @@ export default function InteractiveTable({
 											<div className="flex items-center justify-between gap-2">
 												<button
 													type="button"
-													className={`flex-1 flex transition items-center justify-between w-full btn-plain scale-animation rounded-lg min-h-9 px-3 py-1 font-medium active:scale-95 cursor-pointer select-none ${
-														isSorted ? "bg-black/5 dark:bg-white/10" : ""
+													className={`flex-1 flex transition items-center justify-between w-full rounded-lg min-h-9 px-3 py-1 font-medium cursor-pointer select-none ${theme.btnPlain} ${
+														isSorted ? theme.activeBg : ""
 													}`}
 													onClick={header.column.getToggleSortingHandler()}
 												>
@@ -471,8 +490,8 @@ export default function InteractiveTable({
 												</button>
 
 												{isFilterable && (
-													// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止事件冒泡的容器，非交互元素
-													// biome-ignore lint/a11y/useKeyWithClickEvents: 同上，无需键盘交互
+													// biome-ignore lint/a11y/noStaticElementInteractions: 仅作为阻止冒泡的容器
+													// biome-ignore lint/a11y/useKeyWithClickEvents: 无需键盘交互
 													<div
 														className="relative"
 														onClick={(e) => e.stopPropagation()}
@@ -483,9 +502,9 @@ export default function InteractiveTable({
 																setOpenFilterId(isOpen ? null : header.id);
 																setOpenManager(false);
 															}}
-															className={`flex transition items-center justify-center btn-plain scale-animation rounded-lg w-9 h-9 font-medium active:scale-95 ${
+															className={`flex transition items-center justify-center rounded-lg w-9 h-9 font-medium ${theme.btnPlain} ${
 																active || isOpen
-																	? "bg-black/5 dark:bg-white/10 text-[var(--primary)]"
+																	? `${theme.activeBg} ${theme.primaryText}`
 																	: "opacity-60"
 															}`}
 														>
@@ -514,7 +533,9 @@ export default function InteractiveTable({
 																	: "opacity-0 scale-95 pointer-events-none"
 															}`}
 														>
-															<div className="card-base float-panel p-2 min-w-[200px] max-w-[260px] sm:max-w-[300px] shadow-2xl border border-black/5 dark:border-white/10 font-normal flex flex-col gap-1">
+															<div
+																className={`p-2 min-w-[200px] max-w-[260px] sm:max-w-[300px] font-normal flex flex-col gap-1 ${theme.panel}`}
+															>
 																<div className="px-3 py-1.5 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 																	筛选:{" "}
 																	{typeof header.column.columnDef.header ===
@@ -527,11 +548,15 @@ export default function InteractiveTable({
 																	return (
 																		<div key={t} className="flex flex-col">
 																			{idx > 0 && (
-																				<div className="h-[1px] w-full bg-black/10 dark:bg-white/10 my-1.5" />
+																				<div
+																					className={`h-[1px] w-full my-1.5 ${theme.divider}`}
+																				/>
 																			)}
 
 																			{t === "category" && (
-																				<div className="max-h-[200px] overflow-y-auto custom-scrollbar flex flex-col gap-0.5">
+																				<div
+																					className={`max-h-[200px] overflow-y-auto flex flex-col gap-0.5 ${theme.scrollbar}`}
+																				>
 																					{getUniqueValues(header.id).map(
 																						(val) => {
 																							const isChecked =
@@ -541,15 +566,15 @@ export default function InteractiveTable({
 																							return (
 																								<label
 																									key={val}
-																									className={`flex transition items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 cursor-pointer ${
+																									className={`flex transition items-center !justify-start w-full rounded-lg h-9 px-3 font-medium cursor-pointer ${theme.btnPlain} ${
 																										isChecked
-																											? "bg-black/5 dark:bg-white/10 text-[var(--primary)]"
+																											? `${theme.activeBg} ${theme.primaryText}`
 																											: ""
 																									}`}
 																								>
 																									<input
 																										type="checkbox"
-																										className="rounded border-gray-300 dark:border-gray-600 bg-transparent text-[var(--primary)] focus:ring-0 focus:ring-offset-0 mr-3 cursor-pointer flex-shrink-0"
+																										className={`rounded focus:ring-0 focus:ring-offset-0 mr-3 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 																										checked={isChecked}
 																										onChange={(e) => {
 																											const checked =
@@ -600,7 +625,7 @@ export default function InteractiveTable({
 																								],
 																							});
 																						}}
-																						className="w-full min-w-0 flex-1 rounded border border-gray-300 dark:border-gray-600 bg-transparent text-sm px-2.5 py-1.5 focus:ring-1 focus:ring-[var(--primary)] outline-none transition"
+																						className={`w-full min-w-0 flex-1 rounded text-sm px-2.5 py-1.5 outline-none transition ${theme.input}`}
 																					/>
 																					<input
 																						type={inputType}
@@ -615,7 +640,7 @@ export default function InteractiveTable({
 																								],
 																							});
 																						}}
-																						className="w-full min-w-0 flex-1 rounded border border-gray-300 dark:border-gray-600 bg-transparent text-sm px-2.5 py-1.5 focus:ring-1 focus:ring-[var(--primary)] outline-none transition"
+																						className={`w-full min-w-0 flex-1 rounded text-sm px-2.5 py-1.5 outline-none transition ${theme.input}`}
 																					/>
 																				</div>
 																			)}
@@ -625,13 +650,15 @@ export default function InteractiveTable({
 
 																{active && (
 																	<>
-																		<div className="h-[1px] w-full bg-black/10 dark:bg-white/10 my-1.5" />
+																		<div
+																			className={`h-[1px] w-full my-1.5 ${theme.divider}`}
+																		/>
 																		<button
 																			type="button"
 																			onClick={() =>
 																				header.column.setFilterValue(undefined)
 																			}
-																			className="flex transition whitespace-nowrap items-center justify-center w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 text-red-500 hover:bg-red-500/10 dark:hover:bg-red-400/10"
+																			className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium ${theme.btnPlain} ${theme.dangerBtn}`}
 																		>
 																			清除所有
 																		</button>
