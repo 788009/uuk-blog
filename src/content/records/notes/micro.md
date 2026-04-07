@@ -25,6 +25,7 @@ lang: ''
 - [Unit 4 - Imperfect Competition](#unit-4---imperfect-competition)
 - [Unit 5 - Factors Market](#unit-5---factors-market)
 - [Unit 6 - Market Failure and the Role of Government](#unit-6---market-failure-and-the-role-of-government)
+- [其他](#其他)
 
 </details>
 
@@ -312,7 +313,8 @@ lang: ''
         3. $\text{Total profit} = (P - \text{ATC}) × Q$
 7. Shut down and exit
     1. Shut down: short-run decision, 合同未到期
-        1. 若 TR > TVC: 亏钱，但还会继续（不看房租可视为赚钱），不会 shut down
+        1. 若 TR > TVC 且亏钱：但还会继续（不看房租可视为赚钱），不会 shut down
+            - P > ATC
         2. 若 TR < TVC: 亏钱，且不会继续，即 shut down
             - P < ATC
     2. Exit: long-run decision, 合同到期
@@ -435,3 +437,48 @@ lang: ''
         2. Market-based policies (internalize the externalily): Tax/subsidies
             1. Corrective tax (negative externalily): 把外部成本转移至内部, Per-unit tax = MEC
             2. Corrective subsidies (positive externalily): 把好处转移给 private sector, Per-unit subsidies = MEB
+
+## 其他
+
+1. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
+2. ATC 曲线最低点的数学推导（AVC 同理）  
+    $\text{ATC}(x) = \cfrac{\text{TC}(x)}{x},\ \text{MC}(x) = \text{TC}'(x)$（亦有 $\text{MC}(x) = \text{TVC}'(x)$，因此 AVC 同理）  
+    $\begin{aligned} \text{ATC}'(x) &= \cfrac{\text{TC}'(x) \cdot x - \text{TC}(x)}{x^2} \\
+    &= \cfrac{\text{MC}(x) \cdot x - \text{TC}(x)}{x^2} \\
+    &= \cfrac{\text{MC}(x) - \text{ATC}(x)}{x} \end{aligned}$  
+    当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，因此 $\text{ATC}(x)$ 单调递减，反之单调递增，因此 MC = ATC 时，ATC 最小
+3. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
+    - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
+4. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
+5. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
+    推论：
+    1. 在进口模型中，成本（-补贴）低于国际价格（+关税）的国内厂家优先抢占国内市场，先与消费者成交，且成交价格等于国际价格（+关税），因此成交价格与国内供应曲线交点的左侧部分才全部属于国内厂家，也因此，成交价格以下、国内供给曲线以上的区域才都是国内厂家的 surplus；交点右侧，国内厂家不愿意成交，此时进口厂家才开始填补，直到成交价格与需求曲线的交点
+        - 在小国（配额无法影响世界价格）政府实行有效的配额制度时，可以根据这个理论将成交量分为三段
+            1. 国内供给曲线与世界价格的交点左侧：国内厂家的成本更低，因此该部分属于国内厂家
+            2. 上述交点之后的一个配额长度：国际价格更低，因此该部分属于进口厂家
+            3. 之后的部分：进口配额耗尽，国内厂家重新入场，沿着向右平移一个配额长度后的供给曲线继续生产，直到与需求曲线相交，此时的价格即为配额价格
+                - 将这一段向左平移回原供给曲线，与第一部分合并，即为国内厂家的总供给，因此配额曲线以下、国内供给曲线以上的部分即为国内厂家的 surplus
+        - 无论是关税还是配额，国内厂家增加的 surplus 都等于世界价格以上、国内成交价格以下、国内厂家供给曲线左侧的区域
+    2. 在出口模型中，愿意出高价的国内消费者优先与国内厂家成交，且成交价格等于国际价格，因此成交价格与国内需求曲线交点的左侧部分才全部属于国内消费者，也因此，成交价格以上、国内需求曲线以下的区域才都是国内消费者的 surplus；交点右侧，国内消费者不愿意成交，此时国外消费者才开始填补，直到成交价格与供应曲线的交点
+    3. 国内供需曲线均倾斜，进出口的国际价格均水平，国内主体的价格范围更大，国内厂家的成本和消费者的出价比国际价格更灵活，因此进出口模型都是国内优先成交，国外填补空缺
+6. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
+7. 区分 market 图像和 firm 图像
+    1. Market 图像包含 demand 和 supply，demand 往往递减
+    2. Firm 图像包含 MC, AVC, ATC, MR
+        1. 在完全竞争市场中
+            1. 价格永远不变
+            2. Price = Demand = AR = MR，图像水平，即 perfectly elastic
+            3. 价格最终会等于 ATC
+                - 不同企业 ATC 不同怎么办？
+                    - 短期：确实不同，优胜劣汰
+                    - 长期：趋于相同
+        2. 在单一价格垄断市场中
+            1. 价格随数量变化，但不随人变化，即数量一定时，卖出的每一件商品价格都相同
+            2. Price = Demand = AR > MR，图像递减，图像上的点表示对应数量时所有商品的价格
+            3. 每多卖一件商品，都要给之前所有商品降价，减少收入，因此 Price > MR
+        3. 在一级价格歧视中
+            1. 卖出的每一件商品价格未必相同
+            2. Price = Demand = MR ≠ AR，图像递减，图像上的点都表示对应商品的价格
+            3. $\text{AR} = \bar{P}$
+                - Q = 1 时，AR = P
+                - Q > 1 时，AR > P（优先卖给出价更高的人）

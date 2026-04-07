@@ -18,7 +18,7 @@ lang: ''
 - [Unit 4 - Financial Sector](#unit-4---financial-sector)
 - [Unit 5 - Long-Run Consequences of Stabilization Policies](#unit-5---long-run-consequences-of-stabilization-policies)
 - [Unit 6 - Open Economy—International Trade and Finance](#unit-6---open-economyinternational-trade-and-finance)
-- [易错](#易错)
+- [其他](#其他)
 
 </details>
 
@@ -324,7 +324,7 @@ lang: ''
             |Asset|Liabilities (& owner's equity)|
             |---|---|
             |Reserve \$200|Demand deposit \$800|
-            |Loans \$100|Debt \$150|
+            |Loans \$700|Debt \$150|
             |Securities \$100|Owner's equity \$50|
         2. Money multiplying
             1. Reserve ratio & money multiplier: 若每家银行拿到存款都贷 90\% 出去，而每个人拿到贷款之后都存 90\% 到下一家银行，则 money supply 会变成原来的 10 倍
@@ -481,8 +481,24 @@ lang: ''
     7. Appreciate → 外国人兑换货币变贵 → 外国人认为本国物价变贵 → 本国 export ↓
         1. 升值有利于进口，贬值有利于出口
 
-## 易错
+## 其他
 
 1. Transfer payment 与 GDP 无关，但属于 fiscal policy，用于调控 disposable income
 2. Discretionary fiscal policy = expansionary fiscal policy + contradictionary fiscal policy，与 automatic fiscal policy 不同，无法自动生效
 3. 当 AD 移动时，price level 与 unemployment 负相关；当 AS 移动时，price level 与 unemployment 正相关
+4. 凯恩斯消费函数
+    1. $C = a + \text{MPC} \times Y_\text{d}$
+        - $C$: 支出
+        - $a$: 自发性消费（生活的硬性成本）
+        - $\text{MPC}$: 愿意花掉新获得钱的占比
+        - $Y_\text{d}$: 可支配收入
+    2. 推论：当 $Y_\text{d} > \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生正储蓄；当 $Y_\text{d} < \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生负储蓄（dissaving）
+5. Multipliers
+    1. 政府支出/投资：使用 spending multiplier，最终国民收入增加总量 $= \Delta G \times \cfrac{1}{1 - \text{MPC}}$ or $\cfrac{1}{\text{MPS}}$，其中 $\Delta G$ 为政府支出变化量
+        - 此时固定的定额税不会产生影响
+    2. 定额税 (lump-sum tax)：使用 tax multiplier，最终国民收入增加总量 $= \Delta T \times -\cfrac{\text{MPC}}{1 - \text{MPC}}$ or $-\cfrac{\text{MPC}}{\text{MPS}}$，其中 $\Delta T$ 为定额税变化量
+    3. 比例税
+        - 消费最初增加量 $= \Delta \text{Autonomous Spending} \times \text{MPC} (1 - t)$，其中 $\Delta \text{Autonomous Spending}$ 指投资、政府购买等外部推力的变化，$t$ 为税率
+        - 最终国民收入增加总量 $= \Delta \text{Autonomous Spending} \times \cfrac{1}{1 - \text{MPC} (1 - t)}$
+6. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
+7. Multiplier 公式只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
