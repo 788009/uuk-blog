@@ -31,3 +31,5 @@ pnpm-debug.log*
 *.iml
 
 .vscode/
+
+src/content/posts/table-test.mdx
