@@ -20,6 +20,11 @@ const defaultPopoverTheme = {
 	popoverAnimation: "transition-all duration-200",
 	popoverOpen: "opacity-100 scale-100",
 	popoverClosed: "opacity-0 scale-95 pointer-events-none",
+
+	// ====== 为纯文本触发器准备的后备按钮样式 ======
+	// 仅保留必需的交互样式，依赖 Tailwind 默认重置
+	popoverTriggerFallback:
+		"cursor-pointer focus:outline-none text-inherit inline-flex",
 };
 
 // 暴露 Context 供外部系统（如 InteractiveTable）跨层级注入样式
@@ -87,13 +92,14 @@ export function Popover({ children, open, onOpenChange }) {
 /**
  * 触发器：克隆并劫持子元素的 onClick 事件，避免额外生成 DOM 节点破坏外部 Flex 布局
  */
-export function PopoverTrigger({ children }) {
+// Popover.jsx 中的 Trigger 组件
+export function PopoverTrigger({ children, theme: propsTheme = {} }) {
 	const { isOpen, setOpen } = useContext(PopoverStateContext);
+	const mergedTheme = useMergedTheme(propsTheme); // 接入主题系统
 
 	if (React.isValidElement(children)) {
 		return React.cloneElement(children, {
 			onClick: (e) => {
-				// 若外部传入的子元素本身存在 onClick，先触发它
 				if (children.props.onClick) {
 					children.props.onClick(e);
 				}
@@ -102,12 +108,12 @@ export function PopoverTrigger({ children }) {
 		});
 	}
 
+	// 替换为 button，并使用解耦的主题样式
 	return (
 		<button
 			type="button"
 			onClick={() => setOpen(!isOpen)}
-			// 使用 Tailwind 抹除默认按钮样式，使其在外观上表现得像个 span
-			className="cursor-pointer appearance-none bg-transparent border-none p-0 m-0 text-inherit inline focus:outline-none"
+			className={mergedTheme.popoverTriggerFallback}
 		>
 			{children}
 		</button>
