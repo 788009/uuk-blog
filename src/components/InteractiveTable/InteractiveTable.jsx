@@ -8,8 +8,8 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-
-// 引入解耦的弹窗体系
+// 引入 i18n 系统
+import { TableI18nKey, useTableTranslation } from "./i18n/translation.js";
 import {
 	Popover,
 	PopoverContent,
@@ -17,9 +17,7 @@ import {
 	PopoverTrigger,
 } from "./Popover";
 
-// ==========================================
-// 默认原生 Tailwind 主题：纯净、无任何外部依赖
-// ==========================================
+// 默认原生 Tailwind 主题...
 export const genericTheme = {
 	table: "",
 	primaryText: "text-blue-500 dark:text-blue-400",
@@ -35,8 +33,6 @@ export const genericTheme = {
 	divider: "bg-gray-200 dark:bg-gray-700",
 	dangerBtn: "text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20",
 	iconHover: "hover:bg-gray-200 dark:hover:bg-gray-600",
-
-	// ====== 新增：Popover 组件相关原生样式 ======
 	popoverPanel:
 		"bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700",
 	popoverAnimation: "transition-all duration-200",
@@ -51,7 +47,10 @@ export default function InteractiveTable({
 	enableColumnManagement = true,
 	enableItemCount = true,
 	theme = genericTheme,
+	language = "auto", // 新增 language 属性
 }) {
+	const { t } = useTableTranslation(language); // 挂载翻译 Hook
+
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
 	const [openFilterId, setOpenFilterId] = useState(null);
@@ -124,7 +123,8 @@ export default function InteractiveTable({
 
 					if (hasCatFilter) {
 						if (isEmpty) {
-							catMatch = categories.includes("无数据");
+							// 使用当前语言环境的“无数据”占位符进行精确匹配
+							catMatch = categories.includes(t(TableI18nKey.NO_DATA));
 						} else {
 							catMatch = categories.includes(part);
 						}
@@ -200,7 +200,8 @@ export default function InteractiveTable({
 
 		const sorted = Array.from(values).sort();
 		if (hasEmpty) {
-			sorted.push("无数据");
+			// 注入翻译后的无数据占位符
+			sorted.push(t(TableI18nKey.NO_DATA));
 		}
 		return sorted;
 	};
@@ -243,20 +244,41 @@ export default function InteractiveTable({
 	const totalCount = data.length;
 
 	return (
-		// 利用 Provider 向下注入整个表格的 Theme 环境，Popover 遇到对应 key 会自动提取应用
 		<PopoverThemeContext.Provider value={theme}>
 			<div className="w-full flex flex-col gap-2">
 				<div className="flex justify-between items-center w-full relative z-[40] px-1">
 					<div className="text-sm opacity-95 font-medium select-none">
 						{showItemCount && (
 							<span>
-								共 <span className={theme.primaryText}>{totalCount}</span>{" "}
-								条数据
+								{/* 利用翻译函数处理插值 */}
+								{t(TableI18nKey.TOTAL_ITEMS, {
+									total: `<span class="${theme.primaryText}">${totalCount}</span>`,
+								})
+									.split(/<span.*?>(.*?)<\/span>/)
+									.map((part, i) =>
+										i % 2 === 1 ? (
+											<span key={i} className={theme.primaryText}>
+												{part}
+											</span>
+										) : (
+											part
+										),
+									)}
 								{filteredCount !== totalCount && (
 									<span className="ml-2">
-										(已筛选出{" "}
-										<span className={theme.primaryText}>{filteredCount}</span>{" "}
-										条)
+										{t(TableI18nKey.FILTERED_ITEMS, {
+											filtered: `<span class="${theme.primaryText}">${filteredCount}</span>`,
+										})
+											.split(/<span.*?>(.*?)<\/span>/)
+											.map((part, i) =>
+												i % 2 === 1 ? (
+													<span key={i} className={theme.primaryText}>
+														{part}
+													</span>
+												) : (
+													part
+												),
+											)}
 									</span>
 								)}
 							</span>
@@ -293,14 +315,14 @@ export default function InteractiveTable({
 											d="M12 15.5q-1.45 0-2.475-1.025T8.5 12q0-1.45 1.025-2.475T12 8.5q1.45 0 2.475 1.025T16.5 12q0 1.45-1.025 2.475T12 15.5m0-2q.625 0 1.063-.437T13.5 12q0-.625-.437-1.062T12 10.5q-.625 0-1.062.438T10.5 12q0 .625.438 1.063T12 13.5m-1 6.5v-2.25q-.425-.125-.812-.312t-.738-.438l-2.05.85l-1.9-3.3l1.7-1.325q-.05-.2-.075-.4T7 12q0-.2.025-.4t.075-.4l-1.7-1.325l1.9-3.3l2.05.85q.35-.25.738-.437t.812-.313V4h3.8v2.25q.425.125.813.313t.737.437l2.05-.85l1.9 3.3l-1.7 1.325q.05.2.075.4t.025.4q0 .2-.025.4t-.075.4l1.7 1.325l-1.9 3.3l-2.05-.85q-.35.25-.737.438t-.813.312V20z"
 										/>
 									</svg>
-									表格设置
+									{t(TableI18nKey.TABLE_SETTINGS)}
 								</button>
 							</PopoverTrigger>
 
 							<PopoverContent positionClass="top-full right-0 origin-top-right">
 								<div className="p-2 min-w-[220px] font-normal">
 									<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
-										通用设置
+										{t(TableI18nKey.GENERAL_SETTINGS)}
 									</div>
 									<label
 										className={`flex items-center gap-3 cursor-pointer w-full rounded-lg h-9 px-3 mb-1 ${theme.btnPlain}`}
@@ -311,12 +333,14 @@ export default function InteractiveTable({
 											onChange={(e) => setShowItemCount(e.target.checked)}
 											className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 										/>
-										<span className="text-sm select-none">显示条目总数</span>
+										<span className="text-sm select-none">
+											{t(TableI18nKey.SHOW_TOTAL)}
+										</span>
 									</label>
 									<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
 
 									<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
-										可见性与顺序
+										{t(TableI18nKey.VISIBILITY_AND_ORDER)}
 									</div>
 									<div className="flex flex-col gap-0.5">
 										{table.getAllLeafColumns().map((column, index) => {
@@ -398,7 +422,7 @@ export default function InteractiveTable({
 										}}
 										className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium opacity-70 hover:opacity-100 ${theme.btnPlain}`}
 									>
-										重置表格状态
+										{t(TableI18nKey.RESET_STATE)}
 									</button>
 								</div>
 							</PopoverContent>
@@ -541,23 +565,28 @@ export default function InteractiveTable({
 															>
 																<div className="p-2 min-w-[200px] max-w-[260px] sm:max-w-[300px] font-normal flex flex-col gap-1">
 																	<div className="px-3 py-1.5 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
-																		筛选:{" "}
-																		{typeof header.column.columnDef.header ===
-																		"string"
-																			? header.column.columnDef.header
-																			: header.id}
+																		{t(TableI18nKey.FILTER_PREFIX, {
+																			column:
+																				typeof header.column.columnDef
+																					.header === "string"
+																					? header.column.columnDef.header
+																					: header.id,
+																		})}
 																	</div>
 
-																	{filterCfgObj.type.map((t, idx) => {
+																	{filterCfgObj.type.map((tCategory, idx) => {
 																		return (
-																			<div key={t} className="flex flex-col">
+																			<div
+																				key={tCategory}
+																				className="flex flex-col"
+																			>
 																				{idx > 0 && (
 																					<div
 																						className={`h-[1px] w-full my-1.5 ${theme.divider}`}
 																					/>
 																				)}
 
-																				{t === "category" && (
+																				{tCategory === "category" && (
 																					<div
 																						className={`max-h-[200px] overflow-y-auto flex flex-col gap-0.5 ${theme.scrollbar}`}
 																					>
@@ -614,11 +643,13 @@ export default function InteractiveTable({
 																					</div>
 																				)}
 
-																				{t === "range" && (
+																				{tCategory === "range" && (
 																					<div className="flex flex-col gap-2 px-1 py-1">
 																						<input
 																							type={inputType}
-																							placeholder="下限"
+																							placeholder={t(
+																								TableI18nKey.MIN_LIMIT,
+																							)}
 																							value={currentFilterObj.range[0]}
 																							onChange={(e) => {
 																								updateFilterValue(header, {
@@ -633,7 +664,9 @@ export default function InteractiveTable({
 																						/>
 																						<input
 																							type={inputType}
-																							placeholder="上限"
+																							placeholder={t(
+																								TableI18nKey.MAX_LIMIT,
+																							)}
 																							value={currentFilterObj.range[1]}
 																							onChange={(e) => {
 																								updateFilterValue(header, {
@@ -666,7 +699,7 @@ export default function InteractiveTable({
 																				}
 																				className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium ${theme.btnPlain} ${theme.dangerBtn}`}
 																			>
-																				清除所有
+																				{t(TableI18nKey.CLEAR_ALL)}
 																			</button>
 																		</>
 																	)}

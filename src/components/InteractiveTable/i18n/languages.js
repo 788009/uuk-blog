@@ -1,0 +1,152 @@
+// src/components/i18n/languages/index.js
+export const en = {
+	total_items: "Total {total} items",
+	filtered_items: "(Filtered {filtered} items)",
+	table_settings: "Table Settings",
+	general_settings: "General Settings",
+	show_total: "Show total item count",
+	visibility_and_order: "Visibility & Order",
+	reset_state: "Reset Table State",
+	filter_prefix: "Filter: {column}",
+	no_data: "No Data",
+	min_limit: "Min",
+	max_limit: "Max",
+	clear_all: "Clear All",
+};
+
+export const zh_CN = {
+	total_items: "共 {total} 条数据",
+	filtered_items: "(已筛选出 {filtered} 条)",
+	table_settings: "表格设置",
+	general_settings: "通用设置",
+	show_total: "显示条目总数",
+	visibility_and_order: "可见性与顺序",
+	reset_state: "重置表格状态",
+	filter_prefix: "筛选: {column}",
+	no_data: "无数据",
+	min_limit: "下限",
+	max_limit: "上限",
+	clear_all: "清除所有",
+};
+
+export const zh_TW = {
+	total_items: "共 {total} 筆資料",
+	filtered_items: "(已篩選出 {filtered} 筆)",
+	table_settings: "表格設定",
+	general_settings: "一般設定",
+	show_total: "顯示總筆數",
+	visibility_and_order: "可見性與順序",
+	reset_state: "重設表格狀態",
+	filter_prefix: "篩選: {column}",
+	no_data: "無資料",
+	min_limit: "下限",
+	max_limit: "上限",
+	clear_all: "清除全部",
+};
+
+export const ja = {
+	total_items: "全 {total} 件",
+	filtered_items: "({filtered} 件を表示中)",
+	table_settings: "テーブル設定",
+	general_settings: "一般設定",
+	show_total: "合計件数を表示",
+	visibility_and_order: "表示と順序",
+	reset_state: "テーブルをリセット",
+	filter_prefix: "フィルター: {column}",
+	no_data: "データなし",
+	min_limit: "最小",
+	max_limit: "最大",
+	clear_all: "すべてクリア",
+};
+
+export const ko = {
+	total_items: "총 {total}개",
+	filtered_items: "(필터링됨: {filtered}개)",
+	table_settings: "테이블 설정",
+	general_settings: "일반 설정",
+	show_total: "총 항목 수 표시",
+	visibility_and_order: "표시 및 순서",
+	reset_state: "테이블 초기화",
+	filter_prefix: "필터: {column}",
+	no_data: "데이터 없음",
+	min_limit: "최소",
+	max_limit: "최대",
+	clear_all: "모두 지우기",
+};
+
+export const es = {
+	total_items: "Total: {total}",
+	filtered_items: "(Filtrado: {filtered})",
+	table_settings: "Ajustes de tabla",
+	general_settings: "Ajustes generales",
+	show_total: "Mostrar total",
+	visibility_and_order: "Visibilidad y orden",
+	reset_state: "Restablecer tabla",
+	filter_prefix: "Filtro: {column}",
+	no_data: "Sin datos",
+	min_limit: "Mín",
+	max_limit: "Máx",
+	clear_all: "Borrar todo",
+};
+
+export const id = {
+	total_items: "Total {total} item",
+	filtered_items: "(Disaring {filtered} item)",
+	table_settings: "Pengaturan Tabel",
+	general_settings: "Pengaturan Umum",
+	show_total: "Tampilkan total",
+	visibility_and_order: "Visibilitas & Urutan",
+	reset_state: "Setel Ulang Tabel",
+	filter_prefix: "Filter: {column}",
+	no_data: "Tidak ada data",
+	min_limit: "Min",
+	max_limit: "Maks",
+	clear_all: "Hapus Semua",
+};
+
+export const th = {
+	total_items: "ทั้งหมด {total} รายการ",
+	filtered_items: "(กรองแล้ว {filtered} รายการ)",
+	table_settings: "การตั้งค่าตาราง",
+	general_settings: "การตั้งค่าทั่วไป",
+	show_total: "แสดงจำนวนทั้งหมด",
+	visibility_and_order: "การมองเห็นและลำดับ",
+	reset_state: "รีเซ็ตตาราง",
+	filter_prefix: "ตัวกรอง: {column}",
+	no_data: "ไม่มีข้อมูล",
+	min_limit: "ต่ำสุด",
+	max_limit: "สูงสุด",
+	clear_all: "ล้างทั้งหมด",
+};
+
+export const tr = {
+	total_items: "Toplam {total} kayıt",
+	filtered_items: "({filtered} kayıt filtrelendi)",
+	table_settings: "Tablo Ayarları",
+	general_settings: "Genel Ayarlar",
+	show_total: "Toplamı göster",
+	visibility_and_order: "Görünürlük ve Sıra",
+	reset_state: "Tabloyu Sıfırla",
+	filter_prefix: "Filtre: {column}",
+	no_data: "Veri yok",
+	min_limit: "Min",
+	max_limit: "Maks",
+	clear_all: "Tümünü Temizle",
+};
+
+export const vi = {
+	total_items: "Tổng {total} mục",
+	filtered_items: "(Đã lọc {filtered} mục)",
+	table_settings: "Cài đặt bảng",
+	general_settings: "Cài đặt chung",
+	show_total: "Hiển thị tổng số",
+	visibility_and_order: "Hiển thị & Thứ tự",
+	reset_state: "Đặt lại bảng",
+	filter_prefix: "Bộ lọc: {column}",
+	no_data: "Không có dữ liệu",
+	min_limit: "Tối thiểu",
+	max_limit: "Tối đa",
+	clear_all: "Xóa tất cả",
+};
+
+export const dictionaries = { en, zh_CN, zh_TW, ja, ko, es, id, th, tr, vi };
