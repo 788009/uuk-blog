@@ -1,3 +1,4 @@
+import DOMPurify from "isomorphic-dompurify";
 import MarkdownIt from "markdown-it";
 import { useMemo } from "react";
 // 注意向上两级引用 Popover
@@ -7,7 +8,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "../../Popover";
 // 1. 插件默认原生 Tailwind 主题
 // ==========================================
 export const defaultMarkdownTheme = {
-	// 去除了下划线，保留基础交互，添加了轻微的 padding 和 rounded 让背景悬停更自然
 	triggerBtn:
 		"relative bg-transparent transition-all duration-200 font-medium text-blue-600 dark:text-blue-400 inline-flex items-center gap-1.5 box-decoration-clone hover:bg-blue-50 dark:hover:bg-blue-500/10 active:scale-95 px-1 py-0.5 rounded-md leading-none align-middle",
 };
@@ -33,24 +33,43 @@ export default function MarkdownPopoverCell({ info }) {
 		? "top-full right-0 mt-2 origin-top-right z-[60]"
 		: "top-full left-0 mt-2 origin-top-left z-[60]";
 
+	// 对渲染后的 Markdown 进行安全清洗
 	const htmlContent = useMemo(() => {
 		if (!value) return "";
-		return md.render(value);
+		const rawHtml = md.render(value);
+		return DOMPurify.sanitize(rawHtml);
 	}, [value]);
+
+	// 处理图标渲染逻辑
+	const renderIcon = () => {
+		if (!icon) return null;
+
+		// 如果 icon 是一个 React 组件或元素，直接渲染
+		if (typeof icon !== "string") {
+			return (
+				<span className="flex-shrink-0 flex items-center justify-center">
+					{icon}
+				</span>
+			);
+		}
+
+		// 如果 icon 是字符串（如 SVG），清洗后渲染
+		return (
+			<span
+				className="flex-shrink-0 flex items-center justify-center"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: icon is sanitized by isomorphic-dompurify
+				dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(icon) }}
+			/>
+		);
+	};
 
 	if (!value) return <span className="opacity-50">-</span>;
 
 	return (
 		<Popover>
 			<PopoverTrigger>
-				{/* 使用主题注入的按钮样式 */}
 				<button type="button" className={theme.triggerBtn}>
-					{icon && (
-						<span
-							className="flex-shrink-0 flex items-center justify-center"
-							dangerouslySetInnerHTML={{ __html: icon }}
-						/>
-					)}
+					{renderIcon()}
 					<span>{buttonText}</span>
 				</button>
 			</PopoverTrigger>
@@ -59,6 +78,8 @@ export default function MarkdownPopoverCell({ info }) {
 				<div className="min-w-[240px] max-w-[320px] p-4 text-sm max-h-[60vh] overflow-y-auto custom-scrollbar">
 					<div
 						className="prose prose-sm dark:prose-invert max-w-none [&>ul]:m-0 [&>ul]:pl-4 [&>ul>li]:my-1"
+						// 使用清洗过的 HTML
+						// biome-ignore lint/security/noDangerouslySetInnerHtml: icon is sanitized by isomorphic-dompurify
 						dangerouslySetInnerHTML={{ __html: htmlContent }}
 					/>
 				</div>
