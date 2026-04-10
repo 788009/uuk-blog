@@ -32,4 +32,4 @@ pnpm-debug.log*
 
 .vscode/
 
-src/content/posts/table-test.mdx
+src/content/posts/table-test/*
