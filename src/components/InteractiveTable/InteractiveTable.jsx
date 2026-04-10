@@ -250,35 +250,17 @@ export default function InteractiveTable({
 					<div className="text-sm opacity-95 font-medium select-none">
 						{showItemCount && (
 							<span>
-								{/* 利用翻译函数处理插值 */}
-								{t(TableI18nKey.TOTAL_ITEMS, {
-									total: `<span class="${theme.primaryText}">${totalCount}</span>`,
-								})
-									.split(/<span.*?>(.*?)<\/span>/)
-									.map((part, i) =>
-										i % 2 === 1 ? (
-											<span key={i} className={theme.primaryText}>
-												{part}
-											</span>
-										) : (
-											part
-										),
-									)}
+								{/* 直接按 {total} 拆分，利用 React 原生节点进行拼接 */}
+								{t(TableI18nKey.TOTAL_ITEMS).split("{total}")[0]}
+								<span className={theme.primaryText}>{totalCount}</span>
+								{t(TableI18nKey.TOTAL_ITEMS).split("{total}")[1]}
+
 								{filteredCount !== totalCount && (
 									<span className="ml-2">
-										{t(TableI18nKey.FILTERED_ITEMS, {
-											filtered: `<span class="${theme.primaryText}">${filteredCount}</span>`,
-										})
-											.split(/<span.*?>(.*?)<\/span>/)
-											.map((part, i) =>
-												i % 2 === 1 ? (
-													<span key={i} className={theme.primaryText}>
-														{part}
-													</span>
-												) : (
-													part
-												),
-											)}
+										{/* 同理，按 {filtered} 拆分 */}
+										{t(TableI18nKey.FILTERED_ITEMS).split("{filtered}")[0]}
+										<span className={theme.primaryText}>{filteredCount}</span>
+										{t(TableI18nKey.FILTERED_ITEMS).split("{filtered}")[1]}
 									</span>
 								)}
 							</span>
