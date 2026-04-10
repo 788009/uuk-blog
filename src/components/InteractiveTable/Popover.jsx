@@ -66,7 +66,7 @@ export function Popover({ children, open, onOpenChange }) {
 
 	const containerRef = useRef(null);
 
-	// 核心逻辑：点击外部自动关闭
+	// 核心逻辑 1：点击外部自动关闭
 	useEffect(() => {
 		const handleClickOutside = (e) => {
 			if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -78,6 +78,20 @@ export function Popover({ children, open, onOpenChange }) {
 			document.addEventListener("click", handleClickOutside);
 		}
 		return () => document.removeEventListener("click", handleClickOutside);
+	}, [isOpen, setOpen]);
+
+	// 核心逻辑 2：支持 Esc 键关闭
+	useEffect(() => {
+		const handleKeyDown = (e) => {
+			if (e.key === "Escape") {
+				setOpen(false);
+			}
+		};
+
+		if (isOpen) {
+			document.addEventListener("keydown", handleKeyDown);
+		}
+		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, [isOpen, setOpen]);
 
 	return (
@@ -108,7 +122,7 @@ export function PopoverTrigger({ children, theme: propsTheme = {} }) {
 		});
 	}
 
-	// 替换为 button，并使用解耦的主题样式
+	// 遵守无障碍标准：使用 button 代替 span
 	return (
 		<button
 			type="button"
