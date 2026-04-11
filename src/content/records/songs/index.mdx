@@ -58,7 +58,7 @@ export const artistsColumns = [
   }
 ];
 
-> 更新于 2026.3.29
+> 更新于 2026.4.11
 
 ## 目录
 
@@ -91,6 +91,8 @@ export const artistsColumns = [
   client:visible
   data={artistsData} 
   columns={artistsColumns} 
+  filterableColumns={[
+    ['dateSD', {'type': 'range'}], 
+  ]} 
   theme={fuwariTableTheme}
-  filterableColumns={['author']} 
 />
