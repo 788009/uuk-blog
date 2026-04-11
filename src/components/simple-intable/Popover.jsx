@@ -65,11 +65,30 @@ export function Popover({ children, open, onOpenChange }) {
 	);
 
 	const containerRef = useRef(null);
+	const contentRef = useRef(null); // 新增：用于识别 Portal 内部的点击
+	const [rect, setRect] = useState(null); // 新增：记录触发器的屏幕位置
 
-	// 核心逻辑 1：点击外部自动关闭
+	// 计算触发器在整个文档中的绝对坐标
+	const updateRect = useCallback(() => {
+		if (containerRef.current) {
+			const domRect = containerRef.current.getBoundingClientRect();
+			setRect({
+				top: domRect.top,
+				left: domRect.left,
+				width: domRect.width,
+				height: domRect.height,
+			});
+		}
+	}, []);
+
+	// 核心逻辑 1：点击外部自动关闭（兼顾 Portal）
 	useEffect(() => {
 		const handleClickOutside = (e) => {
-			if (containerRef.current && !containerRef.current.contains(e.target)) {
+			// 因为内容被 Portal 传送到 body 底部了，必须同时检查点击是否发生在触发器或内容面板内
+			const isClickTrigger = containerRef.current?.contains(e.target);
+			const isClickContent = contentRef.current?.contains(e.target);
+
+			if (!isClickTrigger && !isClickContent) {
 				setOpen(false);
 			}
 		};
@@ -94,8 +113,22 @@ export function Popover({ children, open, onOpenChange }) {
 		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, [isOpen, setOpen]);
 
+	// 核心逻辑 3：位置同步引擎
+	useEffect(() => {
+		updateRect(); // 初始化时计算一次
+		if (isOpen) {
+			window.addEventListener("resize", updateRect);
+			// 必须开启 capture 捕获阶段 (true)，这样表格内部的水平滚动也能触发位置更新
+			window.addEventListener("scroll", updateRect, true);
+		}
+		return () => {
+			window.removeEventListener("resize", updateRect);
+			window.removeEventListener("scroll", updateRect, true);
+		};
+	}, [isOpen, updateRect]);
+
 	return (
-		<PopoverStateContext.Provider value={{ isOpen, setOpen }}>
+		<PopoverStateContext.Provider value={{ isOpen, setOpen, rect, contentRef }}>
 			<div className="relative inline-flex" ref={containerRef}>
 				{children}
 			</div>
@@ -142,20 +175,95 @@ export function PopoverContent({
 	positionClass,
 	theme: propsTheme = {},
 }) {
-	const { isOpen } = useContext(PopoverStateContext);
+	const { isOpen, rect, contentRef } = useContext(PopoverStateContext);
 	const mergedTheme = useMergedTheme(propsTheme);
 
-	// 默认提供右下挂载，也可通过 positionClass 进行精细微调覆盖
 	const finalPos = positionClass || "top-full right-0 origin-top-right";
+
+	// 拆分两个状态：shouldRender 控制物理 DOM 的存在，isVisible 控制 CSS 动画表现
+	const [shouldRender, setShouldRender] = useState(isOpen);
+	const [isVisible, setIsVisible] = useState(isOpen);
+
+	// 1. 状态与卸载同步逻辑（完美复原入场与出场动画）
+	useEffect(() => {
+		let timer;
+		let frame1;
+		let frame2;
+
+		if (isOpen) {
+			setShouldRender(true); // 第一步：把 DOM 塞进页面，此时 isVisible 仍是 false，状态为关闭（opacity-0）
+
+			// 利用双重 requestAnimationFrame 强制浏览器渲染一帧关闭状态，
+			// 然后再触发 isVisible = true，这样浏览器就能完美演算出透明度过渡动画。
+			frame1 = requestAnimationFrame(() => {
+				frame2 = requestAnimationFrame(() => {
+					setIsVisible(true);
+				});
+			});
+		} else {
+			setIsVisible(false); // 第一步：触发 CSS 出场动画
+			timer = setTimeout(() => {
+				setShouldRender(false); // 第二步：动画播完后销毁 DOM
+			}, 200);
+		}
+
+		return () => {
+			clearTimeout(timer);
+			if (frame1) cancelAnimationFrame(frame1);
+			if (frame2) cancelAnimationFrame(frame2);
+		};
+	}, [isOpen]);
+
+	// 2. 调度原生 Top Layer API
+	useEffect(() => {
+		if (shouldRender && isOpen && contentRef.current) {
+			try {
+				if (!contentRef.current.matches(":popover-open")) {
+					contentRef.current.showPopover();
+				}
+				_e;
+			} catch (_e) {
+				console.warn("Browser fallback");
+			}
+		}
+	}, [shouldRender, isOpen, contentRef]);
+
+	if (!rect || !shouldRender) return null;
 
 	return (
 		<div
-			className={`absolute z-[50] pt-2 ${finalPos} ${mergedTheme.popoverAnimation} ${
-				isOpen ? mergedTheme.popoverOpen : mergedTheme.popoverClosed
-			}`}
+			ref={contentRef}
+			popover="manual"
+			style={{
+				margin: 0,
+				padding: 0,
+				border: "none",
+				background: "transparent",
+				// ======= 强制重置 UA 样式 =======
+				color: "inherit", // 1. 强制继承父级文字颜色，覆盖 CanvasText
+				colorScheme: "inherit", // 2. 强制继承父级配色方案（light/dark）
+				// ===============================
+				position: "fixed",
+				top: rect.top,
+				left: rect.left,
+				width: rect.width,
+				height: rect.height,
+
+				// 将外壳的点击响应设为 none！
+				// 这样透明的外壳就不会挡住下面原按钮的点击事件，再次点击按钮即可关闭。
+				pointerEvents: "none",
+				overflow: "visible",
+			}}
 		>
-			{/* 承载面板底色、阴影与边框的核心层 */}
-			<div className={mergedTheme.popoverPanel}>{children}</div>
+			<div
+				className={`absolute pt-2 max-w-[calc(100vw-16px)] ${finalPos} ${mergedTheme.popoverAnimation} ${
+					isVisible ? mergedTheme.popoverOpen : mergedTheme.popoverClosed
+				}`}
+				// 因为外壳禁用了点击，我们需要给弹出层本身单独开通点击权限，否则菜单里的按钮也会失效
+				style={{ pointerEvents: isVisible ? "auto" : "none" }}
+			>
+				<div className={mergedTheme.popoverPanel}>{children}</div>
+			</div>
 		</div>
 	);
 }

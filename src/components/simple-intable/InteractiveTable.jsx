@@ -412,7 +412,7 @@ export default function InteractiveTable({
 					)}
 				</div>
 
-				<div className="overflow-x-auto w-full" style={{ minHeight: "300px" }}>
+				<div className="overflow-x-auto w-full">
 					<table className={`w-full ${theme.table}`}>
 						<thead>
 							{table.getHeaderGroups().map((headerGroup) => (
