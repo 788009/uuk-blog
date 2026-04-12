@@ -502,3 +502,9 @@ lang: ''
         - 最终国民收入增加总量 $= \Delta \text{Autonomous Spending} \times \cfrac{1}{1 - \text{MPC} (1 - t)}$
 6. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
 7. Multiplier 公式只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
+8. 关于 crowing out
+    - Spending multiplier > 1 时，政府借贷导致的 crowding out 带来的 AD 减少不如政府支出本身带来的 AD 增加，此时 AD 增加
+    - Spending multiplier = 1 时，乘数带来的更多 AD 被 crowding out 抵消，AD 增加量等于政府支出
+    - 0 < Spending multiplier < 1 时，AD 增加，但增加量小于政府支出
+    - Spending multiplier = 0 时，政府支出对 AD 无影响
+    - Spending multiplier < 0 时，crowding out 很强，政府支出反而导致 AD 减少
