@@ -441,16 +441,25 @@ lang: ''
 ## 其他
 
 1. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
-2. ATC 曲线最低点的数学推导（AVC 同理）  
+2. Marginal cost (MC) 与 marginal product (MP) 的关系：假设劳动力工资是唯一可变成本，劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资
+    推论：
+    - MC 取最小值时，MP 取最大值
+    - Diminishing marginal product 可以作为 short-run marginal costs eventually increase 的原因
+3. ATC 曲线最低点的数学推导（AVC 同理）  
     $\text{ATC}(x) = \cfrac{\text{TC}(x)}{x},\ \text{MC}(x) = \text{TC}'(x)$（亦有 $\text{MC}(x) = \text{TVC}'(x)$，因此 AVC 同理）  
     $\begin{aligned} \text{ATC}'(x) &= \cfrac{\text{TC}'(x) \cdot x - \text{TC}(x)}{x^2} \\
     &= \cfrac{\text{MC}(x) \cdot x - \text{TC}(x)}{x^2} \\
     &= \cfrac{\text{MC}(x) - \text{ATC}(x)}{x} \end{aligned}$  
     当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，因此 $\text{ATC}(x)$ 单调递减，反之单调递增，因此 MC = ATC 时，ATC 最小
-3. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
+4. 关于 MC 与 MR
+    1. 当变量相同时，MC 与 MR 互为反函数
+    2. 在 firm 图像中，MC 与 MR 不为反函数，这是因为两个图像的变量不同，MC 曲线的变量是成本与产量，MR 曲线的变量是产量与收入
+    3. 若跳过产量，直接刻画成本与收益的关系，则边际成本与边际收益互为反函数，每一单位收益的边际成本递增，每一单位成本的边际收益递减
+    4. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
+5. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
     - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
-4. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
-5. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
+6. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
+7. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
     推论：
     1. 在进口模型中，成本（-补贴）低于国际价格（+关税）的国内厂家优先抢占国内市场，先与消费者成交，且成交价格等于国际价格（+关税），因此成交价格与国内供应曲线交点的左侧部分才全部属于国内厂家，也因此，成交价格以下、国内供给曲线以上的区域才都是国内厂家的 surplus；交点右侧，国内厂家不愿意成交，此时进口厂家才开始填补，直到成交价格与需求曲线的交点
         - 在小国（配额无法影响世界价格）政府实行有效的配额制度时，可以根据这个理论将成交量分为三段
@@ -461,8 +470,8 @@ lang: ''
         - 无论是关税还是配额，国内厂家增加的 surplus 都等于世界价格以上、国内成交价格以下、国内厂家供给曲线左侧的区域
     2. 在出口模型中，愿意出高价的国内消费者优先与国内厂家成交，且成交价格等于国际价格，因此成交价格与国内需求曲线交点的左侧部分才全部属于国内消费者，也因此，成交价格以上、国内需求曲线以下的区域才都是国内消费者的 surplus；交点右侧，国内消费者不愿意成交，此时国外消费者才开始填补，直到成交价格与供应曲线的交点
     3. 国内供需曲线均倾斜，进出口的国际价格均水平，国内主体的价格范围更大，国内厂家的成本和消费者的出价比国际价格更灵活，因此进出口模型都是国内优先成交，国外填补空缺
-6. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
-7. 区分 market 图像和 firm 图像
+8. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
+9.  区分 market 图像和 firm 图像
     1. Market 图像包含 demand 和 supply，demand 往往递减
     2. Firm 图像包含 MC, AVC, ATC, MR
         1. 在完全竞争市场中
@@ -482,4 +491,4 @@ lang: ''
             3. $\text{AR} = \bar{P}$
                 - Q = 1 时，AR = P
                 - Q > 1 时，AR > P（优先卖给出价更高的人）
-8. 计算各种平均成本时，分母应为产量，而非员工数
+10. 计算各种平均成本时，分母应为产量，而非员工数

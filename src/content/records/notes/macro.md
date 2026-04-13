@@ -294,7 +294,7 @@ lang: ''
         1. Medium of exchange
         2. Unit of account
         3. Store of value
-        4. Standard of deferred payment
+        4. Standard of deferred payment 延期付款
 3. Measuring the money supply
     1. M0 (monetary base)
         1. Currency in circulation
@@ -303,7 +303,7 @@ lang: ''
         1. Currency: cash, coins
         2. Demand deposits: 随时可取用，如活期存款 checking account / checkable deposits
             - 无利息
-        3. Savings deposits 有利息，不经常取钱
+        3. Savings deposits/accounts 有利息，不经常取钱
     3. M2
         1. M1
         2. Small-denomination time deposit 小额定期存款
@@ -500,11 +500,39 @@ lang: ''
     3. 比例税
         - 消费最初增加量 $= \Delta \text{Autonomous Spending} \times \text{MPC} (1 - t)$，其中 $\Delta \text{Autonomous Spending}$ 指投资、政府购买等外部推力的变化，$t$ 为税率
         - 最终国民收入增加总量 $= \Delta \text{Autonomous Spending} \times \cfrac{1}{1 - \text{MPC} (1 - t)}$
+    4. Money multiplier $\cfrac{1}{\text{Reserve ratio}}$: 乘以第一家银行贷出去的第一笔钱，得到银行体系最多能创造多少新货币
 6. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
-7. Multiplier 公式只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
+7. Multiplier 公式（money multiplier 除外）只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
 8. 关于 crowing out
     - Spending multiplier > 1 时，政府借贷导致的 crowding out 带来的 AD 减少不如政府支出本身带来的 AD 增加，此时 AD 增加
     - Spending multiplier = 1 时，乘数带来的更多 AD 被 crowding out 抵消，AD 增加量等于政府支出
     - 0 < Spending multiplier < 1 时，AD 增加，但增加量小于政府支出
     - Spending multiplier = 0 时，政府支出对 AD 无影响
     - Spending multiplier < 0 时，crowding out 很强，政府支出反而导致 AD 减少
+9. 关于 balance sheet
+    - 银行放贷时，分为客户直接取走现金，以及暂不取出现金，依然把钱留在本行两种情况
+        | 维度 | 取走现金 | 留在本行 |
+        | :--- | :--- | :--- |
+        | 贷款人存款数额 | 不变 | 增加 |
+        | Assets 变化 | Loans $\uparrow$, Reserves $\downarrow$ | Loans $\uparrow$, Reserves 不变 |
+        | Liabilities 变化 | Deposits 不变 | Deposits $\uparrow$ |
+        | Required reserves 变化 | 不变 | $\uparrow$ (因为存款基数大了) |
+        | Excess reserves 变化 | $\downarrow$ | $\downarrow$ |
+
+        - 计算 the maximum amount by which this bank can increase its loans 时，考虑第一种情况
+        - 计算 the maximum increase in the money supply from this initial deposit 时，考虑第二种情况
+    - 客户存入现金时，assets 侧的 reserves 增加，liabilities 侧的 deposits 增加
+    - Reserve ratio 的分母只有 demand deposits (a.k.a checkable deposits, demand accounts, net transaction accounts), $\text{Required reserve} = \text{Required reserve ratio} \times \text{Demand deposit}$
+    - Demand deposits、small time deposits 与 stockholder's equity 对比
+        |<center>维度</center>|Demand deposits|Small time deposits|Stockholder's equity|<center>说明</center>|
+        |:-|:-:|:-:|:-:|:-|
+        |是否算 reserves|否|否|否|都属于 liabilities and equity，而 reserves 属于 assets|
+        |是否产生 reserves|是|是|是|都会使 reserves 增加|
+        |是否参与 required reserves 计算|是|否|否|Required reserves = Demand deposits × Required reserve ratio|
+        |是否能用于购买 securities|是|是|是||
+        |是否能用于放贷|是|是|是||
+        |用于放贷是否 create money|是|是|否||
+        |Money supply 种类|M1|M2|不属于||
+10. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
+11. Flat money 是购买力不变的货币
+12. A commercial bank’s ability to create money depends on a fractional reserve banking system
