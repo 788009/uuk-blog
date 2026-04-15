@@ -361,7 +361,7 @@ lang: ''
 7. Monetary policy
     1. Limited reserves: money supply from central bank 会影响 demand
         1. Open market operations: the purchase and sale of US government bonds
-            1. Central bank (CB) 把市场上的债券买回 → CB 的资金流入市场 → MS ↑ → interst rate ↑ → investment ↑ → AD ↑ → GDP ↑
+            1. Central bank (CB) 把市场上的债券买回 → CB 的资金流入市场 → MS ↑ → interst rate ↓ → investment ↑ → AD ↑ → GDP ↑
             2. CB 卖债券 → CB 把市场中的资金收回 → MS ↓ → ... → AD ↓
         2. Reserve requirement
             1. Reserve ratio ↑ → MS ↓ → ... → AD ↓
@@ -390,7 +390,7 @@ lang: ''
 
 1. The Phillips Curve
     1. 横轴: Unemployment rate (\%)
-        - 与 price level 变化方向相同
+        - 与 price level 变化方向相反
     2. 纵轴: Inflation rate (\%)
         - 与 real GDP 变化方向相反
     3. 线
@@ -523,6 +523,7 @@ lang: ''
         - 计算 the maximum increase in the money supply from this initial deposit 时，考虑第二种情况
     - 客户存入现金时，assets 侧的 reserves 增加，liabilities 侧的 deposits 增加
     - Reserve ratio 的分母只有 demand deposits (a.k.a checkable deposits, demand accounts, net transaction accounts), $\text{Required reserve} = \text{Required reserve ratio} \times \text{Demand deposit}$
+    - Reserves 包括存在银行自己金库中的现金，以及在 central bank 账户中的数字，一般后者占主要部分
     - Demand deposits、small time deposits 与 stockholder's equity 对比
         |<center>维度</center>|Demand deposits|Small time deposits|Stockholder's equity|<center>说明</center>|
         |:-|:-:|:-:|:-:|:-|
@@ -536,3 +537,4 @@ lang: ''
 10. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
 11. Flat money 是购买力不变的货币
 12. A commercial bank’s ability to create money depends on a fractional reserve banking system
+13. 个人主动购买 central bank 的债务，也可以减少 money supply
