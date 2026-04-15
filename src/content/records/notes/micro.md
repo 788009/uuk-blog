@@ -441,25 +441,10 @@ lang: ''
 ## 其他
 
 1. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
-2. Marginal cost (MC) 与 marginal product (MP) 的关系：假设劳动力工资是唯一可变成本，劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资
-    推论：
-    - MC 取最小值时，MP 取最大值
-    - Diminishing marginal product 可以作为 short-run marginal costs eventually increase 的原因
-3. ATC 曲线最低点的数学推导（AVC 同理）  
-    $\text{ATC}(x) = \cfrac{\text{TC}(x)}{x},\ \text{MC}(x) = \text{TC}'(x)$（亦有 $\text{MC}(x) = \text{TVC}'(x)$，因此 AVC 同理）  
-    $\begin{aligned} \text{ATC}'(x) &= \cfrac{\text{TC}'(x) \cdot x - \text{TC}(x)}{x^2} \\
-    &= \cfrac{\text{MC}(x) \cdot x - \text{TC}(x)}{x^2} \\
-    &= \cfrac{\text{MC}(x) - \text{ATC}(x)}{x} \end{aligned}$  
-    当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，因此 $\text{ATC}(x)$ 单调递减，反之单调递增，因此 MC = ATC 时，ATC 最小
-4. 关于 MC 与 MR
-    1. 当变量相同时，MC 与 MR 互为反函数
-    2. 在 firm 图像中，MC 与 MR 不为反函数，这是因为两个图像的变量不同，MC 曲线的变量是成本与产量，MR 曲线的变量是产量与收入
-    3. 若跳过产量，直接刻画成本与收益的关系，则边际成本与边际收益互为反函数，每一单位收益的边际成本递增，每一单位成本的边际收益递减
-    4. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
-5. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
+2. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
     - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
-6. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
-7. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
+3. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
+4. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
     推论：
     1. 在进口模型中，成本（-补贴）低于国际价格（+关税）的国内厂家优先抢占国内市场，先与消费者成交，且成交价格等于国际价格（+关税），因此成交价格与国内供应曲线交点的左侧部分才全部属于国内厂家，也因此，成交价格以下、国内供给曲线以上的区域才都是国内厂家的 surplus；交点右侧，国内厂家不愿意成交，此时进口厂家才开始填补，直到成交价格与需求曲线的交点
         - 在小国（配额无法影响世界价格）政府实行有效的配额制度时，可以根据这个理论将成交量分为三段
@@ -470,44 +455,71 @@ lang: ''
         - 无论是关税还是配额，国内厂家增加的 surplus 都等于世界价格以上、国内成交价格以下、国内厂家供给曲线左侧的区域
     2. 在出口模型中，愿意出高价的国内消费者优先与国内厂家成交，且成交价格等于国际价格，因此成交价格与国内需求曲线交点的左侧部分才全部属于国内消费者，也因此，成交价格以上、国内需求曲线以下的区域才都是国内消费者的 surplus；交点右侧，国内消费者不愿意成交，此时国外消费者才开始填补，直到成交价格与供应曲线的交点
     3. 国内供需曲线均倾斜，进出口的国际价格均水平，国内主体的价格范围更大，国内厂家的成本和消费者的出价比国际价格更灵活，因此进出口模型都是国内优先成交，国外填补空缺
-8. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
-9. 区分 market 图像和 firm 图像
+5. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
+6. 图像
     1. Market 图像包含 demand 和 supply，demand 往往递减
-    2. Firm 图像包含 MC, AVC, ATC, MR, P (Price), 且 P 总是等于 market 图像中的 demand。无论在什么市场，价格都由 MC = MR 决定，经济利润都为 $(P - \text{ATC}) \times Q$
-        1. 在完全竞争市场中
+    2. Firm 图像包含 TC, TFC, TVC, TR, TP, AC (ATC), AFC, AVC, AR, AP, MC, MR, MP (Product), P (Price)
+        1. 在所有市场类型中
+            1. 数学定义
+                - $\text{A\_}(x) = \cfrac{\text{T\_}(x)}{x}$
+                - $\text{M\_}(x) = \text{T\_}'(x) = \text{TV\_}'(x)$
+            2. P 总是等于 market 图像中的 demand
+            3. 无论在什么市场，价格都由 MC = MR 决定，经济利润都为 $(P - \text{ATC}) \times Q$
+            4. MC 与 MP 的关系：假设劳动力工资是唯一可变成本，劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资
+                推论：
+                - MC 取最小值时，MP 取最大值
+                - Diminishing marginal product 可以作为 short-run marginal costs eventually increase 的原因
+            5. ATC 曲线最低点的数学推导（AVC 同理）  
+                $\text{ATC}(x) = \cfrac{\text{TC}(x)}{x},\ \text{MC}(x) = \text{TC}'(x)$（亦有 $\text{MC}(x) = \text{TVC}'(x)$，因此 AVC 同理）  
+                $\begin{aligned} \text{ATC}'(x) &= \cfrac{\text{TC}'(x) \cdot x - \text{TC}(x)}{x^2} \\
+                &= \cfrac{\text{MC}(x) \cdot x - \text{TC}(x)}{x^2} \\
+                &= \cfrac{\text{MC}(x) - \text{ATC}(x)}{x} \end{aligned}$  
+                当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，因此 $\text{ATC}(x)$ 单调递减，反之单调递增，因此 MC = ATC 时，ATC 最小
+            6. 关于 MC 与 MR
+                1. 当变量相同时，MC 与 MR 互为反函数
+                2. 在 firm 图像中，MC 与 MR 不为反函数，这是因为两个图像的变量不同，MC 曲线的变量是成本与产量，MR 曲线的变量是产量与收入
+                3. 若跳过产量，直接刻画成本与收益的关系，则边际成本与边际收益互为反函数，每一单位收益的边际成本递增，每一单位成本的边际收益递减
+                4. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
+        2. 在完全竞争市场中
             1. 供给是分散的，对特定企业来说，价格永远不变
             2. P = AR = MR，图像水平，即 perfectly elastic
             3. 价格最终会等于 ATC
                 - 不同企业 ATC 不同怎么办？
                     - 短期：确实不同，优胜劣汰
                     - 长期：趋于相同
-        2. 在非完全竞争市场中
+        3. 在非完全竞争市场中
             1. 价格随数量变化，但不随人变化，即数量一定时，卖出的每一件商品价格都相同
                 原因：
                 - 在单一价格垄断市场中，企业自己就是所有供给，供给有稀缺性
                 - 在垄断竞争市场中，每个企业的产品有其独特性，该独特性是稀缺的
             2. P = AR > MR，图像递减，图像上的点表示对应数量时所有商品的价格
             3. 每多卖一件商品，都要给之前所有商品降价，减少收入，因此 P > MR
+                - 产量越高，再多卖一件商品时价格越低，之前需要降价的商品越多，因此 MR 递减
                 - 虽然 MC = MR 时若继续生产，依然可以以高于成本价的价格（但比当前价格低）卖出，但同时必须为之前所有人降价，降价导致原有客户流失的利润，超过了新客户带来的利润，因此企业拒绝继续生产，也因此，在 MC = MR 之后，P = MC 之前，就产生了 deadweight loss
             4. 长期视角
                 - 在单一价格垄断市场中，由于进入壁垒高导致没有竞争，以及商品的稀缺性，MC = MR 的点通常落在 P > ATC 的区间内
-                - 在垄断竞争市场中，市场无进出壁垒（与完全竞争市场相同），因此价格最终会等于 ATC，且两条曲线在 MC = MR 的产量相切
-                    - 数学推导：已知 $\exist x_0, \, \begin{cases}
-                        \text{MC}(x_0) = \text{MR}(x_0) \\
-                        \text{ATC}(x_0) = P(x_0)
-                    \end{cases}$, 证明 $\text{ATC}(x)$ 与 $P(x)$ 在 $x = x_0$ 处相切  
-                        $\text{TR}(x) = P(x) \cdot x$  
-                        $\text{MR}(x) = \text{TR}'(x) = P'(x) \cdot x + P(x)$  
-                        $\implies P'(x) = \cfrac{\text{MR}(x) - P(x)}{x}$  
-                        上文已经证明 $\text{ATC}'(x) = \cfrac{\text{MC}(x) - \text{ATC}(x)}{x}$  
-                        由已知，当 $x = x_0$ 时，$\begin{cases}
+                - 在垄断竞争市场中，市场无进出壁垒（与完全竞争市场相同），因此价格最终会等于 ATC，且两条曲线在 MC = MR 的产量处相切
+                    - 数学推导  
+                        - 已知 $\exist x_0, \, \begin{cases}
                             \text{MC}(x_0) = \text{MR}(x_0) \\
                             \text{ATC}(x_0) = P(x_0)
-                        \end{cases}$, 所以 $\text{ATC}'(x_0) = P'(x_0)$, 又因为 $\text{ATC}(x_0) = P(x_0)$, 所以 $\text{ATC}(x)$ 与 $P(x)$ 在 $x = x_0$ 处相切
-        3. 在一级价格歧视中
+                        \end{cases}$
+                        - 证明  
+                            $\text{TR}(x) = P(x) \cdot x$  
+                            $\implies \text{MR}(x) = \text{TR}'(x) = P'(x) \cdot x + P(x)$  
+                            $\implies P'(x) = \cfrac{\text{MR}(x) - P(x)}{x}$  
+                            上文已经证明 $\text{ATC}'(x) = \cfrac{\text{MC}(x) - \text{ATC}(x)}{x}$  
+                            由已知，当 $x = x_0$ 时，$\begin{cases}
+                                \text{MC}(x_0) = \text{MR}(x_0) \\
+                                \text{ATC}(x_0) = P(x_0)
+                            \end{cases}$, 所以 $\text{ATC}'(x_0) = P'(x_0)$  
+                            又因为 $\text{ATC}(x_0) = P(x_0)$, 所以 $\text{ATC}(x)$ 与 $P(x)$ 在 $x = x_0$ 处相切
+                    - 推论
+                        - $\forall x, \, P'(x) < 0 \implies P'(x_0) < 0 \implies \text{ATC}'(x_0) = P'(x_0) < 0$, 因此 ATC 最小值点的产量大于 $x_0$，企业若继续增产，可以继续减小 ATC，但由于继续增产利润减少，企业不会继续增产，实际产量不等于 ATC 最小时的产量，二者之差即为 excess capacity
+        4. 在一级价格歧视中
             1. 卖出的每一件商品价格未必相同
             2. P = MR ≠ AR，图像递减，图像上的点都表示对应商品的价格
             3. $\text{AR} = \bar{P}$
                 - Q = 1 时，AR = P
                 - Q > 1 时，AR > P（优先卖给出价更高的人）
-10. 计算各种平均成本时，分母应为产量，而非员工数
+7. 计算各种平均成本时，分母应为产量，而非员工数
