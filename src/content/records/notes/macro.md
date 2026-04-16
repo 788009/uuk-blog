@@ -146,7 +146,7 @@ lang: ''
         1. Discouraged workers
         2. Under-employed workers: 部分时间失业
         3. Illegal labor: 有工作但不敢上报
-    7. Type of unemployment
+    7. Types of unemployment
         1. Frictional unemployment
         2. Structural unemployment: 在特定工资水平下劳动力供不应求
             1. Technology progress
@@ -155,7 +155,8 @@ lang: ''
             4. Labor union
             5. Efficiency wages
         3. Cyclical unemployment: 经济变差导致的失业
-    8. Natural unemployment = Frictional unemployment + Structural enployment
+    8. Actual unemployment rate = Frictional unemployment rate + Structural unemployment rate + Cyclical unemployment rate
+    9. Natural unemployment = Frictional unemployment + Structural enployment
 5. Business cycle
     1. Recession, trough
     2. Expansion, peak
@@ -371,7 +372,14 @@ lang: ''
     2. Ample reserve
         1. Administered interst rate → policy rate → interest rate → investment → AD
         2. Open market operation: only to maintain ample reserve
-8. Loanable funds market 可贷资金市场
+8. Reserve market
+    1. 图像
+        1. 纵轴: policy rate
+        2. 横轴: quantity of reserves
+    2. 市场状态
+        1. Limited reserves: 向下倾斜部分
+        2. Ample reserve: 水平部分
+9.  Loanable funds market 可贷资金市场
     1. Supply: saving
         1. Private saving
         2. Public saving (government)
@@ -389,9 +397,9 @@ lang: ''
 ## Unit 5 - Long-Run Consequences of Stabilization Policies
 
 1. The Phillips Curve
-    1. 横轴: Unemployment rate (\%)
-        - 与 price level 变化方向相反
-    2. 纵轴: Inflation rate (\%)
+    1. 纵轴: Inflation rate (\%)
+        - 与 price level 变化方向相同
+    2. 横轴: Unemployment rate (\%)
         - 与 real GDP 变化方向相反
     3. 线
         1. Short-run Phillips Curve (SRPC): 递减
@@ -537,3 +545,18 @@ lang: ''
 10. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
 11. A commercial bank’s ability to create money depends on a fractional reserve banking system
 12. 个人主动购买 central bank 的债务，也可以减少 money supply
+13. 银行之间的几种利率
+    - Policy rate: commercial bank 之间互相贷款的利率
+    - Discount rate: commercial bank 向 central bank 贷款的利率
+    - Administered interst rate: commercial bank 在 central bank 存款的利率，比如 Interest on Reserve Balances (IORB)
+14. 导致银行之间贷款增加的原因
+    | 触发原因 | 利率 | 对应政策/现象 |
+    | :--- | :--- | :--- |
+    | Policy Rate 降低 | 下降 | 扩张性货币政策 |
+    | Money Demand 增加 | 上升 | 经济扩张 / 通货膨胀 |
+15. AD 移动，可以推导出 Phillips Curve 的点的移动方向（左上/右下），但为什么一定会沿着 SRPC 移动呢？
+    - 因为 SRPC 这条线本身的定义就是：在给定“预期通胀”和“生产成本”的前提下，失业与通胀的所有可能组合
+16. The interest rate on short-term government bonds（短期国债利率）是其他所有利率的基础
+    - Bond Prices and Interest Rates are inversely related
+17. 在考试中，所有利率都可以看作同一种趋势（除了 nominal 和 real 的区别）
+18. 关于预期：现实会向着预期发展

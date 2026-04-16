@@ -458,13 +458,13 @@ lang: ''
 5. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
 6. 图像
     1. Market 图像包含 demand 和 supply，demand 往往递减
-    2. Firm 图像包含 TC, TFC, TVC, TR, TP, AC (ATC), AFC, AVC, AR, AP, MC, MR, MP (Product), P (Price)
+    2. Firm 图像包含 TC, TFC, TVC, TR, TP; AC (ATC), AFC, AVC, AR, AP; MC, MR, MP (Product); P (Price)
         1. 在所有市场类型中
             1. 数学定义
                 - $\text{A\_}(x) = \cfrac{\text{T\_}(x)}{x}$
                 - $\text{M\_}(x) = \text{T\_}'(x) = \text{TV\_}'(x)$
             2. P 总是等于 market 图像中的 demand
-            3. 无论在什么市场，价格都由 MC = MR 决定，经济利润都为 $(P - \text{ATC}) \times Q$
+            3. 无论在什么市场，产量都由 MC = MR 决定，经济利润都为 $(P - \text{ATC}) \times Q$
             4. MC 与 MP 的关系：假设劳动力工资是唯一可变成本，劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资
                 推论：
                 - MC 取最小值时，MP 取最大值
@@ -480,6 +480,15 @@ lang: ''
                 2. 在 firm 图像中，MC 与 MR 不为反函数，这是因为两个图像的变量不同，MC 曲线的变量是成本与产量，MR 曲线的变量是产量与收入
                 3. 若跳过产量，直接刻画成本与收益的关系，则边际成本与边际收益互为反函数，每一单位收益的边际成本递增，每一单位成本的边际收益递减
                 4. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
+            7. 无歧视时 MR 与 PED 的关系  
+                $\text{TR}(x) = P(x) \cdot x$  
+                $\implies \text{MR}(x) = \text{TR}'(x) = P'(x) \cdot x + P(x)$  
+                $\text{PED} = -\cfrac{\cfrac{{\rm d}x}{x}}{\cfrac{{\rm d}P(x)}{P(x)}} = -\cfrac{P(x)}{P'(x) \cdot x}$  
+                $\implies \text{MR}(x) = P'(x) \cdot x + P(x) = P(x) \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$  
+                - 推论：由于 P 总是正数
+                    - MR > 0, PED > 1, elastic
+                    - MR = 0, PED = 1, unit elastic
+                    - MR < 0, PED < 1, inelastic
         2. 在完全竞争市场中
             1. 供给是分散的，对特定企业来说，价格永远不变
             2. P = AR = MR，图像水平，即 perfectly elastic
@@ -505,8 +514,7 @@ lang: ''
                             \text{ATC}(x_0) = P(x_0)
                         \end{cases}$
                         - 证明  
-                            $\text{TR}(x) = P(x) \cdot x$  
-                            $\implies \text{MR}(x) = \text{TR}'(x) = P'(x) \cdot x + P(x)$  
+                            上文已经证明 $\text{MR}(x) = P'(x) \cdot x + P(x)$  
                             $\implies P'(x) = \cfrac{\text{MR}(x) - P(x)}{x}$  
                             上文已经证明 $\text{ATC}'(x) = \cfrac{\text{MC}(x) - \text{ATC}(x)}{x}$  
                             由已知，当 $x = x_0$ 时，$\begin{cases}
@@ -515,11 +523,25 @@ lang: ''
                             \end{cases}$, 所以 $\text{ATC}'(x_0) = P'(x_0)$  
                             又因为 $\text{ATC}(x_0) = P(x_0)$, 所以 $\text{ATC}(x)$ 与 $P(x)$ 在 $x = x_0$ 处相切
                     - 推论
-                        - $\forall x, \, P'(x) < 0 \implies P'(x_0) < 0 \implies \text{ATC}'(x_0) = P'(x_0) < 0$, 因此 ATC 最小值点的产量大于 $x_0$，企业若继续增产，可以继续减小 ATC，但由于继续增产利润减少，企业不会继续增产，实际产量不等于 ATC 最小时的产量，二者之差即为 excess capacity
-        4. 在一级价格歧视中
-            1. 卖出的每一件商品价格未必相同
-            2. P = MR ≠ AR，图像递减，图像上的点都表示对应商品的价格
-            3. $\text{AR} = \bar{P}$
-                - Q = 1 时，AR = P
-                - Q > 1 时，AR > P（优先卖给出价更高的人）
+                        - $\forall x, \, P'(x) < 0 \implies P'(x_0) < 0 \implies \text{ATC}'(x_0) = P'(x_0) < 0$, 即 $x = x_0$ 处 ATC 仍在递减，因此 $x_0$ 小于 ATC 最小值点的产量，企业若继续增产，可以减小 ATC，但由于继续增产导致利润减少，企业不会继续增产，实际产量小于 ATC 最小时的产量，二者之差即为 excess capacity
+        4. 在价格歧视中
+            1. 一级价格歧视 (First-degree / Perfect Price Discrimination)
+                1. 卖出的每一件商品价格未必相同
+                2. P = MR ≠ AR，图像递减，图像上的点都表示对应商品的价格
+                3. $\text{AR} = \bar{P}$
+                    - Q = 1 时，AR = P
+                    - Q > 1 时，AR > P（优先卖给出价更高的人）
+            2. 三级价格歧视 (Third-degree Price Discrimination)
+                1. 企业通过外部特征（年龄、职业、时间、地点）判断出不同群体的平均需求弹性，再根据不同群体定价
+                2. 每个群体可以看作一个无歧视的子市场，在每个子市场中都有 $\text{MR} = P \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$，得到价格 $P = \cfrac{\text{MR}}{1 - \cfrac{1}{\text{PED}}}$
+                3. 实际售卖时 MR 总是等于 MC，因此实际售卖时 $P = \cfrac{\text{MC}}{1 - \cfrac{1}{\text{PED}}}$
+                4. 由于最后一件商品在进入子市场之前就已经生产完成，MC 对各市场是共同的常数，因此 P 与 PED 负相关，即群体的平均需求弹性越小，PED 越小，定价就越高
+                5. 推导 A、B 两个市场的价格比例  
+                    $\begin{cases}
+                        \text{MR}_A = P_A \cdot \left(1 - \cfrac{1}{\text{PED}_A} \right) \\
+                        \text{MR}_B = P_B \cdot \left(1 - \cfrac{1}{\text{PED}_B} \right) \\
+                        \text{MR}_A = \text{MR}_B = \text{MC}
+                    \end{cases}$  
+                    $\implies P_A \cdot \left(1 - \cfrac{1}{\text{PED}_A} \right) = P_B \cdot \left(1 - \cfrac{1}{\text{PED}_B} \right)$  
+                    $\implies \cfrac{P_A}{P_B} = \cfrac{1 - \cfrac{1}{\text{PED}_B}}{1 - \cfrac{1}{\text{PED}_A}}$
 7. 计算各种平均成本时，分母应为产量，而非员工数
