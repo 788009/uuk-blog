@@ -484,8 +484,8 @@ lang: ''
 ## 其他
 
 1. Transfer payment 与 GDP 无关，但属于 fiscal policy，用于调控 disposable income
-2. Discretionary fiscal policy = expansionary fiscal policy + contradictionary fiscal policy，与 automatic fiscal policy 不同，无法自动生效
-3. 当 AD 移动时，price level 与 unemployment 负相关；当 AS 移动时，price level 与 unemployment 正相关
+2. Discretionary fiscal policy = expansionary fiscal policy + contractionary fiscal policy，与 automatic fiscal policy 不同，无法自动生效
+3. 当 AD 移动时，price level 与 unemployment 负相关；当 SRAS 移动时，price level 与 unemployment 正相关
 4. 凯恩斯消费函数
     1. $C = a + \text{MPC} \times Y_\text{d}$
         - $C$: 支出
@@ -535,6 +535,5 @@ lang: ''
         |用于放贷是否 create money|是|是|否||
         |Money supply 种类|M1|M2|不属于||
 10. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
-11. Flat money 是购买力不变的货币
-12. A commercial bank’s ability to create money depends on a fractional reserve banking system
-13. 个人主动购买 central bank 的债务，也可以减少 money supply
+11. A commercial bank’s ability to create money depends on a fractional reserve banking system
+12. 个人主动购买 central bank 的债务，也可以减少 money supply
