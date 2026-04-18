@@ -4,3 +4,4 @@
 - [Galgame](/records/galgame/)
 - [学习笔记](/records/notes/)
 - [Ideas](/records/ideas/)
+- [疑难杂症](/records/troubleshooting/)
