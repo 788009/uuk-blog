@@ -12,6 +12,8 @@ export const en = {
 	min_limit: "Min",
 	max_limit: "Max",
 	clear_all: "Clear All",
+	loading: "Loading...",
+	load_failed: "Failed to load: {error}",
 };
 
 export const zh_CN = {
@@ -27,6 +29,8 @@ export const zh_CN = {
 	min_limit: "下限",
 	max_limit: "上限",
 	clear_all: "清除所有",
+	loading: "加载中...",
+	load_failed: "加载失败: {error}",
 };
 
 export const zh_TW = {
@@ -42,6 +46,8 @@ export const zh_TW = {
 	min_limit: "下限",
 	max_limit: "上限",
 	clear_all: "清除全部",
+	loading: "載入中...",
+	load_failed: "載入失敗: {error}",
 };
 
 export const ja = {
@@ -57,6 +63,8 @@ export const ja = {
 	min_limit: "最小",
 	max_limit: "最大",
 	clear_all: "すべてクリア",
+	loading: "読み込み中...",
+	load_failed: "読み込みに失敗しました: {error}",
 };
 
 export const ko = {
@@ -72,6 +80,8 @@ export const ko = {
 	min_limit: "최소",
 	max_limit: "최대",
 	clear_all: "모두 지우기",
+	loading: "로딩 중...",
+	load_failed: "로드 실패: {error}",
 };
 
 export const es = {
@@ -87,6 +97,8 @@ export const es = {
 	min_limit: "Mín",
 	max_limit: "Máx",
 	clear_all: "Borrar todo",
+	loading: "Cargando...",
+	load_failed: "Error al cargar: {error}",
 };
 
 export const id = {
@@ -102,6 +114,8 @@ export const id = {
 	min_limit: "Min",
 	max_limit: "Maks",
 	clear_all: "Hapus Semua",
+	loading: "Memuat...",
+	load_failed: "Gagal memuat: {error}",
 };
 
 export const th = {
@@ -117,6 +131,8 @@ export const th = {
 	min_limit: "ต่ำสุด",
 	max_limit: "สูงสุด",
 	clear_all: "ล้างทั้งหมด",
+	loading: "กำลังโหลด...",
+	load_failed: "โหลดล้มเหลว: {error}",
 };
 
 export const tr = {
@@ -132,6 +148,8 @@ export const tr = {
 	min_limit: "Min",
 	max_limit: "Maks",
 	clear_all: "Tümünü Temizle",
+	loading: "Yükleniyor...",
+	load_failed: "Yükleme başarısız: {error}",
 };
 
 export const vi = {
@@ -147,6 +165,8 @@ export const vi = {
 	min_limit: "Tối thiểu",
 	max_limit: "Tối đa",
 	clear_all: "Xóa tất cả",
+	loading: "Đang tải...",
+	load_failed: "Tải thất bại: {error}",
 };
 
 export const dictionaries = { en, zh_CN, zh_TW, ja, ko, es, id, th, tr, vi };

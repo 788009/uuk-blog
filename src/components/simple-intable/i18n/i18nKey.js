@@ -12,4 +12,6 @@ export const TableI18nKey = {
 	MIN_LIMIT: "min_limit",
 	MAX_LIMIT: "max_limit",
 	CLEAR_ALL: "clear_all",
+	LOADING: "loading",
+	LOAD_FAILED: "load_failed",
 };

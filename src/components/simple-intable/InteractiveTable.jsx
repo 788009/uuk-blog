@@ -7,7 +7,7 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 // 引入 i18n 系统
 import { TableI18nKey, useTableTranslation } from "./i18n/translation.js";
 import {
@@ -41,15 +41,20 @@ export const genericTheme = {
 };
 
 export default function InteractiveTable({
-	data,
+	data = [],
 	columns,
 	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
 	theme = genericTheme,
-	language = "auto", // 新增 language 属性
+	language = "auto",
 }) {
 	const { t } = useTableTranslation(language); // 挂载翻译 Hook
+
+	// 用于存储解析后的内部表格数据及异步状态
+	const [tableData, setTableData] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [fetchError, setFetchError] = useState(null);
 
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
@@ -59,6 +64,43 @@ export default function InteractiveTable({
 	const [columnOrder, setColumnOrder] = useState([]);
 	const [openManager, setOpenManager] = useState(false);
 	const [showItemCount, setShowItemCount] = useState(enableItemCount);
+
+	// 处理传入的 data 是数组还是 URL 路径
+	useEffect(() => {
+		if (Array.isArray(data)) {
+			setTableData(data);
+			setIsLoading(false);
+			setFetchError(null);
+		} else if (typeof data === "string" && data.trim() !== "") {
+			setIsLoading(true);
+			setFetchError(null);
+			fetch(data)
+				.then((res) => {
+					if (!res.ok) {
+						throw new Error(`HTTP error! status: ${res.status}`);
+					}
+					return res.json();
+				})
+				.then((json) => {
+					// 确保解析出来的是数组
+					if (Array.isArray(json)) {
+						setTableData(json);
+					} else {
+						throw new Error("Fetched JSON is not an array");
+					}
+					setIsLoading(false);
+				})
+				.catch((err) => {
+					console.error("Failed to fetch table data:", err);
+					setFetchError(err.message);
+					setIsLoading(false);
+					setTableData([]);
+				});
+		} else {
+			setTableData([]);
+			setIsLoading(false);
+		}
+	}, [data]);
 
 	const filterConfig = useMemo(() => {
 		const config = {};
@@ -84,14 +126,16 @@ export default function InteractiveTable({
 		const types = {};
 		columns.forEach((col) => {
 			const id = col.accessorKey || col.id;
-			const firstValid = data.find((row) => row[id] != null && row[id] !== "");
+			const firstValid = tableData.find(
+				(row) => row[id] != null && row[id] !== "",
+			);
 			types[id] = firstValid ? typeof firstValid[id] : "string";
 		});
 		return types;
-	}, [columns, data]);
+	}, [columns, tableData]);
 
 	const table = useReactTable({
-		data,
+		data: tableData,
 		columns,
 		state: { sorting, columnFilters, columnVisibility, columnOrder },
 		onSortingChange: setSorting,
@@ -176,7 +220,7 @@ export default function InteractiveTable({
 		const values = new Set();
 		let hasEmpty = false;
 
-		for (const item of data) {
+		for (const item of tableData) {
 			const val = item[columnId];
 
 			if (val == null || val === "") {
@@ -241,14 +285,14 @@ export default function InteractiveTable({
 	};
 
 	const filteredCount = table.getFilteredRowModel().rows.length;
-	const totalCount = data.length;
+	const totalCount = tableData.length;
 
 	return (
 		<PopoverThemeContext.Provider value={theme}>
 			<div className="w-full flex flex-col gap-2">
 				<div className="flex justify-between items-center w-full relative z-[40] px-1">
 					<div className="text-sm opacity-95 font-medium select-none">
-						{showItemCount && (
+						{showItemCount && !isLoading && !fetchError && (
 							<span>
 								{/* 直接按 {total} 拆分，利用 React 原生节点进行拼接 */}
 								{t(TableI18nKey.TOTAL_ITEMS).split("{total}")[0]}
@@ -697,18 +741,48 @@ export default function InteractiveTable({
 							))}
 						</thead>
 						<tbody>
-							{table.getRowModel().rows.map((row) => (
-								<tr key={row.id}>
-									{row.getVisibleCells().map((cell) => (
-										<td key={cell.id} className="p-3">
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext(),
-											)}
-										</td>
-									))}
+							{/* 处理异步加载和空状态下的渲染反馈，全部使用 i18n 键 */}
+							{isLoading ? (
+								<tr>
+									<td
+										colSpan={columns.length}
+										className="p-6 text-center text-sm opacity-50"
+									>
+										{t(TableI18nKey.LOADING)}
+									</td>
 								</tr>
-							))}
+							) : fetchError ? (
+								<tr>
+									<td
+										colSpan={columns.length}
+										className={`p-6 text-center text-sm ${theme.dangerBtn}`}
+									>
+										{t(TableI18nKey.LOAD_FAILED, { error: fetchError })}
+									</td>
+								</tr>
+							) : table.getRowModel().rows.length === 0 ? (
+								<tr>
+									<td
+										colSpan={columns.length}
+										className="p-6 text-center text-sm opacity-50"
+									>
+										{t(TableI18nKey.NO_DATA)}
+									</td>
+								</tr>
+							) : (
+								table.getRowModel().rows.map((row) => (
+									<tr key={row.id}>
+										{row.getVisibleCells().map((cell) => (
+											<td key={cell.id} className="p-3">
+												{flexRender(
+													cell.column.columnDef.cell,
+													cell.getContext(),
+												)}
+											</td>
+										))}
+									</tr>
+								))
+							)}
 						</tbody>
 					</table>
 				</div>
