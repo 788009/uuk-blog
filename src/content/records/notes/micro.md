@@ -387,6 +387,8 @@ lang: ''
         4. Control over price
         5. Mutual interdependence
     2. Game theory
+        - Dominant Strategy（占优策略）：无论对方选什么，我都选这个
+        - Nash Equilibrium（纳什均衡）：在对方策略给定的情况下，没有人愿意单方面改变现状
     3. Collusion 勾结
         - 目标：joint/combined profit 共同利益最大化
     4. Cartel: a group of firms acting in unison 集团
@@ -440,11 +442,22 @@ lang: ''
 
 ## 其他
 
-1. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
-2. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
+1. $\text{PED} = -\cfrac{\cfrac{{\rm d}x}{x}}{\cfrac{{\rm d}P(x)}{P(x)}} = -\cfrac{P(x)}{P'(x) \cdot x}$  
+    推论：若需求曲线是向下倾斜的直线，即 $P'(x)$ 为恒定的负数
+    - $-\cfrac{1}{P'(x) \cdot x} > 0$  
+    - 直线的斜率处处相等，在一条需求曲线上，价格越高，数量越少，$\cfrac{P(x)}{x}$ 越大，弹性就越大
+    - 对于过 $(0, P_0)$ 和 $(x_0, 0)$ 的需求曲线，$P'(x) = -\cfrac{P_0}{x_0}$
+        - 在 $(0, P_0)$ 处，$\lim\limits_{x \to 0^+} \text{PED} = \infty$，perfectly elastic
+        - 在 $(x_0, 0)$ 处，$\text{PED} = 0$，perfectly inelastic
+        - 在 $(\cfrac{x_0}{2}, \, \cfrac{P_0}{2})$ 处，$\text{PED} = -\cfrac{P(x)}{P'(x) \cdot x} = -\cfrac{\cfrac{P_0}{2}}{-\cfrac{P_0}{x_0} \cdot \cfrac{x_0}{2}} = 1$，unit elastic
+    - 对于两条平行的需求曲线，斜率相等
+        - 数量相等时，价格越高，弹性越大
+        - 价格相等时，数量越多，弹性越小
+2. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
+3. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
     - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
-3. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
-4. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
+4. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
+5. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
     推论：
     1. 在进口模型中，成本（-补贴）低于国际价格（+关税）的国内厂家优先抢占国内市场，先与消费者成交，且成交价格等于国际价格（+关税），因此成交价格与国内供应曲线交点的左侧部分才全部属于国内厂家，也因此，成交价格以下、国内供给曲线以上的区域才都是国内厂家的 surplus；交点右侧，国内厂家不愿意成交，此时进口厂家才开始填补，直到成交价格与需求曲线的交点
         - 在小国（配额无法影响世界价格）政府实行有效的配额制度时，可以根据这个理论将成交量分为三段
@@ -455,17 +468,17 @@ lang: ''
         - 无论是关税还是配额，国内厂家增加的 surplus 都等于世界价格以上、国内成交价格以下、国内厂家供给曲线左侧的区域
     2. 在出口模型中，愿意出高价的国内消费者优先与国内厂家成交，且成交价格等于国际价格，因此成交价格与国内需求曲线交点的左侧部分才全部属于国内消费者，也因此，成交价格以上、国内需求曲线以下的区域才都是国内消费者的 surplus；交点右侧，国内消费者不愿意成交，此时国外消费者才开始填补，直到成交价格与供应曲线的交点
     3. 国内供需曲线均倾斜，进出口的国际价格均水平，国内主体的价格范围更大，国内厂家的成本和消费者的出价比国际价格更灵活，因此进出口模型都是国内优先成交，国外填补空缺
-5. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
-6. 图像
+6. 其他条件一定时，PED 和 PES 均与 per-unit tax/subsidy 对成交量的影响幅度正相关
+7. Market 图像与 Firm 图像
     1. Market 图像包含 demand 和 supply，demand 往往递减
-    2. Firm 图像包含 TC, TFC, TVC, TR, TP; AC (ATC), AFC, AVC, AR, AP; MC, MR, MP (Product); P (Price)
-        1. 在所有市场类型中
+    2. Firm 图像包含 TC, TFC, TVC, TR, TP (Product); AC (ATC), AFC, AVC, AR, AP; MC, MR, MP; P (Price)
+        1. 所有市场类型
             1. 数学定义
                 - $\text{A\_}(x) = \cfrac{\text{T\_}(x)}{x}$
                 - $\text{M\_}(x) = \text{T\_}'(x) = \text{TV\_}'(x)$
             2. P 总是等于 market 图像中的 demand
             3. 无论在什么市场，产量都由 MC = MR 决定，经济利润都为 $(P - \text{ATC}) \times Q$
-            4. MC 与 MP 的关系：假设劳动力工资是唯一可变成本，劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资
+            4. 假设劳动力工资是唯一可变成本，MC 与 MP 的关系：劳动力数量记为 $L$，一个劳动力的工资为常数 $w$，则 $\text{MC} = \cfrac{\Delta \text{TC}}{\Delta Q} = \cfrac{\Delta \text{TVC}}{\Delta Q} = \cfrac{w \cdot \Delta L}{\Delta Q}$，而 $\text{MP} = \cfrac{\Delta Q}{\Delta L}$，因此 MC 与 MP 成反比，乘积恒为一个劳动力的工资  
                 推论：
                 - MC 取最小值时，MP 取最大值
                 - Diminishing marginal product 可以作为 short-run marginal costs eventually increase 的原因
@@ -474,29 +487,32 @@ lang: ''
                 $\begin{aligned} \text{ATC}'(x) &= \cfrac{\text{TC}'(x) \cdot x - \text{TC}(x)}{x^2} \\
                 &= \cfrac{\text{MC}(x) \cdot x - \text{TC}(x)}{x^2} \\
                 &= \cfrac{\text{MC}(x) - \text{ATC}(x)}{x} \end{aligned}$  
-                当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，因此 $\text{ATC}(x)$ 单调递减，反之单调递增，因此 MC = ATC 时，ATC 最小
+                当 $\text{MC}(x) < \text{ATC}(x)$ 时，$\text{MC}(x) - \text{ATC}(x) < 0$，而 $x > 0$，所以 $\text{ATC}'(x) < 0$，因此 $\text{ATC}(x)$ 单调递减；反之，当 $\text{MC}(x) > \text{ATC}(x)$ 时，$\text{ATC}(x)$ 单调递增，因此 MC = ATC 时，ATC 最小
             6. 关于 MC 与 MR
-                1. 当变量相同时，MC 与 MR 互为反函数
-                2. 在 firm 图像中，MC 与 MR 不为反函数，这是因为两个图像的变量不同，MC 曲线的变量是成本与产量，MR 曲线的变量是产量与收入
-                3. 若跳过产量，直接刻画成本与收益的关系，则边际成本与边际收益互为反函数，每一单位收益的边际成本递增，每一单位成本的边际收益递减
-                4. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
-            7. 无歧视时 MR 与 PED 的关系  
-                $\text{TR}(x) = P(x) \cdot x$  
-                $\implies \text{MR}(x) = \text{TR}'(x) = P'(x) \cdot x + P(x)$  
-                $\text{PED} = -\cfrac{\cfrac{{\rm d}x}{x}}{\cfrac{{\rm d}P(x)}{P(x)}} = -\cfrac{P(x)}{P'(x) \cdot x}$  
-                $\implies \text{MR}(x) = P'(x) \cdot x + P(x) = P(x) \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$  
-                - 推论：由于 P 总是正数
-                    - MR > 0, PED > 1, elastic
-                    - MR = 0, PED = 1, unit elastic
-                    - MR < 0, PED < 1, inelastic
-        2. 在完全竞争市场中
-            1. 供给是分散的，对特定企业来说，价格永远不变
-            2. P = AR = MR，图像水平，即 perfectly elastic
+                1. 每一单位收益的边际成本递增，每一单位成本的边际收益递减
+                2. 在 firm 图像中，MC 与 MR 在横轴共用“产量”这个变量，但在纵轴的变量其实不同（成本/收入），不过，若都看作机会成本，且大家都在放弃同一种东西（通用购买力），它们就有了共同的单位，可以进行比较与数学运算
+            7. 无价格歧视时 MR 与 PED 的关系  
+                无价格歧视时，所有商品的售价相同，因此 $\text{TR}(x) = P(x) \cdot x$  
+                上文已经证明 $\text{PED} = -\cfrac{P(x)}{P'(x) \cdot x}$  
+                $\begin{aligned}
+                    \text{MR}(x) &= \text{TR}'(x) \\
+                    &= P'(x) \cdot x + P(x) \\
+                    &= P(x) \cdot \left(1 - \cfrac{1}{-\cfrac{P(x)}{P'(x) \cdot x}} \right) \\
+                    &= P(x) \cdot \left(1 - \cfrac{1}{\text{PED}} \right)
+                \end{aligned}$  
+                推论：由于 P 总是正数  
+                - MR > 0, PED > 1, elastic
+                - MR = 0, PED = 1, unit elastic
+                - MR < 0, PED < 1, inelastic
+        2. 完全竞争市场
+            1. 供给是分散的，对特定企业来说，价格永远不变，图像水平，即 $\text{PED} = \infty$，perfectly elastic
+            2. P = MR = AR，因为多卖一件商品，多得到的收入就是该商品的价格
+                - 数学推导：$\text{MR} = \lim\limits_{\text{PED} \to \infty} P \cdot \left(1 - \cfrac{1}{\text{PED}} \right) = P$
             3. 价格最终会等于 ATC
                 - 不同企业 ATC 不同怎么办？
                     - 短期：确实不同，优胜劣汰
                     - 长期：趋于相同
-        3. 在非完全竞争市场中
+        3. 非完全竞争市场
             1. 价格随数量变化，但不随人变化，即数量一定时，卖出的每一件商品价格都相同
                 原因：
                 - 在单一价格垄断市场中，企业自己就是所有供给，供给有稀缺性
@@ -505,8 +521,10 @@ lang: ''
             3. 每多卖一件商品，都要给之前所有商品降价，减少收入，因此 P > MR
                 - 产量越高，再多卖一件商品时价格越低，之前需要降价的商品越多，因此 MR 递减
                 - 虽然 MC = MR 时若继续生产，依然可以以高于成本价的价格（但比当前价格低）卖出，但同时必须为之前所有人降价，降价导致原有客户流失的利润，超过了新客户带来的利润，因此企业拒绝继续生产，也因此，在 MC = MR 之后，P = MC 之前，就产生了 deadweight loss
+                - P > MR = MC，因此无 allocative efficiency
             4. 长期视角
                 - 在单一价格垄断市场中，由于进入壁垒高导致没有竞争，以及商品的稀缺性，MC = MR 的点通常落在 P > ATC 的区间内
+                    - 通常 MC = MR 的点在 ATC 的递减区间，因此无 productive efficiency
                 - 在垄断竞争市场中，市场无进出壁垒（与完全竞争市场相同），因此价格最终会等于 ATC，且两条曲线在 MC = MR 的产量处相切
                     - 数学推导  
                         - 已知 $\exist x_0, \, \begin{cases}
@@ -524,24 +542,21 @@ lang: ''
                             又因为 $\text{ATC}(x_0) = P(x_0)$, 所以 $\text{ATC}(x)$ 与 $P(x)$ 在 $x = x_0$ 处相切
                     - 推论
                         - $\forall x, \, P'(x) < 0 \implies P'(x_0) < 0 \implies \text{ATC}'(x_0) = P'(x_0) < 0$, 即 $x = x_0$ 处 ATC 仍在递减，因此 $x_0$ 小于 ATC 最小值点的产量，企业若继续增产，可以减小 ATC，但由于继续增产导致利润减少，企业不会继续增产，实际产量小于 ATC 最小时的产量，二者之差即为 excess capacity
-        4. 在价格歧视中
-            1. 一级价格歧视 (First-degree / Perfect Price Discrimination)
-                1. 卖出的每一件商品价格未必相同
-                2. P = MR ≠ AR，图像递减，图像上的点都表示对应商品的价格
-                3. $\text{AR} = \bar{P}$
-                    - Q = 1 时，AR = P
-                    - Q > 1 时，AR > P（优先卖给出价更高的人）
-            2. 三级价格歧视 (Third-degree Price Discrimination)
+                        - 实际产量小于 ATC 最小时的产量，即企业不会在 ATC 最低点生产，因此无 productive efficiency
+        4. 价格歧视
+            1. 三级价格歧视 (Third-degree Price Discrimination)
                 1. 企业通过外部特征（年龄、职业、时间、地点）判断出不同群体的平均需求弹性，再根据不同群体定价
                 2. 每个群体可以看作一个无歧视的子市场，在每个子市场中都有 $\text{MR} = P \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$，得到价格 $P = \cfrac{\text{MR}}{1 - \cfrac{1}{\text{PED}}}$
                 3. 实际售卖时 MR 总是等于 MC，因此实际售卖时 $P = \cfrac{\text{MC}}{1 - \cfrac{1}{\text{PED}}}$
                 4. 由于最后一件商品在进入子市场之前就已经生产完成，MC 对各市场是共同的常数，因此 P 与 PED 负相关，即群体的平均需求弹性越小，PED 越小，定价就越高
                 5. 推导 A、B 两个市场的价格比例  
-                    $\begin{cases}
-                        \text{MR}_A = P_A \cdot \left(1 - \cfrac{1}{\text{PED}_A} \right) \\
-                        \text{MR}_B = P_B \cdot \left(1 - \cfrac{1}{\text{PED}_B} \right) \\
-                        \text{MR}_A = \text{MR}_B = \text{MC}
-                    \end{cases}$  
-                    $\implies P_A \cdot \left(1 - \cfrac{1}{\text{PED}_A} \right) = P_B \cdot \left(1 - \cfrac{1}{\text{PED}_B} \right)$  
+                    $P_A = \cfrac{\text{MC}}{1 - \cfrac{1}{\text{PED}_A}}, \, P_B = \cfrac{\text{MC}}{1 - \cfrac{1}{\text{PED}_B}}$  
                     $\implies \cfrac{P_A}{P_B} = \cfrac{1 - \cfrac{1}{\text{PED}_B}}{1 - \cfrac{1}{\text{PED}_A}}$
-7. 计算各种平均成本时，分母应为产量，而非员工数
+            2. 一级价格歧视 (First-degree / Perfect Price Discrimination)
+                1. 对每一个顾客独立定价，卖出的每一件商品价格未必相同
+                2. P = MR < AR（当前所有商品的平均收入），图像递减，图像上的点都表示对应商品的价格
+                3. $\text{AR} = \bar{P}$
+                    - Q = 1 时，AR = P
+                    - Q > 1 时，AR > P（优先卖给出价更高的人）
+                4. 虽然可以将每一个顾客都看作一个子市场，但在一个人的市场中，需求弹性无意义，故无法应用三级价格歧视中的数学推导
+8. 计算各种平均成本时，分母应为产量，而非员工数
