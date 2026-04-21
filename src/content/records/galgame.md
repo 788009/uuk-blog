@@ -12,7 +12,7 @@ lang: ''
 > 更新于 2026.3.20
 
 1. **千恋＊万花**
-    - 会社：Yuzusoft
+    - 会社：<span title="柚子社">Yuzusoft</span>
     - 发售年份：2016
     - 游玩时间：2024.7.18-10.13
     - [vndb](https://vndb.org/v19073)
@@ -20,7 +20,9 @@ lang: ''
     - 白色相簿 2
     - 会社：Leaf
     - 发售年份：2010
-    - 游玩时间：2024.10.4-
+    - <details>
+        <summary>游玩时间：2024.10.4-2025.1.8</summary>
+
         - IC 2024.10.4-10.27
         - CC 2024.10.27-
             - 雪菜 NE 2024.11.14
@@ -28,24 +30,25 @@ lang: ''
             - 雪菜 TE 2024.11.22
             - 浮气 2024.11.26
             - 腰斩 2025.1.8
+        </details>
     - [vndb](https://vndb.org/v7771)
 3. **星空鉄道とシロの旅**
     - 星空列车与白的旅行
-    - 会社：Shiratamaco
+    - 会社：<span title="白玉社">Shiratamaco</span>
     - 发售年份：2020
     - 游玩时间：2024.11.30-12.2 (8.5h)
     - [vndb](https://vndb.org/v28297)
 4. **ATRI -My Dear Moment-**
     - 亚托莉 -我挚爱的时光-
     - 会社
-        - Frontwing
+        - <span title="前翼社">Frontwing</span>
         - 枕
     - 发售年份：2020
     - 游玩时间：2024.12.14-12.24 (9h25m)
     - [vndb](https://vndb.org/v27448)
 5. **アストラエアの白き永遠**
     - 星辰恋曲的白色永恒
-    - FAVORITE
+    - 会社：<span title="F 社">FAVORITE</span>
     - 发售年份：2014
     - 游玩时间：2025.1.11-4.12
     - [vndb](https://vndb.org/v12984)
@@ -54,7 +57,7 @@ lang: ''
         - 命运石之门
         - 会社
             - 5pb.
-            - NITROPLUS
+            - <span title="NITRO+">NITROPLUS</span>
         - 发售年份：2009
         - 游玩时间：2025.4.18-4.28
         - [vndb](https://vndb.org/v2002)
@@ -62,7 +65,7 @@ lang: ''
         - 命运石之门 0
         - 会社
             - 5pb.
-            - NITROPLUS
+            - <span title="NITRO+">NITROPLUS</span>
         - 发售年份：2015
         - 游玩时间：2025.6.28-7.5 (25.5h)
         - [vndb](https://vndb.org/v17102)
@@ -75,30 +78,30 @@ lang: ''
 8. **9-nine- 系列**
     1. **9-nine-ここのつここのかここのいろ**
         - 9-nine-九次九日九重色
-        - 会社：ぱれっと
+        - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2017
         - 游玩时间：2025.7.7-8
         - [vndb](https://vndb.org/v19829)
     2. **9-nine-そらいろそらうたそらのおと**
         - 9-nine-天色天歌天籁音
-        - 会社：ぱれっと
+        - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2018
         - 游玩时间：2025.7.8-10
         - [vndb](https://vndb.org/v21668)
     3. **9-nine-はるいろはるこいはるのかぜ**
         - 9-nine-春色春恋春熙风
-        - 会社：ぱれっと
+        - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2019
         - 游玩时间：2025.7.13-16
         - [vndb](https://vndb.org/v23740)
     4. **9-nine-ゆきいろゆきはなゆきのあと**
         - 9-nine-雪色雪花雪余痕
-        - 会社：ぱれっと
+        - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2020
         - 游玩时间：7.16-19
         - [vndb](https://vndb.org/v26523)
     5. **9-nine-新章**
-        - 会社：ぱれっと
+        - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2021
         - 游玩时间：7.19
         - [vndb](https://vndb.org/v29724)
@@ -109,7 +112,7 @@ lang: ''
     - [vndb](https://vndb.org/v17)
 10. **枯れない世界と終わる花**
     - 永不枯萎的世界与终焉之花
-    - 会社：SWEET&TEA
+    - 会社：<span title="甜茶社">SWEET&TEA</span>
     - 发售年份：2016
     - 游玩时间：2025.8.24-2026.2.17
     - [vndb](https://vndb.org/v19658)
