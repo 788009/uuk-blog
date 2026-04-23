@@ -403,12 +403,15 @@ lang: ''
 ## Unit 5 - Factors Market
 
 1. Labor market
-    1. Demand shifters
+    1. MPL: marginal product (of labor)
+    2. MRP: marginal revenue product (of labor)
+    3. MFC: marginal factor cost
+    4. Demand shifters
         1. Derived demand
         2. Output price
         3. Technology
         4. Supply of other factors
-    2. Supply Shifters
+    5. Supply Shifters
         1. Change of willingness to work
             1. Working condition
             2. Social prestige
@@ -439,6 +442,12 @@ lang: ''
         2. Market-based policies (internalize the externalily): Tax/subsidies
             1. Corrective tax (negative externalily): 把外部成本转移至内部, Per-unit tax = MEC
             2. Corrective subsidies (positive externalily): 把好处转移给 private sector, Per-unit subsidies = MEB
+3. Types of goods
+    1. Rival/nonrival
+    2. Excludable/nonexcludable
+4. Lorenz Curve
+    1. 纵轴：财富累计百分比（Cumulative Percentage of Income/Wealth）
+    2. 横轴；人口累计百分比（Cumulative Percentage of Population/Household）
 
 ## 其他
 
@@ -456,7 +465,7 @@ lang: ''
 2. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
 3. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
     - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
-4. 无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
+4. 无价格歧视时，无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
 5. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
     推论：
     1. 在进口模型中，成本（-补贴）低于国际价格（+关税）的国内厂家优先抢占国内市场，先与消费者成交，且成交价格等于国际价格（+关税），因此成交价格与国内供应曲线交点的左侧部分才全部属于国内厂家，也因此，成交价格以下、国内供给曲线以上的区域才都是国内厂家的 surplus；交点右侧，国内厂家不愿意成交，此时进口厂家才开始填补，直到成交价格与需求曲线的交点
@@ -517,8 +526,10 @@ lang: ''
                 原因：
                 - 在单一价格垄断市场中，企业自己就是所有供给，供给有稀缺性
                 - 在垄断竞争市场中，每个企业的产品有其独特性，该独特性是稀缺的
-            2. P = AR > MR，图像递减，图像上的点表示对应数量时所有商品的价格
-            3. 每多卖一件商品，都要给之前所有商品降价，减少收入，因此 P > MR
+            2. 第一件商品 P = MR，之后 P = AR > MR，图像递减，图像上的点表示对应数量时所有商品的价格
+            3. 每多卖一件商品，都要给之前所有商品降价，减少收入，因此从第二件商品开始 P > MR
+                - 数学推导
+                    - $x > 1$ 时，PED 是有限的正数，因此 $\text{MR} = P \cdot \left(1 - \cfrac{1}{\text{PED}} \right) > P$
                 - 产量越高，再多卖一件商品时价格越低，之前需要降价的商品越多，因此 MR 递减
                 - 虽然 MC = MR 时若继续生产，依然可以以高于成本价的价格（但比当前价格低）卖出，但同时必须为之前所有人降价，降价导致原有客户流失的利润，超过了新客户带来的利润，因此企业拒绝继续生产，也因此，在 MC = MR 之后，P = MC 之前，就产生了 deadweight loss
                 - P > MR = MC，因此无 allocative efficiency
@@ -560,3 +571,99 @@ lang: ''
                     - Q > 1 时，AR > P（优先卖给出价更高的人）
                 4. 虽然可以将每一个顾客都看作一个子市场，但在一个人的市场中，需求弹性无意义，故无法应用三级价格歧视中的数学推导
 8. 计算各种平均成本时，分母应为产量，而非员工数
+9. Factor market 图像（以劳动力市场为例）
+    1. Market 图像：包含来自企业的 demand 和来自劳动力市场的 supply
+    2. Firm 图像：包含 TRP, TFC; ARP, AFC; MRP, MFC; W
+        1. 各个量可以直接对标商品市场
+            |商品市场|要素市场|
+            |:-|:-|
+            |TC|TRP|
+            |TR|TFC|
+            |ATC|ARP|
+            |AR|AFC|
+            |MC|MRP|
+            |MR|MFC|
+            |P|W|
+
+            简单来说，就是商品市场的成本对标要素市场的收入，商品市场的收入对标要素市场的成本，原因是价格对标工资，价格在商品市场与收入挂钩，工资在要素市场与成本挂钩  
+            - 但是政府对企业的干预（tax/subsidy）在商品市场与要素市场均与成本挂钩，因此无法按照上述逻辑类比
+        2. 图像：将商品市场的图像垂直翻转，再将对应曲线按照上表转换即可
+        3. 各个结论可以直接对标商品市场
+            |商品市场|要素市场|
+            |:-|:-|
+            |P 总是等于 market 图像中的 demand|W 总是等于 market 图像中的 supply|
+            |$\text{MR} = P \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$|$\text{MFC} = W \cdot \left(1 + \cfrac{1}{\text{PES}} \right)$|
+            |产量 Q 由 MC = MR 决定|雇佣数量 L 由 MFC = MRP 决定|
+            |经济利润为 $(P - \text{ATC}) \times Q$|经济利润为 $(\text{ARP} - W) \times L$|
+            |MC = ATC 时，ATC 最小|MRP = ARP 时，ARP 最大|
+            |完全竞争市场中，P 为定值，图像水平，P = MR = AR|完全竞争市场中，W 为定值，图像水平，W = MFC = AFC|
+            |完全竞争市场中，P 最终会等于 ATC|完全竞争市场中，W 最终会等于 ARP（前提是劳动力工资为唯一可变成本）|
+            |垄断市场中，每多卖一件商品，都要给之前所有商品降价，减少收入，因此从第二件商品开始 P > MR|买方垄断市场中，每多雇佣一个人，都要给之前所有人涨薪，增加成本，因此从第二个人开始 W < MFC|
+            |垄断市场中，在 MC = MR 之后，P = MC 之前是 deadweight loss|买方垄断市场中，在 MFC = MRP 之后，W = MRP 之前是 deadweight loss|
+
+            - 政府对企业干预的相关结论无法按照上述逻辑类比
+        4. 商品市场与要素市场的联系  
+            $\begin{cases}
+                \text{MC} \times \text{MP} = W \ (\text{若劳动力工资是唯一可变成本}) \\
+                \text{MRP} = P \times \text{MP} \ (\text{若完全竞争，则} P = \text{MR})
+            \end{cases}$  
+            $\implies \cfrac{\text{MC}}{P} = \cfrac{W}{\text{MRP}}$  
+            而 $\begin{cases}
+                P = \text{MR} \\
+                W = \text{MFC}
+            \end{cases}$  
+            $\implies \cfrac{\text{MC}}{\text{MR}} = \cfrac{\text{MFC}}{\text{MRP}}$  
+            $\implies \text{MC} = \text{MR} \iff \text{MFC} = \text{MRP}$，也就是说，若完全竞争，企业在商品市场获得最大利润与在要素市场获得最大利润是等价的
+10. Backward bending 向后弯曲：开口向左的 U 形
+    1. 劳动力供给
+        - 工作一小时能赚 100 元，人们愿意每天工作 8 小时赚 800 元
+        - 工作一小时能赚 500 元，每多工作一小时能比原来多赚 400 元，人们愿意每天工作更长时间，劳动力供给增加
+            - 替代效应（Substitution Effect）主导
+        - 工作一小时能赚 10000 元，人们每天工作一小时赚 10000 元就满足了，剩下的时间不愿意出卖劳动力，劳动力供给减少
+            - 收入效应（Income Effect）主导
+    2. Laffer Curve
+        1. 每一个产品收 1 元税，企业愿意生产 3 个商品，政府能收到 3 元税
+        2. 每一个产品收 2 元税，企业愿意生产 2 个商品，政府能收到 4 元税
+        3. 每一个产品收 3 元税，企业愿意生产 1 个商品，政府能收到 3 元税
+11. 区域面积
+    1. 对需求或供给的扭曲
+        1. Price ceiling/floor (binding)
+        2. Tax/subsidy
+            - 实际成交量为扭曲后曲线的交点
+            - 扭曲后的需求曲线为原需求曲线向上平移 subsidy，向下平移 tax，但消费者实际支出需要扣除 subsidy，增加 tax，即原需求曲线在实际成交量的价格
+            - 扭曲后的供给曲线为原供给曲线向下平移 subsidy，向上平移 tax，但生产者实际收入需要增加 subsidy，扣除 tax，即原供给曲线在实际成交量的价格
+        3. Tariff/quota
+            - 原供给曲线为国内供给曲线与世界价格的较小值（分段函数）
+            - 总实际成交量为实际价格与需求曲线的交点（计算 consumer surplus 与 deadweight loss 时使用）
+            - 国内生产者与消费者的实际成交量为实际价格与国内供给曲线的交点（计算国内生产者的 producer surplus 时使用）
+        4. 无价格歧视的垄断
+            1. Monopoly 导致多卖必须降价
+                - 供给曲线为 MC
+                - 实际成交量为 MC 与 MR 的交点
+                - 消费者实际支出价格与生产者实际收入价格均为实际成交量与需求曲线的交点
+            2. Monopsony 导致多雇必须涨薪
+                - 需求曲线为 MRP
+                - 实际成交量为 MFC 与 MRP 的交点
+                - 企业实际支出价格与劳动力实际收入价格均为实际成交量与供给曲线的交点
+        5. Externality
+            - 私人视角的原供需曲线为 MPC/MPB（计算 surplus 时使用）
+            - 社会视角的原供需曲线为 MSC/MSB，扭曲后的供需曲线为 MPC/MPB（计算 deadweight loss 时使用）
+            - 实际成交量为 MPC 与 MPB 的交点
+    2. 区域
+        1. Surplus
+            1. Consumer surplus: $\displaystyle \int_0^{Q_\text{actual}} D_\text{original} (Q) - P_\text{paid} (Q) \ \text{d}Q$
+                - 左边界：纵轴（竖直线）
+                - 右边界：实际成交量（竖直线）
+                - 上边界：原需求曲线
+                - 下边界：实际支出价格（水平线）
+            2. Producer surplus: $\displaystyle \int_0^{Q_\text{actual}} P_\text{received} (Q) - S_\text{original} (Q) \ \text{d}Q$
+                - 左边界：纵轴（竖直线）
+                - 右边界：实际成交量（竖直线）
+                - 上边界：实际收入价格（水平线）
+                - 下边界：原供给曲线
+        2. Deadweight loss: $\displaystyle \int_{Q_\text{actual}}^{Q_0} D_\text{original} (Q) - S_\text{original} (Q) \ \text{d}Q$，其中 $Q_0$ 为原供需曲线平衡数量  
+            边界：
+            - 实际成交量（竖直线）
+            - 原需求曲线
+            - 原供给曲线
+12. Private supply of public goods 会导致人们倾向于隐藏自己的需求（因为不付费也可以搭便车），需求曲线低于真实需求曲线，平衡产量低于 efficient level
