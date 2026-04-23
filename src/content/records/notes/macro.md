@@ -630,3 +630,4 @@ lang: ''
         - 与 productivity 负相关
     2. Human capital（质量概念）：劳动者通过教育、培训和经验积累所获得的知识、技能、健康和才干
         - 与 productivity 正相关
+22. Loanable funds market 图像的纵轴是 real interst rate，因为贷款人关注真实购买力；而 money market 的纵轴是 nominal interest rate，因为与货币本身相关的是名义值

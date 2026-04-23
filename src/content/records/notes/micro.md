@@ -594,7 +594,6 @@ lang: ''
             |P 总是等于 market 图像中的 demand|W 总是等于 market 图像中的 supply|
             |$\text{MR} = P \cdot \left(1 - \cfrac{1}{\text{PED}} \right)$|$\text{MFC} = W \cdot \left(1 + \cfrac{1}{\text{PES}} \right)$|
             |产量 Q 由 MC = MR 决定|雇佣数量 L 由 MFC = MRP 决定|
-            |经济利润为 $(P - \text{ATC}) \times Q$|经济利润为 $(\text{ARP} - W) \times L$|
             |MC = ATC 时，ATC 最小|MRP = ARP 时，ARP 最大|
             |完全竞争市场中，P 为定值，图像水平，P = MR = AR|完全竞争市场中，W 为定值，图像水平，W = MFC = AFC|
             |完全竞争市场中，P 最终会等于 ATC|完全竞争市场中，W 最终会等于 ARP（前提是劳动力工资为唯一可变成本）|
@@ -603,17 +602,15 @@ lang: ''
 
             - 政府对企业干预的相关结论无法按照上述逻辑类比
         4. 商品市场与要素市场的联系  
+            若完全竞争且劳动力工资是唯一可变成本  
             $\begin{cases}
-                \text{MC} \times \text{MP} = W \ (\text{若劳动力工资是唯一可变成本}) \\
-                \text{MRP} = P \times \text{MP} \ (\text{若完全竞争，则} P = \text{MR})
-            \end{cases}$  
-            $\implies \cfrac{\text{MC}}{P} = \cfrac{W}{\text{MRP}}$  
-            而 $\begin{cases}
-                P = \text{MR} \\
-                W = \text{MFC}
+                \text{MC} \times \text{MP} = W \ (上文已经证明) \\
+                W = \text{MFC} \\
+                \text{MRP} = \text{MR} \times \text{MP}
             \end{cases}$  
             $\implies \cfrac{\text{MC}}{\text{MR}} = \cfrac{\text{MFC}}{\text{MRP}}$  
-            $\implies \text{MC} = \text{MR} \iff \text{MFC} = \text{MRP}$，也就是说，若完全竞争，企业在商品市场获得最大利润与在要素市场获得最大利润是等价的
+            $\implies \text{MC} = \text{MR} \iff \text{MFC} = \text{MRP}$  
+            也就是说，若完全竞争，企业在商品市场获得最大利润与在要素市场获得最大利润是等价的
 10. Backward bending 向后弯曲：开口向左的 U 形
     1. 劳动力供给
         - 工作一小时能赚 100 元，人们愿意每天工作 8 小时赚 800 元
