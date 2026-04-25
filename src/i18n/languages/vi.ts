@@ -8,6 +8,7 @@ export const vi: Translation = {
 	[Key.records]: "Hồ sơ",
 	[Key.search]: "Tìm kiếm",
 
+	[Key.toc]: "Mục lục",
 	[Key.tags]: "Thẻ",
 	[Key.categories]: "Danh mục",
 	[Key.recentPosts]: "Bài viết mới nhất",

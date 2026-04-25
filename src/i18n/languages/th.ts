@@ -8,6 +8,7 @@ export const th: Translation = {
 	[Key.records]: "บันทึก",
 	[Key.search]: "ค้นหา",
 
+	[Key.toc]: "สารบัญ",
 	[Key.tags]: "ป้ายกำกับ",
 	[Key.categories]: "หมวดหมู่",
 	[Key.recentPosts]: "โพสต์ล่าสุด",

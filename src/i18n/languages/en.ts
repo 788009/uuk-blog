@@ -8,6 +8,7 @@ export const en: Translation = {
 	[Key.records]: "Records",
 	[Key.search]: "Search",
 
+	[Key.toc]: "Table of Contents",
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
 	[Key.recentPosts]: "Recent Posts",

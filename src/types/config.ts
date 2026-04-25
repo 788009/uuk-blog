@@ -33,6 +33,10 @@ export type SiteConfig = {
 	toc: {
 		enable: boolean;
 		depth: 1 | 2 | 3;
+		showConditions: {
+			startsWith: string[];
+			equalsTo: string[];
+		};
 	};
 
 	favicon: Favicon[];
