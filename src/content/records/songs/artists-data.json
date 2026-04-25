@@ -42,7 +42,7 @@
 	{
 		"artist": "Laur",
 		"count": 14,
-		"songs": "- Arcana Eden\n- Arghena\n- Collapse (feat. 藍月なくる)\n- Glacier\n- Grievous Lady\n- Latent Kingdom\n- Lost Civilization\n- PRAGMATISM\n- PRAGMATISM -RESURRECTION-\n- Seclusion (feat. Sennzai)\n- The Abyss of Despair (feat. 藍月なくる)\n- The Angel's Message (feat. Sennzai)\n- Vindication\n- その花は世界を紡ぐ\n",
+		"songs": "- Arcana Eden\n- Arghena\n- Collapse (feat. 藍月なくる)\n- Glacier\n- Grievous Lady (Full ver.)\n- Latent Kingdom\n- Lost Civilization\n- PRAGMATISM\n- PRAGMATISM -RESURRECTION-\n- Seclusion (feat. Sennzai)\n- The Abyss of Despair (feat. 藍月なくる)\n- The Angel's Message (feat. Sennzai)\n- Vindication\n- その花は世界を紡ぐ\n",
 		"earliestDate": "2022-03-24",
 		"latestDate": "2025-08-11",
 		"dateSD": 388.33
@@ -54,6 +54,14 @@
 		"earliestDate": "2023-04-01",
 		"latestDate": "2025-02-08",
 		"dateSD": 156.93
+	},
+	{
+		"artist": "ヰ世界情緒",
+		"count": 13,
+		"songs": "- ARCADIA\n- BREATHE\n- flos covered by ヰ世界情緒 at CANDY LIVE\n- かたちなきもの（无形之物）\n- シリウスの心臓\n- ラピスのお人形\n- ヰ世界の宝石譚\n- 僕らの記憶を掠わないで covered by ヰ世界情緒\n- 垂直落下 covered by ヰ世界情緒\n- 描き続けた君へ\n- 物語りのワルツ\n- 眠りゆく芽吹き\n- 蜜月アン・ドゥ・トロワ covered by ヰ世界情緒\n",
+		"earliestDate": "2022-07-30",
+		"latestDate": "2026-04-25",
+		"dateSD": 418.39
 	},
 	{
 		"artist": "削除",
@@ -80,12 +88,12 @@
 		"dateSD": 142.97
 	},
 	{
-		"artist": "ヰ世界情緒",
-		"count": 12,
-		"songs": "- ARCADIA\n- BREATHE\n- flos covered by ヰ世界情緒 at CANDY LIVE\n- かたちなきもの（无形之物）\n- シリウスの心臓\n- ラピスのお人形\n- ヰ世界の宝石譚\n- 僕らの記憶を掠わないで covered by ヰ世界情緒\n- 垂直落下 covered by ヰ世界情緒\n- 描き続けた君へ\n- 物語りのワルツ\n- 眠りゆく芽吹き\n",
-		"earliestDate": "2022-07-30",
-		"latestDate": "2025-10-09",
-		"dateSD": 383.89
+		"artist": "鏡音リン",
+		"count": 11,
+		"songs": "- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン\n- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン\n- オーダーメイド（定制品）\n- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン\n- ロストワンの号哭\n- 垂直落下\n- 威風堂々\n- 炉心融解\n- 病名は愛だった\n- 蜜月アン・ドゥ・トロワ\n- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン\n",
+		"earliestDate": "2021-01-01",
+		"latestDate": "2026-04-25",
+		"dateSD": 602.96
 	},
 	{
 		"artist": "須谷尚子",
@@ -126,14 +134,6 @@
 		"earliestDate": "2019-09-28",
 		"latestDate": "2020-05-06",
 		"dateSD": 81.99
-	},
-	{
-		"artist": "鏡音リン",
-		"count": 10,
-		"songs": "- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン\n- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン\n- オーダーメイド（定制品）\n- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン\n- ロストワンの号哭\n- 垂直落下\n- 威風堂々\n- 炉心融解\n- 病名は愛だった\n- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン\n",
-		"earliestDate": "2021-01-01",
-		"latestDate": "2026-03-17",
-		"dateSD": 582.48
 	},
 	{
 		"artist": "香椎モイミ",
@@ -786,7 +786,7 @@
 	{
 		"artist": "Team Grimoire",
 		"count": 3,
-		"songs": "- Arcana Eden\n- Grievous Lady\n- Rrhar'il\n",
+		"songs": "- Arcana Eden\n- Grievous Lady (Full ver.)\n- Rrhar'il\n",
 		"earliestDate": "2021-10-29",
 		"latestDate": "2023-02-24",
 		"dateSD": 197.67
@@ -798,6 +798,14 @@
 		"earliestDate": "2021-04-10",
 		"latestDate": "2023-02-01",
 		"dateSD": 312.07
+	},
+	{
+		"artist": "DATEKEN",
+		"count": 2,
+		"songs": "- 蜜月アン・ドゥ・トロワ\n- 蜜月アン・ドゥ・トロワ covered by ヰ世界情緒\n",
+		"earliestDate": "2026-04-25",
+		"latestDate": "2026-04-25",
+		"dateSD": 0.0
 	},
 	{
 		"artist": "打打だいず",
@@ -1462,6 +1470,30 @@
 		"earliestDate": "2020-11-29",
 		"latestDate": "2021-01-01",
 		"dateSD": 16.5
+	},
+	{
+		"artist": "Flower",
+		"count": 1,
+		"songs": "- Virgin Snow ～初心～\n",
+		"earliestDate": "2026-04-24",
+		"latestDate": "2026-04-24",
+		"dateSD": 0.0
+	},
+	{
+		"artist": "小竹正人",
+		"count": 1,
+		"songs": "- Virgin Snow ～初心～\n",
+		"earliestDate": "2026-04-24",
+		"latestDate": "2026-04-24",
+		"dateSD": 0.0
+	},
+	{
+		"artist": "藤本和則",
+		"count": 1,
+		"songs": "- Virgin Snow ～初心～\n",
+		"earliestDate": "2026-04-24",
+		"latestDate": "2026-04-24",
+		"dateSD": 0.0
 	},
 	{
 		"artist": "御伽",
