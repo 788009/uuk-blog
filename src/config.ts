@@ -29,8 +29,8 @@ export const siteConfig: SiteConfig = {
 		enable: true, // Display the table of contents on the right side of the post
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 		showConditions: {
-			startsWith: ["/posts/", "/records/"], // 匹配以这些路径开头的页面
-			equalsTo: [], // 精确匹配这些路径
+			startsWith: ["/posts/", "/records/"], // Matches pages starting with these paths
+			equalsTo: [], // Matches these paths exactly
 		},
 	},
 	favicon: [

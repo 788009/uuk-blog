@@ -14,12 +14,9 @@ interface Props {
 
 let { headings = [], class: className, style } = Astro.props;
 
-// 1. 获取配置
 const { enable, showConditions, depth: maxLevel } = siteConfig.toc;
 const currentPath = Astro.url.pathname;
 
-// 2. 路径匹配逻辑 (OR 逻辑)
-// 使用 url() 包装配置路径以确保在子目录下也能正确匹配
 const matchStartsWith = showConditions?.startsWith?.some((p) =>
 	currentPath.startsWith(url(p)),
 );
@@ -27,12 +24,9 @@ const matchEqualsTo = showConditions?.equalsTo?.some(
 	(p) => currentPath === url(p),
 );
 
-// 3. 综合判断显示条件
-// 必须：开启 enable + 有标题 + 路径匹配
 const showTOC =
 	enable && headings.length > 0 && (matchStartsWith || matchEqualsTo);
 
-// 计算最小深度用于缩进参考
 let minDepth = 10;
 for (const heading of headings) {
 	minDepth = Math.min(minDepth, heading.depth);
@@ -74,7 +68,7 @@ let heading1Count = 1;
                             </a>
                     )}
                     <div id="active-indicator" style="opacity: 0" class:list={[{'hidden': headings.length == 0}, "-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all " +
-                        "group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"]}></div>
+                    "group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] border-dashed"]}></div>
                 </table-of-contents>
             </div>
         </WidgetLayout>
@@ -215,7 +209,6 @@ class TableOfContents extends HTMLElement {
     };
 
     init() {
-        // 将滚动监听节点改为了我们新建立的包裹器
         this.tocEl = document.getElementById("toc-scroll-wrapper");
         if (!this.tocEl) return;
 

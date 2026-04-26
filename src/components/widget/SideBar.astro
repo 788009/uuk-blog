@@ -3,7 +3,6 @@ import type { MarkdownHeading } from "astro";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
-// 新增引入 TOC
 import TOC from "./TOC.astro";
 
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const className = Astro.props.class;
-// 提取 headings
 const { headings = [] } = Astro.props;
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
