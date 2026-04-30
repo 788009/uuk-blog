@@ -143,9 +143,11 @@ lang: ''
     4. $\text{Unemployment rate} = \cfrac{\text{Number of the unemployed}}{\text{Labor force}}$
     5. $\text{Labor-force Participation Rate} = \cfrac{\text{Labor force (= Employed + Unemployed)}}{\text{劳动年龄人口}}$
     6. 失业率算不准的原因
-        1. Discouraged workers
-        2. Under-employed workers: 部分时间失业
-        3. Illegal labor: 有工作但不敢上报
+        1. Underestimate (unemployment rate)
+            1. Discouraged workers
+            2. Under-employed workers: 部分时间失业
+        2. Overestimate (unemployment rate)
+            1. Illegal labor: 有工作但不敢上报
     7. Types of unemployment
         1. Frictional unemployment
         2. Structural unemployment: 在特定工资水平下劳动力供不应求
@@ -156,7 +158,7 @@ lang: ''
             5. Efficiency wages
         3. Cyclical unemployment: 经济变差导致的失业
     8. Actual unemployment rate = Frictional unemployment rate + Structural unemployment rate + Cyclical unemployment rate
-    9. Natural unemployment = Frictional unemployment + Structural enployment
+    9.  Natural unemployment = Frictional unemployment + Structural enployment
 5. Business cycle
     1. Recession, trough
     2. Expansion, peak
@@ -356,7 +358,7 @@ lang: ''
 6. 银行经济情况
     1. Discount rate: the interst rate that central bank charges commercial banks on its loans to them
     2. Policy rate (federal funds rate): the interst rate that commercial banks charge one another on their overnight loans
-    3. Interest on reserve: the interst rate that central bank pays command banks on their reserves at the central bank
+    3. Interest on reserve: the interst rate that central bank pays commercial banks on their reserves at the central bank
     4. Policy rate 在 interest of reserve 和 discount rate 之间时，commercial banks 才愿意与其他 commercial banks 交易
     5. Supply: 由 central bank 决定，不受 policy rate 影响
 7. Monetary policy
@@ -411,14 +413,14 @@ lang: ''
 2. Expected inflation
     1. Actual inflation > expected inflation: inflation gap
     2. Actual inflation < expected inflation: recession gap
-    3. Unemployment rate = Natural rate of unemployment - a * (Actual inflation - Expeed inflation)
+    3. Unemployment rate = Natural rate of unemployment - a * (Actual inflation - Expected inflation)
 3. Quantity theory of money
     1. $\text{Velocity} = \cfrac{\text{Nominal GDP}}{\text{Money supply}}$
     2. $V = \cfrac{P \times Y}{M} \Leftrightarrow M \times V = P \times Y$
         - V: Velosity
-        - M: money supply
+        - M: Money supply
         - P: Price level
-        - Y: real GDP
+        - Y: Real GDP
     3. 大规模通货膨胀来自超发货币
 4. Government deficit
 5. Economic growth
@@ -449,7 +451,7 @@ lang: ''
     4. Balance of trade: exports imports
 2. Balance of paymant (BOP): 记账系统
     1. Accounts
-        1. Current account (CA): 收入- 支出
+        1. Current account (CA): 收入 - 支出
             1. Net exports (goods + services): exports - imports
             2. Net income from abroad: income earned from foreigners - income payment made to foreigners
                 1. Wage
@@ -495,19 +497,18 @@ lang: ''
 
 1. Transfer payment 与 GDP 无关，但属于 fiscal policy，用于调控 disposable income
 2. Discretionary fiscal policy = expansionary fiscal policy + contractionary fiscal policy，与 automatic fiscal policy 不同，无法自动生效
-3. 当 AD 移动时，price level 与 unemployment 负相关；当 SRAS 移动时，price level 与 unemployment 正相关
-4. SRAS 移动的具体原因
+3. SRAS 移动的具体原因
     1. Wages: 当工人工资升高，企业生产成本增加，SRAS 左移
     2. Inflationary expectations: 当工人预期未来物价会涨，他们会要求现在就涨工资，于是企业生产成本增加，SRAS 左移
     3. Input prices: 当投入品价格增加，企业生产成本增加，SRAS 左移
-5. 凯恩斯消费函数
+4. 凯恩斯消费函数
     1. $C = a + \text{MPC} \times Y_\text{d}$
         - $C$: 支出
         - $a$: 自发性消费（生活的硬性成本）
         - $\text{MPC}$: 愿意花掉新获得钱的占比
         - $Y_\text{d}$: 可支配收入
     2. 推论：当 $Y_\text{d} > \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生正储蓄；当 $Y_\text{d} < \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生负储蓄（dissaving）
-6. Multipliers
+5. Multipliers
     1. 政府支出/投资：使用 spending multiplier，最终国民收入增加总量 $= \Delta G \times \cfrac{1}{1 - \text{MPC}}$ or $\cfrac{1}{\text{MPS}}$，其中 $\Delta G$ 为政府支出变化量
         - 此时固定的定额税不会产生影响
     2. 定额税 (lump-sum tax)：使用 tax multiplier，最终国民收入增加总量 $= \Delta T \times -\cfrac{\text{MPC}}{1 - \text{MPC}}$ or $-\cfrac{\text{MPC}}{\text{MPS}}$，其中 $\Delta T$ 为定额税变化量
@@ -515,15 +516,15 @@ lang: ''
         - 消费最初增加量 $= \Delta \text{Autonomous Spending} \times \text{MPC} (1 - t)$，其中 $\Delta \text{Autonomous Spending}$ 指投资、政府购买等外部推力的变化，$t$ 为税率
         - 最终国民收入增加总量 $= \Delta \text{Autonomous Spending} \times \cfrac{1}{1 - \text{MPC} (1 - t)}$
     4. Money multiplier $\cfrac{1}{\text{Reserve ratio}}$: 乘以第一家银行贷出去的第一笔钱，得到银行体系最多能创造多少新货币
-7. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
-8. Multiplier 公式（money multiplier 除外）只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
-9.  关于 crowing out
+6. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
+7. Multiplier 公式（money multiplier 除外）只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
+8.  关于 crowding out
     - Spending multiplier > 1 时，政府借贷导致的 crowding out 带来的 AD 减少不如政府支出本身带来的 AD 增加，此时 AD 增加
     - Spending multiplier = 1 时，乘数带来的更多 AD 被 crowding out 抵消，AD 增加量等于政府支出
     - 0 < Spending multiplier < 1 时，AD 增加，但增加量小于政府支出
     - Spending multiplier = 0 时，政府支出对 AD 无影响
     - Spending multiplier < 0 时，crowding out 很强，政府支出反而导致 AD 减少
-10. 关于 balance sheet
+9.  关于 balance sheet
     - 银行放贷时，分为客户直接取走现金，以及暂不取出现金，依然把钱留在本行两种情况
         | 维度 | 取走现金 | 留在本行 |
         | :--- | :--- | :--- |
@@ -548,32 +549,32 @@ lang: ''
         |是否能用于放贷|是|是|是||
         |用于放贷是否 create money|是|是|否||
         |Money supply 种类|M1|M2|不属于||
-11. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
-12. A commercial bank’s ability to create money depends on a fractional reserve banking system
-13. 个人主动购买 central bank 的债务，也可以减少 money supply
-14. 银行之间的几种利率
+10. Money market 图像纵轴标注的 nominal interest rate 实际上指的是持有一种货币（现金或活期存款）的机会成本，而不是特指某种具体的“存款利率”或“贷款利率”
+11. A commercial bank’s ability to create money depends on a fractional reserve banking system
+12. 个人主动购买 central bank 的债务，也可以减少 money supply
+13. 银行之间的几种利率
     - Policy rate: commercial bank 之间互相贷款的利率
     - Discount rate: commercial bank 向 central bank 贷款的利率
     - Administered interst rate: commercial bank 在 central bank 存款的利率，比如 Interest on Reserve Balances (IORB)
-15. 导致银行之间贷款增加的原因
+14. 导致银行之间贷款增加的原因
     | 触发原因 | 利率 | 对应政策/现象 |
     | :--- | :--- | :--- |
     | Policy Rate 降低 | 下降 | 扩张性货币政策 |
     | Money Demand 增加 | 上升 | 经济扩张 / 通货膨胀 |
-16. AD 移动，可以推导出 Phillips Curve 的点的移动方向（左上/右下），但为什么一定会沿着 SRPC 移动呢？
+15. AD 移动，可以推导出 Phillips Curve 的点的移动方向（左上/右下），但为什么一定会沿着 SRPC 移动呢？
     - 因为 SRPC 这条线本身的定义就是：在给定“预期通胀”和“生产成本”的前提下，失业与通胀的所有可能组合
-17. The interest rate on short-term government bonds（短期国债利率）是其他所有利率的基础
+16. The interest rate on short-term government bonds（短期国债利率）是其他所有利率的基础
     - Bond Prices and Interest Rates are inversely related
-18. 在考试中，所有利率都可以看作同一种趋势（除了 nominal 和 real 的区别）
-19. 关于预期：现实会向着预期发展  
+17. 在考试中，所有利率都可以看作同一种趋势（除了 nominal 和 real 的区别）
+18. 关于预期：现实会向着预期发展  
     例：企业认为接下来经济会变差，为了对抗变化，政府/央行应实行什么政策？  
     - 解一：企业减少投资，因此 AD 左移，产生 recession，因此应实行扩张性政策
     - 解二：经济向着预期发展，真的变差了，因此应实行扩张性政策
-20. 关于 balance of paymant (BOP)
+19. 关于 balance of paymant (BOP)
     1. 判断 current account (CA) 与 financial account (FA) 的变化时，可以采用如下规则
         1. 财富 = 货币 + 资产（assets，如房产、股票等）
         2. CA = 本国主体的净财富增加量（包括国内与国外）
-        3. FA = 外国主体在本国的净财富增加量 - 本国主体在国外的净财富增加量
+        3. FA = 外国主体在本国的净财富增加量 - 本国主体在外国的净财富增加量
         4. 货币与资产任何一项的变动若符合要求则都要在 FA 记录，而 CA 若抵消则不记录
     2. CA + FA = 本国主体在本国的净财富增加量 + 外国主体在本国的净财富增加量
         - 本国货币和资产不会在交易中凭空消失，也不会在交易中凭空创造，因此 CA + FA = 0
@@ -625,9 +626,15 @@ lang: ''
     5. 其他
         1. A decrease in the country’s financial account deficit 是 FA 增加
         2. An increase in the country’s net financial capital outflows 是 FA 减少
-21. Labor force 与 human capital
+20. Labor force 与 human capital
     1. Labor force（数量概念）：一个国家内，有能力工作且正在找工作或已经有工作的人口总数
         - 与 productivity 负相关
     2. Human capital（质量概念）：劳动者通过教育、培训和经验积累所获得的知识、技能、健康和才干
         - 与 productivity 正相关
-22. Loanable funds market 图像的纵轴是 real interst rate，因为贷款人关注真实购买力；而 money market 的纵轴是 nominal interest rate，因为与货币本身相关的是名义值
+21. Loanable funds market 图像的纵轴是 real interst rate，因为贷款人关注真实购买力；而 money market 的纵轴是 nominal interest rate，因为与货币本身相关的是名义值
+22. CPI 主要关注价格的变化，并假设消费模式（spending patterns）是相对固定的，这是 CPI 的缺陷之一
+23. $MV = PY$
+    1. 条件
+        - V 长期相对稳定
+        - 目标是维持 P 稳定，即零通胀
+    2. 结论：货币供应量的增长率（$\Delta M$）必须与实际产出的增长率（$\Delta Y$）相匹配

@@ -518,7 +518,7 @@ lang: ''
             1. 供给是分散的，对特定企业来说，价格永远不变，图像水平，即 $\text{PED} = \infty$，perfectly elastic
             2. P = MR = AR，因为多卖一件商品，多得到的收入就是该商品的价格
                 - 数学推导：$\text{MR} = \lim\limits_{\text{PED} \to \infty} P \cdot \left(1 - \cfrac{1}{\text{PED}} \right) = P$
-            3. 价格最终会等于 ATC
+            3. 长期视角下，价格最终会等于 ATC 最小值，只与供给侧有关，与消费侧（比如消费者工资水平）无关
                 - 不同企业 ATC 不同怎么办？
                     - 短期：确实不同，优胜劣汰
                     - 长期：趋于相同
@@ -671,6 +671,8 @@ lang: ''
                 - $Q_{D}$：扭曲前的、社会最优的购买量（竖直线）
                 - $D (Q)$：扭曲前的、社会最优的需求曲线
                 - $P (Q)$：扭曲前的、社会最优的价格函数
+            - 上述扭曲除 tax/subsidy 外，扭曲前后的实际生产量都分别与扭曲前后的实际购买量相同，因此可以简化为 $\displaystyle \int_{Q'}^{Q} D (Q) - S (Q) \ \text{d}Q$
+                - 三角形的竖直边所在直线一定过实际成交点
 12. Private supply of public goods 会导致人们倾向于隐藏自己的需求（因为不付费也可以搭便车），需求曲线低于真实需求曲线，平衡产量低于 efficient level
 
 ---
