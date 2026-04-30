@@ -13,6 +13,8 @@ import InteractiveTable from '/src/components/simple-intable/InteractiveTable.js
 import TableBridge from '@/components/simple-intable/TableBridge.jsx';
 import { fuwariTableTheme } from '/src/components/simple-intable/tableThemes.js';
 import { fuwariMarkdownPopoverTheme } from '@/components/simple-intable/plugins/markdown-popover/themes.js';
+import TotalDuration from './TotalDuration.jsx'
+import duration from './duration.json'
 
 export const songsColumns = [
   { accessorKey: 'name', header: '歌曲' },
@@ -63,7 +65,7 @@ export const artistsColumns = [
 
 ## 总表
 
-总时长 `157414.36` 秒，合 `2623.57` 分钟，或 `43.73` 小时。
+<TotalDuration client:load data={duration}/>
 
 - `日语歌/2`：术曲
 - `日语歌/1`：上述以外的歌曲
