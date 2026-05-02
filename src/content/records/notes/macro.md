@@ -169,6 +169,8 @@ lang: ''
             - No cyclical unemployment
         2. Recessionary (negative) gap
             - Actual unemployment rate > natural rate of unemployment
+        3. Equilibrium at potential GDP
+            - Actual unemployment rate = natural rate of unemployment
 
 ## Unit 3 - National Income and Price Determination
 
@@ -252,6 +254,7 @@ lang: ''
         2. Spending multiplier: $\cfrac{1}{1 - \text{MPC}}$ or $\cfrac{1}{\text{MPS}}$
         3. Marginal propensity to save (MPS) = 1 - MPC
         4. Tax multiplier: $-\cfrac{\text{MPC}}{1 - \text{MPC}}$
+            - 因为 part of the increase in disposable income will be saved
     3. Lag
         1. Recognition lag: 政府认识到问题时，问题已经持续一段时间了
         2. Administrative lag: 从草案到通过需要时间
@@ -509,13 +512,14 @@ lang: ''
         - $Y_\text{d}$: 可支配收入
     2. 推论：当 $Y_\text{d} > \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生正储蓄；当 $Y_\text{d} < \cfrac{a}{1 - \text{MPC}} = \cfrac{a}{\text{MPS}}$ 时，产生负储蓄（dissaving）
 5. Multipliers
-    1. 政府支出/投资：使用 spending multiplier，最终国民收入增加总量 $= \Delta G \times \cfrac{1}{1 - \text{MPC}}$ or $\cfrac{1}{\text{MPS}}$，其中 $\Delta G$ 为政府支出变化量
+    1. 政府支出/投资：使用 spending multiplier (a.k.a simple multiplier)，最终国民收入增加总量 $= \Delta G \times \cfrac{1}{1 - \text{MPC}}$ or $\cfrac{1}{\text{MPS}}$，其中 $\Delta G$ 为政府支出变化量
         - 此时固定的定额税不会产生影响
     2. 定额税 (lump-sum tax)：使用 tax multiplier，最终国民收入增加总量 $= \Delta T \times -\cfrac{\text{MPC}}{1 - \text{MPC}}$ or $-\cfrac{\text{MPC}}{\text{MPS}}$，其中 $\Delta T$ 为定额税变化量
     3. 比例税
         - 消费最初增加量 $= \Delta \text{Autonomous Spending} \times \text{MPC} (1 - t)$，其中 $\Delta \text{Autonomous Spending}$ 指投资、政府购买等外部推力的变化，$t$ 为税率
         - 最终国民收入增加总量 $= \Delta \text{Autonomous Spending} \times \cfrac{1}{1 - \text{MPC} (1 - t)}$
-    4. Money multiplier $\cfrac{1}{\text{Reserve ratio}}$: 乘以第一家银行贷出去的第一笔钱，得到银行体系最多能创造多少新货币
+    4. Transfer payment：使用 $\cfrac{\text{MPC}}{1 - \text{MPC}}$ or $\cfrac{\text{MPC}}{\text{MPS}}$
+    5. Money multiplier $\cfrac{1}{\text{Reserve ratio}}$: 乘以第一家银行贷出去的第一笔钱，得到银行体系最多能创造多少新货币
 6. Fiscal policy（除了在供给侧定向干预）和 monetary policy 在长期都无法降低自然失业率
 7. Multiplier 公式（money multiplier 除外）只适用于 AS 曲线水平的情况，实际上公式的计算结果等于 AD 曲线的平移距离，具体产出变化还与 AS 曲线有关
 8.  关于 crowding out
@@ -638,3 +642,9 @@ lang: ''
         - V 长期相对稳定
         - 目标是维持 P 稳定，即零通胀
     2. 结论：货币供应量的增长率（$\Delta M$）必须与实际产出的增长率（$\Delta Y$）相匹配
+24. 利率下降导致 AD 右移，但长期视角下价格水平升高（通胀）会导致利率升高
+25. 在 Circular-flow diagram 中，导致 AD 左移的是 leakages，导致 AD 右移的是 injections
+26. Pension payments（养老金）属于 tranfer payments
+27. Tax credit 是税收抵免
+28. Central bank sells securities 时，特大型银行必须购买，且题目默认假设银行体系能瞬间通过不在放贷或收回贷款来缩减货币供应，维持 required reserves
+29. 存款本身不会影响 money supply，但之后银行用这笔钱创造更多货币则会增加 money supply

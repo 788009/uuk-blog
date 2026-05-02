@@ -55,7 +55,7 @@ lang: ''
         - Freedom of exchange, competition and profit incentive -> more efficient -> less equality
     - Mixed economy: mixed of command system and market system
         - interaction of buyers and sellers in markets
-4. Opportunity cost: what you give upto get an item / the next best alternative that forgone 放弃的下一个备选项的价值
+4. Opportunity cost: what you give up to get an item / the next best alternative that forgone 放弃的下一个备选项的价值
     - Explicit cost 显性: 有支出（如学费）
     - Inplicit cost 隐性: 无支出但有放弃（如快乐、经验）
 5. Production possibility curves (PPC): shows the maximum quantity of one good that can be produced for each possible quantity of the other good produced, given the economy's resource and technology
@@ -206,7 +206,7 @@ lang: ''
 3. Total surplus
     1. Total surplus = consumer surplus + producer surplus
     2. Total surplus = willing to pay - willing to sell
-    3. 平衡时最大？
+    3. 平衡时最大
 4. Market efficiency
     1. Archived when the allocation of resources maximizes total surplus 双方 welfare 最大
         - 否则 inefficient
@@ -523,7 +523,7 @@ lang: ''
                     - 短期：确实不同，优胜劣汰
                     - 长期：趋于相同
         3. 非完全竞争市场
-            1. 价格随数量变化，但不随人变化，即数量一定时，卖出的每一件商品价格都相同
+            1. 价格随数量变化，但不随人变化，即数量一定时，卖出的每一件商品价格都相同  
                 原因：
                 - 在单一价格垄断市场中，企业自己就是所有供给，供给有稀缺性
                 - 在垄断竞争市场中，每个企业的产品有其独特性，该独特性是稀缺的
@@ -534,6 +534,7 @@ lang: ''
                 - 产量越高，再多卖一件商品时价格越低，之前需要降价的商品越多，因此 MR 递减
                 - 虽然 MC = MR 时若继续生产，依然可以以高于成本价的价格（但比当前价格低）卖出，但同时必须为之前所有人降价，降价导致原有客户流失的利润，超过了新客户带来的利润，因此企业拒绝继续生产，也因此，在 MC = MR 之后，P = MC 之前，就产生了 deadweight loss
                 - P > MR = MC，因此无 allocative efficiency
+                    - 但是政府通过给企业补贴，可以使 MC 下降（如下降到 MC'），让 MC' = MR 的数量等于 MC = P 的数量，消除 deadweight loss，达到 allocative efficiency / socially optimal
             4. 长期视角
                 - 在单一价格垄断市场中，由于进入壁垒高导致没有竞争，以及商品的稀缺性，MC = MR 的点通常落在 P > ATC 的区间内
                     - 通常 MC = MR 的点在 ATC 的递减区间，因此无 productive efficiency
