@@ -314,9 +314,9 @@ lang: ''
 7. Shut down and exit
     1. Shut down: short-run decision, 合同未到期
         1. 若 TR > TVC 且亏钱：但还会继续（不看房租可视为赚钱），不会 shut down
-            - P > ATC
+            - P > AVC
         2. 若 TR < TVC: 亏钱，且不会继续，即 shut down
-            - P < ATC
+            - P < AVC
     2. Exit: long-run decision, 合同到期
         - 同上，P < ATC 则 exit
 8. Long-run equilibrium: zero profit
@@ -465,6 +465,10 @@ lang: ''
 2. 若政府施行 binding 的 price floor，则 consumer 的 marginal benefit（愿意支付给第一件商品的最高价格）位于需求曲线的高位，而 producer 的 marginal cost 位于供给曲线的低位，因此在实际成交量 $Q_d$ 处，消费者的边际效益（MB）通常是很高的，而生产商的边际成本（MC）在较低产量下通常较低；若政府施行 binding 的 price ceiling，则反过来
 3. 短期供给曲线实际是 firm AVC 最低点右侧的 MC 曲线（其左侧部分厂家会停产，因此产量始终为 0），指定范围的定积分即为对应范围产出的可变成本，因此 producer surplus = total revenue - total variable cost = profit + total fixed cost
     - 长期供给曲线则是 firm ATC 最低点右侧的 MC 曲线，其左侧部分厂家会推出市场，因此产量始终为 0
+    - 根据 MC 的趋势，可以将市场分为三类
+        - 成本不变行业（Constant-cost industry）：MC 水平，长期供给曲线水平
+        - 成本递增行业（Increasing-cost industry）：MC 递增，长期供给曲线向上倾斜
+        - 成本递减行业（Decreasing-cost industry）：MC 递减，长期供给曲线向下倾斜
 4. 无价格歧视时，无论厂家的生产成本高低，也无论消费者愿意出价的高低，最终市场的成交价格总是唯一
 5. 在信息透明，商品同质的前提下，成本（供给曲线的价格）越低的厂家越能优先抢占市场，越能优先与消费者成交；出价越高的消费者越能优先买下商品，越能优先与厂家成交  
     推论：
@@ -514,6 +518,11 @@ lang: ''
                 - MR > 0, PED > 1, elastic
                 - MR = 0, PED = 1, unit elastic
                 - MR < 0, PED < 1, inelastic
+            8. MR 与 P 的关系  
+                设 $P(x) = kx + b$  
+                $\text{TR}(x) = P(x) \cdot x = (kx + b) x = kx^2 + bx$  
+                $\text{MR} = \text{TR}'(x) = 2kx + b$  
+                因此，MR 的斜率是 P 的 2 倍
         2. 完全竞争市场
             1. 供给是分散的，对特定企业来说，价格永远不变，图像水平，即 $\text{PED} = \infty$，perfectly elastic
             2. P = MR = AR，因为多卖一件商品，多得到的收入就是该商品的价格
@@ -535,7 +544,13 @@ lang: ''
                 - 虽然 MC = MR 时若继续生产，依然可以以高于成本价的价格（但比当前价格低）卖出，但同时必须为之前所有人降价，降价导致原有客户流失的利润，超过了新客户带来的利润，因此企业拒绝继续生产，也因此，在 MC = MR 之后，P = MC 之前，就产生了 deadweight loss
                 - P > MR = MC，因此无 allocative efficiency
                     - 但是政府通过给企业补贴，可以使 MC 下降（如下降到 MC'），让 MC' = MR 的数量等于 MC = P 的数量，消除 deadweight loss，达到 allocative efficiency / socially optimal
-            4. 长期视角
+            4. 若政府设定 price ceiling
+                1. MR 变为由以下三个部分构成
+                    1. Price ceiling 与 demand 的交点左侧：price ceiling（因为多卖不需要降价）
+                    2. Price ceiling 与 demand 的交点左侧：原 MR（因为多卖需要降价）
+                    3. Price ceiling 与 demand 的交点：连接上述两段端点的竖直线段
+                2. Deadweight loss 减少，若新 MR 经过 MC = demand 的交点，则无 deadweight loss
+            5. 长期视角
                 - 在单一价格垄断市场中，由于进入壁垒高导致没有竞争，以及商品的稀缺性，MC = MR 的点通常落在 P > ATC 的区间内
                     - 通常 MC = MR 的点在 ATC 的递减区间，因此无 productive efficiency
                 - 在垄断竞争市场中，市场无进出壁垒（与完全竞争市场相同），因此价格最终会等于 ATC，且两条曲线在 MC = MR 的产量处相切
@@ -602,9 +617,16 @@ lang: ''
             |完全竞争市场中，P 最终会等于 ATC|完全竞争市场中，W 最终会等于 ARP（前提是劳动力工资为唯一可变成本）|
             |垄断市场中，每多卖一件商品，都要给之前所有商品降价，减少收入，因此从第二件商品开始 P > MR|买方垄断市场中，每多雇佣一个人，都要给之前所有人涨薪，增加成本，因此从第二个人开始 W < MFC|
             |垄断市场中，在 MC = MR 之后，P = MC 之前是 deadweight loss|买方垄断市场中，在 MFC = MRP 之后，W = MRP 之前是 deadweight loss|
+            |政府设定 price ceiling，MR 变为三段，减少 deadweight loss|政府设定 minimum wage，MFC 变为三段，减少 deadweight loss（见下）|
 
             - 政府对企业干预的相关结论无法按照上述逻辑类比
-        4. 商品市场与要素市场的联系  
+        4. 若政府设定 minimum wage
+            1. MFC 变为由以下三个部分构成
+                1. Minimum wage 与 supply 的交点左侧：minimum wage（因为多雇不需要涨薪）
+                2. Minimum wage 与 supply 的交点右侧：原 MFC（因为多雇需要涨薪）
+                3. Minimum wage 与 supply 的交点：连接上述两段端点的竖直线段
+            2. Deadweight loss 减少，若新 MFC 经过 MRP = supply 的交点，则无 deadweight loss
+        5. 商品市场与要素市场的联系  
             若完全竞争且劳动力工资是唯一可变成本  
             $\begin{cases}
                 \text{MC} \times \text{MP} = W \ (上文已经证明) \\
@@ -655,12 +677,14 @@ lang: ''
                 - 左边界：纵轴（竖直线）
                 - 右边界 $Q_{D'}$：实际购买量（竖直线）
                 - 上边界 $D (Q)$：扭曲前的、私人最优的需求曲线
+                    - 若需求完全非弹性，则代入公式时 $D (Q) = \infty$
                 - 下边界 $P_\text{paid} (Q)$：消费者实际支出价格
             2. Producer surplus: $\displaystyle \int_0^{Q_{S'}} P_\text{received} (Q) - S (Q) \ \text{d}Q$
                 - 左边界：纵轴（竖直线）
                 - 右边界 $Q_{S'}$：实际生产量（竖直线）
                 - 上边界 $P_\text{received} (Q)$：生产者实际收入价格
                 - 下边界 $S (Q)$：扭曲前的、私人最优的供给曲线
+                    - 若供给完全非弹性，则代入公式时 $S (Q) = 0$
         2. Deadweight loss: $\displaystyle \int_{Q_{S'}}^{Q_{S}} P (Q) - S (Q) \ \text{d}Q + \int_{Q_{D'}}^{Q_{D}} D (Q) - P (Q) \ \text{d}Q$
             - 生产扭曲边界
                 - $Q_{S'}$：扭曲后的实际生产量（竖直线）
@@ -672,9 +696,16 @@ lang: ''
                 - $Q_{D}$：扭曲前的、社会最优的购买量（竖直线）
                 - $D (Q)$：扭曲前的、社会最优的需求曲线
                 - $P (Q)$：扭曲前的、社会最优的价格函数
-            - 上述扭曲除 tax/subsidy 外，扭曲前后的实际生产量都分别与扭曲前后的实际购买量相同，因此可以简化为 $\displaystyle \int_{Q'}^{Q} D (Q) - S (Q) \ \text{d}Q$
+            - 上述扭曲除 tariff/quota 外，扭曲前后的实际生产量都分别与扭曲前后的实际购买量相同，因此可以简化为 $\displaystyle \int_{Q'}^{Q} D (Q) - S (Q) \ \text{d}Q$
                 - 三角形的竖直边所在直线一定过实际成交点
 12. Private supply of public goods 会导致人们倾向于隐藏自己的需求（因为不付费也可以搭便车），需求曲线低于真实需求曲线，平衡产量低于 efficient level
+13. Tax
+    1. Average tax rate (ATR): $\cfrac{\text{Total Taxes Paid}}{\text{Total Income}}$
+    2. Marginal tax rate (MTR): $\cfrac{\Delta \text{Taxes}}{\Delta \text{Income}}$
+    3. Proportional tax 比例税：MTR 不随收入变化，MTR = ATR
+    4. Progressive tax 累进税：MTR 随收入增加而增加，MTR > ATR
+    5. Regressive tax 累退税：MTR 随收入增加而减少，MTR < ATR
+        - 如消费税，因为低收入人群通常会将收入的更大比例用于消费
 
 ---
 
