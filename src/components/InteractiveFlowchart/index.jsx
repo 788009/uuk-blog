@@ -151,7 +151,7 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 	}, [graph]);
 
 	// ==========================================
-	// 阶段三：视觉高亮渲染引擎 (全新拓扑生长树着色)
+	// 阶段三：视觉高亮渲染引擎 (主干优先的连续流淌着色)
 	// ==========================================
 	useEffect(() => {
 		if (!containerRef.current || !graph) return;
@@ -192,22 +192,13 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 			if (paths.length === 0) return;
 
-			// 1. 从所有路线中提取出一个“有效连线子网 (Adjacency List)”
-			const validAdj = {};
+			// 批量点亮所有途径的节点
 			const validNodes = new Set();
 			paths.forEach((pathNodes) => {
 				pathNodes.forEach((n) => {
 					validNodes.add(n);
 				});
-				for (let i = 0; i < pathNodes.length - 1; i++) {
-					const u = pathNodes[i];
-					const v = pathNodes[i + 1];
-					if (!validAdj[u]) validAdj[u] = new Set();
-					validAdj[u].add(v);
-				}
 			});
-
-			// 批量点亮途径的节点
 			validNodes.forEach((nodeId) => {
 				const nodeEl = svgElement.querySelector(
 					`[id*="-flowchart-${nodeId}-"]`,
@@ -215,54 +206,61 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 				if (nodeEl) nodeEl.classList.add("highlight-node");
 			});
 
-			// 2. BFS 拓扑生长着色引擎
+			// 主干优先排序
+			// 将所有路径分为“直达终点的主干”和“兜圈子的环路”
+			const targetPaths = paths.filter((p) => p[p.length - 1] === target);
+			const cyclePaths = paths.filter((p) => p[p.length - 1] !== target);
+
+			// 按长度升序排序：越短的直线路径优先级越高，它是当之无愧的第一主干
+			targetPaths.sort((a, b) => a.length - b.length);
+			cyclePaths.sort((a, b) => a.length - b.length);
+
+			const sortedPaths = [...targetPaths, ...cyclePaths];
+
+			// 流淌着色引擎
 			const edgeColors = {};
-			const nodeIncomingColor = {}; // 记录每个节点被注入的颜色
+			const usedColorsAtNode = {}; // 账本：记录每个节点向外发出过哪些颜色
 			let colorIndex = 0;
 			const getNextColor = () => PATH_COLORS[colorIndex++ % PATH_COLORS.length];
 
-			nodeIncomingColor[source] = getNextColor(); // 给起点注入第一种颜色
-			const queue = [source];
-			const visited = new Set([source]);
+			sortedPaths.forEach((pathNodes) => {
+				let currentPathColor = null;
 
-			while (queue.length > 0) {
-				const u = queue.shift();
-				const neighbors = Array.from(validAdj[u] || []);
+				for (let i = 0; i < pathNodes.length - 1; i++) {
+					const u = pathNodes[i];
+					const v = pathNodes[i + 1];
+					const edgePrefix = `L_${u}_${v}`;
 
-				if (neighbors.length === 0) continue;
+					if (!usedColorsAtNode[u]) usedColorsAtNode[u] = new Set();
 
-				// 拿到当前节点的基础颜色（即上一级传下来的颜色）
-				const baseColor = nodeIncomingColor[u];
-
-				// 核心逻辑：遍历它的所有发出的连线
-				neighbors.forEach((v, index) => {
-					const edgeKey = `L_${u}_${v}`;
-
-					// 只有未被着色的边才处理
-					if (!edgeColors[edgeKey]) {
-						// 技巧：第一条支路继承干道的颜色，其他的支路强制获取新颜色！
-						const assignedColor = index === 0 ? baseColor : getNextColor();
-						edgeColors[edgeKey] = assignedColor;
-
-						// 将颜色传递给下一个节点（如果它还没有收到过颜色的话）
-						if (!nodeIncomingColor[v]) {
-							nodeIncomingColor[v] = assignedColor;
+					if (edgeColors[edgePrefix]) {
+						// 1. 遇到已经被前置主干道上过色的边 -> 搭便车，顺应主干的颜色
+						currentPathColor = edgeColors[edgePrefix];
+					} else {
+						// 2. 遇到未着色的新边
+						if (!currentPathColor) {
+							currentPathColor = getNextColor(); // 赋予全新的源头颜色
 						}
 
-						// 继续往下生长
-						if (!visited.has(v)) {
-							visited.add(v);
-							queue.push(v);
+						// 3. 这个节点 u 之前有没有流出过这个颜色？
+						if (usedColorsAtNode[u].has(currentPathColor)) {
+							// 如果流出过，这说明当前路径是在这里发生的分叉（岔路），强制脱离原色
+							currentPathColor = getNextColor();
 						}
+
+						// 上色并记账
+						edgeColors[edgePrefix] = currentPathColor;
+						usedColorsAtNode[u].add(currentPathColor);
 					}
-				});
-			}
+				}
+			});
 
-			// 3. 将计算好的边颜色实际应用到 DOM 上
-			Object.keys(edgeColors).forEach((edgeKey) => {
-				const color = edgeColors[edgeKey];
-				// 查找对应的 SVG Path 元素
-				const edges = svgElement.querySelectorAll(`[data-id^="${edgeKey}_"]`);
+			// 将计算好的颜色字典映射到 SVG DOM 元素上
+			Object.keys(edgeColors).forEach((edgePrefix) => {
+				const color = edgeColors[edgePrefix];
+				const edges = svgElement.querySelectorAll(
+					`[data-id^="${edgePrefix}_"]`,
+				);
 				edges.forEach((edgeEl) => {
 					edgeEl.classList.add("highlight-edge");
 					edgeEl.style.stroke = color;

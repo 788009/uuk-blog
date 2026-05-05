@@ -1,8 +1,6 @@
-/**
- * 从 Mermaid 生成的 SVG 中逆向提取图的邻接表 (Adjacency List)
- * @param {SVGSVGElement} svgElement
- * @returns {Record<string, string[]>} 邻接表对象
- */
+// ==========================================
+// 提取图的邻接表
+// ==========================================
 export function extractGraphFromSvg(svgElement) {
 	const adjacencyList = {};
 
@@ -25,7 +23,7 @@ export function extractGraphFromSvg(svgElement) {
 	const paths = svgElement.querySelectorAll(".edgePaths path[data-id]");
 	paths.forEach((path) => {
 		const dataId = path.getAttribute("data-id");
-		if (!dataId || !dataId.startsWith("L_")) return; // 格式: L_{from}_{to}_{idx}
+		if (!dataId || !dataId.startsWith("L_")) return;
 
 		let fromNode = null;
 		let toNode = null;
@@ -53,52 +51,110 @@ export function extractGraphFromSvg(svgElement) {
 	return adjacencyList;
 }
 
-/**
- * 使用深度优先搜索 (DFS) 查找起点到终点的所有路径（允许节点重复，不允许边重复）
- * @param {Record<string, string[]>} graph 邻接表
- * @param {string} source 起点节点 ID
- * @param {string} target 终点节点 ID
- * @returns {string[][]} 路径数组
- */
 export function findAllPaths(graph, source, target) {
-	const paths = [];
-	const visitedEdges = new Set();
+	const successPaths = []; // 成功抵达终点的直线路径 (无环)
+	const cyclePaths = []; // 遇到已访问节点而回头的路径 (可能是有用的环，也可能是死胡同)
 
-	// 安全阈值：如果路径长度阈值，强制剪枝，防止极度复杂的反馈环导致浏览器卡死
-	const MAX_DEPTH = 50;
+	const MAX_DEPTH = 30;
 
-	function dfs(current, currentPath) {
-		// 到达终点，记录路径
+	// 1. 探索地图阶段
+	function dfs(current, currentPathNodes, currentPathEdges) {
 		if (current === target) {
-			paths.push([...currentPath]);
+			successPaths.push([...currentPathEdges]);
 			return;
 		}
 
-		// 超过深度限制，提前返回
-		if (currentPath.length >= MAX_DEPTH) {
-			return;
-		}
+		if (currentPathNodes.length >= MAX_DEPTH) return;
 
 		const neighbors = graph[current] || [];
 
 		for (const neighbor of neighbors) {
-			// 用 "起点->终点" 的字符串作为边的唯一标识
+			// 原点排斥：为了避免视觉冗余，严格禁止绕了一大圈回到起点的线
+			if (neighbor === source) continue;
+
 			const edgeKey = `${current}->${neighbor}`;
 
-			// 如果这条连线没有走过，就可以走（即使节点之前来过）
-			if (!visitedEdges.has(edgeKey)) {
-				visitedEdges.add(edgeKey);
-				currentPath.push(neighbor);
+			// 如果发现邻居已经在当前路径里（说明成环了）
+			if (currentPathNodes.includes(neighbor)) {
+				// 记下这条路，包含这最后一条“回头边”，然后回头（不继续深入）
+				cyclePaths.push([...currentPathEdges, edgeKey]);
+				continue;
+			}
 
-				dfs(neighbor, currentPath);
+			// 正常往前走
+			currentPathNodes.push(neighbor);
+			currentPathEdges.push(edgeKey);
 
-				// 回溯：离开时将边移除，以便其他路径组合可以使用
-				currentPath.pop();
-				visitedEdges.delete(edgeKey);
+			dfs(neighbor, currentPathNodes, currentPathEdges);
+
+			// 回溯
+			currentPathNodes.pop();
+			currentPathEdges.pop();
+		}
+	}
+
+	// 从起点开始搜索
+	dfs(source, [source], []);
+
+	// 2. 收集所有成功抵达终点路径上的“功臣节点”
+	const validNodes = new Set();
+	successPaths.forEach((pathEdges) => {
+		pathEdges.forEach((edge) => {
+			const [u, v] = edge.split("->");
+			validNodes.add(u);
+			validNodes.add(v);
+		});
+	});
+
+	// 3. 验证环路阶段 (秋后算账)
+	let addedNewValidNodes = true;
+	const validCyclePaths = [];
+	const usedCycleIndices = new Set();
+
+	// 使用 while 循环是因为：一个环路被验证成功后，它上面的节点可能又能验证其他的环路
+	while (addedNewValidNodes) {
+		addedNewValidNodes = false;
+
+		for (let i = 0; i < cyclePaths.length; i++) {
+			if (usedCycleIndices.has(i)) continue;
+
+			const pathEdges = cyclePaths[i];
+			// 拿到这条回头路的最后一步（例如 D -> B）
+			const lastEdge = pathEdges[pathEdges.length - 1];
+			const [_, v] = lastEdge.split("->"); // v 就是它回头指向的那个节点 (B)
+
+			// 如果它回到的节点 B 是一个“功臣节点”，那这个环就是有意义的附属反馈环
+			if (validNodes.has(v)) {
+				validCyclePaths.push(pathEdges);
+				usedCycleIndices.add(i);
+
+				// 把这个环上的所有节点都加入功臣列表
+				pathEdges.forEach((edge) => {
+					const [nodeU, nodeV] = edge.split("->");
+					if (!validNodes.has(nodeU)) {
+						validNodes.add(nodeU);
+						addedNewValidNodes = true;
+					}
+					if (!validNodes.has(nodeV)) {
+						validNodes.add(nodeV);
+						addedNewValidNodes = true;
+					}
+				});
 			}
 		}
 	}
 
-	dfs(source, [source]);
-	return paths;
+	// 4. 将验证过的边数组转换回 index.jsx 期望的节点数组格式
+	const allValidEdgePaths = [...successPaths, ...validCyclePaths];
+
+	const finalNodePaths = allValidEdgePaths.map((edgePath) => {
+		const nodePath = [source];
+		edgePath.forEach((edge) => {
+			const [, v] = edge.split("->");
+			nodePath.push(v);
+		});
+		return nodePath;
+	});
+
+	return finalNodePaths;
 }
