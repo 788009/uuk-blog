@@ -1,0 +1,58 @@
+.interactive-mermaid-container {
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.interactive-mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 赋予可点击状态 */
+.interactive-mermaid .node {
+    cursor: pointer;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.interactive-mermaid .edgePaths path {
+    transition: opacity 0.3s ease, stroke-width 0.3s ease;
+}
+
+/* 状态：存在选中节点时，全局变暗 */
+.interactive-mermaid.has-selection .node {
+    opacity: 0.15;
+}
+.interactive-mermaid.has-selection .edgePaths path {
+    opacity: 0.05;
+}
+
+/* 状态：被包含在路径中的节点恢复高亮 */
+.interactive-mermaid.has-selection .node.highlight-node {
+    opacity: 1;
+}
+
+/* 状态：被包含在路径中的连线恢复高亮 */
+.interactive-mermaid.has-selection .edgePaths path.highlight-edge {
+    opacity: 1;
+}
+
+/* 起点 (Source Node) - 青绿色系 */
+.interactive-mermaid.has-selection .node.source-node rect,
+.interactive-mermaid.has-selection .node.source-node circle,
+.interactive-mermaid.has-selection .node.source-node polygon {
+    stroke: #2a9d8f !important; 
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 4px 8px rgba(42, 157, 143, 0.4));
+}
+
+/* 终点 (Target Node) - 红色系 */
+.interactive-mermaid.has-selection .node.target-node rect,
+.interactive-mermaid.has-selection .node.target-node circle,
+.interactive-mermaid.has-selection .node.target-node polygon {
+    stroke: #e63946 !important; 
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 4px 8px rgba(230, 57, 70, 0.4));
+}

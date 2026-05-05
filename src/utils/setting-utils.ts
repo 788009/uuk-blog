@@ -44,6 +44,12 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 			break;
 	}
 
+	const isDark = document.documentElement.classList.contains("dark");
+	document.documentElement.setAttribute(
+		"mermaid-theme",
+		isDark ? "dark" : "light",
+	);
+
 	// Set the theme for Expressive Code
 	document.documentElement.setAttribute(
 		"data-theme",
