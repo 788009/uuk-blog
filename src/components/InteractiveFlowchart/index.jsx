@@ -31,6 +31,7 @@ const PATH_COLORS = [
 export default function InteractiveFlowchart({ code, theme = "default" }) {
 	const containerRef = useRef(null);
 	const [graph, setGraph] = useState(null);
+	// 状态数组结构：[起点, 终点, 途经点1, 途经点2, ...]
 	const [selectedNodes, setSelectedNodes] = useState([]);
 	const [error, setError] = useState(null);
 	const [currentTheme, setCurrentTheme] = useState(theme);
@@ -120,6 +121,7 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 		const handleSvgClick = (e) => {
 			const nodeElement = e.target.closest(".node");
 
+			// 点击空白处，自动取消选中所有节点
 			if (!nodeElement) {
 				setSelectedNodes([]);
 				return;
@@ -133,14 +135,26 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 			setSelectedNodes((prev) => {
 				if (prev.length === 0) return [nodeId];
+
 				if (prev.length === 1) {
+					// 若此时取消选中第一个节点，则自动取消选中所有节点
 					if (prev[0] === nodeId) return [];
 					return [prev[0], nodeId];
 				}
-				if (prev.length === 2) {
-					if (nodeId === prev[0]) return [prev[1]];
+
+				if (prev.length >= 2) {
+					// 若此时取消选中第一个节点，则自动取消选中所有节点
+					if (nodeId === prev[0]) return [];
+					// 若此时取消选中第二个节点，则自动取消选中除了第一个节点之外的所有节点
 					if (nodeId === prev[1]) return [prev[0]];
-					return [prev[0], nodeId];
+
+					// 对于第三个及以上的节点 (途经点) 的切换逻辑
+					if (prev.includes(nodeId)) {
+						// 如果已经选中了，再次点击则取消选中该途经点
+						return prev.filter((id) => id !== nodeId);
+					}
+					// 否则加入途经点列表
+					return [...prev, nodeId];
 				}
 				return prev;
 			});
@@ -151,14 +165,14 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 	}, [graph]);
 
 	// ==========================================
-	// 阶段三：视觉高亮渲染引擎 (主干优先的连续流淌着色)
+	// 阶段三：视觉高亮渲染引擎 (支持途经点过滤的主干流淌着色)
 	// ==========================================
 	useEffect(() => {
 		if (!containerRef.current || !graph) return;
 		const svgElement = containerRef.current.querySelector("svg");
 		if (!svgElement) return;
 
-		// 1. 清理上一帧的样式
+		// 1. 清理上一帧的样式 (新增 waypoint-node 的清理)
 		svgElement.classList.remove("has-selection");
 		svgElement.querySelectorAll(".node").forEach((node) => {
 			node.classList.remove(
@@ -166,6 +180,7 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 				"selected-node",
 				"source-node",
 				"target-node",
+				"waypoint-node",
 			);
 		});
 		svgElement.querySelectorAll(".edgePaths path").forEach((path) => {
@@ -177,28 +192,36 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 		if (selectedNodes.length === 0) return;
 		svgElement.classList.add("has-selection");
 
+		// 标记选中的节点，根据数组索引赋予 起点、终点、途经点 的样式
 		selectedNodes.forEach((nodeId, index) => {
 			const nodeEl = svgElement.querySelector(`[id*="-flowchart-${nodeId}-"]`);
 			if (nodeEl) {
 				nodeEl.classList.add("selected-node", "highlight-node");
 				if (index === 0) nodeEl.classList.add("source-node");
-				if (index === 1) nodeEl.classList.add("target-node");
+				else if (index === 1) nodeEl.classList.add("target-node");
+				else nodeEl.classList.add("waypoint-node");
 			}
 		});
 
-		if (selectedNodes.length === 2) {
-			const [source, target] = selectedNodes;
-			const paths = findAllPaths(graph, source, target);
+		// 必须至少选中了起点和终点才进行连线渲染
+		if (selectedNodes.length >= 2) {
+			const source = selectedNodes[0];
+			const target = selectedNodes[1];
+			const waypoints = selectedNodes.slice(2); // 提取出所有途经点
 
-			if (paths.length === 0) return;
+			// 算出所有抵达终点的潜在路径
+			const allPaths = findAllPaths(graph, source, target);
 
-			// 批量点亮所有途径的节点
-			const validNodes = new Set();
-			paths.forEach((pathNodes) => {
-				pathNodes.forEach((n) => {
-					validNodes.add(n);
-				});
+			// 【核心逻辑】：过滤路径池，只有同时包含所有“途经点”的路径才能幸存
+			const paths = allPaths.filter((pathNodes) => {
+				return waypoints.every((wp) => pathNodes.includes(wp));
 			});
+
+			if (paths.length === 0) return; // 如果加了限制条件后无路可走，则中止渲染线段
+
+			// 批量点亮途径的所有节点
+			const validNodes = new Set();
+			paths.forEach((pathNodes) => pathNodes.forEach((n) => validNodes.add(n)));
 			validNodes.forEach((nodeId) => {
 				const nodeEl = svgElement.querySelector(
 					`[id*="-flowchart-${nodeId}-"]`,
@@ -206,20 +229,13 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 				if (nodeEl) nodeEl.classList.add("highlight-node");
 			});
 
-			// 主干优先排序
-			// 将所有路径分为“直达终点的主干”和“兜圈子的环路”
-			const targetPaths = paths.filter((p) => p[p.length - 1] === target);
-			const cyclePaths = paths.filter((p) => p[p.length - 1] !== target);
+			// 【核心精简】：既然算法底层保证了所有路径都贯穿首尾到达 target，
+			// 我们直接按路径长短排序即可，越短的越是绝对干道，优先获得颜色。
+			const sortedPaths = [...paths].sort((a, b) => a.length - b.length);
 
-			// 按长度升序排序：越短的直线路径优先级越高，它是当之无愧的第一主干
-			targetPaths.sort((a, b) => a.length - b.length);
-			cyclePaths.sort((a, b) => a.length - b.length);
-
-			const sortedPaths = [...targetPaths, ...cyclePaths];
-
-			// 流淌着色引擎
+			// 连续流淌着色引擎
 			const edgeColors = {};
-			const usedColorsAtNode = {}; // 账本：记录每个节点向外发出过哪些颜色
+			const usedColorsAtNode = {};
 			let colorIndex = 0;
 			const getNextColor = () => PATH_COLORS[colorIndex++ % PATH_COLORS.length];
 
@@ -234,28 +250,22 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 					if (!usedColorsAtNode[u]) usedColorsAtNode[u] = new Set();
 
 					if (edgeColors[edgePrefix]) {
-						// 1. 遇到已经被前置主干道上过色的边 -> 搭便车，顺应主干的颜色
-						currentPathColor = edgeColors[edgePrefix];
+						currentPathColor = edgeColors[edgePrefix]; // 搭便车
 					} else {
-						// 2. 遇到未着色的新边
 						if (!currentPathColor) {
-							currentPathColor = getNextColor(); // 赋予全新的源头颜色
-						}
-
-						// 3. 这个节点 u 之前有没有流出过这个颜色？
-						if (usedColorsAtNode[u].has(currentPathColor)) {
-							// 如果流出过，这说明当前路径是在这里发生的分叉（岔路），强制脱离原色
 							currentPathColor = getNextColor();
 						}
+						if (usedColorsAtNode[u].has(currentPathColor)) {
+							currentPathColor = getNextColor(); // 发生分叉，换新色
+						}
 
-						// 上色并记账
 						edgeColors[edgePrefix] = currentPathColor;
 						usedColorsAtNode[u].add(currentPathColor);
 					}
 				}
 			});
 
-			// 将计算好的颜色字典映射到 SVG DOM 元素上
+			// 将颜色渲染到 SVG 连线
 			Object.keys(edgeColors).forEach((edgePrefix) => {
 				const color = edgeColors[edgePrefix];
 				const edges = svgElement.querySelectorAll(
