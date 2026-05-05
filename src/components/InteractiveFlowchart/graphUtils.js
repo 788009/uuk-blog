@@ -54,34 +54,49 @@ export function extractGraphFromSvg(svgElement) {
 }
 
 /**
- * 使用深度优先搜索 (DFS) 查找起点到终点的所有简单路径
+ * 使用深度优先搜索 (DFS) 查找起点到终点的所有路径（允许节点重复，不允许边重复）
  * @param {Record<string, string[]>} graph 邻接表
  * @param {string} source 起点节点 ID
  * @param {string} target 终点节点 ID
- * @returns {string[][]} 路径数组，每个路径是一个节点 ID 的数组
+ * @returns {string[][]} 路径数组
  */
 export function findAllPaths(graph, source, target) {
 	const paths = [];
-	const visited = new Set();
+	const visitedEdges = new Set();
+
+	// 安全阈值：如果路径长度阈值，强制剪枝，防止极度复杂的反馈环导致浏览器卡死
+	const MAX_DEPTH = 50;
 
 	function dfs(current, currentPath) {
+		// 到达终点，记录路径
 		if (current === target) {
 			paths.push([...currentPath]);
 			return;
 		}
 
-		visited.add(current);
+		// 超过深度限制，提前返回
+		if (currentPath.length >= MAX_DEPTH) {
+			return;
+		}
+
 		const neighbors = graph[current] || [];
 
 		for (const neighbor of neighbors) {
-			if (!visited.has(neighbor)) {
+			// 用 "起点->终点" 的字符串作为边的唯一标识
+			const edgeKey = `${current}->${neighbor}`;
+
+			// 如果这条连线没有走过，就可以走（即使节点之前来过）
+			if (!visitedEdges.has(edgeKey)) {
+				visitedEdges.add(edgeKey);
 				currentPath.push(neighbor);
+
 				dfs(neighbor, currentPath);
+
+				// 回溯：离开时将边移除，以便其他路径组合可以使用
 				currentPath.pop();
+				visitedEdges.delete(edgeKey);
 			}
 		}
-
-		visited.delete(current);
 	}
 
 	dfs(source, [source]);
