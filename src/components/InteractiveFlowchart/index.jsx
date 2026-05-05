@@ -221,7 +221,11 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 			// 批量点亮途径的所有节点
 			const validNodes = new Set();
-			paths.forEach((pathNodes) => pathNodes.forEach((n) => validNodes.add(n)));
+			paths.forEach((pathNodes) => {
+				pathNodes.forEach((n) => {
+					validNodes.add(n);
+				});
+			});
 			validNodes.forEach((nodeId) => {
 				const nodeEl = svgElement.querySelector(
 					`[id*="-flowchart-${nodeId}-"]`,
