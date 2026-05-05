@@ -6,16 +6,26 @@ import "./styles.css";
 let isMermaidInitialized = false;
 
 const PATH_COLORS = [
-	"#e63946",
-	"#2a9d8f",
-	"#e9c46a",
-	"#f4a261",
-	"#9b5de5",
-	"#00bbf9",
-	"#f15bb5",
-	"#00f5d4",
-	"#ff9f1c",
-	"#8338ec",
+	"#e63946", // 红色 (Imperial Red)
+	"#2a9d8f", // 鸭蛋绿 (Persian Green)
+	"#e9c46a", // 黄色 (Saffron)
+	"#f4a261", // 橙沙 (Sandy Brown)
+	"#9b5de5", // 紫罗兰 (Amethyst)
+	"#00bbf9", // 天蓝 (Capri)
+	"#f15bb5", // 桃红 (Hot Pink)
+	"#12d4a6", // 翠绿 (Light Green)
+	"#ff9f1c", // 橙色 (Orange)
+	"#8338ec", // 深紫 (Blue Violet)
+	"#38b000", // 草地绿 (Apple Green)
+	"#ff006e", // 玫瑰红 (Rose)
+	"#3a86ff", // 皇家蓝 (Azure)
+	"#ffbe0b", // 金黄 (Amber)
+	"#fb5607", // 橙红 (Orange Red)
+	"#4361ee", // 靛蓝 (Palatinate Blue)
+	"#20b2aa", // 浅海洋绿 (Light Sea Green)
+	"#f94144", // 番茄红 (Tomato)
+	"#7209b7", // 深葡萄紫 (Grape)
+	"#0077b6", // 海洋蓝 (Star Command Blue)
 ];
 
 export default function InteractiveFlowchart({ code, theme = "default" }) {
@@ -23,15 +33,12 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 	const [graph, setGraph] = useState(null);
 	const [selectedNodes, setSelectedNodes] = useState([]);
 	const [error, setError] = useState(null);
-
-	// 新增：用于跟踪当前系统/页面的主题状态
 	const [currentTheme, setCurrentTheme] = useState(theme);
 
 	// ==========================================
 	// 监听全局亮暗色主题变化
 	// ==========================================
 	useEffect(() => {
-		// 兼容 SSR：确保在浏览器环境下才访问 document
 		if (typeof document === "undefined") return;
 
 		const getThemeFromDOM = () => {
@@ -41,10 +48,8 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 			return dataTheme === "dark" ? "dark" : theme;
 		};
 
-		// 挂载时初始化一次
 		setCurrentTheme(getThemeFromDOM());
 
-		// 使用 MutationObserver 监听 mermaid-theme 属性变化
 		const observer = new MutationObserver((mutations) => {
 			const hasThemeChange = mutations.some(
 				(m) => m.type === "attributes" && m.attributeName === "mermaid-theme",
@@ -82,7 +87,6 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 					isMermaidInitialized = true;
 				}
 
-				// 每次渲染前更新 Mermaid 的主题配置
 				mermaid.initialize({ startOnLoad: false, theme: currentTheme });
 
 				const id = `mermaid-interactive-${Math.random().toString(36).substring(2, 11)}`;
@@ -101,7 +105,7 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 		};
 
 		renderChart();
-	}, [code, currentTheme]); // 当 currentTheme 变化时，重新生成 SVG
+	}, [code, currentTheme]);
 
 	// ==========================================
 	// 阶段二：事件代理与状态机管理
@@ -129,12 +133,10 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 			setSelectedNodes((prev) => {
 				if (prev.length === 0) return [nodeId];
-
 				if (prev.length === 1) {
 					if (prev[0] === nodeId) return [];
 					return [prev[0], nodeId];
 				}
-
 				if (prev.length === 2) {
 					if (nodeId === prev[0]) return [prev[1]];
 					if (nodeId === prev[1]) return [prev[0]];
@@ -149,13 +151,14 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 	}, [graph]);
 
 	// ==========================================
-	// 阶段三：视觉高亮渲染引擎
+	// 阶段三：视觉高亮渲染引擎 (全新拓扑生长树着色)
 	// ==========================================
 	useEffect(() => {
 		if (!containerRef.current || !graph) return;
 		const svgElement = containerRef.current.querySelector("svg");
 		if (!svgElement) return;
 
+		// 1. 清理上一帧的样式
 		svgElement.classList.remove("has-selection");
 		svgElement.querySelectorAll(".node").forEach((node) => {
 			node.classList.remove(
@@ -172,7 +175,6 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 		});
 
 		if (selectedNodes.length === 0) return;
-
 		svgElement.classList.add("has-selection");
 
 		selectedNodes.forEach((nodeId, index) => {
@@ -188,28 +190,84 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 			const [source, target] = selectedNodes;
 			const paths = findAllPaths(graph, source, target);
 
-			paths.forEach((pathNodes, pathIndex) => {
-				const pathColor = PATH_COLORS[pathIndex % PATH_COLORS.length];
+			if (paths.length === 0) return;
 
-				pathNodes.forEach((nodeId) => {
-					const nodeEl = svgElement.querySelector(
-						`[id*="-flowchart-${nodeId}-"]`,
-					);
-					if (nodeEl) nodeEl.classList.add("highlight-node");
+			// 1. 从所有路线中提取出一个“有效连线子网 (Adjacency List)”
+			const validAdj = {};
+			const validNodes = new Set();
+			paths.forEach((pathNodes) => {
+				pathNodes.forEach((n) => {
+					validNodes.add(n);
 				});
-
 				for (let i = 0; i < pathNodes.length - 1; i++) {
-					const from = pathNodes[i];
-					const to = pathNodes[i + 1];
-					const edges = svgElement.querySelectorAll(
-						`[data-id^="L_${from}_${to}_"]`,
-					);
-					edges.forEach((edgeEl) => {
-						edgeEl.classList.add("highlight-edge");
-						edgeEl.style.stroke = pathColor;
-						edgeEl.style.strokeWidth = "3.5px";
-					});
+					const u = pathNodes[i];
+					const v = pathNodes[i + 1];
+					if (!validAdj[u]) validAdj[u] = new Set();
+					validAdj[u].add(v);
 				}
+			});
+
+			// 批量点亮途径的节点
+			validNodes.forEach((nodeId) => {
+				const nodeEl = svgElement.querySelector(
+					`[id*="-flowchart-${nodeId}-"]`,
+				);
+				if (nodeEl) nodeEl.classList.add("highlight-node");
+			});
+
+			// 2. BFS 拓扑生长着色引擎
+			const edgeColors = {};
+			const nodeIncomingColor = {}; // 记录每个节点被注入的颜色
+			let colorIndex = 0;
+			const getNextColor = () => PATH_COLORS[colorIndex++ % PATH_COLORS.length];
+
+			nodeIncomingColor[source] = getNextColor(); // 给起点注入第一种颜色
+			const queue = [source];
+			const visited = new Set([source]);
+
+			while (queue.length > 0) {
+				const u = queue.shift();
+				const neighbors = Array.from(validAdj[u] || []);
+
+				if (neighbors.length === 0) continue;
+
+				// 拿到当前节点的基础颜色（即上一级传下来的颜色）
+				const baseColor = nodeIncomingColor[u];
+
+				// 核心逻辑：遍历它的所有发出的连线
+				neighbors.forEach((v, index) => {
+					const edgeKey = `L_${u}_${v}`;
+
+					// 只有未被着色的边才处理
+					if (!edgeColors[edgeKey]) {
+						// 技巧：第一条支路继承干道的颜色，其他的支路强制获取新颜色！
+						const assignedColor = index === 0 ? baseColor : getNextColor();
+						edgeColors[edgeKey] = assignedColor;
+
+						// 将颜色传递给下一个节点（如果它还没有收到过颜色的话）
+						if (!nodeIncomingColor[v]) {
+							nodeIncomingColor[v] = assignedColor;
+						}
+
+						// 继续往下生长
+						if (!visited.has(v)) {
+							visited.add(v);
+							queue.push(v);
+						}
+					}
+				});
+			}
+
+			// 3. 将计算好的边颜色实际应用到 DOM 上
+			Object.keys(edgeColors).forEach((edgeKey) => {
+				const color = edgeColors[edgeKey];
+				// 查找对应的 SVG Path 元素
+				const edges = svgElement.querySelectorAll(`[data-id^="${edgeKey}_"]`);
+				edges.forEach((edgeEl) => {
+					edgeEl.classList.add("highlight-edge");
+					edgeEl.style.stroke = color;
+					edgeEl.style.strokeWidth = "3.5px";
+				});
 			});
 		}
 	}, [selectedNodes, graph]);
