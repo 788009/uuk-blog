@@ -127,6 +127,15 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 				return;
 			}
 
+			// 在变暗状态下，如果点中的节点不是高亮节点（即点中了暗掉的死胡同节点），等同于点击空白处
+			if (
+				svgElement.classList.contains("is-dimming") &&
+				!nodeElement.classList.contains("highlight-node")
+			) {
+				setSelectedNodes([]);
+				return;
+			}
+
 			const idAttr = nodeElement.getAttribute("id");
 			const match = idAttr?.match(/-flowchart-(.+)-\d+$/);
 			if (!match) return;
