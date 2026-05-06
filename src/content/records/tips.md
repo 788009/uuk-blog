@@ -14,6 +14,8 @@ lang: ''
 
 - [媒体处理](#媒体处理)
     - [MP4 转 GIF](#mp4-转-gif)
+- [其他](#其他)
+    - [清空包含大量文件的文件夹](#清空包含大量文件的文件夹)
 
 </details>
 
@@ -26,3 +28,23 @@ lang: ''
 ```bash
 ffmpeg -i input.mp4 -vf "fps=15,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" output.gif
 ```
+
+## 其他
+
+### 清空包含大量文件的文件夹
+
+> [!NOTE]
+>
+> 仅限 Windows。
+
+使用 `robocopy` 将空文件夹镜像到目标文件夹，实现目标文件夹的清空。
+
+```batch
+robocopy <empty-dir> <target-dir> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL > nul
+```
+
+其中 `<empty-dir>` 是空文件夹路径，`<target-dir>` 是目标文件夹的路径。
+
+> [!CAUTION]
+>
+> 清空后不可恢复，请谨慎使用。
