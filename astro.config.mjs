@@ -17,6 +17,7 @@ import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
+import mermaid from "./src/components/astro-mermaid";
 import { expressiveCodeConfig } from "./src/config.ts";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
@@ -32,6 +33,10 @@ export default defineConfig({
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
+		mermaid({
+			autoTheme: true,
+			enableLog: false,
+		}),
 		tailwind({
 			nesting: true,
 		}),
