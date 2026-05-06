@@ -24,20 +24,18 @@ F(Real interest rate) -.-> A
 G(Government spending) --> B
 B --> H(Price level)
 B --> I(Real GDP)
-H --> J(Inflation rate)
+J(Inflation rate) --> H
+H --> J
 I -.-> K(Unemployment rate)
 L(Short-run aggregate supply) -.-> H
 L --> I
 M(Demand for currency) --> N(Value of currency)
-F -.-> O(Supply for currency)
 O -.-> N
 D --> M
 E --> O
 N -.-> D
 N --> E
-H --> P(Nonimal interst rate)
-F --> P
-I --> C
+F --> P(Nonimal interst rate)
 C --> Q(Money demand)
 Q --> P
 H -.-> R(Real wealth)
@@ -49,8 +47,7 @@ T --> C
 U(Transfer payment) --> T
 V(Required reserve ratio) -.-> W(Money supply)
 W -.-> P
-Q --> X(Quantity of money)
-W --> X
+W --> X(Quantity of money)
 G --> AN(Borrowing)
 AN --> Y(Demand for loanable funds)
 G -.-> AO(Public savings)
@@ -64,14 +61,17 @@ Z --> AA
 H -.-> D
 H --> E
 F --> AB(Return on domestic asset)
-AB --> M
+AB --> AU(Capital inflow)
+AU(Capital inflow) --> M
+AU -.-> O(Supply for currency)
+AU --> Z
 T --> E
 AC(Tax on production) --> AD(Production cost)
 AD -.-> L
 I --> AE(Nonimal GDP)
-AE --> I
 H --> AE
-AF(Nominal wage) --> AD
+AF(Nominal wage) --> AX(Real wage)
+AX --> AD
 AG(Raw material price) --> AD
 AH(Purchase of government bonds) --> W
 AI(Sale of government bonds) -.-> W
@@ -80,8 +80,21 @@ AK(Administered interest rate) --> AL(Demand for reserves)
 AL --> AM(Policy rate)
 AM --> P
 A --> Y
-J -.-> D
 K -.-> AF
 AP(Expected inflation) --> AF
 AP --> P
+W --> H
+I --> T
+N -.-> AQ(Imported input price)
+AQ --> AD
+AR(Technology) --> AS(Productivity)
+AT(Human capital) --> AS
+AS --> L
+T -.-> U
+AR --> AV(Long-run aggregate supply)
+AT --> AV
+A --> AV
+AW(Unexpected inflation) -.-> AX
+AW -.-> F
+AW -.-> A
 ```

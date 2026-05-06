@@ -25,20 +25,18 @@ F(Real interest rate) -.-> A
 G(Government spending) --> B
 B --> H(Price level)
 B --> I(Real GDP)
-H --> J(Inflation rate)
+J(Inflation rate) --> H
+H --> J
 I -.-> K(Unemployment rate)
 L(Short-run aggregate supply) -.-> H
 L --> I
 M(Demand for currency) --> N(Value of currency)
-F -.-> O(Supply for currency)
 O -.-> N
 D --> M
 E --> O
 N -.-> D
 N --> E
-H --> P(Nonimal interst rate)
-F --> P
-I --> C
+F --> P(Nonimal interst rate)
 C --> Q(Money demand)
 Q --> P
 H -.-> R(Real wealth)
@@ -50,8 +48,7 @@ T --> C
 U(Transfer payment) --> T
 V(Required reserve ratio) -.-> W(Money supply)
 W -.-> P
-Q --> X(Quantity of money)
-W --> X
+W --> X(Quantity of money)
 G --> AN(Borrowing)
 AN --> Y(Demand for loanable funds)
 G -.-> AO(Public savings)
@@ -65,14 +62,17 @@ Z --> AA
 H -.-> D
 H --> E
 F --> AB(Return on domestic asset)
-AB --> M
+AB --> AU(Capital inflow)
+AU(Capital inflow) --> M
+AU -.-> O(Supply for currency)
+AU --> Z
 T --> E
 AC(Tax on production) --> AD(Production cost)
 AD -.-> L
 I --> AE(Nonimal GDP)
-AE --> I
 H --> AE
-AF(Nominal wage) --> AD
+AF(Nominal wage) --> AX(Real wage)
+AX --> AD
 AG(Raw material price) --> AD
 AH(Purchase of government bonds) --> W
 AI(Sale of government bonds) -.-> W
@@ -81,10 +81,23 @@ AK(Administered interest rate) --> AL(Demand for reserves)
 AL --> AM(Policy rate)
 AM --> P
 A --> Y
-J -.-> D
 K -.-> AF
 AP(Expected inflation) --> AF
 AP --> P
+W --> H
+I --> T
+N -.-> AQ(Imported input price)
+AQ --> AD
+AR(Technology) --> AS(Productivity)
+AT(Human capital) --> AS
+AS --> L
+T -.-> U
+AR --> AV(Long-run aggregate supply)
+AT --> AV
+A --> AV
+AW(Unexpected inflation) -.-> AX
+AW -.-> F
+AW -.-> A
 `;
 
 <details>
@@ -728,8 +741,9 @@ AP --> P
 29. 存款本身不会影响 money supply，但之后银行用这笔钱创造更多货币则会增加 money supply
 30. 关系图
     1. 实线代表正相关，虚线代表负相关
-    2. 若亮色/暗色明显不匹配，请尝试刷新页面或关闭浏览器的自动暗色功能
-    3. 交互
+    2. 只能体现有影响，无法体现影响强度
+    3. 若亮色/暗色明显不匹配，请尝试多次刷新页面或关闭浏览器的自动暗色功能
+    4. 交互
         - 选中一个节点：高亮与其相连的边
         - 选中两个节点：高亮从起点到终点的所有路径
         - 选中更多节点：高亮从起点到终点且经过所有指定途径点的所有路径
