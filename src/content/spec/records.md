@@ -1,5 +1,7 @@
 # Records
 
+> 长期更新的内容。
+
 - [歌单](/records/songs/)
 - [Galgame](/records/galgame/)
 - [学习笔记](/records/notes/)
