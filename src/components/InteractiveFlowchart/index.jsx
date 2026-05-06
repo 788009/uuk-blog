@@ -192,12 +192,12 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 		if (selectedNodes.length === 0) return;
 		svgElement.classList.add("has-selection");
 
-		// 只有选中了 2 个及以上的节点，才给 SVG 挂上变暗开关
+		// 2. 控制全局变暗 (仅限选中 2 个及以上节点时)
 		if (selectedNodes.length >= 2) {
 			svgElement.classList.add("is-dimming");
 		}
 
-		// 标记选中的节点，根据数组索引赋予 起点、终点、途经点 的样式
+		// 3. 标记选中的节点
 		selectedNodes.forEach((nodeId, index) => {
 			const nodeEl = svgElement.querySelector(`[id*="-flowchart-${nodeId}-"]`);
 			if (nodeEl) {
@@ -208,23 +208,55 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 			}
 		});
 
-		// 必须至少选中了起点和终点才进行连线渲染
+		// 4. 仅选中 1 个节点时的出入边高亮逻辑
+		if (selectedNodes.length === 1) {
+			const centerNode = selectedNodes[0];
+
+			// 查找并高亮出边 (Outgoing) - 使用深粉红色 (#e63946)
+			const outgoingNodes = graph[centerNode] || [];
+			outgoingNodes.forEach((target) => {
+				const edges = svgElement.querySelectorAll(
+					`[data-id^="L_${centerNode}_${target}_"]`,
+				);
+				edges.forEach((edgeEl) => {
+					edgeEl.classList.add("highlight-edge");
+					edgeEl.style.stroke = "#e63946";
+					edgeEl.style.strokeWidth = "3.5px";
+				});
+			});
+
+			// 查找并高亮入边 (Incoming) - 使用天蓝 (#00bbf9)
+			Object.keys(graph).forEach((source) => {
+				if (graph[source].includes(centerNode)) {
+					const edges = svgElement.querySelectorAll(
+						`[data-id^="L_${source}_${centerNode}_"]`,
+					);
+					edges.forEach((edgeEl) => {
+						edgeEl.classList.add("highlight-edge");
+						edgeEl.style.stroke = "#00bbf9";
+						edgeEl.style.strokeWidth = "3.5px";
+					});
+				}
+			});
+			return; // 结束渲染，不执行下方的寻路逻辑
+		}
+
+		// 5. 选中 2 个及以上节点时的完整寻路渲染逻辑
 		if (selectedNodes.length >= 2) {
 			const source = selectedNodes[0];
 			const target = selectedNodes[1];
-			const waypoints = selectedNodes.slice(2); // 提取出所有途经点
+			const waypoints = selectedNodes.slice(2);
 
 			// 算出所有抵达终点的潜在路径
 			const allPaths = findAllPaths(graph, source, target);
 
-			// 【核心逻辑】：过滤路径池，只有同时包含所有“途经点”的路径才能幸存
+			// 过滤路径池，只有同时包含所有“途经点”的路径才能幸存
 			const paths = allPaths.filter((pathNodes) => {
 				return waypoints.every((wp) => pathNodes.includes(wp));
 			});
 
-			if (paths.length === 0) return; // 如果加了限制条件后无路可走，则中止渲染线段
+			if (paths.length === 0) return;
 
-			// 批量点亮途径的所有节点
 			const validNodes = new Set();
 			paths.forEach((pathNodes) => {
 				pathNodes.forEach((n) => {
@@ -238,8 +270,6 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 				if (nodeEl) nodeEl.classList.add("highlight-node");
 			});
 
-			// 【核心精简】：既然算法底层保证了所有路径都贯穿首尾到达 target，
-			// 我们直接按路径长短排序即可，越短的越是绝对干道，优先获得颜色。
 			const sortedPaths = [...paths].sort((a, b) => a.length - b.length);
 
 			// 连续流淌着色引擎
