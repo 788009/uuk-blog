@@ -46,7 +46,7 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 
 	const isDark = document.documentElement.classList.contains("dark");
 	document.documentElement.setAttribute(
-		"mermaid-theme",
+		"page-theme",
 		isDark ? "dark" : "light",
 	);
 

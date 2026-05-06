@@ -44,8 +44,8 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 		const getThemeFromDOM = () => {
 			const dataTheme =
-				document.documentElement.getAttribute("mermaid-theme") ||
-				document.body.getAttribute("mermaid-theme");
+				document.documentElement.getAttribute("page-theme") ||
+				document.body.getAttribute("page-theme");
 			return dataTheme === "dark" ? "dark" : theme;
 		};
 
@@ -53,7 +53,7 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 		const observer = new MutationObserver((mutations) => {
 			const hasThemeChange = mutations.some(
-				(m) => m.type === "attributes" && m.attributeName === "mermaid-theme",
+				(m) => m.type === "attributes" && m.attributeName === "page-theme",
 			);
 			if (hasThemeChange) {
 				setCurrentTheme(getThemeFromDOM());
@@ -62,11 +62,11 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 		observer.observe(document.documentElement, {
 			attributes: true,
-			attributeFilter: ["mermaid-theme"],
+			attributeFilter: ["page-theme"],
 		});
 		observer.observe(document.body, {
 			attributes: true,
-			attributeFilter: ["mermaid-theme"],
+			attributeFilter: ["page-theme"],
 		});
 
 		return () => observer.disconnect();
