@@ -21,38 +21,51 @@
     transition: opacity 0.3s ease, stroke-width 0.3s ease;
 }
 
-/* 状态：存在选中节点时，全局变暗 */
-.interactive-mermaid.has-selection .node {
+/* ==========================================
+   状态控制：全局变暗与路径高亮
+   ========================================== */
+
+/* 状态：存在 2 个及以上选中节点时，全局才变暗 */
+.interactive-mermaid.is-dimming .node {
     opacity: 0.15;
 }
-.interactive-mermaid.has-selection .edgePaths path {
+.interactive-mermaid.is-dimming .edgePaths path {
     opacity: 0.05;
 }
 
 /* 状态：被包含在路径中的节点恢复高亮 */
-.interactive-mermaid.has-selection .node.highlight-node {
+.interactive-mermaid.is-dimming .node.highlight-node {
     opacity: 1;
 }
 
 /* 状态：被包含在路径中的连线恢复高亮 */
-.interactive-mermaid.has-selection .edgePaths path.highlight-edge {
+.interactive-mermaid.is-dimming .edgePaths path.highlight-edge {
     opacity: 1;
 }
 
 /* 起点 (Source Node) - 青绿色系 */
-.interactive-mermaid.has-selection .node.source-node rect,
-.interactive-mermaid.has-selection .node.source-node circle,
-.interactive-mermaid.has-selection .node.source-node polygon {
+.interactive-mermaid .node.source-node rect,
+.interactive-mermaid .node.source-node circle,
+.interactive-mermaid .node.source-node polygon {
     stroke: #2a9d8f !important; 
     stroke-width: 4px !important;
     filter: drop-shadow(0 4px 8px rgba(42, 157, 143, 0.4));
 }
 
 /* 终点 (Target Node) - 红色系 */
-.interactive-mermaid.has-selection .node.target-node rect,
-.interactive-mermaid.has-selection .node.target-node circle,
-.interactive-mermaid.has-selection .node.target-node polygon {
+.interactive-mermaid .node.target-node rect,
+.interactive-mermaid .node.target-node circle,
+.interactive-mermaid .node.target-node polygon {
     stroke: #e63946 !important; 
     stroke-width: 4px !important;
     filter: drop-shadow(0 4px 8px rgba(230, 57, 70, 0.4));
+}
+
+/* 途经点 (Waypoint) - 橙黄色系 */
+.interactive-mermaid .node.waypoint-node rect,
+.interactive-mermaid .node.waypoint-node circle,
+.interactive-mermaid .node.waypoint-node polygon {
+    stroke: #fca311 !important; 
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 4px 8px rgba(252, 163, 17, 0.4));
 }

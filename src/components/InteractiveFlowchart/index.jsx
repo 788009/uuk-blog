@@ -165,15 +165,15 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 	}, [graph]);
 
 	// ==========================================
-	// 阶段三：视觉高亮渲染引擎 (支持途经点过滤的主干流淌着色)
+	// 阶段三：视觉高亮渲染引擎
 	// ==========================================
 	useEffect(() => {
 		if (!containerRef.current || !graph) return;
 		const svgElement = containerRef.current.querySelector("svg");
 		if (!svgElement) return;
 
-		// 1. 清理上一帧的样式 (新增 waypoint-node 的清理)
-		svgElement.classList.remove("has-selection");
+		// 1. 清理上一帧的样式
+		svgElement.classList.remove("has-selection", "is-dimming");
 		svgElement.querySelectorAll(".node").forEach((node) => {
 			node.classList.remove(
 				"highlight-node",
@@ -191,6 +191,11 @@ export default function InteractiveFlowchart({ code, theme = "default" }) {
 
 		if (selectedNodes.length === 0) return;
 		svgElement.classList.add("has-selection");
+
+		// 只有选中了 2 个及以上的节点，才给 SVG 挂上变暗开关
+		if (selectedNodes.length >= 2) {
+			svgElement.classList.add("is-dimming");
+		}
 
 		// 标记选中的节点，根据数组索引赋予 起点、终点、途经点 的样式
 		selectedNodes.forEach((nodeId, index) => {
