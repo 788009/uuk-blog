@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-> 更新于 2026.3.20
+> 更新于 2026.5.6
 
 1. **千恋＊万花**
     - 会社：<span title="柚子社">Yuzusoft</span>
@@ -122,3 +122,9 @@ lang: ''
     - 发售年份：2025
     - 游玩时间：2026.2.18-2.28
     - [vndb](https://vndb.org/v50283)
+12. **Clover Day's**
+    - 幸运草的约定
+    - 会社：<span title="彩牙社">ALcot</span>
+    - 发售年份：2014
+    - 游玩时间：2026.5.6-
+    - [vndb](https://vndb.org/v13325)
