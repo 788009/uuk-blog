@@ -17,7 +17,7 @@ config:
 ---
 flowchart LR
 
-A(Investment) --> B(AD)
+A(Investment) --> B(Aggregate demand)
 C(Consumption) --> B
 D(Exports) --> B
 E(Imports) -.-> B
@@ -27,7 +27,7 @@ B --> H(Price level)
 B --> I(Real GDP)
 H --> J(Inflation rate)
 I -.-> K(Unemployment rate)
-L(SRAS) -.-> H
+L(Short-run aggregate supply) -.-> H
 L --> I
 M(Demand for currency) --> N(Value of currency)
 F -.-> O(Supply for currency)
@@ -726,5 +726,14 @@ AP --> P
 27. Tax credit 是税收抵免
 28. Central bank sells securities 时，特大型银行必须购买，且题目默认假设银行体系能瞬间通过不在放贷或收回贷款来缩减货币供应，维持 required reserves
 29. 存款本身不会影响 money supply，但之后银行用这笔钱创造更多货币则会增加 money supply
+30. 关系图
+    1. 实线代表正相关，虚线代表负相关
+    2. 若亮色/暗色明显不匹配，请尝试刷新页面或关闭浏览器的自动暗色功能
+    3. 交互
+        - 选中一个节点：高亮与其相连的边
+        - 选中两个节点：高亮从起点到终点的所有路径
+        - 选中更多节点：高亮从起点到终点且经过所有指定途径点的所有路径
 
 <InteractiveFlowchart code={myMermaidCode} client:visible />
+
+[Mermaid Code](/records/notes/macro/mermaid-code/)
