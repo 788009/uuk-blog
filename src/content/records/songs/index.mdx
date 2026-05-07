@@ -37,11 +37,9 @@ export const artistsColumns = [
   {
     header: "曲目列表",
     accessorKey: "songs",
-    // 触发插件的关键：配置 meta 信息
     meta: {
       cellType: "markdown-popover",
       buttonText: "查看",
-      // 传入一个内联的 SVG 图标（例如一个音乐列表图标）
       icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M15 4h5v2h-5zM3 4h10v2H3zm12 5h5v2h-5zM3 9h10v2H3zm12 5h5v2h-5zM3 14h10v2H3zm12 5h5v2h-5zM3 19h10v2H3z"/></svg>',
       theme: fuwariMarkdownPopoverTheme
     }
@@ -60,14 +58,14 @@ export const artistsColumns = [
   }
 ];
 
-<UpdateDate client:load data={updateDate}/>
+<UpdateDate data={updateDate}/>
 
 - [总表](#总表)
 - [按作者](#按作者)
 
 ## 总表
 
-<TotalDuration client:load data={duration}/>
+<TotalDuration data={duration}/>
 
 - `日语歌/2`：术曲
 - `日语歌/1`：上述以外的歌曲
