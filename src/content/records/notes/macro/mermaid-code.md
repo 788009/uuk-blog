@@ -97,4 +97,8 @@ A --> AV
 AW(Unexpected inflation) -.-> AX
 AW -.-> F
 AW -.-> A
+P -.-> AY(Bond price)
+AY -.-> P
+AH --> AY
+AI -.-> AY
 ```
