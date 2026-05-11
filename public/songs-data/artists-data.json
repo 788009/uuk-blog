@@ -800,6 +800,14 @@
         "dateSD": 312.07
     },
     {
+        "artist": "Mili",
+        "count": 2,
+        "songs": "- YUBIKIRI-GENMAN ~Special Edit~\n- world.execute (me);\n",
+        "earliestDate": "2022-03-28",
+        "latestDate": "2026-05-11",
+        "dateSD": 752.5
+    },
+    {
         "artist": "DATEKEN",
         "count": 2,
         "songs": "- 蜜月アン・ドゥ・トロワ\n- 蜜月アン・ドゥ・トロワ covered by ヰ世界情緒\n",
@@ -3933,14 +3941,6 @@
         "songs": "- 星が泳ぐ\n",
         "earliestDate": "2022-05-29",
         "latestDate": "2022-05-29",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "Mili",
-        "count": 1,
-        "songs": "- world.execute (me);\n",
-        "earliestDate": "2022-03-28",
-        "latestDate": "2022-03-28",
         "dateSD": 0.0
     },
     {
