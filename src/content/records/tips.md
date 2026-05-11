@@ -16,6 +16,7 @@ lang: ''
     - [MP4 转 GIF](#mp4-转-gif)
 - [其他](#其他)
     - [清空包含大量文件的文件夹](#清空包含大量文件的文件夹)
+    - [Galgame 字幕常用字体](#galgame-字幕常用字体)
 
 </details>
 
@@ -48,3 +49,7 @@ robocopy <empty-dir> <target-dir> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL > nul
 > [!CAUTION]
 >
 > 清空后不可恢复，请谨慎使用。
+
+### Galgame 字幕常用字体
+
+- 华文中宋（STZhongsong）
