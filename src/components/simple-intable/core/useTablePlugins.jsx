@@ -1,12 +1,7 @@
 import { useMemo } from "react";
-import InteractiveTable from "./InteractiveTable";
 
-export default function ExtensibleTable({
-	columns,
-	plugins = {},
-	...restProps
-}) {
-	const enhancedColumns = useMemo(() => {
+export function useTablePlugins(columns, plugins = {}) {
+	return useMemo(() => {
 		return columns.map((col) => {
 			const cellType = col.meta?.cellType;
 
@@ -23,6 +18,4 @@ export default function ExtensibleTable({
 			return col;
 		});
 	}, [columns, plugins]);
-
-	return <InteractiveTable {...restProps} columns={enhancedColumns} />;
 }

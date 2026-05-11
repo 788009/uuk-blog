@@ -2,7 +2,7 @@ import DOMPurify from "isomorphic-dompurify";
 import MarkdownIt from "markdown-it";
 import { useMemo } from "react";
 // 注意向上两级引用 Popover
-import { Popover, PopoverContent, PopoverTrigger } from "../../Popover";
+import { Popover, PopoverContent, PopoverTrigger } from "../../shared/Popover";
 
 // ==========================================
 // 1. 插件默认原生 Tailwind 主题

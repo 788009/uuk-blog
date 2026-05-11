@@ -1,22 +1,18 @@
-import ExtensibleTable from "./ExtensibleTable";
+import TableRoot from "./ui/TableRoot";
 
-// 引入你所有的插件
-import MarkdownPopoverCell from "./plugins/markdown-popover/";
+// 引入你的所有自定义单元格插件
+import MarkdownPopoverCell from "./plugins/markdown-popover/index";
 
-// import AudioPlayerCell from "./plugins/audio-player";
-
-// 建立本博客专属的全局插件注册表
+// 建立全局插件注册表
 const globalPlugins = {
 	"markdown-popover": MarkdownPopoverCell,
-	// "audio-player": AudioPlayerCell,
 };
 
 /**
  * 桥接组件：负责隔离 Astro 的序列化边界。
- * 这个组件将被挂载 client:load，因此在它内部传递 React 组件给下层是绝对安全的。
+ * 挂载了 client 指令后，在这个文件内部传递 React 组件给下层是绝对安全的。
  */
-export default function TableBridge({ columns, ...restProps }) {
-	return (
-		<ExtensibleTable columns={columns} plugins={globalPlugins} {...restProps} />
-	);
+export default function TableBridge(props) {
+	// 将全局插件直接注入到新的 TableRoot 中
+	return <TableRoot plugins={globalPlugins} {...props} />;
 }
