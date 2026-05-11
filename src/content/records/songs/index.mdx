@@ -9,10 +9,10 @@ draft: false
 lang: ''
 ---
 
-import InteractiveTable from '/src/components/simple-intable/InteractiveTable.jsx';
-import TableBridge from '@/components/simple-intable/TableBridge.jsx';
-import { fuwariTableTheme } from '/src/components/simple-intable/tableThemes.js';
+import { TableBridge } from '@/components/simple-intable';
 import { fuwariMarkdownPopoverTheme } from '@/components/simple-intable/plugins/markdown-popover/themes.js';
+import { fuwariTableTheme } from '@/components/simple-intable/tableThemes.js';
+
 import TotalDuration from './TotalDuration.jsx'
 import duration from './duration.json'
 import UpdateDate from './UpdateDate.jsx'
@@ -76,11 +76,12 @@ export const artistsColumns = [
 
 <div style="display: inline-flex; align-items: center;">点击<button class="flex transition items-center justify-center btn-plain scale-animation rounded-lg w-7 h-7 font-medium active:scale-95 opacity-60"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M10 18h4v-2h-4zM3 6v2h18V6zm3 7h12v-2H6z" /></svg></button>可以筛选。</div>
 
-<InteractiveTable 
-    client:visible data={"/songs-data/songs-data.json"} 
-    columns={songsColumns} 
-    filterableColumns={[['artists', {'split': ' / '}], 'category', ['date', {'type': 'range'}]]}
-    theme={fuwariTableTheme}
+<TableBridge 
+  client:visible 
+  data={"/songs-data/songs-data.json"} 
+  columns={songsColumns} 
+  filterableColumns={[['artists', {'split': ' / '}], 'category', ['date', {'type': 'range'}]]}
+  theme={fuwariTableTheme}
 />
 
 ## 按作者
