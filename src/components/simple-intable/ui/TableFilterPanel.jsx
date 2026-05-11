@@ -2,7 +2,8 @@ import { useTableContext } from "../core/TableContext";
 import { TableI18nKey } from "../i18n/translation.js";
 
 export function TableFilterPanel({ header, isActive }) {
-	const { theme, t, filterConfig, columnDataTypes, getUniqueValues } = useTableContext();
+	const { theme, t, filterConfig, columnDataTypes, getUniqueValues } =
+		useTableContext();
 
 	const filterCfgObj = filterConfig[header.id];
 	const currentFilterObj = header.column.getFilterValue() || {
@@ -12,7 +13,7 @@ export function TableFilterPanel({ header, isActive }) {
 
 	const inputType = columnDataTypes[header.id] === "number" ? "number" : "text";
 
-	// 辅助函数：判断是否激活并更新
+	// Helper function: Determine if active and update
 	const isFilterActive = (val) => {
 		if (!val) return false;
 		if (val.categories?.length > 0) return true;
@@ -32,24 +33,33 @@ export function TableFilterPanel({ header, isActive }) {
 		<div className="p-2 min-w-[200px] max-w-[260px] sm:max-w-[300px] font-normal flex flex-col gap-1">
 			<div className="px-3 py-1.5 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 				{t(TableI18nKey.FILTER_PREFIX, {
-					column: typeof header.column.columnDef.header === "string" ? header.column.columnDef.header : header.id,
+					column:
+						typeof header.column.columnDef.header === "string"
+							? header.column.columnDef.header
+							: header.id,
 				})}
 			</div>
 
 			{filterCfgObj.type.map((tCategory, idx) => {
 				return (
 					<div key={tCategory} className="flex flex-col">
-						{idx > 0 && <div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />}
+						{idx > 0 && (
+							<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
+						)}
 
 						{tCategory === "category" && (
-							<div className={`max-h-[200px] overflow-y-auto flex flex-col gap-0.5 ${theme.scrollbar}`}>
+							<div
+								className={`max-h-[200px] overflow-y-auto flex flex-col gap-0.5 ${theme.scrollbar}`}
+							>
 								{getUniqueValues(header.id).map((val) => {
 									const isChecked = currentFilterObj.categories.includes(val);
 									return (
 										<label
 											key={val}
 											className={`flex transition items-center !justify-start w-full rounded-lg h-9 px-3 font-medium cursor-pointer ${theme.btnPlain} ${
-												isChecked ? `${theme.activeBg} ${theme.primaryText}` : ""
+												isChecked
+													? `${theme.activeBg} ${theme.primaryText}`
+													: ""
 											}`}
 										>
 											<input
@@ -60,11 +70,19 @@ export function TableFilterPanel({ header, isActive }) {
 													const checked = e.target.checked;
 													const newCats = checked
 														? [...currentFilterObj.categories, val]
-														: currentFilterObj.categories.filter((v) => v !== val);
-													updateFilterValue({ ...currentFilterObj, categories: newCats });
+														: currentFilterObj.categories.filter(
+																(v) => v !== val,
+															);
+													updateFilterValue({
+														...currentFilterObj,
+														categories: newCats,
+													});
 												}}
 											/>
-											<span className="text-sm truncate flex-1 min-w-0 text-left" title={val}>
+											<span
+												className="text-sm truncate flex-1 min-w-0 text-left"
+												title={val}
+											>
 												{val}
 											</span>
 										</label>

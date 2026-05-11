@@ -1,13 +1,13 @@
-import { useState } from "react";
 import {
 	getCoreRowModel,
 	getFilteredRowModel,
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
+import { useState } from "react";
 
 export function useInteractiveTable({ tableData, columns, multiTypeFilter }) {
-	// 统一管理所有的表格微状态
+	// Unified management of all table micro-states
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
 	const [columnVisibility, setColumnVisibility] = useState({});
@@ -24,7 +24,7 @@ export function useInteractiveTable({ tableData, columns, multiTypeFilter }) {
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		// 注入我们在 useTableFilters 中算好的多维过滤器
+		// Inject the multi-dimensional filter calculated in useTableFilters
 		filterFns: {
 			multiTypeFilter,
 		},

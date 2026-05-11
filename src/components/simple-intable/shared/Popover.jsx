@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { usePopover } from "./usePopover";
 
 // ==========================================
-// 1. 主题系统 (维持原样，向后兼容)
+// 1. Theme System (Preserved as is for backward compatibility)
 // ==========================================
 const defaultPopoverTheme = {
 	popoverPanel:
@@ -22,15 +22,15 @@ const useMergedTheme = (propsTheme = {}) => {
 };
 
 // ==========================================
-// 2. 状态上下文
+// 2. State Context
 // ==========================================
 const PopoverStateContext = createContext(null);
 
 // ==========================================
-// 3. 视图组件
+// 3. View Components
 // ==========================================
 export function Popover({ children, open, onOpenChange }) {
-	// 将庞大的事件测量逻辑剥离到 Hook 中
+	// Offload bulky event and measurement logic into a specialized Hook
 	const popoverState = usePopover({ open, onOpenChange });
 
 	return (
@@ -66,12 +66,17 @@ export function PopoverTrigger({ children, theme: propsTheme = {} }) {
 	);
 }
 
-export function PopoverContent({ children, positionClass, theme: propsTheme = {} }) {
+export function PopoverContent({
+	children,
+	positionClass,
+	theme: propsTheme = {},
+}) {
 	const { isOpen, rect, contentRef } = useContext(PopoverStateContext);
 	const mergedTheme = useMergedTheme(propsTheme);
 	const finalPos = positionClass || "top-full right-0 origin-top-right";
 
-	// 动画控制微状态保留在组件内部，因为它们与 DOM 渲染紧密耦合
+	// Animation control micro-states are kept within the component
+	// because they are tightly coupled with DOM rendering
 	const [shouldRender, setShouldRender] = useState(isOpen);
 	const [isVisible, setIsVisible] = useState(isOpen);
 
@@ -116,11 +121,19 @@ export function PopoverContent({ children, positionClass, theme: propsTheme = {}
 			ref={contentRef}
 			popover="manual"
 			style={{
-				margin: 0, padding: 0, border: "none", background: "transparent",
-				color: "inherit", colorScheme: "inherit",
+				margin: 0,
+				padding: 0,
+				border: "none",
+				background: "transparent",
+				color: "inherit",
+				colorScheme: "inherit",
 				position: "fixed",
-				top: rect.top, left: rect.left, width: rect.width, height: rect.height,
-				pointerEvents: "none", overflow: "visible",
+				top: rect.top,
+				left: rect.left,
+				width: rect.width,
+				height: rect.height,
+				pointerEvents: "none",
+				overflow: "visible",
 			}}
 		>
 			<div

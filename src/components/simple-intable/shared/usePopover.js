@@ -1,9 +1,9 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function usePopover({ open, onOpenChange }) {
 	const [isOpenUncontrolled, setIsOpenUncontrolled] = useState(false);
 
-	// 兼容外部受控模式 (Controlled) 与内部非受控模式 (Uncontrolled)
+	// Support both external Controlled and internal Uncontrolled modes
 	const isControlled = open !== undefined;
 	const isOpen = isControlled ? open : isOpenUncontrolled;
 
@@ -19,7 +19,7 @@ export function usePopover({ open, onOpenChange }) {
 	const contentRef = useRef(null);
 	const [rect, setRect] = useState(null);
 
-	// 计算触发器在整个文档中的绝对坐标
+	// Calculate the trigger's absolute coordinates relative to the viewport
 	const updateRect = useCallback(() => {
 		if (containerRef.current) {
 			const domRect = containerRef.current.getBoundingClientRect();
@@ -32,7 +32,7 @@ export function usePopover({ open, onOpenChange }) {
 		}
 	}, []);
 
-	// 核心逻辑 1：点击外部自动关闭（兼顾 Portal）
+	// Core Logic 1: Auto-close on outside click (considering Portals)
 	useEffect(() => {
 		const handleClickOutside = (e) => {
 			const isClickTrigger = containerRef.current?.contains(e.target);
@@ -49,7 +49,7 @@ export function usePopover({ open, onOpenChange }) {
 		return () => document.removeEventListener("click", handleClickOutside);
 	}, [isOpen, setOpen]);
 
-	// 核心逻辑 2：支持 Esc 键关闭
+	// Core Logic 2: Support closing with the Escape key
 	useEffect(() => {
 		const handleKeyDown = (e) => {
 			if (e.key === "Escape") {
@@ -63,7 +63,7 @@ export function usePopover({ open, onOpenChange }) {
 		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, [isOpen, setOpen]);
 
-	// 核心逻辑 3：位置同步引擎
+	// Core Logic 3: Position synchronization engine
 	useEffect(() => {
 		updateRect();
 		if (isOpen) {

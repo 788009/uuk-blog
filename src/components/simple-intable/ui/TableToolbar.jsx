@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTableContext } from "../core/TableContext";
-import { Popover, PopoverContent, PopoverTrigger } from "../shared/Popover";
 import { TableI18nKey } from "../i18n/translation.js";
+import { Popover, PopoverContent, PopoverTrigger } from "../shared/Popover";
 
 export function TableToolbar() {
 	const {
@@ -27,9 +27,15 @@ export function TableToolbar() {
 		const newOrder = [...currentOrder];
 
 		if (direction === "up" && index > 0) {
-			[newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]];
+			[newOrder[index - 1], newOrder[index]] = [
+				newOrder[index],
+				newOrder[index - 1],
+			];
 		} else if (direction === "down" && index < newOrder.length - 1) {
-			[newOrder[index + 1], newOrder[index]] = [newOrder[index], newOrder[index + 1]];
+			[newOrder[index + 1], newOrder[index]] = [
+				newOrder[index],
+				newOrder[index + 1],
+			];
 		}
 		table.setColumnOrder(newOrder);
 	};
@@ -71,26 +77,43 @@ export function TableToolbar() {
 									: "opacity-70 hover:opacity-100"
 							}`}
 						>
-							<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" className="mr-1.5">
-								<path fill="currentColor" d="M12 15.5q-1.45 0-2.475-1.025T8.5 12q0-1.45 1.025-2.475T12 8.5q1.45 0 2.475 1.025T16.5 12q0 1.45-1.025 2.475T12 15.5m0-2q.625 0 1.063-.437T13.5 12q0-.625-.437-1.062T12 10.5q-.625 0-1.062.438T10.5 12q0 .625.438 1.063T12 13.5m-1 6.5v-2.25q-.425-.125-.812-.312t-.738-.438l-2.05.85l-1.9-3.3l1.7-1.325q-.05-.2-.075-.4T7 12q0-.2.025-.4t.075-.4l-1.7-1.325l1.9-3.3l2.05.85q.35-.25.738-.437t.812-.313V4h3.8v2.25q.425.125.813.313t.737.437l2.05-.85l1.9 3.3l-1.7 1.325q.05.2.075.4t.025.4q0 .2-.025.4t-.075.4l1.7 1.325l-1.9 3.3l-2.05-.85q-.35.25-.737.438t-.813.312V20z" />
+							<svg
+								aria-hidden="true"
+								xmlns="http://www.w3.org/2000/svg"
+								width="1.2em"
+								height="1.2em"
+								viewBox="0 0 24 24"
+								className="mr-1.5"
+							>
+								<path
+									fill="currentColor"
+									d="M12 15.5q-1.45 0-2.475-1.025T8.5 12q0-1.45 1.025-2.475T12 8.5q1.45 0 2.475 1.025T16.5 12q0 1.45-1.025 2.475T12 15.5m0-2q.625 0 1.063-.437T13.5 12q0-.625-.437-1.062T12 10.5q-.625 0-1.062.438T10.5 12q0 .625.438 1.063T12 13.5m-1 6.5v-2.25q-.425-.125-.812-.312t-.738-.438l-2.05.85l-1.9-3.3l1.7-1.325q-.05-.2-.075-.4T7 12q0-.2.025-.4t.075-.4l-1.7-1.325l1.9-3.3l2.05.85q.35-.25.738-.437t.812-.313V4h3.8v2.25q.425.125.813.313t.737.437l2.05-.85l1.9 3.3l-1.7 1.325q.05.2.075.4t.025.4q0 .2-.025.4t-.075.4l1.7 1.325l-1.9 3.3l-2.05-.85q-.35.25-.737.438t-.813.312V20z"
+								/>
 							</svg>
 							{t(TableI18nKey.TABLE_SETTINGS)}
 						</button>
 					</PopoverTrigger>
 
-					<PopoverContent positionClass="top-full right-0 origin-top-right" theme={theme}>
+					<PopoverContent
+						positionClass="top-full right-0 origin-top-right"
+						theme={theme}
+					>
 						<div className="p-2 min-w-[220px] font-normal">
 							<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 								{t(TableI18nKey.GENERAL_SETTINGS)}
 							</div>
-							<label className={`flex items-center gap-3 cursor-pointer w-full rounded-lg h-9 px-3 mb-1 ${theme.btnPlain}`}>
+							<label
+								className={`flex items-center gap-3 cursor-pointer w-full rounded-lg h-9 px-3 mb-1 ${theme.btnPlain}`}
+							>
 								<input
 									type="checkbox"
 									checked={showItemCount}
 									onChange={(e) => setShowItemCount(e.target.checked)}
 									className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 								/>
-								<span className="text-sm select-none">{t(TableI18nKey.SHOW_TOTAL)}</span>
+								<span className="text-sm select-none">
+									{t(TableI18nKey.SHOW_TOTAL)}
+								</span>
 							</label>
 							<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
 
@@ -99,9 +122,15 @@ export function TableToolbar() {
 							</div>
 							<div className="flex flex-col gap-0.5">
 								{table.getAllLeafColumns().map((column, index) => {
-									const headerName = typeof column.columnDef.header === "string" ? column.columnDef.header : column.id;
+									const headerName =
+										typeof column.columnDef.header === "string"
+											? column.columnDef.header
+											: column.id;
 									return (
-										<div key={column.id} className={`flex items-center justify-between w-full rounded-lg h-9 px-3 ${theme.btnPlain} ${theme.hoverBg}`}>
+										<div
+											key={column.id}
+											className={`flex items-center justify-between w-full rounded-lg h-9 px-3 ${theme.btnPlain} ${theme.hoverBg}`}
+										>
 											<label className="flex items-center gap-3 cursor-pointer flex-1 min-w-0">
 												<input
 													type="checkbox"
@@ -109,15 +138,51 @@ export function TableToolbar() {
 													onChange={column.getToggleVisibilityHandler()}
 													className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
 												/>
-												<span className="text-sm truncate flex-1 text-left select-none">{headerName}</span>
+												<span className="text-sm truncate flex-1 text-left select-none">
+													{headerName}
+												</span>
 											</label>
 
 											<div className="flex items-center gap-1 ml-2 flex-shrink-0">
-												<button type="button" onClick={() => handleMoveColumn(index, "up")} disabled={index === 0} className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}>
-													<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7.4 15.4L6 14l6-6l6 6l-1.4 1.4l-4.6-4.6z" /></svg>
+												<button
+													type="button"
+													onClick={() => handleMoveColumn(index, "up")}
+													disabled={index === 0}
+													className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
+												>
+													<svg
+														aria-hidden="true"
+														xmlns="http://www.w3.org/2000/svg"
+														width="1em"
+														height="1em"
+														viewBox="0 0 24 24"
+													>
+														<path
+															fill="currentColor"
+															d="M7.4 15.4L6 14l6-6l6 6l-1.4 1.4l-4.6-4.6z"
+														/>
+													</svg>
 												</button>
-												<button type="button" onClick={() => handleMoveColumn(index, "down")} disabled={index === table.getAllLeafColumns().length - 1} className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}>
-													<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7.4 8.6L6 10l6 6l6-6l-1.4-1.4l-4.6 4.6z" /></svg>
+												<button
+													type="button"
+													onClick={() => handleMoveColumn(index, "down")}
+													disabled={
+														index === table.getAllLeafColumns().length - 1
+													}
+													className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
+												>
+													<svg
+														aria-hidden="true"
+														xmlns="http://www.w3.org/2000/svg"
+														width="1em"
+														height="1em"
+														viewBox="0 0 24 24"
+													>
+														<path
+															fill="currentColor"
+															d="M7.4 8.6L6 10l6 6l6-6l-1.4-1.4l-4.6 4.6z"
+														/>
+													</svg>
 												</button>
 											</div>
 										</div>

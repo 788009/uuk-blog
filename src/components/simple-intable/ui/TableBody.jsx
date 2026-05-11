@@ -8,16 +8,12 @@ export function TableBody() {
 	const rows = table.getRowModel().rows;
 	const colSpan = columns.length;
 
-	// 情况 A: 加载中
+	// Case A: Loading
 	if (isLoading) {
-		return (
-			<StatusRow colSpan={colSpan}>
-				{t(TableI18nKey.LOADING)}
-			</StatusRow>
-		);
+		return <StatusRow colSpan={colSpan}>{t(TableI18nKey.LOADING)}</StatusRow>;
 	}
 
-	// 情况 B: 获取数据失败
+	// Case B: Failed to fetch data
 	if (fetchError) {
 		return (
 			<StatusRow colSpan={colSpan} className={theme.dangerBtn}>
@@ -26,16 +22,12 @@ export function TableBody() {
 		);
 	}
 
-	// 情况 C: 数据为空（包括过滤后无结果）
+	// Case C: Empty data (including no results after filtering)
 	if (rows.length === 0) {
-		return (
-			<StatusRow colSpan={colSpan}>
-				{t(TableI18nKey.NO_DATA)}
-			</StatusRow>
-		);
+		return <StatusRow colSpan={colSpan}>{t(TableI18nKey.NO_DATA)}</StatusRow>;
 	}
 
-	// 情况 D: 正常渲染行
+	// Case D: Render rows normally
 	return (
 		<tbody>
 			{rows.map((row) => (
@@ -51,12 +43,15 @@ export function TableBody() {
 	);
 }
 
-// 辅助组件：渲染状态反馈行
+// Helper component: Renders a status feedback row
 function StatusRow({ children, colSpan, className = "opacity-50" }) {
 	return (
 		<tbody>
 			<tr>
-				<td colSpan={colSpan} className={`p-6 text-center text-sm ${className}`}>
+				<td
+					colSpan={colSpan}
+					className={`p-6 text-center text-sm ${className}`}
+				>
 					{children}
 				</td>
 			</tr>

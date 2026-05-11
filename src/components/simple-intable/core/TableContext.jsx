@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
-// 创建 Context
+// Create Context
 const TableContext = createContext(null);
 
-// 提供一个便捷的 Hook 供视图层调用
+// Provide a convenient Hook for the view layer to call
 export function useTableContext() {
 	const context = useContext(TableContext);
 	if (!context) {

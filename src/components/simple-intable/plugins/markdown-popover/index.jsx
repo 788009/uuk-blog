@@ -1,11 +1,11 @@
 import DOMPurify from "isomorphic-dompurify";
 import MarkdownIt from "markdown-it";
 import { useMemo } from "react";
-// 注意向上两级引用 Popover
+// Note: Reference Popover two levels up
 import { Popover, PopoverContent, PopoverTrigger } from "../../shared/Popover";
 
 // ==========================================
-// 1. 插件默认原生 Tailwind 主题
+// 1. Plugin's default native Tailwind theme
 // ==========================================
 export const defaultMarkdownTheme = {
 	triggerBtn:
@@ -13,19 +13,19 @@ export const defaultMarkdownTheme = {
 };
 
 // ==========================================
-// 2. 插件核心组件
+// 2. Plugin core component
 // ==========================================
 const md = new MarkdownIt({ breaks: true });
 
 export default function MarkdownPopoverCell({ info }) {
 	const value = info.getValue();
 	const meta = info.column.columnDef.meta || {};
-	const { buttonText = "查看详情", icon } = meta;
+	const { buttonText = "Details", icon } = meta;
 
-	// 接收外部通过 meta 传入的插件专属主题，否则使用默认主题
+	// Receive plugin-specific theme passed via meta; otherwise, use the default theme
 	const theme = meta.theme || defaultMarkdownTheme;
 
-	// 动态计算对齐方式
+	// Dynamically calculate alignment
 	const visibleColumns = info.table.getVisibleLeafColumns();
 	const isLastColumn =
 		visibleColumns[visibleColumns.length - 1].id === info.column.id;
@@ -33,18 +33,18 @@ export default function MarkdownPopoverCell({ info }) {
 		? "top-full right-0 mt-2 origin-top-right z-[60]"
 		: "top-full left-0 mt-2 origin-top-left z-[60]";
 
-	// 对渲染后的 Markdown 进行安全清洗
+	// Sanitize rendered Markdown for security
 	const htmlContent = useMemo(() => {
 		if (!value) return "";
 		const rawHtml = md.render(value);
 		return DOMPurify.sanitize(rawHtml);
 	}, [value]);
 
-	// 处理图标渲染逻辑
+	// Handle icon rendering logic
 	const renderIcon = () => {
 		if (!icon) return null;
 
-		// 如果 icon 是一个 React 组件或元素，直接渲染
+		// If icon is a React component or element, render it directly
 		if (typeof icon !== "string") {
 			return (
 				<span className="flex-shrink-0 flex items-center justify-center">
@@ -53,7 +53,7 @@ export default function MarkdownPopoverCell({ info }) {
 			);
 		}
 
-		// 如果 icon 是字符串（如 SVG），清洗后渲染
+		// If icon is a string (e.g., SVG), sanitize and render it
 		return (
 			<span
 				className="flex-shrink-0 flex items-center justify-center"
@@ -78,7 +78,7 @@ export default function MarkdownPopoverCell({ info }) {
 				<div className="min-w-[240px] max-w-[320px] p-4 text-sm max-h-[60vh] overflow-y-auto custom-scrollbar">
 					<div
 						className="prose prose-sm dark:prose-invert max-w-none [&>ul]:m-0 [&>ul]:pl-4 [&>ul>li]:my-1"
-						// 使用清洗过的 HTML
+						// Use sanitized HTML
 						// biome-ignore lint/security/noDangerouslySetInnerHtml: icon is sanitized by isomorphic-dompurify
 						dangerouslySetInnerHTML={{ __html: htmlContent }}
 					/>

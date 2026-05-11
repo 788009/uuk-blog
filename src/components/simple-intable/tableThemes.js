@@ -2,7 +2,7 @@ export const fuwariTableTheme = {
 	table: "my-generic-table",
 	primaryText: "text-[var(--primary)]",
 
-	// 原有的面板样式，可用于表格外框或其他用途（保留向下兼容）
+	// Original panel styles, used for table frames or other purposes (preserved for backward compatibility)
 	panel:
 		"card-base float-panel shadow-2xl border border-black/5 dark:border-white/10",
 
@@ -16,8 +16,8 @@ export const fuwariTableTheme = {
 	dangerBtn: "text-red-500 hover:bg-red-500/10 dark:hover:bg-red-400/10",
 	iconHover: "hover:bg-black/10 dark:hover:bg-white/20",
 
-	// ====== Popover 相关主题 ======
-	// 复用原本 panel 的样式作为弹出面板样式
+	// ====== Popover Related Theme ======
+	// Reuse original panel styles for the popover panel
 	popoverPanel:
 		"card-base float-panel shadow-2xl border border-black/5 dark:border-white/10",
 	popoverAnimation: "transition-all duration-200",

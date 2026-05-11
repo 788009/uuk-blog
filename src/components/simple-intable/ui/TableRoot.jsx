@@ -1,22 +1,21 @@
 import { useState } from "react";
 
-// 1. 引入抽离的逻辑 Hooks 和 Context
+// 1. Import decoupled logic Hooks and Context
 import TableContext from "../core/TableContext";
+import { useInteractiveTable } from "../core/useInteractiveTable";
 import { useTableData } from "../core/useTableData";
 import { useTableFilters } from "../core/useTableFilters";
 import { useTablePlugins } from "../core/useTablePlugins";
-import { useInteractiveTable } from "../core/useInteractiveTable";
 
-// 2. 引入翻译和基础交互件
-import { TableI18nKey, useTableTranslation } from "../i18n/translation.js";
+// 2. Import translations and basic interaction components
+import { useTableTranslation } from "../i18n/translation.js";
 import { PopoverThemeContext } from "../shared/Popover";
-
-// 3. 引入 UI 积木
-import { TableToolbar } from "./TableToolbar";
-import { TableHeader } from "./TableHeader";
 import { TableBody } from "./TableBody";
+import { TableHeader } from "./TableHeader";
+// 3. Import UI building blocks
+import { TableToolbar } from "./TableToolbar";
 
-// 默认原生 Tailwind 主题 (保留原样)
+// Default native Tailwind theme (preserved as is)
 export const genericTheme = {
 	table: "",
 	primaryText: "text-blue-500 dark:text-blue-400",
@@ -42,23 +41,23 @@ export const genericTheme = {
 export default function TableRoot({
 	data = [],
 	columns: rawColumns,
-	plugins = {}, // 直接在这里接收 plugins，不需要再包一层 ExtensibleTable
+	plugins = {}, // Receive plugins directly here, no need for an extra ExtensibleTable wrapper
 	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
 	theme = genericTheme,
 	language = "auto",
 }) {
-	// 初始化国际化
+	// Initialize internationalization
 	const { t } = useTableTranslation(language);
 
-	// 第一步：处理数据层
+	// Step 1: Handle the data layer
 	const { tableData, isLoading, fetchError } = useTableData(data);
 
-	// 第二步：处理插件层（劫持列组件）
+	// Step 2: Handle the plugin layer (hijacking column components)
 	const enhancedColumns = useTablePlugins(rawColumns, plugins);
 
-	// 第三步：计算复杂的过滤配置
+	// Step 3: Calculate complex filter configurations
 	const { filterConfig, columnDataTypes, multiTypeFilter, getUniqueValues } =
 		useTableFilters({
 			tableData,
@@ -67,17 +66,17 @@ export default function TableRoot({
 			t,
 		});
 
-	// 第四步：初始化 TanStack Table 状态引擎
+	// Step 4: Initialize TanStack Table state engine
 	const table = useInteractiveTable({
 		tableData,
 		columns: enhancedColumns,
 		multiTypeFilter,
 	});
 
-	// 一些微小的 UI 交互状态
+	// Minor UI interaction states
 	const [openFilterId, setOpenFilterId] = useState(null);
 
-	// 第五步：打包并分发所有状态
+	// Step 5: Bundle and distribute all states
 	const contextPayload = {
 		table,
 		tableData,
@@ -99,10 +98,10 @@ export default function TableRoot({
 		<PopoverThemeContext.Provider value={theme}>
 			<TableContext.Provider value={contextPayload}>
 				<div className="w-full flex flex-col gap-2">
-					{/* 顶部工具面板 */}
+					{/* Top toolbar panel */}
 					<TableToolbar />
 
-					{/* 表格主体 */}
+					{/* Table body */}
 					<div className="overflow-x-auto w-full">
 						<table className={`w-full ${theme.table}`}>
 							<TableHeader />

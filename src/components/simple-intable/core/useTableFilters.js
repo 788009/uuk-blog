@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { TableI18nKey } from "../i18n/translation.js";
 
 export function useTableFilters({ tableData, columns, filterableColumns, t }) {
-	// 1. 生成列过滤配置
+	// 1. Generate column filter configuration
 	const filterConfig = useMemo(() => {
 		const config = {};
 		for (const item of filterableColumns) {
@@ -23,7 +23,7 @@ export function useTableFilters({ tableData, columns, filterableColumns, t }) {
 		return config;
 	}, [filterableColumns]);
 
-	// 2. 推导列的数据类型 (用于区分数字范围过滤还是文本过滤)
+	// 2. Infer column data types (used to distinguish between numeric range and text filtering)
 	const columnDataTypes = useMemo(() => {
 		const types = {};
 		columns.forEach((col) => {
@@ -36,7 +36,7 @@ export function useTableFilters({ tableData, columns, filterableColumns, t }) {
 		return types;
 	}, [columns, tableData]);
 
-	// 3. 核心过滤器函数 (供 TanStack Table 底层调用)
+	// 3. Core filter function (called by the TanStack Table engine)
 	const multiTypeFilter = useCallback(
 		(row, columnId, filterValue) => {
 			if (!filterValue) return true;
@@ -103,7 +103,7 @@ export function useTableFilters({ tableData, columns, filterableColumns, t }) {
 		[filterConfig, columnDataTypes, t],
 	);
 
-	// 4. 获取列的唯一值列表 (供视图层的漏斗面板渲染复选框使用)
+	// 4. Get a list of unique values for a column (used to render checkboxes in the filter panel)
 	const getUniqueValues = useCallback(
 		(columnId) => {
 			const delimiter = filterConfig[columnId]?.split;

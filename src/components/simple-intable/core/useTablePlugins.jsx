@@ -5,7 +5,7 @@ export function useTablePlugins(columns, plugins = {}) {
 		return columns.map((col) => {
 			const cellType = col.meta?.cellType;
 
-			// 如果列配置了 cellType，且外部传入了对应的插件组件
+			// If the column has a cellType configured and a corresponding plugin component is provided
 			if (cellType && plugins[cellType]) {
 				const PluginComponent = plugins[cellType];
 				return {
@@ -14,7 +14,7 @@ export function useTablePlugins(columns, plugins = {}) {
 				};
 			}
 
-			// 如果没有匹配的插件，保持原样交由底层渲染
+			// If no matching plugin is found, keep it as is for the underlying layer to render
 			return col;
 		});
 	}, [columns, plugins]);
