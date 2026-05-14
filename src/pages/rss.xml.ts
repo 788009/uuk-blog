@@ -1,4 +1,5 @@
 import rss from "@astrojs/rss";
+import { getSortedCollections } from "@utils/content-utils";
 import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
