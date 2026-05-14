@@ -3,13 +3,17 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
-// Retrieve posts and sort them by publication date
-async function getRawSortedPosts() {
-	const allBlogPosts = await getCollection("posts", ({ data }) => {
+export type AllowedCollection = "posts" | "records";
+
+// Retrieve items and sort them by publication date
+async function getRawSortedCollections<C extends AllowedCollection>(
+	collectionName: C,
+) {
+	const allItems = await getCollection(collectionName, ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const sorted = allBlogPosts.sort((a, b) => {
+	const sorted = allItems.sort((a, b) => {
 		const dateA = new Date(a.data.published);
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;
@@ -17,8 +21,10 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
-export async function getSortedPosts() {
-	const sorted = await getRawSortedPosts();
+export async function getSortedCollections<C extends AllowedCollection>(
+	collectionName: C,
+) {
+	const sorted = await getRawSortedCollections(collectionName);
 
 	for (let i = 1; i < sorted.length; i++) {
 		sorted[i].data.nextSlug = sorted[i - 1].slug;
@@ -31,21 +37,26 @@ export async function getSortedPosts() {
 
 	return sorted;
 }
-export type PostForList = {
-	slug: string;
-	data: CollectionEntry<"posts">["data"];
-};
-export async function getSortedPostsList(): Promise<PostForList[]> {
-	const sortedFullPosts = await getRawSortedPosts();
 
-	// delete post.body
-	const sortedPostsList = sortedFullPosts.map((post) => ({
-		slug: post.slug,
-		data: post.data,
+export type CollectionForList<C extends AllowedCollection> = {
+	slug: string;
+	data: CollectionEntry<C>["data"];
+};
+
+export async function getSortedCollectionsList<C extends AllowedCollection>(
+	collectionName: C,
+): Promise<CollectionForList<C>[]> {
+	const sortedFullCollections = await getRawSortedCollections(collectionName);
+
+	// delete body content to reduce payload
+	const sortedCollectionsList = sortedFullCollections.map((item) => ({
+		slug: item.slug,
+		data: item.data,
 	}));
 
-	return sortedPostsList;
+	return sortedCollectionsList;
 }
+
 export type Tag = {
 	name: string;
 	count: number;
@@ -111,48 +122,4 @@ export async function getCategoryList(): Promise<Category[]> {
 		});
 	}
 	return ret;
-}
-
-// Retrieve records and sort them by publication date
-async function getRawSortedRecords() {
-	const allBlogRecords = await getCollection("records", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
-
-	const sorted = allBlogRecords.sort((a, b) => {
-		const dateA = new Date(a.data.published);
-		const dateB = new Date(b.data.published);
-		return dateA > dateB ? -1 : 1;
-	});
-	return sorted;
-}
-
-export async function getSortedRecords() {
-	const sorted = await getRawSortedRecords();
-
-	for (let i = 1; i < sorted.length; i++) {
-		sorted[i].data.nextSlug = sorted[i - 1].slug;
-		sorted[i].data.nextTitle = sorted[i - 1].data.title;
-	}
-	for (let i = 0; i < sorted.length - 1; i++) {
-		sorted[i].data.prevSlug = sorted[i + 1].slug;
-		sorted[i].data.prevTitle = sorted[i + 1].data.title;
-	}
-
-	return sorted;
-}
-export type RecordForList = {
-	slug: string;
-	data: CollectionEntry<"records">["data"];
-};
-export async function getSortedRecordsList(): Promise<RecordForList[]> {
-	const sortedFullRecords = await getRawSortedRecords();
-
-	// delete record.body
-	const sortedRecordsList = sortedFullRecords.map((record) => ({
-		slug: record.slug,
-		data: record.data,
-	}));
-
-	return sortedRecordsList;
 }

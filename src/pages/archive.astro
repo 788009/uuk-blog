@@ -5,11 +5,11 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import {
 	getCategoryList,
-	getSortedPostsList,
+	getSortedCollectionsList,
 	getTagList,
 } from "../utils/content-utils";
 
-const rawPostsList = await getSortedPostsList();
+const rawPostsList = await getSortedCollectionsList("posts");
 
 // 核心修复点：使用 .map() 只提取名称字符串
 const tags = (await getTagList()).map((t) => t.name);
