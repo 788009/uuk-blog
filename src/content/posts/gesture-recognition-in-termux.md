@@ -26,7 +26,7 @@ A tutorial of running a simple gesture recognition in Termux. You can check [thi
 This project implements simple gesture recognition within Termux using the following components:
 1. **[Termux](https://github.com/termux/termux-app)**: The foundation of this project.
 2. **[FadCam](https://github.com/anonfaded/FadCam)**: Or any camera app capable of starting a camera server.
-3. **[Termux:X11](https://github.com/termux/termux-x11)**: Used to display the final result.
+3. **[Termux\:X11](https://github.com/termux/termux-x11)**: Used to display the final result.
 4. **[MediaPipe](https://github.com/google-ai-edge/mediapipe)**: Used to extract hand landmarks.
 5. **`model.pth`**: A lightweight pre-trained model included in this repository.
 6. **[Termux Sandbox](https://github.com/788009/termux-sandbox)**: Used to create an Ubuntu environment via **chroot**.
