@@ -8,3 +8,4 @@
 - [Ideas](/records/ideas/)
 - [疑难杂症](/records/troubleshooting/)
 - [常用技巧](/records/tips/)
+- [对 Fuwari 的修改](/records/customfuwari/)
