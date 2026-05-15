@@ -33,6 +33,17 @@ export const siteConfig: SiteConfig = {
 			equalsTo: [], // Matches these paths exactly
 		},
 	},
+	breadcrumb: {
+		showHome: false, // Whether to show Home
+		mapping: {
+			// Top priority
+			"/posts/": "文章",
+			"/records/": "记录",
+			"/archive/": "归档",
+			"/about/": "关于",
+			// '/': '主页' // Uncomment to override the default i18n Home
+		},
+	},
 	favicon: [
 		// Leave this array empty to use the default favicon
 		{

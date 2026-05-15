@@ -38,6 +38,10 @@ export type SiteConfig = {
 			equalsTo: string[];
 		};
 	};
+	breadcrumb?: {
+		mapping: Record<string, string>;
+		showHome: boolean;
+	};
 
 	favicon: Favicon[];
 };

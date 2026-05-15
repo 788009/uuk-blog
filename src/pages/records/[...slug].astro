@@ -1,6 +1,7 @@
 ---
 import path from "node:path";
 import Markdown from "@components/misc/Markdown.astro";
+import Breadcrumb from "@components/widget/Breadcrumb.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -49,27 +50,38 @@ const jsonLd = {
             {}
         ]}>
             <!-- word count and reading time -->
-            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
-                <div class="flex flex-row items-center">
-                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                        <Icon name="material-symbols:notes-rounded"></Icon>
-                    </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount)}</div>
-                </div>
-                <div class="flex flex-row items-center">
-                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                        <Icon name="material-symbols:schedule-outline-rounded"></Icon>
-                    </div>
-                    <div class="text-sm">
-                        {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}
-                    </div>
-                </div>
-                <div id="busuanzi_container_page_pv" style="display:none">
+            <div class="flex flex-col md:flex-row items-start md:items-center text-black/30 dark:text-white/30 gap-2 md:gap-5 mb-3 transition onload-animation w-full">
+                <div class="flex flex-row items-center gap-5 shrink-0">
                     <div class="flex flex-row items-center">
                         <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                            <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                            <Icon name="material-symbols:notes-rounded"></Icon>
                         </div>
-                        <div class="text-sm" id="busuanzi_value_page_pv"></div>
+                        <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount)}</div>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                            <Icon name="material-symbols:schedule-outline-rounded"></Icon>
+                        </div>
+                        <div class="text-sm">
+                            {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}
+                        </div>
+                    </div>
+                    <div id="busuanzi_container_page_pv" style="display:none">
+                        <div class="flex flex-row items-center">
+                            <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                                <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                            </div>
+                            <div class="text-sm" id="busuanzi_value_page_pv"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-row items-center min-w-0 w-full flex-1">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2 shrink-0">
+                        <Icon name="material-symbols:map-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm flex items-center min-w-0 w-full">
+                        <Breadcrumb />
                     </div>
                 </div>
             </div>

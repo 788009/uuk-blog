@@ -1,0 +1,77 @@
+---
+import { getBreadcrumbs } from "../../utils/breadcrumb";
+
+// Get current path and calculate breadcrumbs
+const { pathname } = Astro.url;
+const breadcrumbs = await getBreadcrumbs(pathname);
+
+// Don't render if disabled or if there's only one level (e.g., home only)
+const shouldRender = breadcrumbs.length > 1;
+---
+
+{shouldRender && (
+	<nav 
+		id="breadcrumb-scroll-container"
+		aria-label="Breadcrumb" 
+		class="flex items-center font-medium text-50 overflow-x-auto whitespace-nowrap scrollbar-none w-full"
+	>
+		{breadcrumbs.map((item, index) => {
+			const isLast = index === breadcrumbs.length - 1;
+			return (
+				<div class="flex items-center gap-2">
+					{/* Separator (hidden for the first item) */}
+					{index > 0 && (
+						<svg 
+							class="w-3.5 h-3.5 opacity-40 ml-1 mr-1" 
+							fill="none" 
+							viewBox="0 0 24 24" 
+							stroke="currentColor" 
+							stroke-width="2.5"
+						>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+						</svg>
+					)}
+					
+					{/* Link Node */}
+					<a
+						href={item.url}
+						class={`transition-colors flex items-center gap-1 ${
+							isLast 
+								? 'text-90 font-bold pointer-events-none' // Last level: bold and non-clickable
+								: 'hover:text-[var(--primary)] active:scale-95' // History levels: supports interaction
+						}`}
+						aria-current={isLast ? "page" : undefined}
+					>
+						{item.label}
+					</a>
+				</div>
+			);
+		})}
+	</nav>
+)}
+
+<style>
+	/* Hide native scrollbar to maintain a minimal horizontal scroll aesthetic */
+	.scrollbar-none::-webkit-scrollbar {
+		display: none;
+	}
+	.scrollbar-none {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+</style>
+
+<script>
+	function scrollToRight() {
+		const container = document.getElementById('breadcrumb-scroll-container');
+		if (container) {
+			// Set scroll position to total width to force right-alignment
+			container.scrollLeft = container.scrollWidth;
+		}
+	}
+
+	// Run on initialization
+	scrollToRight();
+	// Support Astro View Transitions for seamless navigation
+	document.addEventListener('astro:page-load', scrollToRight);
+</script>
