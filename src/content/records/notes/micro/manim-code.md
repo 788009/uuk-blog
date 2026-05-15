@@ -1,5 +1,5 @@
 ---
-title: Microeconomics Manim Code
+title: Manim Code
 published: 2026-04-25
 description: ' '
 image: ''

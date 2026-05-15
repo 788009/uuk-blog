@@ -1,5 +1,5 @@
 ---
-title: Macroeconomics Mermaid Code
+title: Mermaid Code
 published: 2026-05-06
 description: ' '
 image: ''

@@ -1,5 +1,5 @@
 ---
-title: Notes
+title: 学习笔记
 published: 2026-03-30
 description: ''
 image: ''
@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-## AP 学习笔记
+## AP
 
 - [Calculus BC](/records/notes/calculus-bc/)
 - [Macroeconomics](/records/notes/macro/)
