@@ -18,11 +18,11 @@ const shouldRender = breadcrumbs.length > 1;
 		{breadcrumbs.map((item, index) => {
 			const isLast = index === breadcrumbs.length - 1;
 			return (
-				<div class="flex items-center gap-2">
+				<div class="flex items-center">
 					{/* Separator (hidden for the first item) */}
 					{index > 0 && (
 						<svg 
-							class="w-3.5 h-3.5 opacity-40 ml-1 mr-1" 
+							class="w-3.5 h-3.5 opacity-40" 
 							fill="none" 
 							viewBox="0 0 24 24" 
 							stroke="currentColor" 
@@ -35,10 +35,10 @@ const shouldRender = breadcrumbs.length > 1;
 					{/* Link Node */}
 					<a
 						href={item.url}
-						class={`transition-colors flex items-center gap-1 ${
+						class={`px-2 py-1 transition flex items-center gap-1 ${
 							isLast 
 								? 'text-90 font-bold pointer-events-none' // Last level: bold and non-clickable
-								: 'hover:text-[var(--primary)] active:scale-95' // History levels: supports interaction
+								: 'transition rounded-md hover:bg-black/5 dark:hover:bg-white/10 hover:text-[var(--primary)] active:scale-95' // History levels: supports interaction
 						}`}
 						aria-current={isLast ? "page" : undefined}
 					>
