@@ -11,8 +11,9 @@ export function TableHeader() {
 		openFilterId,
 		setOpenFilterId,
 		setOpenManager,
-		stickyHeader,
 		maxHeight,
+		stickyHeader,
+		stickyFirstCol,
 	} = useTableContext();
 
 	const isFilterActive = (val) => {
@@ -22,7 +23,7 @@ export function TableHeader() {
 		return false;
 	};
 
-	const isStickyActive = stickyHeader && maxHeight;
+	const isStickyTopActive = stickyHeader && maxHeight;
 
 	return (
 		<thead>
@@ -34,15 +35,22 @@ export function TableHeader() {
 						const isOpen = openFilterId === header.id;
 						const isLastColumn = index === headerGroup.headers.length - 1;
 						const isSorted = header.column.getIsSorted();
+						const isFirstCol = index === 0;
+
+						let thClasses = "relative ";
+
+						if (isStickyTopActive && isFirstCol && stickyFirstCol) {
+							thClasses += `sticky top-0 left-0 z-[20] ${theme.headerBg}`;
+						} else if (isStickyTopActive) {
+							thClasses += `sticky top-0 z-[10] ${theme.headerBg}`;
+						} else if (isFirstCol && stickyFirstCol) {
+							thClasses += `sticky left-0 z-[11] ${theme.headerBg}`;
+						}
 
 						return (
 							<th
 								key={header.id}
-								className={`relative ${
-									isStickyActive
-										? `sticky top-0 z-[10] ${theme.headerBg || ""}`
-										: ""
-								}`}
+								className={thClasses}
 								style={{ width: header.getSize(), padding: "0.5rem" }}
 							>
 								<div className="flex items-center justify-between gap-2">

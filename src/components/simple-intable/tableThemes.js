@@ -17,6 +17,7 @@ export const fuwariTableTheme = {
 	iconHover: "hover:bg-black/10 dark:hover:bg-white/20",
 
 	headerBg: "bg-[var(--card-bg)]",
+	cellBg: "bg-[var(--card-bg)]",
 
 	// ====== Popover Related Theme ======
 	// Reuse original panel styles for the popover panel

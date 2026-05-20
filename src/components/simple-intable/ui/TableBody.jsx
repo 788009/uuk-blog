@@ -3,7 +3,8 @@ import { useTableContext } from "../core/TableContext";
 import { TableI18nKey } from "../i18n/translation.js";
 
 export function TableBody() {
-	const { table, isLoading, fetchError, theme, t, columns } = useTableContext();
+	const { table, isLoading, fetchError, theme, t, columns, stickyFirstCol } =
+		useTableContext();
 
 	const rows = table.getRowModel().rows;
 	const colSpan = columns.length;
@@ -32,11 +33,20 @@ export function TableBody() {
 		<tbody>
 			{rows.map((row) => (
 				<tr key={row.id}>
-					{row.getVisibleCells().map((cell) => (
-						<td key={cell.id} className="p-3">
-							{flexRender(cell.column.columnDef.cell, cell.getContext())}
-						</td>
-					))}
+					{row.getVisibleCells().map((cell, index) => {
+						const isFirstCol = index === 0;
+						let tdClasses = "p-3 ";
+
+						if (isFirstCol && stickyFirstCol) {
+							tdClasses += `sticky left-0 z-[1] ${theme.cellBg}`;
+						}
+
+						return (
+							<td key={cell.id} className={tdClasses}>
+								{flexRender(cell.column.columnDef.cell, cell.getContext())}
+							</td>
+						);
+					})}
 				</tr>
 			))}
 		</tbody>
