@@ -31,6 +31,7 @@ export const genericTheme = {
 	divider: "bg-gray-200 dark:bg-gray-700",
 	dangerBtn: "text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20",
 	iconHover: "hover:bg-gray-200 dark:hover:bg-gray-600",
+	headerBg: "bg-white dark:bg-gray-800",
 	popoverPanel:
 		"bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700",
 	popoverAnimation: "transition-all duration-200",
@@ -45,6 +46,8 @@ export default function TableRoot({
 	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
+	stickyHeader = true,
+	maxHeight = "600px",
 	theme = genericTheme,
 	language = "auto",
 }) {
@@ -76,6 +79,8 @@ export default function TableRoot({
 	// Minor UI interaction states
 	const [openFilterId, setOpenFilterId] = useState(null);
 
+	const isStickyActive = stickyHeader && maxHeight;
+
 	// Step 5: Bundle and distribute all states
 	const contextPayload = {
 		table,
@@ -92,6 +97,8 @@ export default function TableRoot({
 		getUniqueValues,
 		openFilterId,
 		setOpenFilterId,
+		stickyHeader,
+		maxHeight,
 	};
 
 	return (
@@ -102,7 +109,10 @@ export default function TableRoot({
 					<TableToolbar />
 
 					{/* Table body */}
-					<div className="overflow-x-auto w-full">
+					<div
+						className={`w-full overflow-x-auto ${isStickyActive ? "overflow-y-auto" : ""} ${theme.scrollbar}`}
+						style={isStickyActive ? { maxHeight: maxHeight } : {}}
+					>
 						<table className={`w-full ${theme.table}`}>
 							<TableHeader />
 							<TableBody />

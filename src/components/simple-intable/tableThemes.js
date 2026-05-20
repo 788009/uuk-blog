@@ -16,6 +16,8 @@ export const fuwariTableTheme = {
 	dangerBtn: "text-red-500 hover:bg-red-500/10 dark:hover:bg-red-400/10",
 	iconHover: "hover:bg-black/10 dark:hover:bg-white/20",
 
+	headerBg: "bg-[var(--card-bg)]",
+
 	// ====== Popover Related Theme ======
 	// Reuse original panel styles for the popover panel
 	popoverPanel:

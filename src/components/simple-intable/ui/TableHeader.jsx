@@ -11,6 +11,8 @@ export function TableHeader() {
 		openFilterId,
 		setOpenFilterId,
 		setOpenManager,
+		stickyHeader,
+		maxHeight,
 	} = useTableContext();
 
 	const isFilterActive = (val) => {
@@ -19,6 +21,8 @@ export function TableHeader() {
 		if (val.range?.some((v) => v !== "")) return true;
 		return false;
 	};
+
+	const isStickyActive = stickyHeader && maxHeight;
 
 	return (
 		<thead>
@@ -34,7 +38,11 @@ export function TableHeader() {
 						return (
 							<th
 								key={header.id}
-								className="relative"
+								className={`relative ${
+									isStickyActive
+										? `sticky top-0 z-[10] ${theme.headerBg || ""}`
+										: ""
+								}`}
 								style={{ width: header.getSize(), padding: "0.5rem" }}
 							>
 								<div className="flex items-center justify-between gap-2">
