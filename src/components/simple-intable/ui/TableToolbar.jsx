@@ -20,6 +20,8 @@ export function TableToolbar() {
 		setStickyHeader,
 		stickyFirstCol,
 		setStickyFirstCol,
+		columnWidths,
+		setColumnWidths,
 	} = useTableContext();
 
 	const [showItemCount, setShowItemCount] = useState(enableItemCount);
@@ -44,6 +46,13 @@ export function TableToolbar() {
 			];
 		}
 		table.setColumnOrder(newOrder);
+	};
+
+	const handleWidthChange = (columnId, val) => {
+		setColumnWidths((prev) => ({
+			...prev,
+			[columnId]: val,
+		}));
 	};
 
 	useEffect(() => {
@@ -222,7 +231,7 @@ export function TableToolbar() {
 											key={column.id}
 											className={`flex items-center justify-between w-full rounded-lg h-9 px-3 ${theme.btnPlain} ${theme.hoverBg}`}
 										>
-											<label className="flex items-center gap-3 cursor-pointer flex-1 min-w-0">
+											<label className="flex items-center gap-3 cursor-pointer flex-1 min-w-0 pr-2">
 												<input
 													type="checkbox"
 													checked={column.getIsVisible()}
@@ -234,47 +243,60 @@ export function TableToolbar() {
 												</span>
 											</label>
 
-											<div className="flex items-center gap-1 ml-2 flex-shrink-0">
-												<button
-													type="button"
-													onClick={() => handleMoveColumn(index, "up")}
-													disabled={index === 0}
-													className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
-												>
-													<svg
-														aria-hidden="true"
-														xmlns="http://www.w3.org/2000/svg"
-														width="1em"
-														height="1em"
-														viewBox="0 0 24 24"
-													>
-														<path
-															fill="currentColor"
-															d="M7.4 15.4L6 14l6-6l6 6l-1.4 1.4l-4.6-4.6z"
-														/>
-													</svg>
-												</button>
-												<button
-													type="button"
-													onClick={() => handleMoveColumn(index, "down")}
-													disabled={
-														index === table.getAllLeafColumns().length - 1
+											<div className="flex items-center gap-2 flex-shrink-0">
+												<input
+													type="text"
+													value={columnWidths[column.id] || ""}
+													onChange={(e) =>
+														handleWidthChange(column.id, e.target.value)
 													}
-													className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
-												>
-													<svg
-														aria-hidden="true"
-														xmlns="http://www.w3.org/2000/svg"
-														width="1em"
-														height="1em"
-														viewBox="0 0 24 24"
+													placeholder={t(TableI18nKey.COLUMN_WIDTH)}
+													className={`w-14 text-xs px-1.5 py-1 rounded text-center outline-none transition ${theme.input}`}
+													title={t(TableI18nKey.COLUMN_WIDTH)}
+												/>
+
+												<div className="flex items-center gap-1">
+													<button
+														type="button"
+														onClick={() => handleMoveColumn(index, "up")}
+														disabled={index === 0}
+														className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
 													>
-														<path
-															fill="currentColor"
-															d="M7.4 8.6L6 10l6 6l6-6l-1.4-1.4l-4.6 4.6z"
-														/>
-													</svg>
-												</button>
+														<svg
+															aria-hidden="true"
+															xmlns="http://www.w3.org/2000/svg"
+															width="1em"
+															height="1em"
+															viewBox="0 0 24 24"
+														>
+															<path
+																fill="currentColor"
+																d="M7.4 15.4L6 14l6-6l6 6l-1.4 1.4l-4.6-4.6z"
+															/>
+														</svg>
+													</button>
+													<button
+														type="button"
+														onClick={() => handleMoveColumn(index, "down")}
+														disabled={
+															index === table.getAllLeafColumns().length - 1
+														}
+														className={`flex items-center justify-center w-6 h-6 rounded disabled:opacity-30 disabled:hover:bg-transparent transition ${theme.iconHover}`}
+													>
+														<svg
+															aria-hidden="true"
+															xmlns="http://www.w3.org/2000/svg"
+															width="1em"
+															height="1em"
+															viewBox="0 0 24 24"
+														>
+															<path
+																fill="currentColor"
+																d="M7.4 8.6L6 10l6 6l6-6l-1.4-1.4l-4.6 4.6z"
+															/>
+														</svg>
+													</button>
+												</div>
 											</div>
 										</div>
 									);
@@ -293,6 +315,7 @@ export function TableToolbar() {
 									setLocalMaxHeight("");
 									setStickyHeader?.(false);
 									setStickyFirstCol?.(false);
+									setColumnWidths({});
 								}}
 								className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium opacity-70 hover:opacity-100 ${theme.btnPlain}`}
 							>

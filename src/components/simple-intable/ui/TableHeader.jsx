@@ -14,6 +14,7 @@ export function TableHeader() {
 		maxHeight,
 		stickyHeader,
 		stickyFirstCol,
+		columnWidths,
 	} = useTableContext();
 
 	const isFilterActive = (val) => {
@@ -38,7 +39,6 @@ export function TableHeader() {
 						const isFirstCol = index === 0;
 
 						let thClasses = "relative ";
-
 						if (isStickyTopActive && isFirstCol && stickyFirstCol) {
 							thClasses += `sticky top-0 left-0 z-[20] ${theme.headerBg}`;
 						} else if (isStickyTopActive) {
@@ -47,11 +47,22 @@ export function TableHeader() {
 							thClasses += `sticky left-0 z-[11] ${theme.headerBg}`;
 						}
 
+						let customWidth =
+							columnWidths[header.id] || columnWidths[header.column.id];
+						if (customWidth && /^\d+$/.test(customWidth.trim())) {
+							customWidth = `${customWidth.trim()}px`;
+						}
+						const finalWidth = customWidth || header.getSize();
+
 						return (
 							<th
 								key={header.id}
 								className={thClasses}
-								style={{ width: header.getSize(), padding: "0.5rem" }}
+								style={{
+									width: finalWidth,
+									minWidth: finalWidth,
+									padding: "0.5rem",
+								}}
 							>
 								<div className="flex items-center justify-between gap-2">
 									{/* Sorting trigger button */}

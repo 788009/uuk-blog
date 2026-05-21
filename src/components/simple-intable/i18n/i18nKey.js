@@ -20,4 +20,5 @@ export const TableI18nKey = {
 	FREEZE_HEADER: "freeze_header",
 	FREEZE_FIRST_COL: "freeze_first_col",
 	RESET_LAYOUT_STATE: "reset_layout_state",
+	COLUMN_WIDTH: "column_width",
 };

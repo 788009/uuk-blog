@@ -52,6 +52,7 @@ export default function TableRoot({
 	stickyFirstCol: initialStickyFirstCol = false,
 	theme = genericTheme,
 	language = "auto",
+	columnWidths: initialColumnWidths = {},
 }) {
 	// Initialize internationalization
 	const { t } = useTableTranslation(language);
@@ -59,6 +60,8 @@ export default function TableRoot({
 	const [maxHeight, setMaxHeight] = useState(initialMaxHeight);
 	const [stickyHeader, setStickyHeader] = useState(initialStickyHeader);
 	const [stickyFirstCol, setStickyFirstCol] = useState(initialStickyFirstCol);
+
+	const [columnWidths, setColumnWidths] = useState(initialColumnWidths);
 
 	// Step 1: Handle the data layer
 	const { tableData, isLoading, fetchError } = useTableData(data);
@@ -107,6 +110,8 @@ export default function TableRoot({
 		setStickyHeader,
 		stickyFirstCol,
 		setStickyFirstCol,
+		columnWidths,
+		setColumnWidths,
 	};
 
 	const hasMaxHeight = Boolean(maxHeight);
