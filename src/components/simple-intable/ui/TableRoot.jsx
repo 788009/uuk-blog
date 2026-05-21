@@ -44,7 +44,6 @@ export default function TableRoot({
 	data = [],
 	columns: rawColumns,
 	plugins = {},
-	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
 	maxHeight: initialMaxHeight = null,
@@ -52,7 +51,6 @@ export default function TableRoot({
 	stickyFirstCol: initialStickyFirstCol = false,
 	theme = genericTheme,
 	language = "auto",
-	columnWidths: initialColumnWidths = {},
 }) {
 	// Initialize internationalization
 	const { t } = useTableTranslation(language);
@@ -61,7 +59,17 @@ export default function TableRoot({
 	const [stickyHeader, setStickyHeader] = useState(initialStickyHeader);
 	const [stickyFirstCol, setStickyFirstCol] = useState(initialStickyFirstCol);
 
-	const [columnWidths, setColumnWidths] = useState(initialColumnWidths);
+	const [columnWidths, setColumnWidths] = useState(() => {
+		// Derive initial column widths from meta config
+		const derivedWidths = {};
+		rawColumns.forEach((col) => {
+			const colId = col.id || col.accessorKey;
+			if (colId && col.meta?.width) {
+				derivedWidths[colId] = col.meta.width;
+			}
+		});
+		return derivedWidths;
+	});
 
 	// Step 1: Handle the data layer
 	const { tableData, isLoading, fetchError } = useTableData(data);
@@ -74,7 +82,6 @@ export default function TableRoot({
 		useTableFilters({
 			tableData,
 			columns: enhancedColumns,
-			filterableColumns,
 			t,
 		});
 

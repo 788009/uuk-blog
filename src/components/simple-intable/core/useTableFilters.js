@@ -1,27 +1,23 @@
 import { useCallback, useMemo } from "react";
 import { TableI18nKey } from "../i18n/translation.js";
 
-export function useTableFilters({ tableData, columns, filterableColumns, t }) {
+export function useTableFilters({ tableData, columns, t }) {
 	// 1. Generate column filter configuration
 	const filterConfig = useMemo(() => {
 		const config = {};
-		for (const item of filterableColumns) {
-			if (typeof item === "string") {
-				config[item] = { type: ["category"] };
-			} else if (Array.isArray(item)) {
-				const colId = item[0];
-				const options = item[1];
-				if (typeof options === "string") {
-					config[colId] = { split: options, type: ["category"] };
-				} else if (typeof options === "object") {
-					let types = options.type || ["category"];
-					if (!Array.isArray(types)) types = [types];
-					config[colId] = { split: options.split, type: types };
-				}
+		columns.forEach((col) => {
+			const colId = col.id || col.accessorKey;
+			if (colId && col.meta?.isFilterable) {
+				let types = col.meta.filterType || ["category"];
+				if (!Array.isArray(types)) types = [types];
+				config[colId] = {
+					split: col.meta.filterSplit,
+					type: types,
+				};
 			}
-		}
+		});
 		return config;
-	}, [filterableColumns]);
+	}, [columns]);
 
 	// 2. Infer column data types (used to distinguish between numeric range and text filtering)
 	const columnDataTypes = useMemo(() => {
