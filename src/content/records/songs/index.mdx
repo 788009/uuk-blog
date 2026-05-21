@@ -19,10 +19,35 @@ import UpdateDate from './UpdateDate.jsx'
 import updateDate from './updateDate.json'
 
 export const songsColumns = [
-  { accessorKey: 'name', header: '歌曲' },
-  { accessorKey: 'artists', header: '作者' },
-  { accessorKey: 'category', header: '分类' },
-  { accessorKey: 'date', header: '收录日期' },
+  { 
+    accessorKey: 'name', 
+    header: '歌曲' 
+  },
+  { 
+    accessorKey: 'artists', 
+    header: '作者',
+    meta: {
+      isFilterable: true,
+      filterSplit: ' / '
+    }
+  },
+  { 
+    accessorKey: 'category', 
+    header: '分类',
+    meta: {
+      isFilterable: true,
+      headerAlign: 'left'
+    }
+  },
+  { 
+    accessorKey: 'date', 
+    header: '收录日期',
+    meta: {
+      isFilterable: true,
+      filterType: 'range',
+      headerAlign: 'left'
+    }
+  },
 ];
 
 export const artistsColumns = [
@@ -32,7 +57,7 @@ export const artistsColumns = [
   },
   {
     header: "歌曲数量",
-    accessorKey: "count"
+    accessorKey: "count",
   },
   {
     header: "曲目列表",
@@ -80,7 +105,6 @@ export const artistsColumns = [
   client:visible 
   data={"/songs-data/songs-data.json"} 
   columns={songsColumns} 
-  filterableColumns={[['artists', {'split': ' / '}], 'category', ['date', {'type': 'range'}]]}
   theme={fuwariTableTheme}
 />
 
@@ -92,6 +116,6 @@ export const artistsColumns = [
   client:visible
   data={"/songs-data/artists-data.json"} 
   columns={artistsColumns} 
+  headerAlign={"left"}
   theme={fuwariTableTheme}
-  filterableColumns={['author']} 
 />
