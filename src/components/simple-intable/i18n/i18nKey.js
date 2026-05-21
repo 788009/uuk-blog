@@ -21,4 +21,9 @@ export const TableI18nKey = {
 	FREEZE_FIRST_COL: "freeze_first_col",
 	RESET_LAYOUT_STATE: "reset_layout_state",
 	COLUMN_WIDTH: "column_width",
+	HEADER_ALIGN: "header_align",
+	CELL_ALIGN: "cell_align",
+	ALIGN_LEFT: "align_left",
+	ALIGN_CENTER: "align_center",
+	ALIGN_RIGHT: "align_right",
 };

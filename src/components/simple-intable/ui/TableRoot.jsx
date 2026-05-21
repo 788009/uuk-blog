@@ -51,6 +51,8 @@ export default function TableRoot({
 	stickyFirstCol: initialStickyFirstCol = false,
 	theme = genericTheme,
 	language = "auto",
+	headerAlign = "center",
+	cellAlign = "left",
 }) {
 	// Initialize internationalization
 	const { t } = useTableTranslation(language);
@@ -69,6 +71,30 @@ export default function TableRoot({
 			}
 		});
 		return derivedWidths;
+	});
+
+	// Derive initial header alignments from meta config if provided
+	const [columnHeaderAligns, setColumnHeaderAligns] = useState(() => {
+		const derivedAligns = {};
+		rawColumns.forEach((col) => {
+			const colId = col.id || col.accessorKey;
+			if (colId && col.meta?.headerAlign) {
+				derivedAligns[colId] = col.meta.headerAlign;
+			}
+		});
+		return derivedAligns;
+	});
+
+	// Derive initial cell alignments from meta config if provided
+	const [columnCellAligns, setColumnCellAligns] = useState(() => {
+		const derivedAligns = {};
+		rawColumns.forEach((col) => {
+			const colId = col.id || col.accessorKey;
+			if (colId && col.meta?.cellAlign) {
+				derivedAligns[colId] = col.meta.cellAlign;
+			}
+		});
+		return derivedAligns;
 	});
 
 	// Step 1: Handle the data layer
@@ -119,6 +145,12 @@ export default function TableRoot({
 		setStickyFirstCol,
 		columnWidths,
 		setColumnWidths,
+		headerAlign,
+		cellAlign,
+		columnHeaderAligns,
+		setColumnHeaderAligns,
+		columnCellAligns,
+		setColumnCellAligns,
 	};
 
 	const hasMaxHeight = Boolean(maxHeight);

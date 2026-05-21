@@ -22,6 +22,12 @@ export function TableToolbar() {
 		setStickyFirstCol,
 		columnWidths,
 		setColumnWidths,
+		headerAlign: globalHeaderAlign,
+		cellAlign: globalCellAlign,
+		columnHeaderAligns,
+		setColumnHeaderAligns,
+		columnCellAligns,
+		setColumnCellAligns,
 	} = useTableContext();
 
 	const [showItemCount, setShowItemCount] = useState(enableItemCount);
@@ -124,7 +130,7 @@ export function TableToolbar() {
 						positionClass="top-full right-0 origin-top-right"
 						theme={theme}
 					>
-						<div className="p-2 min-w-[240px] font-normal">
+						<div className="p-2 min-w-[280px] font-normal">
 							{/* General Settings */}
 							<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 								{t(TableI18nKey.GENERAL_SETTINGS)}
@@ -229,33 +235,23 @@ export function TableToolbar() {
 									return (
 										<div
 											key={column.id}
-											className={`flex items-center justify-between w-full rounded-lg h-9 px-3 ${theme.btnPlain} ${theme.hoverBg}`}
+											className={`flex flex-col w-full rounded-lg px-2 py-1.5 mb-1 transition-colors border border-transparent ${theme.hoverBg} dark:hover:border-gray-700 hover:border-gray-200`}
 										>
-											<label className="flex items-center gap-3 cursor-pointer flex-1 min-w-0 pr-2">
-												<input
-													type="checkbox"
-													checked={column.getIsVisible()}
-													onChange={column.getToggleVisibilityHandler()}
-													className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
-												/>
-												<span className="text-sm truncate flex-1 text-left select-none">
-													{headerName}
-												</span>
-											</label>
+											{/* Top Row: Visibility & Ordering */}
+											<div className="flex items-center justify-between w-full h-7">
+												<label className="flex items-center gap-2.5 cursor-pointer flex-1 min-w-0 pr-2">
+													<input
+														type="checkbox"
+														checked={column.getIsVisible()}
+														onChange={column.getToggleVisibilityHandler()}
+														className={`rounded focus:ring-0 focus:ring-offset-0 cursor-pointer flex-shrink-0 ${theme.primaryText} ${theme.input}`}
+													/>
+													<span className="text-sm font-medium truncate flex-1 text-left select-none">
+														{headerName}
+													</span>
+												</label>
 
-											<div className="flex items-center gap-2 flex-shrink-0">
-												<input
-													type="text"
-													value={columnWidths[column.id] || ""}
-													onChange={(e) =>
-														handleWidthChange(column.id, e.target.value)
-													}
-													placeholder={t(TableI18nKey.COLUMN_WIDTH)}
-													className={`w-14 text-xs px-1.5 py-1 rounded text-center outline-none transition ${theme.input}`}
-													title={t(TableI18nKey.COLUMN_WIDTH)}
-												/>
-
-												<div className="flex items-center gap-1">
+												<div className="flex items-center gap-0.5 flex-shrink-0">
 													<button
 														type="button"
 														onClick={() => handleMoveColumn(index, "up")}
@@ -298,6 +294,107 @@ export function TableToolbar() {
 													</button>
 												</div>
 											</div>
+
+											{/* Bottom Row: Properties Grid (Width, Header Align, Cell Align) */}
+											<div className="grid grid-cols-3 gap-2 pl-7 mt-1.5 w-full">
+												{/* Column Width */}
+												<div className="flex flex-col gap-0.5">
+													<span className="text-[0.65rem] font-medium opacity-50 whitespace-nowrap select-none">
+														{t(TableI18nKey.COLUMN_WIDTH)}
+													</span>
+													<input
+														type="text"
+														value={columnWidths[column.id] || ""}
+														onChange={(e) =>
+															handleWidthChange(column.id, e.target.value)
+														}
+														placeholder="auto"
+														className={`w-full text-xs px-1.5 py-0.5 rounded outline-none transition ${theme.input}`}
+													/>
+												</div>
+
+												{/* Header Alignment */}
+												<div className="flex flex-col gap-0.5">
+													<span className="text-[0.65rem] font-medium opacity-50 whitespace-nowrap select-none">
+														{t(TableI18nKey.HEADER_ALIGN)}
+													</span>
+													<select
+														value={
+															columnHeaderAligns[column.id] ||
+															column.columnDef.meta?.headerAlign ||
+															globalHeaderAlign ||
+															"center"
+														}
+														onChange={(e) =>
+															setColumnHeaderAligns((prev) => ({
+																...prev,
+																[column.id]: e.target.value,
+															}))
+														}
+														className={`w-full rounded pl-0.5 pr-6 py-0.5 text-xs bg-transparent border outline-none transition cursor-pointer ${theme.input}`}
+													>
+														<option
+															value="left"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_LEFT)}
+														</option>
+														<option
+															value="center"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_CENTER)}
+														</option>
+														<option
+															value="right"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_RIGHT)}
+														</option>
+													</select>
+												</div>
+
+												{/* Cell Alignment */}
+												<div className="flex flex-col gap-0.5">
+													<span className="text-[0.65rem] font-medium opacity-50 whitespace-nowrap select-none">
+														{t(TableI18nKey.CELL_ALIGN)}
+													</span>
+													<select
+														value={
+															columnCellAligns[column.id] ||
+															column.columnDef.meta?.cellAlign ||
+															globalCellAlign ||
+															"left"
+														}
+														onChange={(e) =>
+															setColumnCellAligns((prev) => ({
+																...prev,
+																[column.id]: e.target.value,
+															}))
+														}
+														className={`w-full rounded pl-0.5 pr-6 py-0.5 text-xs bg-transparent border outline-none transition cursor-pointer ${theme.input}`}
+													>
+														<option
+															value="left"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_LEFT)}
+														</option>
+														<option
+															value="center"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_CENTER)}
+														</option>
+														<option
+															value="right"
+															className="text-black dark:text-white bg-white dark:bg-gray-800"
+														>
+															{t(TableI18nKey.ALIGN_RIGHT)}
+														</option>
+													</select>
+												</div>
+											</div>
 										</div>
 									);
 								})}
@@ -316,6 +413,8 @@ export function TableToolbar() {
 									setStickyHeader?.(false);
 									setStickyFirstCol?.(false);
 									setColumnWidths({});
+									setColumnHeaderAligns({});
+									setColumnCellAligns({});
 								}}
 								className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium opacity-70 hover:opacity-100 ${theme.btnPlain}`}
 							>

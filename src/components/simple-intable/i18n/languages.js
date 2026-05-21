@@ -5,7 +5,7 @@ export const en = {
 	table_settings: "Table Settings",
 	general_settings: "General Settings",
 	show_total: "Show total item count",
-	visibility_and_order: "Visibility, Width & Order",
+	visibility_and_order: "Column Settings",
 	reset_state: "Reset Table State",
 	filter_prefix: "Filter: {column}",
 	no_data: "No Data",
@@ -21,6 +21,11 @@ export const en = {
 	freeze_first_col: "Freeze First Column",
 	reset_layout_state: "Reset Layout Settings",
 	column_width: "Width",
+	header_align: "Header Align",
+	cell_align: "Cell Align",
+	align_left: "Left",
+	align_center: "Center",
+	align_right: "Right",
 };
 
 export const zh_CN = {
@@ -29,7 +34,7 @@ export const zh_CN = {
 	table_settings: "表格设置",
 	general_settings: "通用设置",
 	show_total: "显示条目总数",
-	visibility_and_order: "可见性、列宽与顺序",
+	visibility_and_order: "列设置",
 	reset_state: "重置表格状态",
 	filter_prefix: "筛选: {column}",
 	no_data: "无数据",
@@ -45,6 +50,11 @@ export const zh_CN = {
 	freeze_first_col: "冻结首列",
 	reset_layout_state: "重置布局设置",
 	column_width: "宽度",
+	header_align: "表头对齐",
+	cell_align: "正文对齐",
+	align_left: "左对齐",
+	align_center: "居中",
+	align_right: "右对齐",
 };
 
 export const zh_TW = {
@@ -53,7 +63,7 @@ export const zh_TW = {
 	table_settings: "表格設定",
 	general_settings: "一般設定",
 	show_total: "顯示總筆數",
-	visibility_and_order: "可見性、列寬與順序",
+	visibility_and_order: "列設定",
 	reset_state: "重設表格狀態",
 	filter_prefix: "篩選: {column}",
 	no_data: "無資料",
@@ -69,6 +79,11 @@ export const zh_TW = {
 	freeze_first_col: "凍結第一列",
 	reset_layout_state: "重置佈局設定",
 	column_width: "寬度",
+	header_align: "表頭對齊",
+	cell_align: "正文對齊",
+	align_left: "左對齊",
+	align_center: "居中",
+	align_right: "右對齊",
 };
 
 export const ja = {
@@ -77,7 +92,7 @@ export const ja = {
 	table_settings: "テーブル設定",
 	general_settings: "一般設定",
 	show_total: "合計件数を表示",
-	visibility_and_order: "表示・幅・順序",
+	visibility_and_order: "列の設定",
 	reset_state: "テーブルをリセット",
 	filter_prefix: "フィルター: {column}",
 	no_data: "データなし",
@@ -93,6 +108,11 @@ export const ja = {
 	freeze_first_col: "先頭列固定",
 	reset_layout_state: "レイアウトのリセット",
 	column_width: "幅",
+	header_align: "ヘッダー揃え",
+	cell_align: "セル揃え",
+	align_left: "左揃え",
+	align_center: "中央揃え",
+	align_right: "右揃え",
 };
 
 export const ko = {
@@ -101,7 +121,7 @@ export const ko = {
 	table_settings: "테이블 설정",
 	general_settings: "일반 설정",
 	show_total: "총 항목 수 표시",
-	visibility_and_order: "표시, 너비 및 순서",
+	visibility_and_order: "열 설정",
 	reset_state: "테이블 초기화",
 	filter_prefix: "필터: {column}",
 	no_data: "데이터 없음",
@@ -117,6 +137,11 @@ export const ko = {
 	freeze_first_col: "첫 번째 열 고정",
 	reset_layout_state: "레이아웃 초기화",
 	column_width: "너비",
+	header_align: "헤더 정렬",
+	cell_align: "본문 정렬",
+	align_left: "왼쪽 정렬",
+	align_center: "가운데 정렬",
+	align_right: "오른쪽 정렬",
 };
 
 export const es = {
@@ -125,7 +150,7 @@ export const es = {
 	table_settings: "Ajustes de tabla",
 	general_settings: "Ajustes generales",
 	show_total: "Mostrar total",
-	visibility_and_order: "Visibilidad, ancho y orden",
+	visibility_and_order: "Configuración de columnas",
 	reset_state: "Restablecer tabla",
 	filter_prefix: "Filtro: {column}",
 	no_data: "Sin datos",
@@ -141,6 +166,11 @@ export const es = {
 	freeze_first_col: "Fijar primera columna",
 	reset_layout_state: "Restablecer diseño",
 	column_width: "Ancho",
+	header_align: "Alineación Encabezado",
+	cell_align: "Alineación Celda",
+	align_left: "Izquierda",
+	align_center: "Centro",
+	align_right: "Derecha",
 };
 
 export const id = {
@@ -149,7 +179,7 @@ export const id = {
 	table_settings: "Pengaturan Tabel",
 	general_settings: "Pengaturan Umum",
 	show_total: "Tampilkan total",
-	visibility_and_order: "Visibilitas, Lebar & Urutan",
+	visibility_and_order: "Pengaturan Kolom",
 	reset_state: "Setel Ulang Tabel",
 	filter_prefix: "Filter: {column}",
 	no_data: "Tidak ada data",
@@ -165,6 +195,11 @@ export const id = {
 	freeze_first_col: "Bekukan Kolom Pertama",
 	reset_layout_state: "Atur Ulang Tata Letak",
 	column_width: "Lebar",
+	header_align: "Rataan Huruf Judul",
+	cell_align: "Rataan Huruf Sel",
+	align_left: "Kiri",
+	align_center: "Tengah",
+	align_right: "Kanan",
 };
 
 export const th = {
@@ -173,7 +208,7 @@ export const th = {
 	table_settings: "การตั้งค่าตาราง",
 	general_settings: "การตั้งค่าทั่วไป",
 	show_total: "แสดงจำนวนทั้งหมด",
-	visibility_and_order: "การแสดงผล ความกว้าง และลำดับ",
+	visibility_and_order: "ตั้งค่าคอลัมน์",
 	reset_state: "รีเซ็ตตาราง",
 	filter_prefix: "ตัวกรอง: {column}",
 	no_data: "ไม่มีข้อมูล",
@@ -189,6 +224,11 @@ export const th = {
 	freeze_first_col: "ตรึงคอลัมน์แรก",
 	reset_layout_state: "รีเซ็ตเค้าโครง",
 	column_width: "ความกว้าง",
+	header_align: "จัดวางหัวข้อ",
+	cell_align: "จัดวางเนื้อหา",
+	align_left: "ชิดซ้าย",
+	align_center: "กึ่งกลาง",
+	align_right: "ชิดขวา",
 };
 
 export const tr = {
@@ -197,7 +237,7 @@ export const tr = {
 	table_settings: "Tablo Ayarları",
 	general_settings: "Genel Ayarlar",
 	show_total: "Toplamı göster",
-	visibility_and_order: "Görünürlük, Genişlik ve Sıralama",
+	visibility_and_order: "Sütun Ayarları",
 	reset_state: "Tabloyu Sıfırla",
 	filter_prefix: "Filtre: {column}",
 	no_data: "Veri yok",
@@ -213,6 +253,11 @@ export const tr = {
 	freeze_first_col: "İlk Sütunu Sabitle",
 	reset_layout_state: "Düzeni Sıfırla",
 	column_width: "Genişlik",
+	header_align: "Başlık Hizalaması",
+	cell_align: "Hücre Hizalaması",
+	align_left: "Sola Hizala",
+	align_center: "Ortala",
+	align_right: "Sağa Hizala",
 };
 
 export const vi = {
@@ -221,7 +266,7 @@ export const vi = {
 	table_settings: "Cài đặt bảng",
 	general_settings: "Cài đặt chung",
 	show_total: "Hiển thị tổng số",
-	visibility_and_order: "Hiển thị, độ rộng & thứ tự",
+	visibility_and_order: "Cài đặt cột",
 	reset_state: "Đặt lại bảng",
 	filter_prefix: "Bộ lọc: {column}",
 	no_data: "Không có dữ liệu",
@@ -237,6 +282,11 @@ export const vi = {
 	freeze_first_col: "Cố định cột đầu tiên",
 	reset_layout_state: "Đặt lại bố cục",
 	column_width: "Độ rộng",
+	header_align: "Căn lề tiêu đề",
+	cell_align: "Căn lề ô dữ liệu",
+	align_left: "Căn trái",
+	align_center: "Căn giữa",
+	align_right: "Căn phải",
 };
 
 export const dictionaries = { en, zh_CN, zh_TW, ja, ko, es, id, th, tr, vi };

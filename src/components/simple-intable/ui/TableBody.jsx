@@ -3,8 +3,17 @@ import { useTableContext } from "../core/TableContext";
 import { TableI18nKey } from "../i18n/translation.js";
 
 export function TableBody() {
-	const { table, isLoading, fetchError, theme, t, columns, stickyFirstCol } =
-		useTableContext();
+	const {
+		table,
+		isLoading,
+		fetchError,
+		theme,
+		t,
+		columns,
+		stickyFirstCol,
+		columnCellAligns,
+		cellAlign: globalCellAlign,
+	} = useTableContext();
 
 	const rows = table.getRowModel().rows;
 	const colSpan = columns.length;
@@ -41,8 +50,18 @@ export function TableBody() {
 							tdClasses += `sticky left-0 z-[1] ${theme.cellBg}`;
 						}
 
+						const cellAlign =
+							columnCellAligns[cell.column.id] ||
+							cell.column.columnDef.meta?.cellAlign ||
+							globalCellAlign ||
+							"left";
+
 						return (
-							<td key={cell.id} className={tdClasses}>
+							<td
+								key={cell.id}
+								className={tdClasses}
+								style={{ textAlign: cellAlign }}
+							>
 								{flexRender(cell.column.columnDef.cell, cell.getContext())}
 							</td>
 						);

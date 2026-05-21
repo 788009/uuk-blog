@@ -15,6 +15,8 @@ export function TableHeader() {
 		stickyHeader,
 		stickyFirstCol,
 		columnWidths,
+		columnHeaderAligns,
+		headerAlign: globalHeaderAlign,
 	} = useTableContext();
 
 	const isFilterActive = (val) => {
@@ -38,7 +40,14 @@ export function TableHeader() {
 						const isSorted = header.column.getIsSorted();
 						const isFirstCol = index === 0;
 
+						const headerAlign =
+							columnHeaderAligns[header.id] ||
+							header.column.columnDef.meta?.headerAlign ||
+							globalHeaderAlign ||
+							"center";
+
 						let thClasses = "relative ";
+
 						if (isStickyTopActive && isFirstCol && stickyFirstCol) {
 							thClasses += `sticky top-0 left-0 z-[20] ${theme.headerBg}`;
 						} else if (isStickyTopActive) {
@@ -61,65 +70,232 @@ export function TableHeader() {
 								style={{
 									width: finalWidth,
 									minWidth: finalWidth,
-									padding: "0.5rem",
+									padding: "0.75rem",
 								}}
 							>
-								<div className="flex items-center justify-between gap-2">
-									{/* Sorting trigger button */}
-									<button
-										type="button"
-										className={`flex-1 flex transition items-center justify-between w-full rounded-lg min-h-9 px-3 py-1 font-medium cursor-pointer select-none ${theme.btnPlain} ${
-											isSorted ? theme.activeBg : ""
-										}`}
-										onClick={header.column.getToggleSortingHandler()}
-									>
-										<span className="truncate">
-											{flexRender(
-												header.column.columnDef.header,
-												header.getContext(),
-											)}
-										</span>
-										<span className="opacity-40 text-[1rem] ml-1 flex-shrink-0">
-											{{
-												asc: <SortUpIcon />,
-												desc: <SortDownIcon />,
-											}[isSorted] ?? <SortDefaultIcon />}
-										</span>
-									</button>
+								<div className="w-full min-h-9 py-1 flex items-center">
+									{headerAlign === "center" ? (
+										/* Center Alignment Layout */
+										<div className="w-full flex items-center justify-between gap-2">
+											{/* Hidden left spacer to perfectly balance the right buttons for absolute centering */}
+											<div className="flex items-center gap-1 invisible pointer-events-none flex-shrink-0">
+												<div className="w-8 h-8" />
+												{isFilterable && <div className="w-8 h-8" />}
+											</div>
 
-									{/* Filter trigger */}
-									{isFilterable && (
-										<Popover
-											open={isOpen}
-											onOpenChange={(val) => {
-												setOpenFilterId(val ? header.id : null);
-												if (val) setOpenManager?.(false);
-											}}
-										>
-											<PopoverTrigger theme={theme}>
+											<div className="whitespace-nowrap text-center select-none font-medium opacity-90">
+												{flexRender(
+													header.column.columnDef.header,
+													header.getContext(),
+												)}
+											</div>
+											<div className="flex items-center justify-start gap-1 flex-shrink-0">
+												{/* Individual Sort Button */}
 												<button
 													type="button"
-													className={`flex transition items-center justify-center rounded-lg w-9 h-9 font-medium ${theme.btnPlain} ${
-														active || isOpen
+													className={`flex items-center justify-center rounded-lg w-8 h-8 transition ${theme.btnPlain} ${
+														isSorted
 															? `${theme.activeBg} ${theme.primaryText}`
-															: "opacity-60"
+															: `opacity-60 ${theme.iconHover}`
 													}`}
+													onClick={header.column.getToggleSortingHandler()}
 												>
-													<FilterIcon />
+													<span className="text-[1.1rem]">
+														{{
+															asc: <SortUpIcon />,
+															desc: <SortDownIcon />,
+														}[isSorted] ?? <SortDefaultIcon />}
+													</span>
 												</button>
-											</PopoverTrigger>
 
-											<PopoverContent
-												theme={theme}
-												positionClass={
-													isLastColumn
-														? "top-full -right-2 origin-top-right"
-														: "top-full -left-2 origin-top-left"
-												}
-											>
-												<TableFilterPanel header={header} isActive={active} />
-											</PopoverContent>
-										</Popover>
+												{/* Individual Filter Button */}
+												{isFilterable && (
+													<Popover
+														open={isOpen}
+														onOpenChange={(val) => {
+															setOpenFilterId(val ? header.id : null);
+															if (val) setOpenManager?.(false);
+														}}
+													>
+														<PopoverTrigger theme={theme}>
+															<button
+																type="button"
+																className={`flex transition items-center justify-center rounded-lg w-8 h-8 font-medium ${theme.btnPlain} ${
+																	active || isOpen
+																		? `${theme.activeBg} ${theme.primaryText}`
+																		: `opacity-60 ${theme.iconHover}`
+																}`}
+															>
+																<FilterIcon />
+															</button>
+														</PopoverTrigger>
+
+														<PopoverContent
+															theme={theme}
+															positionClass={
+																isLastColumn
+																	? "top-full -right-2 origin-top-right"
+																	: "top-full -left-2 origin-top-left"
+															}
+														>
+															<TableFilterPanel
+																header={header}
+																isActive={active}
+															/>
+														</PopoverContent>
+													</Popover>
+												)}
+											</div>
+										</div>
+									) : (
+										/* Left or Right Alignment Layout */
+										<div
+											className={`w-full flex items-center gap-2 ${
+												headerAlign === "right"
+													? "justify-end"
+													: "justify-start"
+											}`}
+										>
+											{headerAlign === "right" ? (
+												<>
+													{/* Buttons on the left for right-aligned columns */}
+													<div className="flex items-center gap-1 flex-shrink-0">
+														{/* Individual Sort Button */}
+														<button
+															type="button"
+															className={`flex items-center justify-center rounded-lg w-8 h-8 transition ${theme.btnPlain} ${
+																isSorted
+																	? `${theme.activeBg} ${theme.primaryText}`
+																	: `opacity-60 ${theme.iconHover}`
+															}`}
+															onClick={header.column.getToggleSortingHandler()}
+														>
+															<span className="text-[1.1rem]">
+																{{
+																	asc: <SortUpIcon />,
+																	desc: <SortDownIcon />,
+																}[isSorted] ?? <SortDefaultIcon />}
+															</span>
+														</button>
+
+														{/* Individual Filter Button */}
+														{isFilterable && (
+															<Popover
+																open={isOpen}
+																onOpenChange={(val) => {
+																	setOpenFilterId(val ? header.id : null);
+																	if (val) setOpenManager?.(false);
+																}}
+															>
+																<PopoverTrigger theme={theme}>
+																	<button
+																		type="button"
+																		className={`flex transition items-center justify-center rounded-lg w-8 h-8 font-medium ${theme.btnPlain} ${
+																			active || isOpen
+																				? `${theme.activeBg} ${theme.primaryText}`
+																				: `opacity-60 ${theme.iconHover}`
+																		}`}
+																	>
+																		<FilterIcon />
+																	</button>
+																</PopoverTrigger>
+
+																<PopoverContent
+																	theme={theme}
+																	positionClass={
+																		isLastColumn
+																			? "top-full -right-2 origin-top-right"
+																			: "top-full -left-2 origin-top-left"
+																	}
+																>
+																	<TableFilterPanel
+																		header={header}
+																		isActive={active}
+																	/>
+																</PopoverContent>
+															</Popover>
+														)}
+													</div>
+
+													{/* Text on the absolute right */}
+													<div className="whitespace-nowrap select-none font-medium opacity-90">
+														{flexRender(
+															header.column.columnDef.header,
+															header.getContext(),
+														)}
+													</div>
+												</>
+											) : (
+												<>
+													{/* Text on the absolute left for left-aligned columns */}
+													<div className="whitespace-nowrap select-none font-medium opacity-90">
+														{flexRender(
+															header.column.columnDef.header,
+															header.getContext(),
+														)}
+													</div>
+
+													{/* Buttons on the right */}
+													<div className="flex items-center gap-1 flex-shrink-0">
+														{/* Individual Sort Button */}
+														<button
+															type="button"
+															className={`flex items-center justify-center rounded-lg w-8 h-8 transition ${theme.btnPlain} ${
+																isSorted
+																	? `${theme.activeBg} ${theme.primaryText}`
+																	: `opacity-60 ${theme.iconHover}`
+															}`}
+															onClick={header.column.getToggleSortingHandler()}
+														>
+															<span className="text-[1.1rem]">
+																{{
+																	asc: <SortUpIcon />,
+																	desc: <SortDownIcon />,
+																}[isSorted] ?? <SortDefaultIcon />}
+															</span>
+														</button>
+
+														{/* Individual Filter Button */}
+														{isFilterable && (
+															<Popover
+																open={isOpen}
+																onOpenChange={(val) => {
+																	setOpenFilterId(val ? header.id : null);
+																	if (val) setOpenManager?.(false);
+																}}
+															>
+																<PopoverTrigger theme={theme}>
+																	<button
+																		type="button"
+																		className={`flex transition items-center justify-center rounded-lg w-8 h-8 font-medium ${theme.btnPlain} ${
+																			active || isOpen
+																				? `${theme.activeBg} ${theme.primaryText}`
+																				: `opacity-60 ${theme.iconHover}`
+																		}`}
+																	>
+																		<FilterIcon />
+																	</button>
+																</PopoverTrigger>
+
+																<PopoverContent
+																	theme={theme}
+																	positionClass={
+																		isLastColumn
+																			? "top-full -right-2 origin-top-right"
+																			: "top-full -left-2 origin-top-left"
+																	}
+																>
+																	<TableFilterPanel
+																		header={header}
+																		isActive={active}
+																	/>
+																</PopoverContent>
+															</Popover>
+														)}
+													</div>
+												</>
+											)}
+										</div>
 									)}
 								</div>
 							</th>
