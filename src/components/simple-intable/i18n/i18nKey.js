@@ -14,4 +14,10 @@ export const TableI18nKey = {
 	CLEAR_ALL: "clear_all",
 	LOADING: "loading",
 	LOAD_FAILED: "load_failed",
+	LAYOUT_SETTINGS: "layout_settings",
+	MAX_HEIGHT: "max_height",
+	MAX_HEIGHT_PLACEHOLDER: "max_height_placeholder",
+	FREEZE_HEADER: "freeze_header",
+	FREEZE_FIRST_COL: "freeze_first_col",
+	RESET_LAYOUT_STATE: "reset_layout_state",
 };

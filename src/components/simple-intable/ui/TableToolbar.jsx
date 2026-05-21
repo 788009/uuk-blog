@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTableContext } from "../core/TableContext";
 import { TableI18nKey } from "../i18n/translation.js";
 import { Popover, PopoverContent, PopoverTrigger } from "../shared/Popover";
@@ -14,10 +14,17 @@ export function TableToolbar() {
 		enableColumnManagement,
 		enableItemCount,
 		setOpenFilterId,
+		maxHeight,
+		setMaxHeight,
+		stickyHeader,
+		setStickyHeader,
+		stickyFirstCol,
+		setStickyFirstCol,
 	} = useTableContext();
 
 	const [showItemCount, setShowItemCount] = useState(enableItemCount);
 	const [openManager, setOpenManager] = useState(false);
+	const [localMaxHeight, setLocalMaxHeight] = useState(maxHeight || "");
 
 	const filteredCount = table.getFilteredRowModel().rows.length;
 	const totalCount = tableData.length;
@@ -25,7 +32,6 @@ export function TableToolbar() {
 	const handleMoveColumn = (index, direction) => {
 		const currentOrder = table.getAllLeafColumns().map((c) => c.id);
 		const newOrder = [...currentOrder];
-
 		if (direction === "up" && index > 0) {
 			[newOrder[index - 1], newOrder[index]] = [
 				newOrder[index],
@@ -39,6 +45,17 @@ export function TableToolbar() {
 		}
 		table.setColumnOrder(newOrder);
 	};
+
+	useEffect(() => {
+		const val = localMaxHeight.trim();
+		if (/^\d+$/.test(val)) {
+			setMaxHeight?.(`${val}px`);
+		} else {
+			setMaxHeight?.(val);
+		}
+	}, [localMaxHeight, setMaxHeight]);
+
+	const isHeaderFreezeDisabled = !localMaxHeight.trim();
 
 	return (
 		<div className="flex justify-between items-center w-full relative z-[40] px-1">
@@ -98,7 +115,8 @@ export function TableToolbar() {
 						positionClass="top-full right-0 origin-top-right"
 						theme={theme}
 					>
-						<div className="p-2 min-w-[220px] font-normal">
+						<div className="p-2 min-w-[240px] font-normal">
+							{/* General Settings */}
 							<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 								{t(TableI18nKey.GENERAL_SETTINGS)}
 							</div>
@@ -115,8 +133,81 @@ export function TableToolbar() {
 									{t(TableI18nKey.SHOW_TOTAL)}
 								</span>
 							</label>
+
 							<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
 
+							{/* Layout & Freeze */}
+							<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
+								{t(TableI18nKey.LAYOUT_SETTINGS)}
+							</div>
+
+							<div className="px-3 mb-2 flex items-center justify-between gap-2">
+								<span className="text-sm select-none opacity-80 whitespace-nowrap">
+									{t(TableI18nKey.MAX_HEIGHT)}
+								</span>
+								<input
+									type="text"
+									value={localMaxHeight}
+									onChange={(e) => setLocalMaxHeight(e.target.value)}
+									placeholder={t(TableI18nKey.MAX_HEIGHT_PLACEHOLDER)}
+									className={`w-28 min-w-0 rounded text-sm px-2.5 py-1 outline-none transition ${theme.input}`}
+								/>
+							</div>
+
+							<label
+								className={`flex items-center justify-start gap-3 w-full rounded-lg h-9 px-3 mb-1 transition-opacity ${
+									isHeaderFreezeDisabled
+										? "opacity-40 cursor-not-allowed"
+										: `cursor-pointer ${theme.btnPlain}`
+								}`}
+							>
+								<input
+									type="checkbox"
+									checked={stickyHeader}
+									disabled={isHeaderFreezeDisabled}
+									onChange={(e) => setStickyHeader?.(e.target.checked)}
+									className={`rounded focus:ring-0 focus:ring-offset-0 flex-shrink-0 ${theme.primaryText} ${theme.input} ${
+										isHeaderFreezeDisabled
+											? "cursor-not-allowed"
+											: "cursor-pointer"
+									}`}
+								/>
+								<span className="text-sm select-none text-left flex-1">
+									{t(TableI18nKey.FREEZE_HEADER)}
+								</span>
+							</label>
+
+							<label
+								className={`flex items-center justify-start gap-3 w-full rounded-lg h-9 px-3 mb-1 transition-opacity cursor-pointer ${theme.btnPlain}`}
+							>
+								<input
+									type="checkbox"
+									checked={stickyFirstCol}
+									onChange={(e) => setStickyFirstCol?.(e.target.checked)}
+									className={`rounded focus:ring-0 focus:ring-offset-0 flex-shrink-0 ${theme.primaryText} ${theme.input} cursor-pointer`}
+								/>
+								<span className="text-sm select-none text-left flex-1">
+									{t(TableI18nKey.FREEZE_FIRST_COL)}
+								</span>
+							</label>
+
+							<div className="px-3 mt-1 mb-2">
+								<button
+									type="button"
+									onClick={() => {
+										setLocalMaxHeight("");
+										setStickyHeader?.(false);
+										setStickyFirstCol?.(false);
+									}}
+									className={`flex transition whitespace-nowrap items-center justify-center w-full rounded h-7 px-3 text-xs font-medium opacity-60 hover:opacity-100 ${theme.btnPlain} ${theme.hoverBg}`}
+								>
+									{t(TableI18nKey.RESET_LAYOUT_STATE)}
+								</button>
+							</div>
+
+							<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
+
+							{/* Visibility & Order */}
 							<div className="px-3 py-2 text-[0.75rem] font-bold opacity-50 uppercase tracking-wider">
 								{t(TableI18nKey.VISIBILITY_AND_ORDER)}
 							</div>
@@ -189,13 +280,19 @@ export function TableToolbar() {
 									);
 								})}
 							</div>
+
 							<div className={`h-[1px] w-full my-1.5 ${theme.divider}`} />
+
+							{/* Reset Table State Button */}
 							<button
 								type="button"
 								onClick={() => {
 									table.toggleAllColumnsVisible(true);
 									table.setColumnOrder([]);
 									setShowItemCount(enableItemCount);
+									setLocalMaxHeight("");
+									setStickyHeader?.(false);
+									setStickyFirstCol?.(false);
 								}}
 								className={`flex transition whitespace-nowrap items-center justify-center w-full rounded-lg h-9 px-3 font-medium opacity-70 hover:opacity-100 ${theme.btnPlain}`}
 							>

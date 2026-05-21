@@ -14,6 +14,12 @@ export const en = {
 	clear_all: "Clear All",
 	loading: "Loading...",
 	load_failed: "Failed to load: {error}",
+	layout_settings: "Layout & Freeze",
+	max_height: "Max Height",
+	max_height_placeholder: "e.g. 500 or 50vh",
+	freeze_header: "Freeze Header",
+	freeze_first_col: "Freeze First Column",
+	reset_layout_state: "Reset Layout Settings",
 };
 
 export const zh_CN = {
@@ -31,6 +37,12 @@ export const zh_CN = {
 	clear_all: "清除所有",
 	loading: "加载中...",
 	load_failed: "加载失败: {error}",
+	layout_settings: "布局与冻结",
+	max_height: "最大高度",
+	max_height_placeholder: "如: 500 或 50vh",
+	freeze_header: "冻结表头",
+	freeze_first_col: "冻结首列",
+	reset_layout_state: "重置布局设置",
 };
 
 export const zh_TW = {
@@ -48,6 +60,12 @@ export const zh_TW = {
 	clear_all: "清除全部",
 	loading: "載入中...",
 	load_failed: "載入失敗: {error}",
+	layout_settings: "佈局與凍結",
+	max_height: "最大高度",
+	max_height_placeholder: "如: 500 或 50vh",
+	freeze_header: "凍結表頭",
+	freeze_first_col: "凍結第一列",
+	reset_layout_state: "重置佈局設定",
 };
 
 export const ja = {
@@ -65,6 +83,12 @@ export const ja = {
 	clear_all: "すべてクリア",
 	loading: "読み込み中...",
 	load_failed: "読み込みに失敗しました: {error}",
+	layout_settings: "レイアウトと固定",
+	max_height: "最大高",
+	max_height_placeholder: "例: 500 または 50vh",
+	freeze_header: "ヘッダー固定",
+	freeze_first_col: "先頭列固定",
+	reset_layout_state: "レイアウトのリセット",
 };
 
 export const ko = {
@@ -82,6 +106,12 @@ export const ko = {
 	clear_all: "모두 지우기",
 	loading: "로딩 중...",
 	load_failed: "로드 실패: {error}",
+	layout_settings: "레이아웃 및 고정",
+	max_height: "최대 높이",
+	max_height_placeholder: "예: 500 또는 50vh",
+	freeze_header: "헤더 고정",
+	freeze_first_col: "첫 번째 열 고정",
+	reset_layout_state: "레이아웃 초기화",
 };
 
 export const es = {
@@ -99,6 +129,12 @@ export const es = {
 	clear_all: "Borrar todo",
 	loading: "Cargando...",
 	load_failed: "Error al cargar: {error}",
+	layout_settings: "Diseño y fijación",
+	max_height: "Altura máxima",
+	max_height_placeholder: "ej. 500 o 50vh",
+	freeze_header: "Fijar encabezado",
+	freeze_first_col: "Fijar primera columna",
+	reset_layout_state: "Restablecer diseño",
 };
 
 export const id = {
@@ -116,6 +152,12 @@ export const id = {
 	clear_all: "Hapus Semua",
 	loading: "Memuat...",
 	load_failed: "Gagal memuat: {error}",
+	layout_settings: "Tata Letak & Bekukan",
+	max_height: "Tinggi Maksimal",
+	max_height_placeholder: "contoh: 500 atau 50vh",
+	freeze_header: "Bekukan Header",
+	freeze_first_col: "Bekukan Kolom Pertama",
+	reset_layout_state: "Atur Ulang Tata Letak",
 };
 
 export const th = {
@@ -133,6 +175,12 @@ export const th = {
 	clear_all: "ล้างทั้งหมด",
 	loading: "กำลังโหลด...",
 	load_failed: "โหลดล้มเหลว: {error}",
+	layout_settings: "เค้าโครงและตรึง",
+	max_height: "ความสูงสูงสุด",
+	max_height_placeholder: "เช่น 500 หรือ 50vh",
+	freeze_header: "ตรึงส่วนหัว",
+	freeze_first_col: "ตรึงคอลัมน์แรก",
+	reset_layout_state: "รีเซ็ตเค้าโครง",
 };
 
 export const tr = {
@@ -150,6 +198,12 @@ export const tr = {
 	clear_all: "Tümünü Temizle",
 	loading: "Yükleniyor...",
 	load_failed: "Yükleme başarısız: {error}",
+	layout_settings: "Düzen ve Sabitleme",
+	max_height: "Maksimum Yükseklik",
+	max_height_placeholder: "örn. 500 veya 50vh",
+	freeze_header: "Başlığı Sabitle",
+	freeze_first_col: "İlk Sütunu Sabitle",
+	reset_layout_state: "Düzeni Sıfırla",
 };
 
 export const vi = {
@@ -167,6 +221,12 @@ export const vi = {
 	clear_all: "Xóa tất cả",
 	loading: "Đang tải...",
 	load_failed: "Tải thất bại: {error}",
+	layout_settings: "Bố cục & Cố định",
+	max_height: "Chiều cao tối đa",
+	max_height_placeholder: "vd. 500 hoặc 50vh",
+	freeze_header: "Cố định tiêu đề",
+	freeze_first_col: "Cố định cột đầu tiên",
+	reset_layout_state: "Đặt lại bố cục",
 };
 
 export const dictionaries = { en, zh_CN, zh_TW, ja, ko, es, id, th, tr, vi };

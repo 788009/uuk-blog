@@ -29,7 +29,7 @@ export const genericTheme = {
 	input:
 		"border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-blue-500 focus:border-blue-500",
 	divider: "bg-gray-200 dark:bg-gray-700",
-	dangerBtn: "text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20",
+	dangerBtn: "text-red-500 hover:bg-red-500/10 dark:hover:bg-red-400/10",
 	iconHover: "hover:bg-gray-200 dark:hover:bg-gray-600",
 	headerBg: "bg-white dark:bg-gray-800",
 	cellBg: "bg-white dark:bg-gray-800",
@@ -43,18 +43,22 @@ export const genericTheme = {
 export default function TableRoot({
 	data = [],
 	columns: rawColumns,
-	plugins = {}, // Receive plugins directly here, no need for an extra ExtensibleTable wrapper
+	plugins = {},
 	filterableColumns = [],
 	enableColumnManagement = true,
 	enableItemCount = true,
-	maxHeight = null,
-	stickyHeader = false,
-	stickyFirstCol = false,
+	maxHeight: initialMaxHeight = null,
+	stickyHeader: initialStickyHeader = false,
+	stickyFirstCol: initialStickyFirstCol = false,
 	theme = genericTheme,
 	language = "auto",
 }) {
 	// Initialize internationalization
 	const { t } = useTableTranslation(language);
+
+	const [maxHeight, setMaxHeight] = useState(initialMaxHeight);
+	const [stickyHeader, setStickyHeader] = useState(initialStickyHeader);
+	const [stickyFirstCol, setStickyFirstCol] = useState(initialStickyFirstCol);
 
 	// Step 1: Handle the data layer
 	const { tableData, isLoading, fetchError } = useTableData(data);
@@ -81,8 +85,6 @@ export default function TableRoot({
 	// Minor UI interaction states
 	const [openFilterId, setOpenFilterId] = useState(null);
 
-	const isStickyTopActive = stickyHeader && maxHeight;
-
 	// Step 5: Bundle and distribute all states
 	const contextPayload = {
 		table,
@@ -100,9 +102,14 @@ export default function TableRoot({
 		openFilterId,
 		setOpenFilterId,
 		maxHeight,
+		setMaxHeight,
 		stickyHeader,
+		setStickyHeader,
 		stickyFirstCol,
+		setStickyFirstCol,
 	};
+
+	const hasMaxHeight = Boolean(maxHeight);
 
 	return (
 		<PopoverThemeContext.Provider value={theme}>
@@ -113,8 +120,8 @@ export default function TableRoot({
 
 					{/* Table body */}
 					<div
-						className={`w-full overflow-x-auto ${isStickyTopActive ? "overflow-y-auto" : ""} ${theme.scrollbar}`}
-						style={isStickyTopActive ? { maxHeight: maxHeight } : {}}
+						className={`w-full overflow-x-auto ${hasMaxHeight ? "overflow-y-auto" : ""} ${theme.scrollbar}`}
+						style={hasMaxHeight ? { maxHeight: maxHeight } : {}}
 					>
 						<table className={`w-full relative ${theme.table}`}>
 							<TableHeader />
