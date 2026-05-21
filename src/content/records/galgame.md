@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-> 更新于 2026.5.13
+> 更新于 2026.5.15
 
 1. **千恋＊万花**
     - 会社：<span title="柚子社">Yuzusoft</span>
@@ -187,5 +187,6 @@ lang: ''
 
         - 杏璃：2026.5.10
         - 杏铃：2026.5.13
+        - 泉：2026.5.15
         </details>
     - [vndb](https://vndb.org/v13325) / [萌娘百科](https://moegirl.org.cn/%E5%B9%B8%E8%BF%90%E8%8D%89%E7%9A%84%E7%BA%A6%E5%AE%9A)
