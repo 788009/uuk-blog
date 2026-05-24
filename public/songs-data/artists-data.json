@@ -16,6 +16,14 @@
         "dateSD": 217.52
     },
     {
+        "artist": "Laur",
+        "count": 15,
+        "songs": "- Arcana Eden\n- Arghena\n- Collapse (feat. 藍月なくる)\n- Glacier\n- Grievous Lady (Full ver.)\n- Latent Kingdom\n- Lost Civilization\n- PRAGMATISM\n- PRAGMATISM -RESURRECTION-\n- Seclusion (feat. Sennzai)\n- The Abyss of Despair (feat. 藍月なくる)\n- The Angel's Message (feat. Sennzai)\n- Vindication\n- Vindication (Extended Mix)\n- その花は世界を紡ぐ\n",
+        "earliestDate": "2022-03-24",
+        "latestDate": "2026-05-18",
+        "dateSD": 446.3
+    },
+    {
         "artist": "麻枝准",
         "count": 15,
         "songs": "- After You Sleep\n- CANOE\n- Saya's Song\n- Sea, You & Me\n- Sea, You & Me (Symphonic)\n- Sea, You Next\n- Sea, Your Memory\n- ポケットをふくらませて\n- ポケットをふくらませて (Symphonic)\n- ポケットをふくらませて ～Sea, you again～\n- 一番の宝物 (Original Version)\n- 小さなてのひら\n- 時を刻む唄\n- 空に光る\n- 鳥の詩\n",
@@ -38,14 +46,6 @@
         "earliestDate": "2025-04-23",
         "latestDate": "2026-02-05",
         "dateSD": 105.49
-    },
-    {
-        "artist": "Laur",
-        "count": 14,
-        "songs": "- Arcana Eden\n- Arghena\n- Collapse (feat. 藍月なくる)\n- Glacier\n- Grievous Lady (Full ver.)\n- Latent Kingdom\n- Lost Civilization\n- PRAGMATISM\n- PRAGMATISM -RESURRECTION-\n- Seclusion (feat. Sennzai)\n- The Abyss of Despair (feat. 藍月なくる)\n- The Angel's Message (feat. Sennzai)\n- Vindication\n- その花は世界を紡ぐ\n",
-        "earliestDate": "2022-03-24",
-        "latestDate": "2025-08-11",
-        "dateSD": 388.33
     },
     {
         "artist": "sasakure.UK",
@@ -560,6 +560,14 @@
         "dateSD": 173.6
     },
     {
+        "artist": "真崎エリカ",
+        "count": 3,
+        "songs": "- Remember\n- Reply\n- 感情グラス\n",
+        "earliestDate": "2026-02-23",
+        "latestDate": "2026-05-24",
+        "dateSD": 42.43
+    },
+    {
         "artist": "IA",
         "count": 3,
         "songs": "- オーダーメイド（定制品）\n- 六兆年と一夜物語\n- 威風堂々\n",
@@ -883,14 +891,6 @@
         "artist": "早見沙織",
         "count": 2,
         "songs": "- Remember\n- 星降る海\n",
-        "earliestDate": "2026-02-23",
-        "latestDate": "2026-02-23",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "真崎エリカ",
-        "count": 2,
-        "songs": "- Remember\n- Reply\n",
         "earliestDate": "2026-02-23",
         "latestDate": "2026-02-23",
         "dateSD": 0.0
@@ -1478,6 +1478,38 @@
         "earliestDate": "2020-11-29",
         "latestDate": "2021-01-01",
         "dateSD": 16.5
+    },
+    {
+        "artist": "yonige",
+        "count": 1,
+        "songs": "- 芽吹くとき\n",
+        "earliestDate": "2026-05-24",
+        "latestDate": "2026-05-24",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "橋口佳奈",
+        "count": 1,
+        "songs": "- 感情グラス\n",
+        "earliestDate": "2026-05-24",
+        "latestDate": "2026-05-24",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "鈴代紗弓",
+        "count": 1,
+        "songs": "- 感情グラス\n",
+        "earliestDate": "2026-05-24",
+        "latestDate": "2026-05-24",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "羊文学",
+        "count": 1,
+        "songs": "- Feel\n",
+        "earliestDate": "2026-05-23",
+        "latestDate": "2026-05-23",
+        "dateSD": 0.0
     },
     {
         "artist": "CHESHR",
