@@ -104,7 +104,7 @@ lang: ''
     - 夏日口袋 REFLECTION BLUE、SPRB
     - 会社：Key
     - 发售年份：2020
-        - 无印：2018
+        - 无印版：2018
     - <details>
         <summary>游玩时间：2025.5.15–6.20</summary>
 
@@ -183,10 +183,11 @@ lang: ''
     - 发售年份：2016
         - 初版：2014
     - <details>
-        <summary>游玩时间：2026.5.6–</summary>
+        <summary>游玩时间：2026.5.6–5.26</summary>
 
         - 杏璃：2026.5.10
         - 杏铃：2026.5.13
         - 泉：2026.5.15
+        - 碧瑠&光瑠：2026.5.26
         </details>
     - [vndb](https://vndb.org/v13325) / [萌娘百科](https://moegirl.org.cn/%E5%B9%B8%E8%BF%90%E8%8D%89%E7%9A%84%E7%BA%A6%E5%AE%9A)
