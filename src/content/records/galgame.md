@@ -191,3 +191,7 @@ lang: ''
         - 碧瑠&光瑠：2026.5.26
         </details>
     - [vndb](https://vndb.org/v13325) / [萌娘百科](https://moegirl.org.cn/%E5%B9%B8%E8%BF%90%E8%8D%89%E7%9A%84%E7%BA%A6%E5%AE%9A)
+13. **ぬきたし**
+    - 会社：Qruppo
+    - 发售年份：2018
+    - 游玩时间：2026.6.1–
