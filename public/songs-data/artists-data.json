@@ -16,20 +16,20 @@
         "dateSD": 217.52
     },
     {
+        "artist": "麻枝准",
+        "count": 16,
+        "songs": "- After You Sleep\n- CANOE\n- Saya's Song\n- Sea, You & Me\n- Sea, You & Me (Symphonic)\n- Sea, You Next\n- Sea, Your Memory\n- White Spell\n- ポケットをふくらませて\n- ポケットをふくらませて (Symphonic)\n- ポケットをふくらませて ～Sea, you again～\n- 一番の宝物 (Original Version)\n- 小さなてのひら\n- 時を刻む唄\n- 空に光る\n- 鳥の詩\n",
+        "earliestDate": "2024-02-12",
+        "latestDate": "2026-05-30",
+        "dateSD": 157.53
+    },
+    {
         "artist": "Laur",
         "count": 15,
         "songs": "- Arcana Eden\n- Arghena\n- Collapse (feat. 藍月なくる)\n- Glacier\n- Grievous Lady (Full ver.)\n- Latent Kingdom\n- Lost Civilization\n- PRAGMATISM\n- PRAGMATISM -RESURRECTION-\n- Seclusion (feat. Sennzai)\n- The Abyss of Despair (feat. 藍月なくる)\n- The Angel's Message (feat. Sennzai)\n- Vindication\n- Vindication (Extended Mix)\n- その花は世界を紡ぐ\n",
         "earliestDate": "2022-03-24",
         "latestDate": "2026-05-18",
         "dateSD": 446.3
-    },
-    {
-        "artist": "麻枝准",
-        "count": 15,
-        "songs": "- After You Sleep\n- CANOE\n- Saya's Song\n- Sea, You & Me\n- Sea, You & Me (Symphonic)\n- Sea, You Next\n- Sea, Your Memory\n- ポケットをふくらませて\n- ポケットをふくらませて (Symphonic)\n- ポケットをふくらませて ～Sea, you again～\n- 一番の宝物 (Original Version)\n- 小さなてのひら\n- 時を刻む唄\n- 空に光る\n- 鳥の詩\n",
-        "earliestDate": "2024-02-12",
-        "latestDate": "2025-09-12",
-        "dateSD": 131.78
     },
     {
         "artist": "折戸伸治",
@@ -174,6 +174,14 @@
         "earliestDate": "2024-02-19",
         "latestDate": "2025-08-26",
         "dateSD": 167.16
+    },
+    {
+        "artist": "MANYO",
+        "count": 8,
+        "songs": "- White Spell\n- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- 恋文\n- 星の奏でる歌 feat. 椎名かがり\n- 星の奏でる歌 feat. 椎名まゆり&椎名かがり\n- 春の日差しを浴びながら\n- 空は晴れ晴れココロも晴れ晴れ\n",
+        "earliestDate": "2025-04-21",
+        "latestDate": "2026-06-01",
+        "dateSD": 172.94
     },
     {
         "artist": "きくお",
@@ -384,6 +392,38 @@
         "dateSD": 207.78
     },
     {
+        "artist": "LeaF",
+        "count": 5,
+        "songs": "- Aleph-0 (Long Ver.)\n- Lyrith -迷宮リリス\n- MARENOL\n- もぺもぺ\n- 命日\n",
+        "earliestDate": "2021-09-26",
+        "latestDate": "2023-04-20",
+        "dateSD": 272.78
+    },
+    {
+        "artist": "三輪学",
+        "count": 4,
+        "songs": "- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- 春の日差しを浴びながら\n- 空は晴れ晴れココロも晴れ晴れ\n",
+        "earliestDate": "2026-06-01",
+        "latestDate": "2026-06-01",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "小高光太郎",
+        "count": 4,
+        "songs": "- Asphodelus\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
+        "earliestDate": "2025-01-12",
+        "latestDate": "2026-06-01",
+        "dateSD": 191.88
+    },
+    {
+        "artist": "KOKIA",
+        "count": 4,
+        "songs": "- Nostalgia\n- Spirits\n- たった1つの想い\n- 記憶の光\n",
+        "earliestDate": "2025-04-05",
+        "latestDate": "2026-05-30",
+        "dateSD": 148.94
+    },
+    {
         "artist": "Ashrount",
         "count": 4,
         "songs": "- Abstruse Dilemma\n- Lament Rain (“Forlorn” Long ver.)\n- Undying Macula\n- Undying Macula ~penumbra~\n",
@@ -536,14 +576,6 @@
         "dateSD": 105.41
     },
     {
-        "artist": "LeaF",
-        "count": 4,
-        "songs": "- Aleph-0 (Long Ver.)\n- Lyrith -迷宮リリス\n- MARENOL\n- 命日\n",
-        "earliestDate": "2021-09-26",
-        "latestDate": "2023-04-20",
-        "dateSD": 278.44
-    },
-    {
         "artist": "藤林聖子",
         "count": 4,
         "songs": "- STAND PROUD\n- ジョジョ その血の記憶〜END OF THE WORLD〜\n- ジョジョ~その血の運命~\n- 裏切り者のレクイエム\n",
@@ -558,6 +590,14 @@
         "earliestDate": "2021-07-17",
         "latestDate": "2022-11-20",
         "dateSD": 173.6
+    },
+    {
+        "artist": "Ceui",
+        "count": 3,
+        "songs": "- Asphodelus\n- SIROSUNA\n- Stigmata\n",
+        "earliestDate": "2025-12-20",
+        "latestDate": "2026-06-01",
+        "dateSD": 66.55
     },
     {
         "artist": "真崎エリカ",
@@ -576,28 +616,12 @@
         "dateSD": 777.52
     },
     {
-        "artist": "小高光太郎",
-        "count": 3,
-        "songs": "- Asphodelus\n- SIROSUNA\n- 雪のエルフィンリート\n",
-        "earliestDate": "2025-01-12",
-        "latestDate": "2026-03-09",
-        "dateSD": 182.71
-    },
-    {
         "artist": "木下珠子",
         "count": 3,
         "songs": "- Last丨Eternity\n- Last丨Moment\n- 雨に祈りを\n",
         "earliestDate": "2022-07-19",
         "latestDate": "2025-12-29",
         "dateSD": 593.5
-    },
-    {
-        "artist": "KOKIA",
-        "count": 3,
-        "songs": "- Nostalgia\n- Spirits\n- たった1つの想い\n",
-        "earliestDate": "2025-04-05",
-        "latestDate": "2025-11-09",
-        "dateSD": 96.29
     },
     {
         "artist": "riya",
@@ -646,14 +670,6 @@
         "earliestDate": "2025-06-26",
         "latestDate": "2025-07-22",
         "dateSD": 12.26
-    },
-    {
-        "artist": "MANYO",
-        "count": 3,
-        "songs": "- 恋文\n- 星の奏でる歌 feat. 椎名かがり\n- 星の奏でる歌 feat. 椎名まゆり&椎名かがり\n",
-        "earliestDate": "2025-04-21",
-        "latestDate": "2025-07-07",
-        "dateSD": 36.3
     },
     {
         "artist": "佐々木恵梨",
@@ -808,6 +824,30 @@
         "dateSD": 312.07
     },
     {
+        "artist": "Duca",
+        "count": 2,
+        "songs": "- Love letter\n- アイの庭\n",
+        "earliestDate": "2025-04-21",
+        "latestDate": "2026-06-01",
+        "dateSD": 203.0
+    },
+    {
+        "artist": "安瀬聖",
+        "count": 2,
+        "songs": "- Love letter\n- アイの庭\n",
+        "earliestDate": "2025-04-21",
+        "latestDate": "2026-06-01",
+        "dateSD": 203.0
+    },
+    {
+        "artist": "やなぎなぎ",
+        "count": 2,
+        "songs": "- White Spell\n- 恋文\n",
+        "earliestDate": "2025-04-21",
+        "latestDate": "2026-05-30",
+        "dateSD": 202.0
+    },
+    {
         "artist": "Mili",
         "count": 2,
         "songs": "- YUBIKIRI-GENMAN ~Special Edit~\n- world.execute (me);\n",
@@ -830,14 +870,6 @@
         "earliestDate": "2023-09-11",
         "latestDate": "2026-04-11",
         "dateSD": 471.5
-    },
-    {
-        "artist": "Ceui",
-        "count": 2,
-        "songs": "- Asphodelus\n- SIROSUNA\n",
-        "earliestDate": "2025-12-20",
-        "latestDate": "2026-03-09",
-        "dateSD": 39.5
     },
     {
         "artist": "Suara",
@@ -1478,6 +1510,14 @@
         "earliestDate": "2020-11-29",
         "latestDate": "2021-01-01",
         "dateSD": 16.5
+    },
+    {
+        "artist": "奥華子",
+        "count": 1,
+        "songs": "- 愛されていたい\n",
+        "earliestDate": "2026-05-30",
+        "latestDate": "2026-05-30",
+        "dateSD": 0.0
     },
     {
         "artist": "yonige",
@@ -2197,30 +2237,6 @@
         "songs": "- Designant.\n",
         "earliestDate": "2025-05-04",
         "latestDate": "2025-05-04",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "Duca",
-        "count": 1,
-        "songs": "- アイの庭\n",
-        "earliestDate": "2025-04-21",
-        "latestDate": "2025-04-21",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "やなぎなぎ",
-        "count": 1,
-        "songs": "- 恋文\n",
-        "earliestDate": "2025-04-21",
-        "latestDate": "2025-04-21",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "安瀬聖",
-        "count": 1,
-        "songs": "- アイの庭\n",
-        "earliestDate": "2025-04-21",
-        "latestDate": "2025-04-21",
         "dateSD": 0.0
     },
     {
@@ -4061,14 +4077,6 @@
         "songs": "- unravel\n",
         "earliestDate": "2021-09-30",
         "latestDate": "2021-09-30",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "LEAF",
-        "count": 1,
-        "songs": "- もぺもぺ\n",
-        "earliestDate": "2021-09-26",
-        "latestDate": "2021-09-26",
         "dateSD": 0.0
     },
     {

@@ -1,5 +1,59 @@
 [
     {
+        "name": "Love letter",
+        "artists": "安瀬聖 / Duca",
+        "category": "日语歌/1",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "Stigmata",
+        "artists": "Ceui / 小高光太郎",
+        "category": "日语歌/1",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "a memories for us feat.“Day’s”",
+        "artists": "MANYO / 三輪学",
+        "category": "纯音乐/2",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "キミと歩く夕暮れ",
+        "artists": "MANYO / 三輪学",
+        "category": "纯音乐/2",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "春の日差しを浴びながら",
+        "artists": "MANYO / 三輪学",
+        "category": "纯音乐/2",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "空は晴れ晴れココロも晴れ晴れ",
+        "artists": "MANYO / 三輪学",
+        "category": "纯音乐/2",
+        "date": "2026-06-01"
+    },
+    {
+        "name": "White Spell",
+        "artists": "麻枝准 / MANYO / やなぎなぎ",
+        "category": "日语歌/1",
+        "date": "2026-05-30"
+    },
+    {
+        "name": "愛されていたい",
+        "artists": "奥華子",
+        "category": "日语歌/1",
+        "date": "2026-05-30"
+    },
+    {
+        "name": "記憶の光",
+        "artists": "KOKIA",
+        "category": "日语歌/1",
+        "date": "2026-05-30"
+    },
+    {
         "name": "感情グラス",
         "artists": "真崎エリカ / 橋口佳奈 / 鈴代紗弓",
         "category": "日语歌/1",
@@ -3703,7 +3757,7 @@
     },
     {
         "name": "もぺもぺ",
-        "artists": "LEAF",
+        "artists": "LeaF",
         "category": "纯音乐/1",
         "date": "2021-09-26"
     },
