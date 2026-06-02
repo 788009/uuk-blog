@@ -304,6 +304,14 @@
         "dateSD": 7.76
     },
     {
+        "artist": "小高光太郎",
+        "count": 5,
+        "songs": "- Asphodelus\n- Propylaia\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
+        "earliestDate": "2025-01-12",
+        "latestDate": "2026-06-02",
+        "dateSD": 187.54
+    },
+    {
         "artist": "ak+q",
         "count": 5,
         "songs": "- Axium Crisis\n- Axium Divergence\n- Shades of Light in a Transcendent Realm\n- ignotus\n- nέο κόsmo\n",
@@ -400,20 +408,20 @@
         "dateSD": 272.78
     },
     {
+        "artist": "Ceui",
+        "count": 4,
+        "songs": "- Asphodelus\n- Propylaia\n- SIROSUNA\n- Stigmata\n",
+        "earliestDate": "2025-12-20",
+        "latestDate": "2026-06-02",
+        "dateSD": 68.0
+    },
+    {
         "artist": "三輪学",
         "count": 4,
         "songs": "- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- 春の日差しを浴びながら\n- 空は晴れ晴れココロも晴れ晴れ\n",
         "earliestDate": "2026-06-01",
         "latestDate": "2026-06-01",
         "dateSD": 0.0
-    },
-    {
-        "artist": "小高光太郎",
-        "count": 4,
-        "songs": "- Asphodelus\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
-        "earliestDate": "2025-01-12",
-        "latestDate": "2026-06-01",
-        "dateSD": 191.88
     },
     {
         "artist": "KOKIA",
@@ -592,12 +600,20 @@
         "dateSD": 173.6
     },
     {
-        "artist": "Ceui",
+        "artist": "戸越まごめ",
         "count": 3,
-        "songs": "- Asphodelus\n- SIROSUNA\n- Stigmata\n",
-        "earliestDate": "2025-12-20",
-        "latestDate": "2026-06-01",
-        "dateSD": 66.55
+        "songs": "- Gentle Jena\n- 小さなてのひら\n- 空に光る\n",
+        "earliestDate": "2025-05-16",
+        "latestDate": "2026-06-02",
+        "dateSD": 159.6
+    },
+    {
+        "artist": "水月陵",
+        "count": 3,
+        "songs": "- Gentle Jena\n- 夏の砂時計\n- 蝉声とともに\n",
+        "earliestDate": "2025-05-26",
+        "latestDate": "2026-06-02",
+        "dateSD": 170.84
     },
     {
         "artist": "真崎エリカ",
@@ -824,6 +840,14 @@
         "dateSD": 312.07
     },
     {
+        "artist": "森藤晶司",
+        "count": 2,
+        "songs": "- Departure!\n- Gentle Jena\n",
+        "earliestDate": "2025-06-26",
+        "latestDate": "2026-06-02",
+        "dateSD": 170.5
+    },
+    {
         "artist": "Duca",
         "count": 2,
         "songs": "- Love letter\n- アイの庭\n",
@@ -960,14 +984,6 @@
         "dateSD": 463.5
     },
     {
-        "artist": "戸越まごめ",
-        "count": 2,
-        "songs": "- 小さなてのひら\n- 空に光る\n",
-        "earliestDate": "2025-05-16",
-        "latestDate": "2025-09-12",
-        "dateSD": 59.5
-    },
-    {
         "artist": "DAZBEE",
         "count": 2,
         "songs": "- 口笛で愛は歌えない\n- 花たちに希望を\n",
@@ -1078,14 +1094,6 @@
         "earliestDate": "2025-05-26",
         "latestDate": "2025-06-26",
         "dateSD": 15.5
-    },
-    {
-        "artist": "水月陵",
-        "count": 2,
-        "songs": "- 夏の砂時計\n- 蝉声とともに\n",
-        "earliestDate": "2025-05-26",
-        "latestDate": "2025-06-15",
-        "dateSD": 10.0
     },
     {
         "artist": "笹川真生",
@@ -1510,6 +1518,14 @@
         "earliestDate": "2020-11-29",
         "latestDate": "2021-01-01",
         "dateSD": 16.5
+    },
+    {
+        "artist": "北沢綾香",
+        "count": 1,
+        "songs": "- Gentle Jena\n",
+        "earliestDate": "2026-06-02",
+        "latestDate": "2026-06-02",
+        "dateSD": 0.0
     },
     {
         "artist": "奥華子",
@@ -2177,14 +2193,6 @@
     },
     {
         "artist": "嶺内ともみ",
-        "count": 1,
-        "songs": "- Departure!\n",
-        "earliestDate": "2025-06-26",
-        "latestDate": "2025-06-26",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "森藤晶司",
         "count": 1,
         "songs": "- Departure!\n",
         "earliestDate": "2025-06-26",
