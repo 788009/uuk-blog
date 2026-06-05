@@ -87,13 +87,12 @@ Multilayer Perceptron, `MLP`
 - 激活函数为 `ReLU`
 - 前三层每层 dropout 一半神经元。
 
-损失函数使用 `AdamW`。
+训练参数：
 
-- 学习率：0.001
-- Weight Decay 系数：1e-4
-
-其他参数：
-
+- 损失函数：二元交叉熵损失
+- 优化器：`AdamW`
+    - 学习率：0.001
+    - Weight Decay 系数：1e-4
 - 批次大小：32
 - 训练轮数：150
 
