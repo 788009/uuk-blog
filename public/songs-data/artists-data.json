@@ -600,6 +600,14 @@
         "dateSD": 173.6
     },
     {
+        "artist": "金閉開羅巧夢",
+        "count": 3,
+        "songs": "- Sentence know\n- 心の文\n- 海岸線\n",
+        "earliestDate": "2025-08-11",
+        "latestDate": "2026-06-14",
+        "dateSD": 144.72
+    },
+    {
         "artist": "戸越まごめ",
         "count": 3,
         "songs": "- Gentle Jena\n- 小さなてのひら\n- 空に光る\n",
@@ -2097,14 +2105,6 @@
     },
     {
         "artist": "ハム",
-        "count": 1,
-        "songs": "- 海岸線\n",
-        "earliestDate": "2025-08-11",
-        "latestDate": "2025-08-11",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "金閉開羅巧夢",
         "count": 1,
         "songs": "- 海岸線\n",
         "earliestDate": "2025-08-11",
