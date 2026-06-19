@@ -18,6 +18,8 @@ lang: ''
     - [UTF-8 编码的 `.ps1` 脚本依然使用 ANSI 输出字符串](#utf-8-编码的-ps1-脚本依然使用-ansi-输出字符串)
 - [VMware](#vmware)
     - [无法打开内核设备“\\.\\VMCIDev\\VMX”](#无法打开内核设备vmcidevvmx)
+- [机器学习](#机器学习)
+    - [`CUDA error: device-side assert triggered` 之后高强度写磁盘](#cuda-error-device-side-assert-triggered-之后高强度写磁盘)
 
 </details>
 
@@ -92,3 +94,25 @@ BOM 是代表编码的文件头，将脚本编码换成 UTF-8 with BOM 之后，
 #### 问题原因
 
 未知。
+
+## 机器学习
+
+### `CUDA error: device-side assert triggered` 之后高强度写磁盘
+
+#### 环境
+
+- 2026.6.19
+- Windows 11
+- CUDA Version: 12.8
+
+#### 问题描述
+
+`CUDA error: device-side assert triggered` 之后磁盘占用保持在 98% 以上，磁盘剩余空间迅速减少 10 GB 以上。
+
+#### 解决方案
+
+该文件位于 `C:\Windows\LiveKernelReports\`，删除即可。
+
+#### 问题原因
+
+当 CUDA 程序发生 `device-side assert triggered` 时，GPU 核心通常会终止当前执行管道并挂起。Windows 的显卡硬件看门狗（Watchdog）检测到显卡驱动长时间无响应（即 TDR 机制），为了防止系统直接蓝屏，Windows 会在后台重启显卡驱动，并将当时的内核与显存状态强制转储到 `C:\Windows\LiveKernelReports` 目录下，生成这个实时内核转储文件。
