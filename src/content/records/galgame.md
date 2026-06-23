@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-> 更新于 2026.6.14
+> 更新于 2026.6.23
 
 1. **千恋＊万花**
     - 会社：<span title="柚子社">Yuzusoft</span>
@@ -202,9 +202,20 @@ lang: ''
         - 美岬：2026.6.11
         - 文乃：2026.6.13
         </details>
-14. **ヨスガノソラ**
-    - 缘之空
-    - 会社：Sphere
-    - 发售年份：2008
-    - 游玩时间：2026.6.14–
-    - [vndb](https://vndb.org/v1194) / [萌娘百科](https://moegirl.org.cn/%E7%BC%98%E4%B9%8B%E7%A9%BA)
+14. **ヨスガノソラ系列**
+    1. **ヨスガノソラ**
+        - 缘之空
+        - 会社：Sphere
+        - 发售年份：2008
+        - <details>
+            <summary>游玩时间：2026.6.14–6.23</summary>
+
+            - 一叶：2026.6.18
+            - 穹：2026.6.23
+        - [vndb](https://vndb.org/v1194) / [萌娘百科](https://moegirl.org.cn/%E7%BC%98%E4%B9%8B%E7%A9%BA)
+    2. **ハルカナソラ**
+        - 悠之空
+        - 会社：Sphere
+        - 发售年份：2009
+        - 游玩时间：2026.6.23–
+        - [vndb](https://vndb.org/v1899) / [萌娘百科](https://moegirl.org.cn/%E6%82%A0%E4%B9%8B%E7%A9%BA)
