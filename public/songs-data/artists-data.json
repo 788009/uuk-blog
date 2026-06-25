@@ -88,6 +88,14 @@
         "dateSD": 142.97
     },
     {
+        "artist": "香椎モイミ",
+        "count": 11,
+        "songs": "- ARCADIA\n- BREATHE\n- かたちなきもの（无形之物）\n- ろうそく（蜡烛）\n- エリカの憂い\n- カレンの清掃\n- 初恋日記\n- 描き続けた君へ\n- 機械の声 feat. V.I.P\n- 機械の声 feat. V.W.P & V.I.P\n- 紫色の向日葵\n",
+        "earliestDate": "2022-08-29",
+        "latestDate": "2026-06-19",
+        "dateSD": 346.85
+    },
+    {
         "artist": "鏡音リン",
         "count": 11,
         "songs": "- アイディスマイル (IDSMILE) feat. 初音ミク&鏡音リン\n- エンパープル (Empurple) feat. 25時、ナイトコードで。&鏡音リン\n- オーダーメイド（定制品）\n- ノマド (Nomad) feat. 25時、ナイトコードで。&鏡音リン\n- ロストワンの号哭\n- 垂直落下\n- 威風堂々\n- 炉心融解\n- 病名は愛だった\n- 蜜月アン・ドゥ・トロワ\n- 限りなく灰色へ feat. 25時、ナイトコードで。&鏡音リン\n",
@@ -142,14 +150,6 @@
         "earliestDate": "2024-08-22",
         "latestDate": "2026-04-29",
         "dateSD": 166.03
-    },
-    {
-        "artist": "香椎モイミ",
-        "count": 10,
-        "songs": "- ARCADIA\n- BREATHE\n- かたちなきもの（无形之物）\n- エリカの憂い\n- カレンの清掃\n- 初恋日記\n- 描き続けた君へ\n- 機械の声 feat. V.I.P\n- 機械の声 feat. V.W.P & V.I.P\n- 紫色の向日葵\n",
-        "earliestDate": "2022-08-29",
-        "latestDate": "2025-08-26",
-        "dateSD": 308.02
     },
     {
         "artist": "傘村トータ",
@@ -1526,6 +1526,38 @@
         "earliestDate": "2020-11-29",
         "latestDate": "2021-01-01",
         "dateSD": 16.5
+    },
+    {
+        "artist": "CIEL",
+        "count": 1,
+        "songs": "- ろうそく（蜡烛）\n",
+        "earliestDate": "2026-06-19",
+        "latestDate": "2026-06-19",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "miru",
+        "count": 1,
+        "songs": "- Sign\n",
+        "earliestDate": "2026-06-19",
+        "latestDate": "2026-06-19",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "yozakura",
+        "count": 1,
+        "songs": "- Sign\n",
+        "earliestDate": "2026-06-19",
+        "latestDate": "2026-06-19",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "なるちょ",
+        "count": 1,
+        "songs": "- Sign\n",
+        "earliestDate": "2026-06-19",
+        "latestDate": "2026-06-19",
+        "dateSD": 0.0
     },
     {
         "artist": "SHIKI",
