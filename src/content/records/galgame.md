@@ -212,10 +212,15 @@ lang: ''
 
             - 一叶：2026.6.18
             - 穹：2026.6.23
+            </details>
         - [vndb](https://vndb.org/v1194) / [萌娘百科](https://moegirl.org.cn/%E7%BC%98%E4%B9%8B%E7%A9%BA)
     2. **ハルカナソラ**
         - 悠之空
         - 会社：Sphere
         - 发售年份：2009
-        - 游玩时间：2026.6.23–
+        - <details>
+            <summary>游玩时间：2026.6.23–</summary>
+
+            - 梢：2026.6.25
+            </details>
         - [vndb](https://vndb.org/v1899) / [萌娘百科](https://moegirl.org.cn/%E6%82%A0%E4%B9%8B%E7%A9%BA)
