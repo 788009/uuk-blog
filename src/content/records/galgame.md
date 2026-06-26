@@ -230,5 +230,5 @@ lang: ''
     - 会社：ケロQ
     - 发售年份：2018
         - 初版：2010
-    - 游玩时间：2026.6.27
+    - 游玩时间：2026.6.27–
     - [vndb](https://vndb.org/v3144) / [萌娘百科](https://moegirl.org.cn/%E7%BE%8E%E5%A5%BD%E7%9A%84%E6%AF%8F%E4%B8%80%E5%A4%A9%EF%BD%9E%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%98%E5%9C%A8%EF%BD%9E)
