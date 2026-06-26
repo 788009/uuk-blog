@@ -16,6 +16,7 @@ lang: ''
 
 - [编码与乱码](#编码与乱码)
     - [UTF-8 编码的 `.ps1` 脚本依然使用 ANSI 输出字符串](#utf-8-编码的-ps1-脚本依然使用-ansi-输出字符串)
+    - [Winlator 素晴日乱码](#winlator-素晴日乱码)
 - [VMware](#vmware)
     - [无法打开内核设备“\\.\\VMCIDev\\VMX”](#无法打开内核设备vmcidevvmx)
 - [机器学习](#机器学习)
@@ -71,6 +72,30 @@ VS Code 和 GitHub 使用 UTF-8 读取，于是解码成 `娑堟伅` 并显示�
 BOM 是代表编码的文件头，将脚本编码换成 UTF-8 with BOM 之后，PowerShell 5 通过 BOM 确认文件编码为 UTF-8，才会使用 UTF-8 读取，之后传递给 `git.exe` 也是用 UTF-8 传递，因此没有乱码。
 
 而 PowerShell 7 默认用 UTF-8 读取，因此没有乱码。
+
+### Winlator 素晴日乱码
+
+#### 环境
+
+- 2026.6.27
+- Winlator 11.1
+- 一加 13
+- Android 15
+- ColorOS 15
+- 冥月·凌雪汉化组
+
+#### 问题描述
+
+在 Winlator 中，双击资源内提供的 `font.ttf` 没有反应，于是将 `font.ttf` 复制到容器内的 `C:\Windows\Fonts`，游戏内依然乱码。
+
+#### 解决方案
+
+在容器设置中添加环境变量
+- `LC_ALL` = `zh_CN.UTF-8`
+
+#### 问题原因
+
+可能是由于在 Winlator 默认的英文环境下，游戏程序发出的 `素晴字体`（`font.ttf` 的标题）请求被系统错误地识别为一串西欧乱码，于是无法匹配到 `font.ttf`。
 
 ## VMware
 
