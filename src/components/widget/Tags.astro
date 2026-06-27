@@ -34,11 +34,13 @@ const style = Astro.props.style;
 <WidgetLayout name={i18n(I18nKey.tags)} id="tags" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
     <div class="flex flex-col gap-3">
         {groupedTags.map(group => (
-            <div class="flex gap-2 flex-wrap items-center">
-                <span class="w-5 h-5 flex items-center justify-center text-xs font-mono bg-black/5 dark:bg-white/10 rounded-full shrink-0 text-[var(--primary)]">
+            <div class="flex gap-2 flex-wrap items-center tag-group">
+                {/* Explicitly set order: 0 to ensure badge always stay at the front */}
+                <span class="tag-badge w-5 h-5 flex items-center justify-center text-xs font-mono bg-black/5 dark:bg-white/10 rounded-full shrink-0 text-[var(--primary)] order-0">
                     {group.count}
                 </span>
                 
+                {/* All tag buttons under this category */}
                 {group.list.map(t => (
                     <ButtonTag href={getTagUrl(t.name)} label={`View all posts with the ${t.name.trim()} tag`}>
                         {t.name.trim()}
@@ -48,3 +50,73 @@ const style = Astro.props.style;
         ))}
     </div>
 </WidgetLayout>
+
+<script>
+    function relayoutTagGroup(group: HTMLElement) {
+        const containerWidth = group.getBoundingClientRect().width;
+        if (containerWidth === 0) return; // Ignore hidden elements
+
+        const badge = group.querySelector('.tag-badge');
+        const tags = Array.from(group.querySelectorAll('a.btn-regular')) as HTMLElement[];
+        
+        if (!badge || tags.length === 0) return;
+
+        const gap = 8; // Corresponding to Tailwind's gap-2 (0.5rem = 8px)
+        const prefixWidth = badge.getBoundingClientRect().width + gap;
+
+        // Get the original natural width of all tags
+        const tagWidths = tags.map(tag => tag.getBoundingClientRect().width);
+        
+        // Prepare the queue of tags to be allocated
+        let remaining = tags.map((el, i) => ({ el, width: tagWidths[i] }));
+        let currentOrder = 1;
+        let isFirstLine = true;
+
+        while (remaining.length > 0) {
+            // Calculate the available width of the current line
+            let lineRemainingWidth = containerWidth - (isFirstLine ? prefixWidth : 0);
+            isFirstLine = false;
+            let allocatedInLine = 0;
+
+            for (let i = 0; i < remaining.length; i++) {
+                const item = remaining[i];
+                // No gap required if it is the first element in the current line
+                const requiredWidth = allocatedInLine === 0 ? item.width : item.width + gap;
+
+                if (lineRemainingWidth >= requiredWidth) {
+                    lineRemainingWidth -= requiredWidth;
+                    item.el.style.order = String(currentOrder++);
+                    remaining.splice(i, 1);
+                    i--; // Array mutation, adjust the index
+                    allocatedInLine++;
+                }
+            }
+
+            // Defensive handling: if a line cannot fit even a single tag, force the first one in
+            if (allocatedInLine === 0 && remaining.length > 0) {
+                const item = remaining[0];
+                item.el.style.order = String(currentOrder++);
+                remaining.splice(0, 1);
+            }
+        }
+    }
+
+    function init() {
+        const groups = document.querySelectorAll('.tag-group');
+        if (groups.length === 0) return;
+
+        const observer = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                relayoutTagGroup(entry.target as HTMLElement);
+            }
+        });
+
+        groups.forEach(group => observer.observe(group));
+    }
+
+    document.addEventListener('astro:page-load', init);
+    if (!(window as any).astroPageLoadListen) {
+        (window as any).astroPageLoadListen = true;
+        document.addEventListener('DOMContentLoaded', init);
+    }
+</script>
