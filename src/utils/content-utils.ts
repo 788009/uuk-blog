@@ -77,6 +77,10 @@ export async function getTagList(): Promise<Tag[]> {
 
 	// sort tags
 	const keys: string[] = Object.keys(countMap).sort((a, b) => {
+		const countDiff = countMap[b] - countMap[a];
+		if (countDiff !== 0) {
+			return countDiff;
+		}
 		return a.toLowerCase().localeCompare(b.toLowerCase());
 	});
 
