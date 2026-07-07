@@ -152,6 +152,14 @@
         "dateSD": 166.03
     },
     {
+        "artist": "三輪学",
+        "count": 9,
+        "songs": "- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- スローライフに憧れて\n- 優しい風が吹くあの場所で\n- 寂しい夜\n- 春の日差しを浴びながら\n- 未来へ踏み出す一歩\n- 空は晴れ晴れココロも晴れ晴れ\n- 膝枕で過ごす放課後\n",
+        "earliestDate": "2026-06-01",
+        "latestDate": "2026-07-05",
+        "dateSD": 16.89
+    },
+    {
         "artist": "傘村トータ",
         "count": 9,
         "songs": "- ちゃんとあるよ（有好好活着哦）\n- オーダーメイド（定制品）\n- グレーテのいない星\n- シリウスの心臓\n- レムの魔法\n- 人工呼吸\n- 僕が夢を捨てて大人になるまで\n- 垂直落下\n- 垂直落下 covered by ヰ世界情緒\n",
@@ -304,6 +312,14 @@
         "dateSD": 7.76
     },
     {
+        "artist": "KOKIA",
+        "count": 5,
+        "songs": "- Nostalgia\n- Spirits\n- ありがとう・・・（谢谢）\n- たった1つの想い\n- 記憶の光\n",
+        "earliestDate": "2025-04-05",
+        "latestDate": "2026-07-07",
+        "dateSD": 167.0
+    },
+    {
         "artist": "小高光太郎",
         "count": 5,
         "songs": "- Asphodelus\n- Propylaia\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
@@ -414,22 +430,6 @@
         "earliestDate": "2025-12-20",
         "latestDate": "2026-06-02",
         "dateSD": 68.0
-    },
-    {
-        "artist": "三輪学",
-        "count": 4,
-        "songs": "- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- 春の日差しを浴びながら\n- 空は晴れ晴れココロも晴れ晴れ\n",
-        "earliestDate": "2026-06-01",
-        "latestDate": "2026-06-01",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "KOKIA",
-        "count": 4,
-        "songs": "- Nostalgia\n- Spirits\n- たった1つの想い\n- 記憶の光\n",
-        "earliestDate": "2025-04-05",
-        "latestDate": "2026-05-30",
-        "dateSD": 148.94
     },
     {
         "artist": "Ashrount",
