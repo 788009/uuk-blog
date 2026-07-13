@@ -9,9 +9,47 @@ draft: false
 lang: ''
 ---
 
-> 更新于 2026.6.23
+<style>
+.template-ruby-hidden {
+    display: inline-block;
+    width: 0;
+    font-size: 0;
+}
+</style>
 
-1. **千恋＊万花**
+> 更新于 2026.7.13
+
+<details>
+<summary>目录</summary>
+
+1. [千恋＊万花](#千恋＊万花)
+2. [WHITE ALBUM2](#white-album2)
+3. [星空鉄道とシロの旅](#星空鉄道とシロの旅)
+4. [ATRI -My Dear Moments-](#atri--my-dear-moments-)
+5. [アストラエアの白き永遠](#アストラエアの白き永遠)
+6. [STEINS;GATE 系列](#steinsgate-系列)
+    1. [STEINS;GATE](#steinsgate)
+    2. [STEINS;GATE 0](#steinsgate-0)
+7. [Summer Pockets](#summer-pockets)
+8. [9-nine- 系列](#9-nine--系列)
+    1. [9-nine-ここのつここのかここのいろ](#9-nine-ここのつここのかここのいろ)
+    2. [9-nine-そらいろそらうたそらのおと](#9-nine-そらいろそらうたそらのおと)
+    3. [9-nine-はるいろはるこいはるのかぜ](#9-nine-はるいろはるこいはるのかぜ)
+    4. [9-nine-ゆきいろゆきはなゆきのあと](#9-nine-ゆきいろゆきはなゆきのあと)
+    5. [9-nine-新章](#9-nine-新章)
+9. [Ever17 -the out of infinity-](#ever17--the-out-of-infinity-)
+10. [枯れない世界と終わる花](#枯れない世界と終わる花)
+11. [魔法少女ノ魔女裁判](#魔法少女ノ魔女裁判)
+12. [Clover Day's](#clover-days)
+13. [抜きゲーみたいな島に住んでる<ruby><rb>貧乳<span class="template-ruby-hidden">（</span></rb><rt>わたし</rt><span class="template-ruby-hidden">）</span></ruby>はどうすりゃいいですか？](#抜きゲーみたいな島に住んでる貧乳はどうすりゃいいですか)
+14. [ヨスガノソラ系列](#ヨスガノソラ系列)
+    1. [ヨスガノソラ](#ヨスガノソラ)
+    2. [ハルカナソラ](#ハルカナソラ)
+15. [素晴らしき日々～不連続存在～](#素晴らしき日々不連続存在)
+
+</details>
+
+1. <span id="千恋＊万花">**千恋＊万花**</span>
     - 会社：<span title="柚子社">Yuzusoft</span>
     - 发售年份：2016
     - <details>
@@ -26,7 +64,7 @@ lang: ''
         7. 单身：2024.10.3
         </details>
     - [vndb](https://vndb.org/v19073) / [萌娘百科](https://mzh.moegirl.org.cn/%E5%8D%83%E6%81%8B%E4%B8%87%E8%8A%B1)
-2. **WHITE ALBUM2**
+2. <span id="white-album2">**WHITE ALBUM2**</span>
     - 白色相簿 2
     - 会社：Leaf
     - 发售年份：2010
@@ -42,19 +80,19 @@ lang: ''
             3. 腰斩：2025.1.8
         </details>
     - [vndb](https://vndb.org/v7771) / [萌娘百科](https://mzh.moegirl.org.cn/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2)
-3. **星空鉄道とシロの旅**
+3. <span id="星空鉄道とシロの旅">**星空鉄道とシロの旅**</span>
     - 星空列车与白的旅行
     - 会社：<span title="白玉社">Shiratamaco</span>
     - 发售年份：2020
     - 游玩时间：2024.11.30–12.2 (8.5h)
     - [vndb](https://vndb.org/v28297) / [萌娘百科](https://mzh.moegirl.org.cn/%E6%98%9F%E7%A9%BA%E5%88%97%E8%BD%A6%E4%B8%8E%E7%99%BD%E7%9A%84%E6%97%85%E8%A1%8C)
-4. **ATRI -My Dear Moments-**
+4. <span id="atri--my-dear-moments-">**ATRI -My Dear Moments-**</span>
     - 亚托莉 -我挚爱的时光-
     - 会社：<span title="前翼社">Frontwing</span> / 枕
     - 发售年份：2020
     - 游玩时间：2024.12.14–12.24 (9h25m)
     - [vndb](https://vndb.org/v27448) / [萌娘百科](https://mzh.moegirl.org.cn/ATRI_-My_Dear_Moments-)
-5. **アストラエアの白き永遠**
+5. <span id="アストラエアの白き永遠">**アストラエアの白き永遠**</span>
     - 星辰恋曲的白色永恒
     - 会社：<span title="F 社">FAVORITE</span>
     - 发售年份：2014
@@ -69,8 +107,8 @@ lang: ''
         6. 雪雪：2025.4.12
         </details>
     - [vndb](https://vndb.org/v12984) / [萌娘百科](https://mzh.moegirl.org.cn/%E6%98%9F%E8%BE%B0%E6%81%8B%E6%9B%B2%E7%9A%84%E7%99%BD%E8%89%B2%E6%B0%B8%E6%81%92)
-6. **STEINS;GATE 系列**
-    1. **STEINS;GATE**
+6. <span id="steinsgate-系列">**STEINS;GATE 系列**</span>
+    1. <span id="steinsgate">**STEINS;GATE**</span>
         - 命运石之门
         - 会社：5pb. / <span title="NITRO+">NITROPLUS</span>
         - 发售年份：2009
@@ -85,7 +123,7 @@ lang: ''
             6. TE：2025.4.28
             </details>
         - [vndb](https://vndb.org/v2002) / [萌娘百科](https://zh.moegirl.org.cn/%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8(%E6%B8%B8%E6%88%8F))
-    2. **STEINS;GATE 0**
+    2. <span id="steinsgate-0">**STEINS;GATE 0**</span>
         - 命运石之门 0
         - 会社：5pb. / <span title="NITRO+">NITROPLUS</span>
         - 发售年份：2015
@@ -100,11 +138,11 @@ lang: ''
             6. TE: 2025.7.6
             </details>
         - [vndb](https://vndb.org/v17102) / [萌娘百科](https://moegirl.org.cn/%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A80)
-7. **Summer Pockets REFLECTION BLUE**
-    - 夏日口袋、SPRB
+7. <span id="summer-pockets">**Summer Pockets**</span>
+    - 夏日口袋
     - 会社：Key
-    - 发售年份：2020
-        - 无印版：2018
+    - 发售年份：2018
+        - Summer Pockets REFLECTION BLUE: 2020
     - <details>
         <summary>游玩时间：2025.5.15–6.20</summary>
 
@@ -118,37 +156,37 @@ lang: ''
         8. Pocket: 2025.6.20
         </details>
     - [vndb](https://vndb.org/v20424) / [萌娘百科](https://moegirl.org.cn/Summer_Pockets)
-8. **9-nine- 系列**
-    1. **9-nine-ここのつここのかここのいろ**
+8. <span id="9-nine--系列">**9-nine- 系列**</span>
+    1. <span id="9-nine-ここのつここのかここのいろ">**9-nine-ここのつここのかここのいろ**</span>
         - 9-nine-九次九日九重色
         - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2017
         - 游玩时间：2025.7.7-7.8
         - [vndb](https://vndb.org/v19829) / [萌娘百科](https://moegirl.org.cn/9-nine-)
-    2. **9-nine-そらいろそらうたそらのおと**
+    2. <span id="9-nine-そらいろそらうたそらのおと">**9-nine-そらいろそらうたそらのおと**</span>
         - 9-nine-天色天歌天籁音
         - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2018
         - 游玩时间：2025.7.8–7.10
         - [vndb](https://vndb.org/v21668) / [萌娘百科](https://moegirl.org.cn/9-nine-)
-    3. **9-nine-はるいろはるこいはるのかぜ**
+    3. <span id="9-nine-はるいろはるこいはるのかぜ">**9-nine-はるいろはるこいはるのかぜ**</span>
         - 9-nine-春色春恋春熙风
         - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2019
         - 游玩时间：2025.7.13–7.16
         - [vndb](https://vndb.org/v23740) / [萌娘百科](https://moegirl.org.cn/9-nine-)
-    4. **9-nine-ゆきいろゆきはなゆきのあと**
+    4. <span id="9-nine-ゆきいろゆきはなゆきのあと">**9-nine-ゆきいろゆきはなゆきのあと**</span>
         - 9-nine-雪色雪花雪余痕
         - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2020
         - 游玩时间：2025.7.16–7.19
         - [vndb](https://vndb.org/v26523) / [萌娘百科](https://moegirl.org.cn/9-nine-)
-    5. **9-nine-新章**
+    5. <span id="9-nine-新章">**9-nine-新章**</span>
         - 会社：<span title="调色板">ぱれっと</span>
         - 发售年份：2021
         - 游玩时间：2025.7.19
         - [vndb](https://vndb.org/v29724) / [萌娘百科](https://moegirl.org.cn/9-nine-)
-9. **Ever17 -the out of infinity-**
+9. <span id="ever17--the-out-of-infinity-">**Ever17 -the out of infinity-**</span>
     - 会社：KID
     - 发售年份：2002
     - <details>
@@ -161,7 +199,7 @@ lang: ''
         5. 可可：2026.1.5
         </details>
     - [vndb](https://vndb.org/v17) / [萌娘百科](https://moegirl.org.cn/Ever17)
-10. **枯れない世界と終わる花**
+10. <span id="枯れない世界と終わる花">**枯れない世界と終わる花**</span>
     - 永不枯萎的世界与终焉之花
     - 会社：<span title="甜茶社">SWEET&TEA</span>
     - 发售年份：2016
@@ -171,17 +209,17 @@ lang: ''
         1. 莲：2026.2.17
         </details>
     - [vndb](https://vndb.org/v19658) / [萌娘百科](https://moegirl.org.cn/%E6%B0%B8%E4%B8%8D%E6%9E%AF%E8%90%8E%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%8E%E7%BB%88%E7%BB%93%E4%B9%8B%E8%8A%B1)
-11. **魔法少女ノ魔女裁判**
+11. <span id="魔法少女ノ魔女裁判">**魔法少女ノ魔女裁判**</span>
     - 魔法少女的魔女审判
     - 会社：Acacia
     - 发售年份：2025
     - 游玩时间：2026.2.18–2.28
     - [vndb](https://vndb.org/v50283) / [萌娘百科](https://moegirl.org.cn/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E7%9A%84%E9%AD%94%E5%A5%B3%E5%AE%A1%E5%88%A4)
-12. **Clover Day's Plus**
+12. <span id="clover-days">**Clover Day's**</span>
     - 幸运草的约定
     - 会社：<span title="彩牙社">ALcot</span>
-    - 发售年份：2016
-        - 初版：2014
+    - 发售年份：2014
+        - Clover Day's Plus: 2016
     - <details>
         <summary>游玩时间：2026.5.6–5.26</summary>
 
@@ -191,7 +229,8 @@ lang: ''
         4. 碧瑠&光瑠：2026.5.26
         </details>
     - [vndb](https://vndb.org/v13325) / [萌娘百科](https://moegirl.org.cn/%E5%B9%B8%E8%BF%90%E8%8D%89%E7%9A%84%E7%BA%A6%E5%AE%9A)
-13. **ぬきたし**
+13. <span id="抜きゲーみたいな島に住んでる貧乳はどうすりゃいいですか">**抜きゲーみたいな島に住んでる<ruby><rb>貧乳<span class="template-ruby-hidden">（</span></rb><rt>わたし</rt><span class="template-ruby-hidden">）</span></ruby>はどうすりゃいいですか？**</span>
+    - 住在拔作岛上的<ruby><rb>贫乳<span class="template-ruby-hidden">（</span></rb><rt>我</rt><span class="template-ruby-hidden">）</span></ruby>应该如何是好？、拔作岛
     - 会社：Qruppo
     - 发售年份：2018
     - <details>
@@ -202,8 +241,9 @@ lang: ''
         3. 美岬：2026.6.11
         4. 文乃：2026.6.13
         </details>
-14. **ヨスガノソラ系列**
-    1. **ヨスガノソラ**
+    - [vndb](https://vndb.org/v22899) / [萌娘百科](https://moegirl.org.cn/%E4%BD%8F%E5%9C%A8%E6%8B%94%E4%BD%9C%E5%B2%9B%E4%B8%8A%E7%9A%84%E8%B4%AB%E4%B9%B3%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%98%AF%E5%A5%BD%EF%BC%9F)
+14. <span id="ヨスガノソラ系列">**ヨスガノソラ系列**</span>
+    1. <span id="ヨスガノソラ">**ヨスガノソラ**</span>
         - 缘之空
         - 会社：Sphere
         - 发售年份：2008
@@ -214,7 +254,7 @@ lang: ''
             2. 穹：2026.6.23
             </details>
         - [vndb](https://vndb.org/v1194) / [萌娘百科](https://moegirl.org.cn/%E7%BC%98%E4%B9%8B%E7%A9%BA)
-    2. **ハルカナソラ**
+    2. <span id="ハルカナソラ">**ハルカナソラ**</span>
         - 悠之空
         - 会社：Sphere
         - 发售年份：2009
@@ -225,10 +265,34 @@ lang: ''
             2. 穹：2026.6.26
             </details>
         - [vndb](https://vndb.org/v1899) / [萌娘百科](https://moegirl.org.cn/%E6%82%A0%E4%B9%8B%E7%A9%BA)
-15. **素晴らしき日々～不連続存在～ フルボイスHD版**
+15. <span id="素晴らしき日々不連続存在">**素晴らしき日々～不連続存在～**</span>
     - 美好的每一天～不连续的存在～、素晴日
     - 会社：ケロQ
-    - 发售年份：2018
-        - 初版：2010
-    - 游玩时间：2026.6.27–
+    - 发售年份：2010
+        - 素晴らしき日々～不連続存在～ フルボイスHD版：2018
+    - <details>
+        <summary>游玩时间：2026.6.27–7.13</summary>
+
+        1. Down the Rabbit-Hole
+            1. 镜：2026.6.29
+            2. 司：2026.6.29
+            3. 柘榴：2026.6.29
+        2. Down the Rabbit-Hole II: 2026.6.30
+        3. It's my own Invention
+            1. 希实香：2026.7.2
+            2. TE: 2026.7.3
+        4. Looking-glass Insects
+            1. 希实香：2026.7.5
+            2. TE: 2026.7.7
+        5. Jabberwocky
+            1. 选项一：2026.7.10
+            2. 选项二：2026.7.11
+            3. 选项三：2026.7.13
+        6. Which Dreamed It: 2026.7.11
+        7. Jabberwocky II: 2026.7.12
+        8. 向日葵的坡道：2026.7.12
+        9. 美好的每一天：2026.7.13
+        10. 终之空 II: 2026.7.13
+        11. Knockin' on heaven's door: 2026.7.13
+        </details>
     - [vndb](https://vndb.org/v3144) / [萌娘百科](https://moegirl.org.cn/%E7%BE%8E%E5%A5%BD%E7%9A%84%E6%AF%8F%E4%B8%80%E5%A4%A9%EF%BD%9E%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%98%E5%9C%A8%EF%BD%9E)
