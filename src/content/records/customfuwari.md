@@ -9,6 +9,8 @@ draft: false
 lang: ''
 ---
 
+起始版本：[6d39b0d](https://github.com/saicaca/fuwari/tree/6d39b0dec41282e7852e23e032998a5789abee28)
+
 ## 2026
 
 ### 3.17
