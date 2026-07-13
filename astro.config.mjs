@@ -31,9 +31,11 @@ import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkLinksNewTab } from "./src/plugins/remark-links-new-tab.mjs";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
+const site = "https://blog.uuk.moe/";
+
 // https://astro.build/config
 export default defineConfig({
-	site: "https://blog.uuk.moe/",
+	site,
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
@@ -121,7 +123,7 @@ export default defineConfig({
 			remarkMath,
 			remarkReadingTime,
 			remarkExcerpt,
-			remarkLinksNewTab,
+			[remarkLinksNewTab, { site }],
 			[
 				remarkGithubAdmonitionsToDirectives,
 				{
