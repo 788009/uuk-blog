@@ -9,15 +9,19 @@ draft: false
 lang: ''
 ---
 
-<style>
+import GalgameTimeline from './GalgameTimeline.jsx'
+
+<style>{`
 .template-ruby-hidden {
     display: inline-block;
     width: 0;
     font-size: 0;
 }
-</style>
+`}</style>
 
 > 更新于 2026.7.13
+
+<GalgameTimeline client:visible dataUrl="/galgame-data/time.json" />
 
 <details>
 <summary>目录</summary>
