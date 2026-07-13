@@ -184,6 +184,14 @@
         "dateSD": 167.16
     },
     {
+        "artist": "松本文紀",
+        "count": 8,
+        "songs": "- Dear Moments\n- 夜の向日葵\n- 小さな旋律\n- 暖かな時間\n- 空気力学少女と少年の詩\n- 空気力学少女と少年の詩 -Piano Ver.-\n- 空気力学少女と少年の詩-PianoVocalVer-\n- 親愛なるあの日々へ\n",
+        "earliestDate": "2024-12-18",
+        "latestDate": "2026-07-14",
+        "dateSD": 272.65
+    },
+    {
         "artist": "MANYO",
         "count": 8,
         "songs": "- White Spell\n- a memories for us feat.“Day’s”\n- キミと歩く夕暮れ\n- 恋文\n- 星の奏でる歌 feat. 椎名かがり\n- 星の奏でる歌 feat. 椎名まゆり&椎名かがり\n- 春の日差しを浴びながら\n- 空は晴れ晴れココロも晴れ晴れ\n",
@@ -312,6 +320,14 @@
         "dateSD": 7.76
     },
     {
+        "artist": "SCA-自",
+        "count": 5,
+        "songs": "- ナグルファルの船上にて\n- 神と旋律\n- 空気力学少女と少年の詩\n- 空気力学少女と少年の詩-PianoVocalVer-\n- 鏡の世界には私しかいない-another version-\n",
+        "earliestDate": "2026-07-14",
+        "latestDate": "2026-07-14",
+        "dateSD": 0.0
+    },
+    {
         "artist": "KOKIA",
         "count": 5,
         "songs": "- Nostalgia\n- Spirits\n- ありがとう・・・（谢谢）\n- たった1つの想い\n- 記憶の光\n",
@@ -422,6 +438,22 @@
         "earliestDate": "2021-09-26",
         "latestDate": "2023-04-20",
         "dateSD": 272.78
+    },
+    {
+        "artist": "ryo (supercell)",
+        "count": 4,
+        "songs": "- メルト (Melt)\n- ワールドイズマイン\n- 夏の大三角\n- 風の吹く丘\n",
+        "earliestDate": "2021-02-28",
+        "latestDate": "2026-07-14",
+        "dateSD": 831.21
+    },
+    {
+        "artist": "ピクセルビー",
+        "count": 4,
+        "songs": "- ナグルファルの船上にて\n- ナグルファルの船上にて -Orgel Ver.-\n- 神と旋律\n- 鏡の世界には私しかいない-another version-\n",
+        "earliestDate": "2026-07-14",
+        "latestDate": "2026-07-14",
+        "dateSD": 0.0
     },
     {
         "artist": "Ceui",
@@ -600,6 +632,14 @@
         "dateSD": 173.6
     },
     {
+        "artist": "monet",
+        "count": 3,
+        "songs": "- ナグルファルの船上にて\n- 神と旋律\n- 鏡の世界には私しかいない-another version-\n",
+        "earliestDate": "2026-07-14",
+        "latestDate": "2026-07-14",
+        "dateSD": 0.0
+    },
+    {
         "artist": "金閉開羅巧夢",
         "count": 3,
         "songs": "- Sentence know\n- 心の文\n- 海岸線\n",
@@ -752,14 +792,6 @@
         "dateSD": 139.62
     },
     {
-        "artist": "松本文紀",
-        "count": 3,
-        "songs": "- Dear Moments\n- 暖かな時間\n- 親愛なるあの日々へ\n",
-        "earliestDate": "2024-12-18",
-        "latestDate": "2025-01-13",
-        "dateSD": 11.43
-    },
-    {
         "artist": "シャノン",
         "count": 3,
         "songs": "- ヨミクダリの灯\n- 恐竜電力の街\n- 死別\n",
@@ -846,6 +878,14 @@
         "earliestDate": "2021-04-10",
         "latestDate": "2023-02-01",
         "dateSD": 312.07
+    },
+    {
+        "artist": "はな",
+        "count": 2,
+        "songs": "- 空気力学少女と少年の詩\n- 空気力学少女と少年の詩-PianoVocalVer-\n",
+        "earliestDate": "2026-07-14",
+        "latestDate": "2026-07-14",
+        "dateSD": 0.0
     },
     {
         "artist": "森藤晶司",
@@ -1787,14 +1827,6 @@
         "artist": "Aqu3ra",
         "count": 1,
         "songs": "- 星降る海\n",
-        "earliestDate": "2026-02-23",
-        "latestDate": "2026-02-23",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "supercell",
-        "count": 1,
-        "songs": "- メルト (Melt)\n",
         "earliestDate": "2026-02-23",
         "latestDate": "2026-02-23",
         "dateSD": 0.0
@@ -4283,14 +4315,6 @@
         "artist": "SawanoHiroyuki[nZk]",
         "count": 1,
         "songs": "- aLIEz\n",
-        "earliestDate": "2021-02-28",
-        "latestDate": "2021-02-28",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "ryo (supercell)",
-        "count": 1,
-        "songs": "- ワールドイズマイン\n",
         "earliestDate": "2021-02-28",
         "latestDate": "2021-02-28",
         "dateSD": 0.0

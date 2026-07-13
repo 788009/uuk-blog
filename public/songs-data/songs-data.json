@@ -1,5 +1,71 @@
 [
     {
+        "name": "ナグルファルの船上にて",
+        "artists": "SCA-自 / ピクセルビー / monet",
+        "category": "日语歌/1",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "神と旋律",
+        "artists": "SCA-自 / ピクセルビー / monet",
+        "category": "日语歌/1",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "空気力学少女と少年の詩-PianoVocalVer-",
+        "artists": "SCA-自 / 松本文紀 / はな",
+        "category": "日语歌/1",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "空気力学少女と少年の詩",
+        "artists": "SCA-自 / 松本文紀 / はな",
+        "category": "日语歌/1",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "鏡の世界には私しかいない-another version-",
+        "artists": "SCA-自 / ピクセルビー / monet",
+        "category": "日语歌/1",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "ナグルファルの船上にて -Orgel Ver.-",
+        "artists": "ピクセルビー",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "夏の大三角",
+        "artists": "ryo (supercell)",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "夜の向日葵",
+        "artists": "松本文紀",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "小さな旋律",
+        "artists": "松本文紀",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "空気力学少女と少年の詩 -Piano Ver.-",
+        "artists": "松本文紀",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
+        "name": "風の吹く丘",
+        "artists": "ryo (supercell)",
+        "category": "纯音乐/2",
+        "date": "2026-07-14"
+    },
+    {
         "name": "ありがとう・・・（谢谢）",
         "artists": "KOKIA",
         "category": "日语歌/1",
@@ -331,7 +397,7 @@
     },
     {
         "name": "メルト (Melt)",
-        "artists": "supercell / 初音ミク",
+        "artists": "ryo (supercell) / 初音ミク",
         "category": "日语歌/2",
         "date": "2026-02-23"
     },
