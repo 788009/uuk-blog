@@ -10,13 +10,18 @@
 
 .galgame-timeline__toolbar {
 	display: grid;
-	grid-template-columns: max-content minmax(100px, 240px) max-content;
+	grid-template-columns: max-content max-content minmax(100px, 240px) max-content;
 	align-items: center;
 	gap: 0.75rem;
 	padding: 0.7rem 0.85rem;
 	border-bottom: 1px solid var(--line-divider);
 	font-size: 0.82rem;
 }
+
+.galgame-timeline__layout-switch { display: inline-flex; padding: 2px; border: 1px solid var(--line-divider); border-radius: 6px; background: var(--btn-regular-bg); }
+.galgame-timeline__layout-switch button { padding: 0.25rem 0.6rem; border: 0; border-radius: 4px; background: transparent; color: var(--tw-prose-body); cursor: pointer; }
+.galgame-timeline__layout-switch button.is-active { background: var(--card-bg); color: var(--tw-prose-headings); box-shadow: 0 1px 3px rgb(0 0 0 / 14%); }
+.galgame-timeline__layout-switch button:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
 
 .galgame-timeline__toolbar input { width: 100%; accent-color: var(--primary); }
 .galgame-timeline__scale-input { display: flex; align-items: center; gap: 0.35rem; color: var(--tw-prose-body); white-space: nowrap; }
@@ -82,7 +87,19 @@
 .galgame-timeline__item:hover { filter: brightness(1.12); transform: translateY(-1px); }
 .galgame-timeline__item:focus-visible { outline: 2px solid var(--tw-prose-headings); outline-offset: 2px; }
 
-@media (max-width: 520px) {
-	.galgame-timeline__toolbar { grid-template-columns: max-content 1fr; gap: 0.35rem 0.6rem; }
+.galgame-timeline__table { position: relative; min-width: 100%; }
+.galgame-timeline__table-head { position: relative; height: 45px; border-bottom: 1px solid var(--line-divider); background: var(--card-bg); }
+.galgame-timeline__year-head,
+.galgame-timeline__year-label { position: sticky; left: 0; z-index: 4; width: 58px; box-sizing: border-box; border-right: 1px solid var(--line-divider); background: var(--card-bg); font-weight: 600; text-align: center; }
+.galgame-timeline__year-head { height: 45px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line-divider); font-size: 0.75rem; }
+.galgame-timeline__table-month { position: absolute; inset-block: 0; display: flex; align-items: end; box-sizing: border-box; padding: 0 0 8px 8px; border-right: 1px solid var(--line-divider); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.galgame-timeline__year-row { position: relative; min-height: 38px; border-bottom: 1px solid var(--line-divider); background: color-mix(in srgb, var(--card-bg) 94%, var(--primary)); }
+.galgame-timeline__year-row:last-child { border-bottom: 0; }
+.galgame-timeline__year-label { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; }
+.galgame-timeline__table-gridline { position: absolute; inset-block: 0; width: 1px; background: var(--line-divider); }
+
+@media (max-width: 640px) {
+	.galgame-timeline__toolbar { grid-template-columns: max-content 1fr; gap: 0.5rem 0.6rem; }
+	.galgame-timeline__layout-switch { grid-column: 1 / -1; justify-self: start; }
 	.galgame-timeline__scale-input { grid-column: 2; }
 }

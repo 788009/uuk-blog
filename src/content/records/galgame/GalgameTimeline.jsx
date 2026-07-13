@@ -28,6 +28,46 @@ function addMonths(timestamp, amount) {
 	return Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + amount, 1);
 }
 
+function positionInYear(timestamp, year, monthWidth) {
+	const yearStart = Date.UTC(year, 0, 1);
+	const yearEnd = Date.UTC(year + 1, 0, 1);
+	if (timestamp <= yearStart) return 0;
+	if (timestamp >= yearEnd) return 12 * monthWidth;
+	const date = new Date(timestamp);
+	const month = date.getUTCMonth();
+	const start = Date.UTC(year, month, 1);
+	const end = Date.UTC(year, month + 1, 1);
+	return (month + (timestamp - start) / (end - start)) * monthWidth;
+}
+
+function prepareYearRows(items) {
+	const firstYear = new Date(items[0].start).getUTCFullYear();
+	const lastYear = new Date(items.at(-1).end - 1).getUTCFullYear();
+	const years = [];
+
+	for (let year = firstYear; year <= lastYear; year += 1) {
+		const yearStart = Date.UTC(year, 0, 1);
+		const yearEnd = Date.UTC(year + 1, 0, 1);
+		const segments = items
+			.filter((item) => item.start < yearEnd && item.end > yearStart)
+			.map((item) => ({
+				...item,
+				segmentStart: Math.max(item.start, yearStart),
+				segmentEnd: Math.min(item.end, yearEnd),
+			}));
+		const rowEnds = [];
+		for (const segment of segments) {
+			let row = rowEnds.findIndex((end) => end <= segment.segmentStart);
+			if (row < 0) row = rowEnds.length;
+			segment.tableRow = row;
+			rowEnds[row] = segment.segmentEnd;
+		}
+		years.push({ year, segments, rowCount: Math.max(1, rowEnds.length) });
+	}
+
+	return years;
+}
+
 function prepareItems(data) {
 	const items = data
 		.map((item) => ({
@@ -110,7 +150,9 @@ export default function GalgameTimeline({ dataUrl }) {
 
 function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 	const [scaleInput, setScaleInput] = useState(String(monthWidth));
+	const [layout, setLayout] = useState("single");
 	const { items, rowCount } = useMemo(() => prepareItems(data), [data]);
+	const yearRows = useMemo(() => prepareYearRows(items), [items]);
 	const start = monthStart(items[0].start);
 	const end = addMonths(monthStart(items.at(-1).end), 1);
 	const totalDays = (end - start) / DAY;
@@ -118,6 +160,7 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 		totalDays / Math.round((end - start) / (DAY * 30.44));
 	const pixelsPerDay = monthWidth / averageMonthDays;
 	const width = totalDays * pixelsPerDay;
+	const tableWidth = 58 + 12 * monthWidth;
 
 	const months = [];
 	for (let cursor = start; cursor < end; cursor = addMonths(cursor, 1)) {
@@ -139,11 +182,15 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 		const viewport = viewportRef.current;
 		if (!Number.isFinite(nextWidth) || nextWidth < 1) return;
 		if (!viewport) return setMonthWidth(nextWidth);
+		const currentWidth = layout === "single" ? width : tableWidth;
 		const centerRatio =
-			(viewport.scrollLeft + viewport.clientWidth / 2) / width;
+			(viewport.scrollLeft + viewport.clientWidth / 2) / currentWidth;
 		setMonthWidth(nextWidth);
 		requestAnimationFrame(() => {
-			const nextContentWidth = totalDays * (nextWidth / averageMonthDays);
+			const nextContentWidth =
+				layout === "single"
+					? totalDays * (nextWidth / averageMonthDays)
+					: 58 + 12 * nextWidth;
 			viewport.scrollLeft =
 				centerRatio * nextContentWidth - viewport.clientWidth / 2;
 		});
@@ -158,6 +205,25 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 	return (
 		<section className="galgame-timeline" aria-label="Galgame 游玩时间轴">
 			<div className="galgame-timeline__toolbar">
+				<fieldset
+					className="galgame-timeline__layout-switch"
+					aria-label="时间轴排版"
+				>
+					<button
+						type="button"
+						className={layout === "single" ? "is-active" : ""}
+						onClick={() => setLayout("single")}
+					>
+						单行
+					</button>
+					<button
+						type="button"
+						className={layout === "table" ? "is-active" : ""}
+						onClick={() => setLayout("table")}
+					>
+						表格
+					</button>
+				</fieldset>
 				<label htmlFor="galgame-timeline-scale">时间轴尺度</label>
 				{/* biome-ignore lint/correctness/useUniqueElementIds: reason */}
 				<input
@@ -183,53 +249,119 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 				</div>
 			</div>
 			<div className="galgame-timeline__viewport" ref={viewportRef}>
-				<div
-					className="galgame-timeline__canvas"
-					style={{ width, height: 45 + rowCount * ROW_HEIGHT }}
-				>
-					<div className="galgame-timeline__axis">
-						{months.map((month) => (
+				{layout === "single" ? (
+					<div
+						className="galgame-timeline__canvas"
+						style={{ width, height: 45 + rowCount * ROW_HEIGHT }}
+					>
+						<div className="galgame-timeline__axis">
+							{months.map((month) => (
+								<div
+									className="galgame-timeline__month"
+									key={month.key}
+									style={{ left: month.left, width: month.width }}
+								>
+									{month.label}
+								</div>
+							))}
+						</div>
+						<div
+							className="galgame-timeline__rows"
+							style={{ height: rowCount * ROW_HEIGHT }}
+						>
+							{months.map((month) => (
+								<span
+									className="galgame-timeline__gridline"
+									key={month.key}
+									style={{ left: month.left }}
+								/>
+							))}
+							{items.map((item) => (
+								<a
+									className="no-styling galgame-timeline__item"
+									href={`#${encodeURIComponent(item.id)}`}
+									key={`${item.id}-${item.startDate}`}
+									style={{
+										left: ((item.start - start) / DAY) * pixelsPerDay,
+										width: Math.max(
+											((item.end - item.start) / DAY) * pixelsPerDay,
+											2,
+										),
+										top: item.row * ROW_HEIGHT + 5,
+										backgroundColor: item.color,
+									}}
+									title={`${item.name}：${item.startDate} - ${item.finishDate}`}
+								>
+									<span>{item.name}</span>
+								</a>
+							))}
+						</div>
+					</div>
+				) : (
+					<div
+						className="galgame-timeline__table"
+						style={{ width: tableWidth }}
+					>
+						<div className="galgame-timeline__table-head">
+							<div className="galgame-timeline__year-head">年份</div>
+							{Array.from({ length: 12 }, (_, month) => (
+								<div
+									className="galgame-timeline__table-month"
+									// biome-ignore lint/suspicious/noArrayIndexKey: reason
+									key={month}
+									style={{ left: 58 + month * monthWidth, width: monthWidth }}
+								>
+									{month + 1} 月
+								</div>
+							))}
+						</div>
+						{yearRows.map(({ year, segments, rowCount: tableRowCount }) => (
 							<div
-								className="galgame-timeline__month"
-								key={month.key}
-								style={{ left: month.left, width: month.width }}
+								className="galgame-timeline__year-row"
+								key={year}
+								style={{ height: tableRowCount * ROW_HEIGHT }}
 							>
-								{month.label}
+								<div className="galgame-timeline__year-label">{year}</div>
+								{Array.from({ length: 13 }, (_, month) => (
+									<span
+										className="galgame-timeline__table-gridline"
+										// biome-ignore lint/suspicious/noArrayIndexKey: reason
+										key={month}
+										style={{ left: 58 + month * monthWidth }}
+									/>
+								))}
+								{segments.map((item) => {
+									const left = positionInYear(
+										item.segmentStart,
+										year,
+										monthWidth,
+									);
+									const right = positionInYear(
+										item.segmentEnd,
+										year,
+										monthWidth,
+									);
+									return (
+										<a
+											className="no-styling galgame-timeline__item"
+											href={`#${encodeURIComponent(item.id)}`}
+											key={`${item.id}-${year}`}
+											style={{
+												left: 58 + left,
+												width: Math.max(right - left, 2),
+												top: item.tableRow * ROW_HEIGHT + 5,
+												backgroundColor: item.color,
+											}}
+											title={`${item.name}：${item.startDate} - ${item.finishDate}`}
+										>
+											<span>{item.name}</span>
+										</a>
+									);
+								})}
 							</div>
 						))}
 					</div>
-					<div
-						className="galgame-timeline__rows"
-						style={{ height: rowCount * ROW_HEIGHT }}
-					>
-						{months.map((month) => (
-							<span
-								className="galgame-timeline__gridline"
-								key={month.key}
-								style={{ left: month.left }}
-							/>
-						))}
-						{items.map((item) => (
-							<a
-								className="no-styling galgame-timeline__item"
-								href={`#${encodeURIComponent(item.id)}`}
-								key={`${item.id}-${item.startDate}`}
-								style={{
-									left: ((item.start - start) / DAY) * pixelsPerDay,
-									width: Math.max(
-										((item.end - item.start) / DAY) * pixelsPerDay,
-										2,
-									),
-									top: item.row * ROW_HEIGHT + 5,
-									backgroundColor: item.color,
-								}}
-								title={`${item.name}：${item.startDate} - ${item.finishDate}`}
-							>
-								<span>{item.name}</span>
-							</a>
-						))}
-					</div>
-				</div>
+				)}
 			</div>
 		</section>
 	);
