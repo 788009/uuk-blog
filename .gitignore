@@ -34,3 +34,5 @@ pnpm-debug.log*
 
 src/content/posts/table-test/*
 src/content/posts/arcaea-crash.md
+
+.agents
