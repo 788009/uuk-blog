@@ -304,19 +304,19 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 									className="no-styling galgame-timeline__item"
 									href={`#${encodeURIComponent(item.id)}`}
 									key={`${item.id}-${item.startDate}`}
-								style={{
+									style={{
 										left: ((item.start - start) / DAY) * pixelsPerDay,
 										width: Math.max(
 											((item.end - item.start) / DAY) * pixelsPerDay,
 											2,
 										),
 										top: item.row * ROW_HEIGHT + 5,
-									backgroundColor: item.color,
-								}}
-								onMouseEnter={() => setActiveItem(item)}
-								onMouseLeave={() => setActiveItem(null)}
-								onFocus={() => setActiveItem(item)}
-								onBlur={() => setActiveItem(null)}
+										backgroundColor: item.color,
+									}}
+									onMouseEnter={() => setActiveItem(item)}
+									onMouseLeave={() => setActiveItem(null)}
+									onFocus={() => setActiveItem(item)}
+									onBlur={() => setActiveItem(null)}
 								>
 									<span>{item.name}</span>
 								</a>
