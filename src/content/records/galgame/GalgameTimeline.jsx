@@ -18,6 +18,10 @@ function parseDate(value) {
 	return Date.UTC(year, month - 1, day);
 }
 
+function formatDateLabel(value) {
+	return value.split("-").map(Number).join(".");
+}
+
 function monthStart(timestamp) {
 	const date = new Date(timestamp);
 	return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1);
@@ -151,6 +155,7 @@ export default function GalgameTimeline({ dataUrl }) {
 function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 	const [scaleInput, setScaleInput] = useState(String(monthWidth));
 	const [layout, setLayout] = useState("single");
+	const [activeItem, setActiveItem] = useState(null);
 	const { items, rowCount } = useMemo(() => prepareItems(data), [data]);
 	const yearRows = useMemo(() => prepareYearRows(items), [items]);
 	const start = monthStart(items[0].start);
@@ -247,6 +252,24 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 					/>
 					<span>px/月</span>
 				</div>
+				<div
+					className={`galgame-timeline__detail${activeItem ? " is-visible" : ""}`}
+					aria-live="polite"
+				>
+					{activeItem && (
+						<>
+							<span
+								className="galgame-timeline__detail-color"
+								style={{ backgroundColor: activeItem.color }}
+							/>
+							<strong>{activeItem.name}</strong>
+							<span className="galgame-timeline__detail-date">
+								{formatDateLabel(activeItem.startDate)}–
+								{formatDateLabel(activeItem.finishDate)}
+							</span>
+						</>
+					)}
+				</div>
 			</div>
 			<div className="galgame-timeline__viewport" ref={viewportRef}>
 				{layout === "single" ? (
@@ -281,16 +304,19 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 									className="no-styling galgame-timeline__item"
 									href={`#${encodeURIComponent(item.id)}`}
 									key={`${item.id}-${item.startDate}`}
-									style={{
+								style={{
 										left: ((item.start - start) / DAY) * pixelsPerDay,
 										width: Math.max(
 											((item.end - item.start) / DAY) * pixelsPerDay,
 											2,
 										),
 										top: item.row * ROW_HEIGHT + 5,
-										backgroundColor: item.color,
-									}}
-									title={`${item.name}：${item.startDate} - ${item.finishDate}`}
+									backgroundColor: item.color,
+								}}
+								onMouseEnter={() => setActiveItem(item)}
+								onMouseLeave={() => setActiveItem(null)}
+								onFocus={() => setActiveItem(item)}
+								onBlur={() => setActiveItem(null)}
 								>
 									<span>{item.name}</span>
 								</a>
@@ -352,7 +378,10 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 												top: item.tableRow * ROW_HEIGHT + 5,
 												backgroundColor: item.color,
 											}}
-											title={`${item.name}：${item.startDate} - ${item.finishDate}`}
+											onMouseEnter={() => setActiveItem(item)}
+											onMouseLeave={() => setActiveItem(null)}
+											onFocus={() => setActiveItem(item)}
+											onBlur={() => setActiveItem(null)}
 										>
 											<span>{item.name}</span>
 										</a>

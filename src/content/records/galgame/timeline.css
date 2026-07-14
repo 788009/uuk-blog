@@ -26,6 +26,11 @@
 .galgame-timeline__toolbar input { width: 100%; accent-color: var(--primary); }
 .galgame-timeline__scale-input { display: flex; align-items: center; gap: 0.35rem; color: var(--tw-prose-body); white-space: nowrap; }
 .galgame-timeline__scale-input input { width: 4.5rem; padding: 0.2rem 0.35rem; border: 1px solid var(--line-divider); border-radius: 4px; background: var(--card-bg); color: var(--tw-prose-body); font-variant-numeric: tabular-nums; }
+.galgame-timeline__detail { grid-column: 1 / -1; height: 2rem; display: flex; align-items: center; gap: 0.55rem; box-sizing: border-box; padding: 0.4rem 0.65rem; border-top: 1px solid var(--line-divider); border-radius: 4px; background: color-mix(in srgb, var(--card-bg) 92%, var(--primary)); color: var(--tw-prose-body); overflow: hidden; opacity: 0; }
+.galgame-timeline__detail.is-visible { opacity: 1; }
+.galgame-timeline__detail-color { width: 0.65rem; height: 0.65rem; flex: 0 0 auto; border-radius: 2px; box-shadow: 0 0 0 1px rgb(0 0 0 / 12%); }
+.galgame-timeline__detail strong { min-width: 0; overflow: hidden; color: var(--tw-prose-headings); text-overflow: ellipsis; white-space: nowrap; }
+.galgame-timeline__detail-date { margin-left: auto; flex: 0 0 auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .galgame-timeline__viewport {
 	max-width: 100%;
@@ -102,4 +107,10 @@
 	.galgame-timeline__toolbar { grid-template-columns: max-content 1fr; gap: 0.5rem 0.6rem; }
 	.galgame-timeline__layout-switch { grid-column: 1 / -1; justify-self: start; }
 	.galgame-timeline__scale-input { grid-column: 2; }
+	.galgame-timeline__detail { height: 3.25rem; flex-wrap: wrap; gap: 0.2rem 0.5rem; }
+	.galgame-timeline__detail-date { width: 100%; margin-left: 1.2rem; }
+}
+
+@media (any-hover: none) {
+	.galgame-timeline__detail { display: none; }
 }
