@@ -20,7 +20,7 @@ lang: ''
 - ColorOS 15
 - PJZ110_11.A.38_0380_202412130148
 - 2025 年 11 月 22 日使用 SukiSU Ultra 的 LKM 模式 Root
-- 只刷了 acc 这一个模块，曾经 `acc -d` 过，但后来一直保持 `acc -e` 的状态
+- 只刷了 [acc](https://github.com/VR-25/acc) 这一个模块，曾经 `acc -d` 过，但后来一直保持 `acc -e` 的状态
 
 ## 尝试
 
