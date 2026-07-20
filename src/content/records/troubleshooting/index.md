@@ -21,6 +21,8 @@ lang: ''
     - [无法打开内核设备“\\.\\VMCIDev\\VMX”](#无法打开内核设备vmcidevvmx)
 - [机器学习](#机器学习)
     - [`CUDA error: device-side assert triggered` 之后高强度写磁盘](#cuda-error-device-side-assert-triggered-之后高强度写磁盘)
+- [浏览器](#浏览器)
+    - [`--remote-debugging-port=9222` 无效](#--remote-debugging-port9222-无效)
 
 </details>
 
@@ -142,3 +144,29 @@ BOM 是代表编码的文件头，将脚本编码换成 UTF-8 with BOM 之后，
 #### 问题原因
 
 当 CUDA 程序发生 `device-side assert triggered` 时，GPU 核心通常会终止当前执行管道并挂起。Windows 的显卡硬件看门狗（Watchdog）检测到显卡驱动长时间无响应（即 TDR 机制），为了防止系统直接蓝屏，Windows 会在后台重启显卡驱动，并将当时的内核与显存状态强制转储到 `C:\Windows\LiveKernelReports` 目录下，生成这个实时内核转储文件。
+
+## 浏览器
+
+### `--remote-debugging-port=9222` 无效
+
+#### 环境
+
+- 2026.7.19
+- Windows 11
+- Google Chrome 150.0.7871.128
+
+#### 问题描述
+
+`start chrome --remote-debugging-port=9222` 后，`9222` 端口实际未被监听。
+
+#### 解决方案
+
+指定独立配置目录：
+
+```powershell
+Start-Process chrome -ArgumentList "--remote-debugging-port=9222", "--user-data-dir=C:\chrome_dev_profile"
+```
+
+#### 问题原因
+
+未知。
