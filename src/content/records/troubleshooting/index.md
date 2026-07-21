@@ -23,6 +23,8 @@ lang: ''
     - [`CUDA error: device-side assert triggered` 之后高强度写磁盘](#cuda-error-device-side-assert-triggered-之后高强度写磁盘)
 - [浏览器](#浏览器)
     - [`--remote-debugging-port=9222` 无效](#--remote-debugging-port9222-无效)
+- [Windows 模拟器](#windows-模拟器)
+    - [Winlator 运行白永 FD 有声音无画面](#winlator-运行白永-fd-有声音无画面)
 
 </details>
 
@@ -166,6 +168,47 @@ BOM 是代表编码的文件头，将脚本编码换成 UTF-8 with BOM 之后，
 ```powershell
 Start-Process chrome -ArgumentList "--remote-debugging-port=9222", "--user-data-dir=C:\chrome_dev_profile"
 ```
+
+#### 问题原因
+
+未知。
+
+## Windows 模拟器
+
+### Winlator 运行白永 FD 有声音无画面
+
+#### 环境
+
+- 2026.7.20
+- Winlator 11.1
+- 一加 13
+- Android 15
+- ColorOS 15
+- [FAVORITE] アストラエアの白き永遠 Finale -白き星の夢-  星辰恋曲的白色永恒-Finale- V2.0最终汉化硬盘版[Xmoe汉化组]
+
+#### 问题描述
+
+如题。
+
+#### 解决方案
+
+修改容器参数如下（加粗为非默认）：
+- Graphic Driver
+    - Vulkan: Turnip
+        - Version: 26.1.0
+    - OpenGL: Gladio
+- DX Wrapper
+    - Direct3D: **WineD3D**
+        - Version: 10.10
+        - DDraw Wrapper: WineD3D
+        - Renderer: **Vulkan**
+    - DirectX 12: VKD3D
+        - Version: 2.14.1
+        - D3D Feature Level: 12.2
+- Audio Driver: ALSA
+- HUD Mode: Disabled
+
+另外，虽然修改参数后能显示画面，但调整为全屏模式还是会崩溃，此时将容器尺寸设为 1020 × 650 即可使游戏画面正好填满整个屏幕。
 
 #### 问题原因
 
