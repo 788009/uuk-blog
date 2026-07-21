@@ -59,6 +59,8 @@ robocopy <empty-dir> <target-dir> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL > nul
 
 其中 `<empty-dir>` 是空文件夹路径，`<target-dir>` 是目标文件夹的路径。
 
+速度参考：SSD（WD PC SN560 SDDPNQE-1T00-1102）清空 42322 个文件、709 MB 的 node_modules 用时 28.6 秒。
+
 > [!CAUTION]
 >
 > 清空后不可恢复，请谨慎使用。
