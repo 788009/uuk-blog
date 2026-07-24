@@ -196,7 +196,7 @@ Start-Process chrome -ArgumentList "--remote-debugging-port=9222", "--user-data-
 - Graphic Driver
     - Vulkan: Turnip
         - Version: 26.1.0
-    - OpenGL: Gladio
+    - OpenGL: **Zink**
 - DX Wrapper
     - Direct3D: **WineD3D**
         - Version: 10.10
