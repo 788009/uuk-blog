@@ -1,5 +1,5 @@
 ---
-title: 舒适地游玩脏翅膀
+title: 舒适地游玩《秽翼的尤斯蒂娅》
 published: 2026-07-24
 description: ''
 image: ''
