@@ -33,6 +33,5 @@ pnpm-debug.log*
 .vscode/
 
 src/content/posts/table-test/*
-src/content/posts/arcaea-crash.md
 
 .agents
