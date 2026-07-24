@@ -63,10 +63,10 @@ lang: ''
 
 ### 方法一
 
-我马上想到让 AI 写程序放大字体。
+我马上想到让 AI 写代码放大字体。
 
 <details>
-<summary>程序</summary>
+<summary>代码</summary>
 
 ```python
 from fontTools.ttLib import TTFont
