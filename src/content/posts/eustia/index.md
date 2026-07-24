@@ -13,6 +13,9 @@ lang: ''
 <summary>目录</summary>
 
 - [更换字体](#更换字体)
+- [放大字体](#放大字体)
+    - [方法一](#方法一)
+    - [方法二](#方法二)
 - [同步存档](#同步存档)
 
 </details>
@@ -45,7 +48,16 @@ lang: ''
 
 ![替换成功的字体，但字号很小](small-font.webp)
 
-然而这个字体果然太小，于是让 AI 写程序放大字体。
+## 放大字体
+
+正如群友所言，这个字体太小，需要放大。
+
+### 方法一
+
+我马上想到让 AI 写程序放大字体。
+
+<details>
+<summary>程序</summary>
 
 ```python
 from fontTools.ttLib import TTFont
@@ -79,9 +91,43 @@ for name in font.getGlyphOrder():
 font.save("output.ttf")
 ```
 
+</details>
+
 用输出的字体替换，游戏内字体大小变得十分舒适。
 
 ![舒适的字号](large-font.webp)
+
+### 方法二
+
+后来我无意中又打开了刚才参考的文章，发现我之前阅读进度的下一节就是 `#0x6 字体修改`，里面不仅提到了替换字体，还提到了更改字体大小，方法是把 `system` 文件夹拆出来，全局搜索字体名称，找到定义字体大小的常量，修改，再将相关文件放到相同目录。
+
+我立刻开始尝试，不过在 `system` 全局搜索 `v3.ttf` 并未搜到与字体大小有关的内容，只有一个 `get_font_face()` 函数。
+
+尝试搜索 `size`，有 131 个结果，发现前几个结果是下划线命名法，于是再搜索 `font_size`，终于在 `system/system/var.lua` 内发现了目标：
+
+```lua
+font_size = {
+	MIN   = 8,
+	SMALL = 16,
+	NORM  = 25,
+	LARGE = 36,
+	HUGE  = 46,
+}
+```
+
+方法一的代码是放大到原来的 1.25 倍，于是我将每个大小也如此修改并向下取整：
+
+```lua
+font_size = {
+	MIN   = 10,
+	SMALL = 20,
+	NORM  = 31,
+	LARGE = 45,
+	HUGE  = 57,
+}
+```
+
+将该文件放置在游戏目录下的 `system/system/var.lua`，再把 `v3.ttf` 替换成未放大的华文中宋，启动游戏，效果与方法一一模一样。
 
 ## 同步存档
 
