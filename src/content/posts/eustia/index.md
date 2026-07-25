@@ -16,6 +16,7 @@ lang: ''
 - [放大字体](#放大字体)
     - [方法一](#方法一)
     - [方法二](#方法二)
+    - [对比](#对比)
 - [同步存档](#同步存档)
 - [整合汉化](#整合汉化)
 
@@ -25,7 +26,7 @@ lang: ''
 
 奈何脏翅膀比较麻烦，找到的汉化硬盘版在手机的 Winlator 怎么也打不开，有进程无窗口，尝试了很多参数组合也没有成功。咨询群友后决定转向 PC + TY ([Tyranor](https://t.me/Tyranor/)) 版本。
 
-初步对比一下两个版本
+初步对比两个版本：
 - PC + TY 版的 UI 更先进
 - 二者的汉化文本完全相同
 - 汉化硬盘版的图片有翻译，PC + TY 版没有，比如开篇第一句话
@@ -60,8 +61,6 @@ lang: ''
 
 正如群友所言，这个字体太小，需要放大。
 
-> 解决问题请优先参考[方法二](#方法二)。
-
 ### 方法一
 
 我马上想到让 AI 写代码放大字体。
@@ -70,35 +69,59 @@ lang: ''
 <summary>代码</summary>
 
 ```python
+import sys
 from fontTools.ttLib import TTFont
 from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 
-# 打开字体
-font = TTFont("v3.ttf")
-scale_factor = 1.25  # 放大比例为 125%
+input_path = "input.ttf"
+output_path = "output_scaled.ttf"
+scale_factor = 1.25  # 放大比例 125%
+
+print(f"正在加载字体文件: {input_path}")
+font = TTFont(input_path)
+
+glyph_order = font.getGlyphOrder()
+total_glyphs = len(glyph_order)
 
 glyph_set = font.getGlyphSet()
 hmtx = font['hmtx']
+glyf = font['glyf']
 
-# 修改字形与字宽
-for name in font.getGlyphOrder():
-    glyph = font['glyf'][name]
-    if glyph.isComposite():
-        continue
-    
-    # 修改横向 Advance Width
+new_glyfs = {}
+
+# 设置进度打印间隔：每完成 5% 的进度打印一次
+print_interval = max(1, total_glyphs // 20)
+
+print(f"开始处理字形，总计 {total_glyphs} 个...")
+
+for idx, name in enumerate(glyph_order, start=1):
+    # 1. 缩放字符宽度与左边距
     width, lsb = hmtx[name]
-    hmtx[name] = (int(width * scale_factor), int(lsb * scale_factor))
+    hmtx[name] = (int(round(width * scale_factor)), int(round(lsb * scale_factor)))
 
-    # 缩放坐标
-    pen = TTGlyphPen(glyph_set)
-    tpen = TransformPen(pen, (scale_factor, 0, 0, scale_factor, 0, 0))
-    glyph.draw(tpen, font['glyf'])
-    font['glyf'][name] = pen.glyph()
+    glyph = glyf[name]
+    if glyph.numberOfContours == 0 and not glyph.isComposite():
+        pass
+    else:
+        # 2. 绘制并缩放字形（自动展开复合字形）
+        pen = TTGlyphPen(glyph_set)
+        tpen = TransformPen(pen, (scale_factor, 0, 0, scale_factor, 0, 0))
+        glyph_set[name].draw(tpen)
+        new_glyfs[name] = pen.glyph()
 
-# 保存字体
-font.save("output.ttf")
+    # 3. 按百分比间隔输出进度，避免频繁 I/O
+    if idx % print_interval == 0 or idx == total_glyphs:
+        percent = (idx / total_glyphs) * 100
+        print(f"处理进度: {idx}/{total_glyphs} ({percent:.1f}%)")
+
+print("正在更新字形表数据...")
+for name, new_glyph in new_glyfs.items():
+    glyf[name] = new_glyph
+
+print(f"正在保存文件至: {output_path}")
+font.save(output_path)
+print("字体处理完成。")
 ```
 
 </details>
@@ -139,7 +162,37 @@ font_size = {
 
 将该文件放置在游戏目录下的 `system/system/var.lua`，再把 `v3.ttf` 替换成未放大的华文中宋，启动游戏，效果与方法一一模一样。
 
-理论上方法二是更优的，因为若游戏排版文字（比如行高和换行）时使用了 `font_size`，方法一可能会导致排版错乱，而方法二概率更小；当然，如果其他使用 Artemis 的作品在二进制文件中硬编码了字号，那就只能使用方法一了。
+### 对比
+
+理论上方法二是更优的，因为若游戏排版文字（比如换行和行间距）时使用 `font_size` 而忽略显示文字的实际大小，方法一可能会导致排版错乱，而方法二概率更小。
+
+然而脏翅膀正好是个例外，虽然两种方法对于短文本的效果一模一样（如方法一的图），但对于长文本或多行文本，方法一的效果反而更好。
+
+比如下面这句话
+- 未处理
+    ![三行文本，上下左右均未与其他元素重叠，字体较小，行间距较大](long-text-small.webp)
+- 方法一
+    ![三行文本，上下左右均未与其他元素重叠，字体大小适中，行间距适中，三行文本的总高度与未处理基本相同](long-text-method-1.webp)
+- 方法二
+    ![三行文本，上左右均未与其他元素重叠，最后一行与底部 UI 重叠，字体大小适中，行间距较大](long-text-method-2.webp)
+
+首先是换行，三种情况文本换行的绝对位置相同，未处理的第一行有 35 个字，方法一和方法二的第一行都是 28 个字，可以看出，游戏内处理换行时使用的是单个文字的实际宽度，因此方法一不会造成换行问题。
+
+其次是行间距。
+
+| | `font_size` | 字体文件字体大小 | 实际字体大小 | 实际行间距 |
+|-|-|-|-|-|
+| 未处理 | 较小 | 较小 | 过小 | 过大 |
+| 方法一 | 较小 | 较大 | 适中 | 适中 |
+| 方法二 | 较大 | 较小 | 适中 | 过大 |
+
+另外在 `system` 全局搜索 `gap`、`height`、`spacing` 并未找到行间距相关常量。
+
+综上，可以认为行间距被硬编码在二进制文件中，与 `font_size` 无关，每行文本的纵坐标由这个数和 `font_size` 决定，但与字体文件的字体大小无关。
+
+基于此结论，理论上方法一有可能导致相邻行的文字重叠，而方法二是最优的解法。然而，从实际效果来看，游戏硬编码的行间距过大（未处理的行间距约等于文字高度），且该行间距适配未处理的小字号，使得文字不会与其他 UI 重叠；换成更大的 `font_size` 后，每行的高度增大，行间距不变，导致三行文本的总高度过大，最后一行文本与底部 UI 重叠。
+
+而方法一属于歪打正着，由于 `font_size` 没变，游戏认为每行高度也没变，因此每一行的纵坐标与未处理相同（三行文本的总高度与未处理基本相同，也印证了这一点），而硬编码的过大行间距使得相邻行的文字还不够重叠，反而更大的实际字体大小抵消了过大的行间距，使得实际行间距十分舒适。
 
 ## 同步存档
 
@@ -164,6 +217,8 @@ system.ini
 ```
 
 </details>
+
+后来发现 Tyranor 实际可以在设置中改为桌面模式，此前猜想错误，目前原因未知，但忽略 `system.dat` 和 `system.ini` 确实可以解决问题。
 
 ## 整合汉化
 
