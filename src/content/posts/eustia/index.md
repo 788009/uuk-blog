@@ -464,6 +464,6 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 
 ![历史记录的长文本自然分成两行，没有多余的换行，也没有与其他元素重叠](long-text-backlog-final.webp)
 
-最后，编写程序批量转换所有 `.asb`，放置在游戏目录下的 `scenario/main/`，便彻底解决。
+最后，编写程序批量转换所有 `.asb`，放置在游戏目录下的 `scenario/main/`，`.gitignore` 增加 `scenario/`，便彻底解决。
 
 > 试错时看到 Issue #11 的提出者最后说成功把旧版汉化移植到新版了，于是点进这个人的主页，意外发现有一个叫做 [asb_parser](https://github.com/kongbaiz/asb_parser) 的项目，标题是“ASB 解析/打包工具”，确实可以打包，但推进到每一个 `.asb` 结束时游戏都稳定崩溃，遂放弃。
