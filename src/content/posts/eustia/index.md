@@ -351,6 +351,8 @@ end
 
 ![历史记录中，一句长文本分成了三行，未与其他元素重叠](long-text-backlog-size30.webp)
 
+> 另外注意到 `msg.iet` 中的 `spacetop`、`spacemiddle` 和 `spacebottom`，我在 `system` 全局搜索发现不止出现在 `msg.iet`，有没有可能控制行间距？实验否定了这个猜想。
+
 ### 换行
 
 回顾一下上文 `放大字体` → `方法一` 的效果图：
