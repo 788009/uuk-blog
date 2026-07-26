@@ -19,6 +19,9 @@ lang: ''
     - [对比](#对比)
 - [同步存档](#同步存档)
 - [整合汉化](#整合汉化)
+- [彻底解决排版问题](#彻底解决排版问题)
+    - [历史记录](#历史记录)
+    - [换行](#换行)
 
 </details>
 
@@ -233,3 +236,234 @@ system.ini
 ![人生不如意事，十常居七八。](first-sentence-zh.webp)
 
 成功了。
+
+## 彻底解决排版问题
+
+### 历史记录
+
+对比放大字体的两个方案之后，我选择了方法一，本来以为没事了，直到我在一处长文本打开历史记录：
+
+![历史记录中，一句长文本分成了四行，从第三行开始与下一句话重叠](long-text-backlog.webp)
+
+先换成未放大的华文中宋观察一下：
+
+![历史记录中，一句长文本分成了三行，第三行底部与下一句话几乎贴在一起](long-text-backlog-small.webp)
+
+可以发现历史记录的文字排版逻辑与对话框完全相同。
+
+但小字体对对话框来说太小了，所以必须使用大字体，于是自然想到调整 `font_type`，另外发现历史记录文本的字号明显比对话框的文本大，说明不是同一种大小，那么就可以只修改历史记录文本使用的大小，而不影响对话框文本。
+
+每次把一个类别的字号改成 60，观察游戏内情况，以确定对应关系。结论是，对话框使用的是 `NORM`，而历史记录，哪个都不是。
+
+难道硬编码了？其实不然，我在 `system` 文件夹全局搜索 `backlog`，在 `system/msg.iet`（其实是 Lua）发现了一段代码：
+
+<details>
+<summary>点击展开</summary>
+
+```lua
+function msg_backlog_init()
+	local fontface = get_font_face()
+	for i=1, 1 + init.backlog_page do
+		-- 本文
+		e:tag{"chgmsg", id=("500.100."..i..".0"), layered="0"}
+		e:tag{"font",
+			face		= fontface,
+			left		= "360",
+			top			= "68",
+			width		= "660",
+			height		= "540",
+			size		= "30",
+			rubyface	= fontface,
+			rubysize	= "10",
+			rubykerning	= "-4",
+			spacetop    = "-4",
+			spacemiddle = "-4",
+			spacebottom = "0",
+			color       = "0xFFFFFF",
+			shadowcolor = "0x000000",
+			outlinecolor= "0x000000",
+			align       = "left",
+			style       = "outline,shadow",
+			kerning     = "-1",
+			hung        = "0",
+			stack		= "0" }
+		init_adv_indent() -- インデント
+		e:tag{"/chgmsg"}
+
+		-- アクティブ文字色
+		e:tag{"chgmsg", id=("500.100."..i..".10"), layered="0"}
+		e:tag{"font",
+			face		= fontface,
+			left		= "360",
+			top			= "68",
+			width		= "660",
+			height		= "540",
+			size		= "30",
+			rubyface	= fontface,
+			rubysize	= "10",
+			rubykerning	= "-4",
+			spacetop    = "-4",
+			spacemiddle = "-4",
+			spacebottom = "0",
+			color       = (init.backlog_color),
+			shadowcolor = "0x000000",
+			outlinecolor= "0x000000",
+			align       = "left",
+			style       = "outline,shadow",
+			kerning     = "-1",
+			hung        = "0",
+			stack		= "0" }
+		init_adv_indent() -- インデント
+		e:tag{"/chgmsg"}
+
+		-- 名前
+		e:tag{"chgmsg", id=("500.100."..i..".1"), layered="0"}
+		e:tag{"font",
+			face         = fontface,
+			left         = "60",
+			top          = "72",
+			width        = "640",
+			height       = "160",
+			size         = "35",
+			rubyface     = fontface,
+			rubysize     = "0",
+			spacetop     = "0",
+			spacemiddle  = "0",
+			spacebottom  = "-8",
+			color        = "0xFFFFFF",
+			shadowcolor = "0x000000",
+			outlinecolor= "0x000000",
+			align        = "left",
+			style        = "outline",
+			kerning      = "0",
+			hung         = "1",
+			stack        = "0" }
+		e:tag{"/chgmsg"}
+	end
+end
+```
+
+</details>
+
+`本文` 对应历史记录的文本，`アクティブ文字色` 对应鼠标悬停的文本，`名前` 对应人名，可以三类文本看到使用的字号都是 35，比 `var.lua` 的 `NORM  = 25` 要大一些，与观察契合。实际上实验发现这里的 `size` 确实控制着历史记录文本的字号。
+
+于是把普通文本和悬停文本的字号都改成 30（分别位于 `msg.iet` 的第 262 和第 288 行），果然不重叠了：
+
+![历史记录中，一句长文本分成了三行，未与其他元素重叠](long-text-backlog-size30.webp)
+
+### 换行
+
+回顾一下上文 `放大字体` → `方法一` 的效果图：
+
+![虽然是个相当引人注目的美人，但她这个将亲切二字丢入无底深\n渊的性格，为自己扣\n了不少的分。](long-text-method-1.webp)
+
+可以发现最后一个换行明显多余，当时我只当成是汉化组不小心多加了一个换行，然而继续游玩才发现这并非偶然，上文历史记录的长文本也可以看到明显多余的换行，这在常规对话框里也存在，比如上文历史记录的第一句：
+
+![虽然为此也遇到过几次濒临死亡的危机，但在和吉克的彼此帮助\n下，我们总算排除了\n万难。](long-text-2.webp)
+
+我猜测这个换行是使用原本字体时期望的换行位置，于是我在游戏内把字体换成“ゴシック”（Gothic），结果印证了我的想法：
+
+![虽然是个相当引人注目的美人，但她这个将亲切二字丢入无底深渊的性格，为自己扣\n(解析失败占位字符)\n了不少的分。](long-text-gothic.webp)
+
+![虽然为此也遇到过几次濒临死亡的危机，但在和吉克的彼此帮助下，我们总算排除了\n(解析失败占位字符)\n万难。](long-text-2-gothic.webp)
+
+我在其他几处长文本也将字体换成 Gothic，发现都与上面两张图一样，在第 37 个字之后有一个换行符，无一例外。
+
+也就是说，虽然文本绘制引擎支持自动换行，文本还是以 37 字为上限主动截断并添加换行符，意义不明，初回版也没有这个主动的换行符。
+
+<details>
+<summary>初回版效果</summary>
+
+![虽然是个相当引人注目的美人，但她这个将亲切二字丢入无底深\n渊的性格，为自己扣了不少的分。](long-text-bgi.webp)
+
+</details>
+
+而使用大字号的华文中宋，就导致提前触发了一次自动换行，文本绘制引擎看到几个字之后的换行符，就再换了一次行，导致最终效果十分不美观。
+
+修复这个问题必须直接修改台本文件，根据经验和直觉，找到了 `root.pfs/scenario/main/`，该目录下的 `aiy00010.asb` 到 `aiy81010.asb` 总共 404 个 `.asb` 文件大概率就是台本文件。
+
+> [!NOTE]
+>
+> **太长不看**
+>
+> 使用 [msg-tool](https://github.com/lifegpc/msg-tool) 将 `.asb` 解析成 YAML：
+>
+> ```powershell
+> .\msg_tool.exe export -t artemis-asb aiy00010.asb -T custom --custom-yaml true
+> ```
+>
+> 同目录下输出的 `aiy00010.yaml` 就是解析后的台本文件，把 `\r\n` 全部删除。
+> 
+> 打包成 `.asb`：
+>
+> ```powershell
+> .\msg_tool.exe create -t artemis-asb aiy00010.yaml --custom-yaml true
+> ```
+> 
+> 同目录下输出的 `aiy00010.asb` 就是打包后的台本文件。
+> 
+> 对所有 `.asb` 这样操作，再放置在游戏目录下的 `scenario/main/` 即可。
+
+GARbro 无法解析 `.asb`，于是搜索 `asb artemis engine`，搜到一个叫做 [artemis-engine-port-tools](https://github.com/ATSPwang618/artemis-engine-port-tools) 的项目，其中 [asb解密查看方法说明.zip](https://github.com/ATSPwang618/artemis-engine-port-tools/blob/main/asb%E8%A7%A3%E5%AF%86%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E.zip) 内有 `asbutil.exe`，使用以下命令即可解析 `.asb`：
+
+```powershell
+.\asbutil.exe aiy00010.asb > aiy00010.txt
+```
+
+查看内容，发现的确是台本，记录了每一句台词，以及画面信息，还发现长文本确实都在 37 字之后换到了下一行，证实了之前的想法，比如
+
+```
+[#0 print data="虽然是个相当引人注目的美人，但她这个将亲切二字丢入无底深渊的性格，为自己扣
+了不少的分。"]
+```
+
+删除换行之后需要打包成 `.asb`，但 `asbutil.exe` 没有打包的功能，artemis-engine-port-tools 也没有收录相关工具，于是继续看刚才的搜索结果，找到了 Lib.rs 中的 [msg_tool_build](https://lib.rs/crates/msg_tool_build)，页面中提到 `Artemis Engine ASB file (.asb/.iet)`，顺藤摸瓜找到了 [GitHub 仓库](https://github.com/lifegpc/msg-tool)。
+
+这个工具支持 Extract messages from script files、Import data into script files，以及 Create a new script file，其他功能都是操作归档，与台本无关。我先尝试使用第三个功能：
+
+```powershell
+.\msg-tool.exe create -t artemis-asb aiy00010.txt aiy00010.asb
+```
+
+结果报错 `Error creating file: expected value at line 1 column 1`。
+
+README 中导入和创建的部分都只有一个标题和一行命令，没有任何解释，所以不知道创建功能需要什么，另外导入功能也不会用，导出功能只能导出 JSON 格式的台词，丢失了很多其他信息。
+
+找不到其他工具，于是我点开了 Issues，发现已关闭的 Issues 竟然有一个叫做 `添加对 《穢翼のユースティア 〜新装版〜》 asb格式的支持`（[#11](https://github.com/lifegpc/msg-tool/issues/11)），作者的回复提到 `-T custom --custom-yaml true` 可以强行提取成 YAML，于是
+
+```powershell
+.\msg_tool.exe export -t artemis-asb aiy00010.asb -T custom --custom-yaml true
+```
+
+确实可以，且 YAML 包含台本的所有信息，之前的换行变成了显式的 `\r\n`，比如
+
+```yaml
+- name: print
+  line_number: 0
+  attributes:
+    data: "虽然是个相当引人注目的美人，但她这个将亲切二字丢入无底深渊的性格，为自己扣\r\n了不少的分。"
+```
+
+删除所有 `\r\n` 后再尝试创建
+
+```powershell
+.\msg-tool.exe create -t artemis-asb aiy00010.yaml aiy00010.asb
+```
+
+结果报错 `Error creating file: invalid number at line 1 column 2`，依然失败。
+
+试错发现需要在 create 也加上 `--custom-yaml true`，即
+
+```powershell
+.\msg-tool.exe create -t artemis-asb aiy00010.yaml aiy00010.asb --custom-yaml true
+```
+
+将输出的 `aiy00010.asb` 放置在游戏目录下的 `scenario/main/`，启动游戏，多余换行不复存在。
+
+![长文本自然分成两行，没有多余的换行，也没有与其他元素重叠](long-text-final.webp)
+
+![历史记录的长文本自然分成两行，没有多余的换行，也没有与其他元素重叠](long-text-backlog-final.webp)
+
+最后，编写程序批量转换所有 `.asb`，放置在游戏目录下的 `scenario/main/`，便彻底解决。
+
+> 试错时看到 Issue #11 的提出者最后说成功把旧版汉化移植到新版了，于是点进这个人的主页，意外发现有一个叫做 [asb_parser](https://github.com/kongbaiz/asb_parser) 的项目，标题是“ASB 解析/打包工具”，确实可以打包，但推进到每一个 `.asb` 结束时游戏都稳定崩溃，遂放弃。
