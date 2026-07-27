@@ -22,6 +22,9 @@ lang: ''
 - [彻底解决排版问题](#彻底解决排版问题)
     - [历史记录](#历史记录)
     - [换行](#换行)
+- [其他](#其他)
+    - [其他字体大小](#其他字体大小)
+    - [关于存档文件](#关于存档文件)
 
 </details>
 
@@ -469,3 +472,77 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 最后，编写程序批量转换所有 `.asb`，放置在游戏目录下的 `scenario/main/`，`.gitignore` 增加 `scenario/`，便彻底解决。
 
 > 试错时看到 Issue #11 的提出者最后说成功把旧版汉化移植到新版了，于是点进这个人的主页，意外发现有一个叫做 [asb_parser](https://github.com/kongbaiz/asb_parser) 的项目，标题是“ASB 解析/打包工具”，确实可以打包，但推进到每一个 `.asb` 结束时游戏都稳定崩溃，遂放弃。
+
+## 其他
+
+### 其他字体大小
+
+游玩时发现常规文本有使用到不同字号，遂通过之前“每次把一个类别的字号改成 60”的方法尝试对应，结果如下。
+
+字体为放大 1.25 倍的华文中宋。
+
+- `SMALL = 16`
+    ![SMALL 效果](font_size-SMALL.webp)
+- `LARGE = 36`
+    ![LARGE 效果](font_size-LARGE.webp)
+
+### 关于存档文件
+
+解决换行问题时，我在某处长文本快速存档，在游戏目录放置修改过的 `.asb` 文件后，重启游戏，快速读取，结果依然有主动的换行符，历史记录也有，跳转到历史记录的其他长文本也是一样，并未生效；然而如果在标题页面点击 START，长文本却全部正常，没有主动的换行符；如果继续快进到之前的存档位置，长文本又变得正常了；此时快速读取，又不正常了，这是怎么回事？
+
+既然点击 START 正常，说明自己放置的新 `.asb` 一定可以被成功读取，那么，不生效的情况很有可能是根本没有从 `.asb` 读取。观察到跳转到历史记录的第一条（也就是最远的一条）文本后，历史记录没有更早的文本，说明历史记录从存档文件读取，而不是从 `.asb` 读取，否则任意时刻都应当可以回溯到之前的任意位置。这也可以解释上述的奇怪现象：修改 `.asb` 后主动的换行符依然存在，是因为确实没有读取 `.asb`，而是读取存档文件，存档文件中存储的是修改 `.asb` 之前的文本，所以还有主动的换行符。
+
+若确实如此，快速读取之后，虽然这一句不正常，之后都应当是正常的。
+
+为了验证，我打开了 `quicksave.dat`，前 32 位为
+
+```
+42 4F 57 53 EB 03 00 00 99 28 04 00 78 DA EC 9D
+07 5C 13 E7 FB C0 D9 4B 6C ED 1E 76 D8 D6 6E AB
+```
+
+我对逆向二进制文件并不熟悉，文件头 `BOWS` 也不对应常见的格式，于是把前几万位输入给 AI 分析，AI 注意到第 12 和 13 位是 `78 DA`，对应 Zlib 格式，顺便写出了解压代码：
+
+<details>
+<summary>点击展开</summary>
+
+```python
+import os
+import struct
+import zlib
+
+def unpack_save(input_path: str, output_path: str) -> None:
+    """解压 BOWS 格式存档文件"""
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"未找到输入文件: {input_path}")
+
+    with open(input_path, "rb") as f:
+        data = f.read()
+
+    if len(data) < 12 or data[:4] != b"BOWS":
+        raise ValueError("无效的存档文件：文件头缺少 BOWS 标识")
+
+    # 读取标头 (0x00-0x0B)
+    _, comp_size, uncomp_size = struct.unpack("<4sII", data[:12])
+
+    # 解压 0x0C 之后的 Zlib 字节流
+    try:
+        decompressed_data = zlib.decompress(data[12:])
+    except zlib.error as e:
+        raise ValueError(f"Zlib 解压失败: {e}") from e
+
+    # 写入解压后的数据
+    with open(output_path, "wb") as f:
+        f.write(decompressed_data)
+
+    print(
+        f"[成功] 文件已解压 -> {output_path} (解压后大小: {len(decompressed_data)} 字节)"
+    )
+
+if __name__ == "__main__":
+    unpack_save("quicksave.dat", "savefile_decompressed.bin")
+```
+
+</details>
+
+打开解压后的文件，发现依然是二进制文件，但是有非常多明文内容，粗略浏览发现有明文台词，于是分别搜索游戏内历史记录的第一句和最后一句，发现正好是文件包含台词的第一句和最后一句，印证了刚才的猜想。
