@@ -25,9 +25,8 @@ lang: ''
 - [其他](#其他)
     - [其他字体大小](#其他字体大小)
     - [关于存档文件](#关于存档文件)
-- [环境与工具版本](#环境与工具版本)
-    - [环境](#环境)
-    - [工具版本](#工具版本)
+    - [环境与工具版本](#环境与工具版本)
+    - [讨论](#讨论)
 
 </details>
 
@@ -666,9 +665,9 @@ if __name__ == "__main__":
 
 由此可以得知，快速读取之后，虽然这一句不正常，但存档文件只存到这一句，之后游戏就会从修改后的 `.asb` 读取，后续文本都应当是正常的，因此读档后可以放心继续游玩。
 
-## 环境与工具版本
+### 环境与工具版本
 
-### 环境
+#### 环境
 
 - Windows 11
     - Python 3.10.11
@@ -678,7 +677,7 @@ if __name__ == "__main__":
     - Android 15
     - ColorOS 15
 
-### 工具版本
+#### 工具版本
 
 - Winlator [11.1 (Final)](https://github.com/brunodev85/winlator/releases/tag/v11.1.0)
 - Tyranor v2.3.4
@@ -694,3 +693,7 @@ if __name__ == "__main__":
 - artemis-engine-port-tools [3afd534](https://github.com/ATSPwang618/artemis-engine-port-tools/blob/3afd534c976a928463713099981e885243d14af2/asb%E8%A7%A3%E5%AF%86%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E.zip) 中的 `asbutil.exe`
 - msg-tool [v0.4.0-alpha.3](https://github.com/lifegpc/msg-tool/releases/tag/v0.4.0-alpha.3)
 - asb_parser [e863503](https://github.com/kongbaiz/asb_parser/tree/e8635038108ddba5bb0571eb23a5c7bca3312c62)
+
+### 讨论
+
+可在 [B 站专栏](https://www.bilibili.com/opus/1229744107207786501)评论区讨论。
