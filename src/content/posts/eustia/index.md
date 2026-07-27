@@ -25,6 +25,9 @@ lang: ''
 - [其他](#其他)
     - [其他字体大小](#其他字体大小)
     - [关于存档文件](#关于存档文件)
+- [环境与工具版本](#环境与工具版本)
+    - [环境](#环境)
+    - [工具版本](#工具版本)
 
 </details>
 
@@ -232,13 +235,15 @@ system.ini
 
 既然都出自官方之手，可以猜测为了方便，迁移引擎的时候大多数资源文件的文件名都不会有变化，再结合 Artemis 优秀的文件读取机制，我突然想到，有没有可能把汉化硬盘版汉化的图片搬到 PC + TY 版？
 
-从游戏开头的几句图片文本入手，先在 PC + TY 版寻找，发现在 `root.pfs.000` 内，位于 `image/obj/dic`，12 句话分别是 `aiy00010_01.png` 到 `aiy00010_12.png`。再在汉化硬盘版寻找，果不其然，在 `data02800.arc` 内找到了图片 `aiy00010_01` 到 `aiy00010_12`，正是游戏开头汉化过的图片。
+从游戏开头的几句图片文本入手，先在 PC + TY 版寻找，发现在 `root.pfs.000` 内，位于 `image/obj/dic/`，12 句话分别是 `aiy00010_01.png` 到 `aiy00010_12.png`。再在汉化硬盘版寻找，果不其然，在 `data02800.arc` 内找到了图片 `aiy00010_01` 到 `aiy00010_12`，正是游戏开头汉化过的图片。
 
-进一步对比，`root.pfs.000/image/obj/dic` 内有 608 个文件，`data02800.arc` 内有 593 个文件，大量文件的文件名相同，可以认为就是相同作用的文件夹，另外对比了两个版本开头图片的尺寸，发现一模一样，于是用 GARbro 把 `data02800.arc` 内的所有图片提取成 PNG，并放置在 PC + TY 版游戏目录的 `image/obj/dic` 下，启动 PC + TY 版，点击 START。
+进一步对比，`root.pfs.000/image/obj/dic/` 内有 608 个文件，`data02800.arc` 内有 593 个文件，大量文件的文件名相同，可以认为就是相同作用的文件夹，另外对比了两个版本开头图片的尺寸，发现一模一样，于是用 GARbro 把 `data02800.arc` 内的所有图片提取成 PNG，并放置在 PC + TY 版游戏目录的 `image/obj/dic/` 下，启动 PC + TY 版，点击 START。
 
 ![人生不如意事，十常居七八。](first-sentence-zh.webp)
 
 成功了。
+
+> 新装版多出来的 15 个文件怎么办？Artemis 在 `image/obj/dic/` 读取不到会自动继续在 `root.pfs.000` 寻找，所以不会发生错误。
 
 ## 彻底解决排版问题
 
@@ -408,6 +413,8 @@ end
 > 同目录下输出的 `aiy00010.asb` 就是打包后的台本文件。
 > 
 > 对所有 `.asb` 这样操作，再放置在游戏目录下的 `scenario/main/` 即可。
+>
+> [参考批量处理代码](#参考批量处理代码)
 
 GARbro 无法解析 `.asb`，于是搜索 `asb artemis engine`，搜到一个叫做 [artemis-engine-port-tools](https://github.com/ATSPwang618/artemis-engine-port-tools) 的项目，其中 [asb解密查看方法说明.zip](https://github.com/ATSPwang618/artemis-engine-port-tools/blob/main/asb%E8%A7%A3%E5%AF%86%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E.zip) 内有 `asbutil.exe`，使用以下命令即可解析 `.asb`：
 
@@ -434,7 +441,9 @@ GARbro 无法解析 `.asb`，于是搜索 `asb artemis engine`，搜到一个叫
 
 README 中导入和创建的部分都只有一个标题和一行命令，没有任何解释，所以不知道创建功能需要什么，另外导入功能也不会用，导出功能只能导出 JSON 格式的台词，丢失了很多其他信息。
 
-找不到其他工具，于是我点开了 Issues，发现已关闭的 Issues 竟然有一个叫做 `添加对 《穢翼のユースティア 〜新装版〜》 asb格式的支持`（[#11](https://github.com/lifegpc/msg-tool/issues/11)），作者的回复提到 `-T custom --custom-yaml true` 可以强行提取成 YAML，于是
+找不到其他工具，于是我点开了 Issues，发现已关闭的 Issues 居然有一个叫做 `添加对 《穢翼のユースティア 〜新装版〜》 asb格式的支持`（[#11](https://github.com/lifegpc/msg-tool/issues/11)），创建于三个月前，作者两天后回复脏翅膀的 `.asb` 与他之前测试游戏的 tag 结构不一样，并立刻添加支持、发布更新，提到 `-T custom --custom-yaml true` 可以强行提取成 YAML。
+
+据此尝试
 
 ```powershell
 .\msg_tool.exe export -t artemis-asb aiy00010.asb -T custom --custom-yaml true
@@ -471,6 +480,116 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 
 最后，编写程序批量转换所有 `.asb`，放置在游戏目录下的 `scenario/main/`，`.gitignore` 增加 `scenario/`，便彻底解决。
 
+> [!NOTE]
+> 
+> **为什么选择直接删除所有 `\r\n`？**
+>
+> YAML 中台词对应的键是 `data`，即 `data: 文本`，尝试过以“前 35 到 45 个字符的切片包含 `data:`”作为删除 `\r\n` 的条件，结果是，输出的 YAML 还含有两处 `\r\n`，分别是 `aiy50010` 中的
+>
+> ```yaml
+> data: "虽然说起来很伤悲，但这是为了维持诺瓦斯·艾蒂尔的稳定而必要的存在；去救下圣女，\r\n则会违反全体的利益。"
+> ```
+>
+> `\r\n` 之前有 39 个字；以及 `aiy50030` 中的
+> 
+> ```yaml
+> data: "即使每天被吸收着力量，也从未憎恨过\r\n人类。"
+> ```
+>
+> `\r\n` 之前有 17 个字。显然，这两处 `\r\n` 也是多余的，而被删除的 `\r\n` 都满足“前 35 到 45 个字符的切片包含 `data:`”的条件，也就是说不会误删不该删除的 `\r\n`（除非刚好在第 37 字符左右需要分段，但这概率很小，也很难筛出），因此直接删除所有 `\r\n` 就是最优解。
+
+#### 参考批量处理代码
+
+假设工作目录结构为
+
+```
+.
+├── msg_tool.exe
+└── scenario/
+    └── main/
+        └── *.asb
+```
+
+执行以下 Python 代码：
+
+<details>
+<summary>点击展开</summary>
+
+```python
+import subprocess
+from pathlib import Path
+
+def main():
+    # 设置相关路径与工具文件
+    tool_path = Path("msg_tool.exe")
+    scenario_path = Path("scenario/main")
+    output_path = Path("output")
+
+    # 确保输出目录存在
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    '''
+    步骤 1：将 scenario/main/ 目录下的所有 .asb 文件导出为 .yaml 文件
+    对于每个文件都应当输出
+    
+    Exporting scenario\main\aiyxxxxx.asb
+    OK: 1, Ignored: 0, Error: 0, Warning: 0
+
+    '''
+    for asb_file in scenario_path.glob("*.asb"):
+        cmd_export = [
+            str(tool_path),
+            "export",
+            "-t", "artemis-asb",
+            str(asb_file),
+            "-T", "custom",
+            "--custom-yaml", "true"
+        ]
+        # 执行导出命令
+        subprocess.run(cmd_export, check=True)
+
+    '''
+    步骤 2：读取导出的 .yaml 文件，删除所有 \r\n，并写入 output/ 目录
+    无输出
+    '''
+    for yaml_file in scenario_path.glob("*.yaml"):
+        # 读取文件内容
+        text = yaml_file.read_text(encoding="utf-8")
+        
+        # 删除文本中的 \r\n 字符串
+        processed_text = text.replace(r"\r\n", "")
+        
+        # 写入 output/ 目录下的同名文件中
+        target_file = output_path / yaml_file.name
+        target_file.write_text(processed_text, encoding="utf-8")
+
+    '''
+    步骤 3：将 output/ 目录下处理后的 .yaml 文件重新打包为 .asb 文件
+    对于每个文件都应当输出
+    
+    OK: 0, Ignored: 0, Error: 0, Warning: 0
+    
+    注意这里虽然输出 OK: 0，但实际会生成可用的 .asb，日志与实际情况不符的原因不明
+    '''
+    for processed_yaml in output_path.glob("*.yaml"):
+        cmd_create = [
+            str(tool_path),
+            "create",
+            "-t", "artemis-asb",
+            str(processed_yaml),
+            "--custom-yaml", "true"
+        ]
+        # 执行打包命令
+        subprocess.run(cmd_create, check=True)
+
+if __name__ == "__main__":
+    main()
+```
+
+</details>
+
+最后在 `output/` 筛选 `ASB 文件`，移动到游戏目录下的 `scenario/main/` 即可。
+
 > 试错时看到 Issue #11 的提出者最后说成功把旧版汉化移植到新版了，于是点进这个人的主页，意外发现有一个叫做 [asb_parser](https://github.com/kongbaiz/asb_parser) 的项目，标题是“ASB 解析/打包工具”，确实可以打包，但推进到每一个 `.asb` 结束时游戏都稳定崩溃，遂放弃。
 
 ## 其他
@@ -491,8 +610,6 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 解决换行问题时，我在某处长文本快速存档，在游戏目录放置修改过的 `.asb` 文件后，重启游戏，快速读取，结果依然有主动的换行符，历史记录也有，跳转到历史记录的其他长文本也是一样，并未生效；然而如果在标题页面点击 START，长文本却全部正常，没有主动的换行符；如果继续快进到之前的存档位置，长文本又变得正常了；此时快速读取，又不正常了，这是怎么回事？
 
 既然点击 START 正常，说明自己放置的新 `.asb` 一定可以被成功读取，那么，不生效的情况很有可能是根本没有从 `.asb` 读取。观察到跳转到历史记录的第一条（也就是最远的一条）文本后，历史记录没有更早的文本，说明历史记录从存档文件读取，而不是从 `.asb` 读取，否则任意时刻都应当可以回溯到之前的任意位置。这也可以解释上述的奇怪现象：修改 `.asb` 后主动的换行符依然存在，是因为确实没有读取 `.asb`，而是读取存档文件，存档文件中存储的是修改 `.asb` 之前的文本，所以还有主动的换行符。
-
-若确实如此，快速读取之后，虽然这一句不正常，之后都应当是正常的。
 
 为了验证，我打开了 `quicksave.dat`，前 32 位为
 
@@ -546,3 +663,34 @@ if __name__ == "__main__":
 </details>
 
 打开解压后的文件，发现依然是二进制文件，但是有非常多明文内容，粗略浏览发现有明文台词，于是分别搜索游戏内历史记录的第一句和最后一句，发现正好是文件包含台词的第一句和最后一句，印证了刚才的猜想。
+
+由此可以得知，快速读取之后，虽然这一句不正常，但存档文件只存到这一句，之后游戏就会从修改后的 `.asb` 读取，后续文本都应当是正常的，因此读档后可以放心继续游玩。
+
+## 环境与工具版本
+
+### 环境
+
+- Windows 11
+    - Python 3.10.11
+        - `fontTools==4.56.0`
+- 一加 13
+    - 骁龙 8 Elite
+    - Android 15
+    - ColorOS 15
+
+### 工具版本
+
+- Winlator [11.1 (Final)](https://github.com/brunodev85/winlator/releases/tag/v11.1.0)
+- Tyranor v2.3.4
+    - [Telegram](https://t.me/Tyranor/13)
+    - [GitHub](https://github.com/tyranor2/TyranorRelease/releases/tag/2.3.4)
+        - 不确定是否为官方，但 SHA256 与 Telegram 版本相同。
+        - <details>
+            <summary>SHA256</summary>
+
+            `23c799b1fd93cdf756a6eb0037a979a9b7d0b680dab69f9dd74e6a46ac293b64`
+            </details>
+- GARbro [Version 1.5.44](https://github.com/morkt/GARbro/releases/tag/v1.5.44)
+- artemis-engine-port-tools [3afd534](https://github.com/ATSPwang618/artemis-engine-port-tools/blob/3afd534c976a928463713099981e885243d14af2/asb%E8%A7%A3%E5%AF%86%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E.zip) 中的 `asbutil.exe`
+- msg-tool [v0.4.0-alpha.3](https://github.com/lifegpc/msg-tool/releases/tag/v0.4.0-alpha.3)
+- asb_parser [e863503](https://github.com/kongbaiz/asb_parser/tree/e8635038108ddba5bb0571eb23a5c7bca3312c62)
