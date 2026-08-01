@@ -3,7 +3,7 @@ title: 舒适地游玩《秽翼的尤斯蒂娅》
 published: 2026-07-24
 description: ''
 image: ''
-tags: ['Galgame', '折腾', '拆包', '秽翼的尤斯蒂娅', '字体']
+tags: ['Galgame', '折腾', '拆包', '秽翼的尤斯蒂娅']
 category: '游戏'
 draft: false 
 lang: ''
@@ -22,11 +22,15 @@ lang: ''
 - [彻底解决排版问题](#彻底解决排版问题)
     - [历史记录](#历史记录)
     - [换行](#换行)
+- [修复 OP 及其他视频](#修复-op-及其他视频)
+    - [参考批量处理代码](#参考批量处理代码-1)
 - [其他](#其他)
     - [其他字体大小](#其他字体大小)
     - [关于存档文件](#关于存档文件)
-    - [环境与工具版本](#环境与工具版本)
-    - [讨论](#讨论)
+- [环境与工具版本](#环境与工具版本)
+    - [环境](#环境)
+    - [工具版本](#工具版本)
+- [讨论](#讨论)
 
 </details>
 
@@ -499,87 +503,96 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 
 #### 参考批量处理代码
 
-假设工作目录结构为
+1. 使用下一节的[参考批量处理代码](#参考批量处理代码-1)中提到的 [pfs-tool](https://github.com/788009/pfs-tool) 提取 `.asb` 台本文件到 `root/scenario/main/`。
+2. 使用 msg_tool 将 `.asb` 转换成 `.yaml`。
+    > 对于每个文件都应当输出
+    > ```
+    > Exporting root\scenario\main\aiyxxxxx.asb
+    > OK: 1, Ignored: 0, Error: 0, Warning: 0
+    > ```
+3. 删除所有 `\r\n`。
+4. 使用 msg_tool 将 `.yaml` 转换成 `.asb`，并移动到 `scenario/main/`。
+    > 对于每个文件都应当输出
+    > ```
+    > OK: 0, Ignored: 0, Error: 0, Warning: 0
+    > ```
+    > 注意这里虽然输出 `OK: 0`，但实际会生成可用的 `.asb`，日志与实际情况不符的原因不明。
+5. 若原本不存在 `root/`，则删除 `root/`。
 
-```
-.
-├── msg_tool.exe
-└── scenario/
-    └── main/
-        └── *.asb
-```
-
-执行以下 Python 代码：
+确保 PC + TY 版游戏根目录下已放置 `pfs-tool.exe` 和 `msg_tool.exe`，然后在该目录运行以下 Python 代码。
 
 <details>
 <summary>点击展开</summary>
 
 ```python
+import shutil
 import subprocess
 from pathlib import Path
 
 def main():
-    # 设置相关路径与工具文件
-    tool_path = Path("msg_tool.exe")
-    scenario_path = Path("scenario/main")
-    output_path = Path("output")
+    pfs_tool = Path("pfs-tool.exe")
+    msg_tool = Path("msg_tool.exe")
+    pfs_file = Path("root.pfs")
 
-    # 确保输出目录存在
-    output_path.mkdir(parents=True, exist_ok=True)
+    root_dir = Path("root")
+    extracted_scenario_dir = Path("root/scenario/main")
+    target_scenario_dir = Path("scenario/main")
 
-    '''
-    步骤 1：将 scenario/main/ 目录下的所有 .asb 文件导出为 .yaml 文件
-    对于每个文件都应当输出
-    
-    Exporting scenario\main\aiyxxxxx.asb
-    OK: 1, Ignored: 0, Error: 0, Warning: 0
+    # 记录执行前 root 目录是否存在
+    root_existed_originally = root_dir.exists()
 
-    '''
-    for asb_file in scenario_path.glob("*.asb"):
+    # 步骤 1：使用 pfs-tool.exe 提取 root.pfs 中的 scenario/main
+    cmd_unpack = [
+        str(pfs_tool),
+        "unpack",
+        str(pfs_file),
+        "scenario/main"
+    ]
+    subprocess.run(cmd_unpack, check=True)
+
+    if not extracted_scenario_dir.exists():
+        raise FileNotFoundError(f"未找到解包目录: {extracted_scenario_dir}")
+
+    # 步骤 2：使用 msg_tool 将 root/scenario/main/ 下的 .asb 转换为 .yaml
+    for asb_file in extracted_scenario_dir.glob("*.asb"):
         cmd_export = [
-            str(tool_path),
+            str(msg_tool),
             "export",
             "-t", "artemis-asb",
             str(asb_file),
             "-T", "custom",
             "--custom-yaml", "true"
         ]
-        # 执行导出命令
         subprocess.run(cmd_export, check=True)
 
-    '''
-    步骤 2：读取导出的 .yaml 文件，删除所有 \r\n，并写入 output/ 目录
-    无输出
-    '''
-    for yaml_file in scenario_path.glob("*.yaml"):
-        # 读取文件内容
+    # 步骤 3：读取 root/scenario/main/ 下的 .yaml 文件，删除所有 \r\n 后原位覆盖写回
+    for yaml_file in extracted_scenario_dir.glob("*.yaml"):
         text = yaml_file.read_text(encoding="utf-8")
-        
-        # 删除文本中的 \r\n 字符串
-        processed_text = text.replace(r"\r\n", "")
-        
-        # 写入 output/ 目录下的同名文件中
-        target_file = output_path / yaml_file.name
-        target_file.write_text(processed_text, encoding="utf-8")
+        processed_text = text.replace("\r\n", "").replace(r"\r\n", "")
+        yaml_file.write_text(processed_text, encoding="utf-8")
 
-    '''
-    步骤 3：将 output/ 目录下处理后的 .yaml 文件重新打包为 .asb 文件
-    对于每个文件都应当输出
-    
-    OK: 0, Ignored: 0, Error: 0, Warning: 0
-    
-    注意这里虽然输出 OK: 0，但实际会生成可用的 .asb，日志与实际情况不符的原因不明
-    '''
-    for processed_yaml in output_path.glob("*.yaml"):
+    # 确保目标输出目录 scenario/main 存在
+    target_scenario_dir.mkdir(parents=True, exist_ok=True)
+
+    # 步骤 4：使用 msg_tool 将 .yaml 转换成 .asb，并将结果移动至 scenario/main
+    for yaml_file in extracted_scenario_dir.glob("*.yaml"):
         cmd_create = [
-            str(tool_path),
+            str(msg_tool),
             "create",
             "-t", "artemis-asb",
-            str(processed_yaml),
+            str(yaml_file),
             "--custom-yaml", "true"
         ]
-        # 执行打包命令
         subprocess.run(cmd_create, check=True)
+
+        generated_asb = yaml_file.with_suffix(".asb")
+        if generated_asb.exists():
+            destination = target_scenario_dir / generated_asb.name
+            shutil.move(str(generated_asb), str(destination))
+
+    # 步骤 5：若运行前不存在 root 目录，则在清理时删除
+    if not root_existed_originally and root_dir.exists():
+        shutil.rmtree(root_dir)
 
 if __name__ == "__main__":
     main()
@@ -587,9 +600,171 @@ if __name__ == "__main__":
 
 </details>
 
-最后在 `output/` 筛选 `ASB 文件`，移动到游戏目录下的 `scenario/main/` 即可。
-
 > 试错时看到 Issue #11 的提出者最后说成功把旧版汉化移植到新版了，于是点进这个人的主页，意外发现有一个叫做 [asb_parser](https://github.com/kongbaiz/asb_parser) 的项目，标题是“ASB 解析/打包工具”，确实可以打包，但推进到每一个 `.asb` 结束时游戏都稳定崩溃，遂放弃。
+
+## 修复 OP 及其他视频
+
+> [!NOTE]
+> 
+> **太长不看**
+>
+> PC + TY 版有一个 `movie/` 文件夹，将其中的 MP4 都转换成固定码率的 MPG，放置在 `movie/`。
+>
+> `root.pfs` 也有一个 `movie/` 文件夹，其中有 12 个 OGV 格式的视频，提取后转换成固定码率的 MPG，放置在游戏目录下的 `movie/`（即同上）。
+>
+> [参考批量处理代码](#参考批量处理代码-1)
+
+玩了两章都没看到 OP，遂在贴吧搜索，发现有两个帖子（[这个](https://tieba.baidu.com/p/9607922956)和[这个](https://tieba.baidu.com/p/9038382912)）都提到 TY 版无法播放 OP，而评论区提到的解决方案只有换 PC 版或在 B 站观看。
+
+首先在初回版确认 OP 出现位置，确实在我目前进度之前，另外该 OP 无汉化。
+
+PC + TY 版有一个 `movie/` 文件夹，其中的 `movie.mp4` 就是 OP；另外还有一个时长为 1:43 的 `aiy50010mov.mp4`，估计在我目前进度之后，没打开看，等玩到了再来写清楚。
+
+商业游戏公司发布的作品不可能无法播放 OP，因此一定是汉化组或者后续分发过程的问题，也因此，这个问题一定可以修复，大不了找到新装版原版，把 OP 拆出来，再放置到我的游戏目录下。
+
+Galgame 的视频一般不多，再考虑到不同引擎的视频解码能力也可能不同，官方在迁移引擎时完全有可能修改视频格式，甚至重命名视频文件，因此一开始虽然想到可以把初回版的 OP 拆出来放到 PC + TY 版，但没有立刻付诸尝试，认为应当先从 PC + TY 版本身寻找可以参考的信息。
+
+考虑到 PC + TY 版可以播放 ED，若 ED 是视频，则可以找到 ED 的视频格式，并将 `movie.mp4` 也转换成该格式，然后放置在 ED 所在的目录。然而实际拆包发现，ED 不是视频，只有工作人员名单的图片，由程序播放音乐并控制图片流速，因此这条路走不通。
+
+拆包时发现 `root.pfs` 有一个 `movie/` 文件夹，其中有 12 个 OGV 格式的视频，都是几秒钟的场景效果视频，看不出来用在哪里。
+
+由此推测 PC + TY 版应当使用 OGV 格式的视频，于是将 `movie.mp4` 用 FFmpeg 转换成 `movie.ogv`，放置在 `movie/`，结果游戏内依然没有 OP。
+
+走投无路，于是不抱希望地尝试直接移植初回版素材：在初回版的 `data02840.arc` 内有包括 `movie.mpg` 和 `aiy50010mov.mpg` 的 8 个 MPG 视频，是 PC + TY 版封包内外 12 + 2 共 14 个视频的子集。提取 `movie.mpg`，既然 PC + TY 版存放视频（虽然是 OGV）的文件夹是 `movie/`，我就将其放在 `movie/`，启动游戏——居然有 OP 了。
+
+也就是说，游戏读取的文件是 `movie/movie.mpg`，但原因不明地，该文件缺失了，而为什么会特意放一个 `movie.mp4`，就是更奇怪的事情了。
+
+由于 PC + TY 版的 14 个视频完全包含了初回版的 8 个，直接使用这 14 个视频显然是更优的选择，因为多出来的 6 个可能是新装版新增的内容，并且无法排除新装版只读取 MPG，而不读取 OGV 的可能性，因此解决方案就是手动将这 12 个 OGV 和 2 个 MP4 转换成 MPG，再放置在游戏目录下的 `movie/` 文件夹。
+
+转换参数十分重要，稍有不慎就会导致游戏内播放时出现崩坏和花屏的情况。我用 `ffprobe` 查看初回版 `movie.mpg` 的参数，让 AI 分析后写出转换命令：
+
+```bash
+ffmpeg -i movie.mp4 -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg movie.mpg
+```
+
+输出的 `movie.mpg` 在游戏内播放完全正常，而 AI 没有参考初回版视频参数时给出的命令就有各种各样的问题。
+
+<details>
+<summary>部分参数细节</summary>
+
+严格对照实验结论
+- `mpeg2video`（MPEG-2）一定花屏，必须使用 `mpeg1video`（MPEG-1）。
+
+若干命令效果 + AI 分析结论
+- 缓冲区不能过大，初回版视频的缓冲区只有 2490368 bytes，约 2.4 MB，某次游戏内播放到一半卡死，可能是由于设置了 `-bufsize 30M`。
+- 必须为静态码率，某次游戏内播放时不时轻微崩坏，可能是由于设置了动态码率 `-q:v 2`。
+
+</details>
+
+### 参考批量处理代码
+
+首先，获取 [pfs-tool](https://github.com/788009/pfs-tool)。
+
+<details>
+<summary>关于 pfs-tool</summary>
+
+最初在 GARbro 发现 12 个 OGV 视频并尝试提取时，没有注意到 GARbro 将 OGV 认为是“音频”类型，也就没有在意提取时默认勾选的“将音频转换为常规格式”，这直接导致提取失败，并让我认为 GARbro 没有提取 OGV 的能力，而我当时恰好忘记了 msg_tool 也可以提取 `.pfs`，于是在 GitHub 搜索 `Artemis engine`，第三个结果就叫做 [pfs_upk](https://github.com/nextgal/pfs_upk)，用其成功将 `root.pfs` 解包，才得到这 12 个 OGV。
+
+`root.pfs` 的 `voice/` 文件夹下有 37923 个 OGG 音频文件，用 pfs_upk 提取 `root.pfs` 的话会一并将其提取出来，非常浪费时间，因此我看到 `movie/` 的 12 个 OGV 提取完成后就 `Ctrl` + `C` 终止任务。但批量方案要是这么写就太不优雅了，最好有一个能够提取文件内指定目录的命令行工具，然而搜索并未发现满足需求的工具。
+
+“或许可以自己改一个？”我萌生了这样的想法。发现 pfs_upk 的代码似乎很简单，包括 CMake 在内的代码文件只有 11 个，不过我的 C++ 知识仅限于信息竞赛，工程实践方面并未涉猎，也不打算理解 `.pfs` 的具体算法，于是直接用 pfs_upk 的代码询问 AI 是否容易实现我的需求，AI 说非常容易，因为 `.pfs` 就像 ZIP 一样，也维护了一个文件索引，支持随机访问（不同的是 `.pfs` 的文件索引在头部）。
+
+于是 fork 一份让 AI 修改代码，实现我的需求。原本 pfs_upk 的用法是
+
+> `pfs_upk <FILENAME.pfs>` for unpack.  
+> `pfs_upk <PATH>` for pack.
+
+我支持了指定路径提取的功能，顺便增加了列出指定路径文件的功能，把名字改成 pfs-tool，用法如下：
+
+```bash
+# List files or directories in an archive
+pfs-tool list <FILENAME.pfs> [PATH] [-r/--recursive]
+
+# Unpack an archive
+pfs-tool unpack <FILENAME.pfs> [PATH]
+
+# Pack a directory into an archive
+pfs-tool pack <PATH> [OUTPUT]
+```
+
+比如 `pfs-tool unpack root.pfs movie` 就会在当前目录生成 `root/movie/`，包含 12 个 OGV。
+
+直到完成三个子命令的测试并发布完 release 之后，我才发现，只要在 GARbro 提取时取消勾选“将音频转换为常规格式”，就可以成功提取 OGV。也就是说，走到这一步就是个乌龙。但也并非毫无意义，毕竟 GARbro 不支持 CLI，而支持 CLI 的工具似乎没有支持指定路径提取的。
+
+> 在测试打包子命令 `pack` 时，还发现了一个意料之外的现象：将 `image/`, `system/`, `/scenario`, `movie/` 全部打包成 `root.pfs.001`（`001` 的读取优先级大于 `000`，依然来源于[这一篇文章](https://www.bilibili.com/opus/568495301662731170)，实验还证明 `000` 的优先级大于无数字后缀的 `root.pfs`），发现前三个文件夹全部生效，但 `movie/` 内的 OP 没有生效，此时在封包外放置 `movie/movie.mpg` 即可生效，这说明 OP 是不从封包内读取的。
+
+使用 pfs-tool，便可以方便地实现一键脚本。
+
+</details>
+
+均在新装版游戏目录执行，确保该目录下已放置 `pfs-tool.exe`，以及 FFmpeg 已添加至环境变量。
+
+将以下代码保存为 `.ps1` 后运行。
+
+<details>
+<summary>点击展开</summary>
+
+```powershell
+# 检查 pfs-tool.exe 是否存在
+if (-not (Test-Path ".\pfs-tool.exe")) {
+    Write-Error "当前目录下未找到 pfs-tool.exe，请将其放置于游戏根目录。"
+    exit 1
+}
+
+# 检查 ffmpeg 命令是否可用
+if (-not (Get-Command "ffmpeg" -ErrorAction SilentlyContinue)) {
+    Write-Error "未找到 ffmpeg，请确保其已添加至环境变量 PATH。"
+    exit 1
+}
+
+# 确保根目录下的 movie 文件夹存在
+$targetDir = ".\movie"
+if (-not (Test-Path $targetDir)) {
+    New-Item -Path $targetDir -ItemType Directory | Out-Null
+}
+
+# 记录运行前 root 文件夹是否存在
+$rootExistedBefore = Test-Path ".\root"
+
+# 1. 提取 root.pfs 中的 movie 文件夹
+if (Test-Path ".\root.pfs") {
+    Write-Host "正在解包 root.pfs 中的 movie 资源..."
+    .\pfs-tool.exe unpack root.pfs movie
+} else {
+    Write-Warning "未找到 root.pfs，跳过 pfs 提取步骤。"
+}
+
+# 2. 转换提取出的 OGV 文件为 MPG
+$ogvFiles = Get-ChildItem -Path ".\root\movie" -Filter "*.ogv" -ErrorAction SilentlyContinue
+if ($ogvFiles) {
+    Write-Host "开始处理 OGV 视频转换..."
+    foreach ($file in $ogvFiles) {
+        $outputPath = Join-Path $targetDir "$($file.BaseName).mpg"
+        Write-Host "转换: $($file.Name) -> $($outputPath)"
+        ffmpeg -y -i $file.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg $outputPath
+    }
+}
+
+# 3. 转换 movie 目录下的 MP4 文件为 MPG
+$mp4Files = Get-ChildItem -Path $targetDir -Filter "*.mp4" -ErrorAction SilentlyContinue
+if ($mp4Files) {
+    Write-Host "开始处理 MP4 视频转换..."
+    foreach ($file in $mp4Files) {
+        $outputPath = Join-Path $targetDir "$($file.BaseName).mpg"
+        Write-Host "转换: $($file.Name) -> $($outputPath)"
+        ffmpeg -y -i $file.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg $outputPath
+    }
+}
+
+# 4. 若运行前不存在 root/ 文件夹，则在最后清理删除
+if (-not $rootExistedBefore -and (Test-Path ".\root")) {
+    Write-Host "清理解包临时生成的 root 文件夹..."
+    Remove-Item -Path ".\root" -Recurse -Force
+}
+
+Write-Host "视频转换与修复流程处理完毕。"
+Pause
+```
 
 ## 其他
 
@@ -665,9 +840,9 @@ if __name__ == "__main__":
 
 由此可以得知，快速读取之后，虽然这一句不正常，但存档文件只存到这一句，之后游戏就会从修改后的 `.asb` 读取，后续文本都应当是正常的，因此读档后可以放心继续游玩。
 
-### 环境与工具版本
+## 环境与工具版本
 
-#### 环境
+### 环境
 
 - Windows 11
     - Python 3.10.11
@@ -677,7 +852,7 @@ if __name__ == "__main__":
     - Android 15
     - ColorOS 15
 
-#### 工具版本
+### 工具版本
 
 - Winlator [11.1 (Final)](https://github.com/brunodev85/winlator/releases/tag/v11.1.0)
 - Tyranor v2.3.4
@@ -693,7 +868,10 @@ if __name__ == "__main__":
 - artemis-engine-port-tools [3afd534](https://github.com/ATSPwang618/artemis-engine-port-tools/blob/3afd534c976a928463713099981e885243d14af2/asb%E8%A7%A3%E5%AF%86%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E.zip) 中的 `asbutil.exe`
 - msg-tool [v0.4.0-alpha.3](https://github.com/lifegpc/msg-tool/releases/tag/v0.4.0-alpha.3)
 - asb_parser [e863503](https://github.com/kongbaiz/asb_parser/tree/e8635038108ddba5bb0571eb23a5c7bca3312c62)
+- FFmpeg [version 2026-07-20-git-c23123630e-full_build](https://github.com/GyanD/codexffmpeg/releases/tag/2026-07-20-git-c23123630e)
+- pfs_upk [1.1.0](https://github.com/nextgal/pfs_upk/releases/tag/1.1.0)
+- pfs-tool [v2.0.0](https://github.com/788009/pfs-tool/releases/tag/v2.0.0)
 
-### 讨论
+## 讨论
 
 可在 [B 站专栏](https://www.bilibili.com/opus/1229744107207786501)评论区讨论。
