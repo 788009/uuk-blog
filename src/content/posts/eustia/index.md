@@ -663,38 +663,38 @@ ffmpeg -i movie.mp4 -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 240
 <details>
 <summary>关于 pfs-tool</summary>
 
-最初在 GARbro 发现 12 个 OGV 视频并尝试提取时，没有注意到 GARbro 将 OGV 认为是“音频”类型，也就没有在意提取时默认勾选的“将音频转换为常规格式”，这直接导致提取失败，并让我认为 GARbro 没有提取 OGV 的能力，而我当时恰好忘记了 msg_tool 也可以提取 `.pfs`，于是在 GitHub 搜索 `Artemis engine`，第三个结果就叫做 [pfs_upk](https://github.com/nextgal/pfs_upk)，用其成功将 `root.pfs` 解包，才得到这 12 个 OGV。
-
-`root.pfs` 的 `voice/` 文件夹下有 37923 个 OGG 音频文件，用 pfs_upk 提取 `root.pfs` 的话会一并将其提取出来，非常浪费时间，因此我看到 `movie/` 的 12 个 OGV 提取完成后就 `Ctrl` + `C` 终止任务。但批量方案要是这么写就太不优雅了，最好有一个能够提取文件内指定目录的命令行工具，然而搜索并未发现满足需求的工具。
-
-“或许可以自己改一个？”我萌生了这样的想法。发现 pfs_upk 的代码似乎很简单，包括 CMake 在内的代码文件只有 11 个，不过我的 C++ 知识仅限于信息竞赛，工程实践方面并未涉猎，也不打算理解 `.pfs` 的具体算法，于是直接用 pfs_upk 的代码询问 AI 是否容易实现我的需求，AI 说非常容易，因为 `.pfs` 就像 ZIP 一样，也维护了一个文件索引，支持随机访问（不同的是 `.pfs` 的文件索引在头部）。
-
-于是 fork 一份让 AI 修改代码，实现我的需求。原本 pfs_upk 的用法是
-
-> `pfs_upk <FILENAME.pfs>` for unpack.  
-> `pfs_upk <PATH>` for pack.
-
-我支持了指定路径提取的功能，顺便增加了列出指定路径文件的功能，把名字改成 pfs-tool，用法如下：
-
-```bash
-# List files or directories in an archive
-pfs-tool list <FILENAME.pfs> [PATH] [-r/--recursive]
-
-# Unpack an archive
-pfs-tool unpack <FILENAME.pfs> [PATH]
-
-# Pack a directory into an archive
-pfs-tool pack <PATH> [OUTPUT]
-```
-
-比如 `pfs-tool unpack root.pfs movie` 就会在当前目录生成 `root/movie/`，包含 12 个 OGV。
-
-直到完成三个子命令的测试并发布完 release 之后，我才发现，只要在 GARbro 提取时取消勾选“将音频转换为常规格式”，就可以成功提取 OGV。也就是说，走到这一步就是个乌龙。但也并非毫无意义，毕竟 GARbro 不支持 CLI，而支持 CLI 的工具似乎没有支持指定路径提取的。
-
-> 在测试打包子命令 `pack` 时，还发现了一个意料之外的现象：将 `image/`, `system/`, `/scenario`, `movie/` 全部打包成 `root.pfs.001`（`001` 的读取优先级大于 `000`，依然来源于[这一篇文章](https://www.bilibili.com/opus/568495301662731170)，实验还证明 `000` 的优先级大于无数字后缀的 `root.pfs`），发现前三个文件夹全部生效，但 `movie/` 内的 OP 没有生效，此时在封包外放置 `movie/movie.mpg` 即可生效，这说明 OP 是不从封包内读取的。
-
-使用 pfs-tool，便可以方便地实现一键脚本。
-
+> 最初在 GARbro 发现 12 个 OGV 视频并尝试提取时，没有注意到 GARbro 将 OGV 认为是“音频”类型，也就没有在意提取时默认勾选的“将音频转换为常规格式”，这直接导致提取失败，并让我认为 GARbro 没有提取 OGV 的能力，而我当时恰好忘记了 msg_tool 也可以提取 `.pfs`，于是在 GitHub 搜索 `Artemis engine`，第三个结果就叫做 [pfs_upk](https://github.com/nextgal/pfs_upk)，用其成功将 `root.pfs` 解包，才得到这 12 个 OGV。
+> 
+> `root.pfs` 的 `voice/` 文件夹下有 37923 个 OGG 音频文件，用 pfs_upk 提取 `root.pfs` 的话会一并将其提取出来，非常浪费时间，因此我看到 `movie/` 的 12 个 OGV 提取完成后就 `Ctrl` + `C` 终止任务。但批量方案要是这么写就太不优雅了，最好有一个能够提取文件内指定目录的命令行工具，然而搜索并未发现满足需求的工具。
+> 
+> “或许可以自己改一个？”我萌生了这样的想法。发现 pfs_upk 的代码似乎很简单，包括 CMake 在内的代码文件只有 11 个，不过我的 C++ 知识仅限于信息竞赛，工程实践方面并未涉猎，也不打算理解 `.pfs` 的具体算法，于是直接用 pfs_upk 的代码询问 AI 是否容易实现我的需求，AI 说非常容易，因为 `.pfs` 就像 ZIP 一样，也维护了一个文件索引，支持随机访问（不同的是 `.pfs` 的文件索引在头部）。
+> 
+> 于是 fork 一份让 AI 修改代码，实现我的需求。原本 pfs_upk 的用法是
+> 
+> > `pfs_upk <FILENAME.pfs>` for unpack.  
+> > `pfs_upk <PATH>` for pack.
+> 
+> 我支持了指定路径提取的功能，顺便增加了列出指定路径文件的功能，把名字改成 pfs-tool，用法如下：
+> 
+> ```bash
+> # List files or directories in an archive
+> pfs-tool list <FILENAME.pfs> [PATH] [-r/--recursive]
+> 
+> # Unpack an archive
+> pfs-tool unpack <FILENAME.pfs> [PATH]
+> 
+> # Pack a directory into an archive
+> pfs-tool pack <PATH> [OUTPUT]
+> ```
+> 
+> 比如 `pfs-tool unpack root.pfs movie` 就会在当前目录生成 `root/movie/`，包含 12 个 OGV。
+> 
+> 直到完成三个子命令的测试并发布完 release 之后，我才发现，只要在 GARbro 提取时取消勾选“将音频转换为常规格式”，就可以成功提取 OGV。也就是说，走到这一步就是个乌龙。但也并非毫无意义，毕竟 GARbro 不支持 CLI，而支持 CLI 的工具似乎没有支持指定路径提取的。
+> 
+> > 在测试打包子命令 `pack` 时，还发现了一个意料之外的现象：将 `image/`, `system/`, `/scenario`, `movie/` 全部打包成 `root.pfs.001`（`001` 的读取优先级大于 `000`，依然来源于[这一篇文章](https://www.bilibili.com/opus/568495301662731170)，实验还证明 `000` 的优先级大于无数字后缀的 `root.pfs`），发现前三个文件夹全部生效，但 `movie/` 内的 OP 没有生效，此时在封包外放置 `movie/movie.mpg` 即可生效，这说明 OP 是不从封包内读取的。
+> 
+> 使用 pfs-tool，便可以方便地实现一键脚本。
+> 
 </details>
 
 均在新装版游戏目录执行，确保该目录下已放置 `pfs-tool.exe`，以及 FFmpeg 已添加至环境变量。
