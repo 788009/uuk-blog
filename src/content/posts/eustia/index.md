@@ -23,10 +23,10 @@ lang: ''
     - [历史记录](#历史记录)
     - [换行](#换行)
 - [修复 OP 及其他视频](#修复-op-及其他视频)
-    - [参考批量处理代码](#参考批量处理代码-1)
 - [其他](#其他)
     - [其他字体大小](#其他字体大小)
     - [关于存档文件](#关于存档文件)
+    - [关于 pfs-tool](#关于-pfs-tool)
 - [环境与工具版本](#环境与工具版本)
     - [环境](#环境)
     - [工具版本](#工具版本)
@@ -503,7 +503,7 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 
 #### 参考批量处理代码
 
-1. 使用下一节的[参考批量处理代码](#参考批量处理代码-1)中提到的 [pfs-tool](https://github.com/788009/pfs-tool) 提取 `.asb` 台本文件到 `root/scenario/main/`。
+1. 使用 [pfs-tool](https://github.com/788009/pfs-tool) 提取 `.asb` 台本文件到 `root/scenario/main/`。
 2. 使用 msg_tool 将 `.asb` 转换成 `.yaml`。
     > 对于每个文件都应当输出
     > ```
@@ -610,9 +610,11 @@ if __name__ == "__main__":
 >
 > PC + TY 版有一个 `movie/` 文件夹，将其中的 MP4 都转换成固定码率的 MPG，放置在 `movie/`。
 >
-> `root.pfs` 也有一个 `movie/` 文件夹，其中有 12 个 OGV 格式的视频，提取后转换成固定码率的 MPG，放置在游戏目录下的 `movie/`（即同上）。
->
-> [参考批量处理代码](#参考批量处理代码-1)
+> 在 `movie/` 执行：
+> 
+> ```powershell
+> Get-ChildItem -File | Where-Object { $_.Extension -match '\.(mp4|mkv|mov|avi)$' } | ForEach-Object { ffmpeg -i $_.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg "$($_.BaseName).mpg" }
+> ```
 
 玩了两章都没看到 OP，遂在贴吧搜索，发现有两个帖子（[这个](https://tieba.baidu.com/p/9607922956)和[这个](https://tieba.baidu.com/p/9038382912)）都提到 TY 版无法播放 OP，而评论区提到的解决方案只有换 PC 版或在 B 站观看。
 
@@ -634,7 +636,7 @@ Galgame 的视频一般不多，再考虑到不同引擎的视频解码能力也
 
 也就是说，游戏读取的文件是 `movie/movie.mpg`，但原因不明地，该文件缺失了，而为什么会特意放一个 `movie.mp4`，就是更奇怪的事情了。
 
-由于 PC + TY 版的 14 个视频完全包含了初回版的 8 个，直接使用这 14 个视频显然是更优的选择，因为多出来的 6 个可能是新装版新增的内容，并且无法排除新装版只读取 MPG，而不读取 OGV 的可能性，因此解决方案就是手动将这 12 个 OGV 和 2 个 MP4 转换成 MPG，再放置在游戏目录下的 `movie/` 文件夹。
+至此，解决方案就是把初回版的 `movie.mpg` 和 `aiy50010mov.mpg` 拆出来，放置在游戏目录下的 `movie/` 文件夹，或者，如果没有初回版，也可以将 `movie/` 下的 2 个 MP4 转换成 MPG，再放置在游戏目录下的 `movie/` 文件夹。
 
 转换参数十分重要，稍有不慎就会导致游戏内播放时出现崩坏和花屏的情况。我用 `ffprobe` 查看初回版 `movie.mpg` 的参数，让 AI 分析后写出转换命令：
 
@@ -643,6 +645,12 @@ ffmpeg -i movie.mp4 -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 240
 ```
 
 输出的 `movie.mpg` 在游戏内播放完全正常，而 AI 没有参考初回版视频参数时给出的命令就有各种各样的问题。
+
+批量脚本，在 `movie/` 执行：
+
+```powershell
+Get-ChildItem -File | Where-Object { $_.Extension -match '\.(mp4|mkv|mov|avi)$' } | ForEach-Object { ffmpeg -i $_.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg "$($_.BaseName).mpg" }
+```
 
 <details>
 <summary>部分参数细节</summary>
@@ -655,116 +663,6 @@ ffmpeg -i movie.mp4 -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 240
 - 必须为静态码率，某次游戏内播放时不时轻微崩坏，可能是由于设置了动态码率 `-q:v 2`。
 
 </details>
-
-### 参考批量处理代码
-
-首先，获取 [pfs-tool](https://github.com/788009/pfs-tool)。
-
-<details>
-<summary>关于 pfs-tool</summary>
-
-> 最初在 GARbro 发现 12 个 OGV 视频并尝试提取时，没有注意到 GARbro 将 OGV 认为是“音频”类型，也就没有在意提取时默认勾选的“将音频转换为常规格式”，这直接导致提取失败，并让我认为 GARbro 没有提取 OGV 的能力，而我当时恰好忘记了 msg_tool 也可以提取 `.pfs`，于是在 GitHub 搜索 `Artemis engine`，第三个结果就叫做 [pfs_upk](https://github.com/nextgal/pfs_upk)，用其成功将 `root.pfs` 解包，才得到这 12 个 OGV。
-> 
-> `root.pfs` 的 `voice/` 文件夹下有 37923 个 OGG 音频文件，用 pfs_upk 提取 `root.pfs` 的话会一并将其提取出来，非常浪费时间，因此我看到 `movie/` 的 12 个 OGV 提取完成后就 `Ctrl` + `C` 终止任务。但批量方案要是这么写就太不优雅了，最好有一个能够提取文件内指定目录的命令行工具，然而搜索并未发现满足需求的工具。
-> 
-> “或许可以自己改一个？”我萌生了这样的想法。发现 pfs_upk 的代码似乎很简单，包括 CMake 在内的代码文件只有 11 个，不过我的 C++ 知识仅限于信息竞赛，工程实践方面并未涉猎，也不打算理解 `.pfs` 的具体算法，于是直接用 pfs_upk 的代码询问 AI 是否容易实现我的需求，AI 说非常容易，因为 `.pfs` 就像 ZIP 一样，也维护了一个文件索引，支持随机访问（不同的是 `.pfs` 的文件索引在头部）。
-> 
-> 于是 fork 一份让 AI 修改代码，实现我的需求。原本 pfs_upk 的用法是
-> 
-> > `pfs_upk <FILENAME.pfs>` for unpack.  
-> > `pfs_upk <PATH>` for pack.
-> 
-> 我支持了指定路径提取的功能，顺便增加了列出指定路径文件的功能，把名字改成 pfs-tool，用法如下：
-> 
-> ```bash
-> # List files or directories in an archive
-> pfs-tool list <FILENAME.pfs> [PATH] [-r/--recursive]
-> 
-> # Unpack an archive
-> pfs-tool unpack <FILENAME.pfs> [PATH]
-> 
-> # Pack a directory into an archive
-> pfs-tool pack <PATH> [OUTPUT]
-> ```
-> 
-> 比如 `pfs-tool unpack root.pfs movie` 就会在当前目录生成 `root/movie/`，包含 12 个 OGV。
-> 
-> 直到完成三个子命令的测试并发布完 release 之后，我才发现，只要在 GARbro 提取时取消勾选“将音频转换为常规格式”，就可以成功提取 OGV。也就是说，走到这一步就是个乌龙。但也并非毫无意义，毕竟 GARbro 不支持 CLI，而支持 CLI 的工具似乎没有支持指定路径提取的。
-> 
-> > 在测试打包子命令 `pack` 时，还发现了一个意料之外的现象：将 `image/`, `system/`, `/scenario`, `movie/` 全部打包成 `root.pfs.001`（`001` 的读取优先级大于 `000`，依然来源于[这一篇文章](https://www.bilibili.com/opus/568495301662731170)，实验还证明 `000` 的优先级大于无数字后缀的 `root.pfs`），发现前三个文件夹全部生效，但 `movie/` 内的 OP 没有生效，此时在封包外放置 `movie/movie.mpg` 即可生效，这说明 OP 是不从封包内读取的。
-> 
-> 使用 pfs-tool，便可以方便地实现一键脚本。
-> 
-</details>
-
-均在新装版游戏目录执行，确保该目录下已放置 `pfs-tool.exe`，以及 FFmpeg 已添加至环境变量。
-
-将以下代码保存为 `.ps1` 后运行。
-
-<details>
-<summary>点击展开</summary>
-
-```powershell
-# 检查 pfs-tool.exe 是否存在
-if (-not (Test-Path ".\pfs-tool.exe")) {
-    Write-Error "当前目录下未找到 pfs-tool.exe，请将其放置于游戏根目录。"
-    exit 1
-}
-
-# 检查 ffmpeg 命令是否可用
-if (-not (Get-Command "ffmpeg" -ErrorAction SilentlyContinue)) {
-    Write-Error "未找到 ffmpeg，请确保其已添加至环境变量 PATH。"
-    exit 1
-}
-
-# 确保根目录下的 movie 文件夹存在
-$targetDir = ".\movie"
-if (-not (Test-Path $targetDir)) {
-    New-Item -Path $targetDir -ItemType Directory | Out-Null
-}
-
-# 记录运行前 root 文件夹是否存在
-$rootExistedBefore = Test-Path ".\root"
-
-# 1. 提取 root.pfs 中的 movie 文件夹
-if (Test-Path ".\root.pfs") {
-    Write-Host "正在解包 root.pfs 中的 movie 资源..."
-    .\pfs-tool.exe unpack root.pfs movie
-} else {
-    Write-Warning "未找到 root.pfs，跳过 pfs 提取步骤。"
-}
-
-# 2. 转换提取出的 OGV 文件为 MPG
-$ogvFiles = Get-ChildItem -Path ".\root\movie" -Filter "*.ogv" -ErrorAction SilentlyContinue
-if ($ogvFiles) {
-    Write-Host "开始处理 OGV 视频转换..."
-    foreach ($file in $ogvFiles) {
-        $outputPath = Join-Path $targetDir "$($file.BaseName).mpg"
-        Write-Host "转换: $($file.Name) -> $($outputPath)"
-        ffmpeg -y -i $file.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg $outputPath
-    }
-}
-
-# 3. 转换 movie 目录下的 MP4 文件为 MPG
-$mp4Files = Get-ChildItem -Path $targetDir -Filter "*.mp4" -ErrorAction SilentlyContinue
-if ($mp4Files) {
-    Write-Host "开始处理 MP4 视频转换..."
-    foreach ($file in $mp4Files) {
-        $outputPath = Join-Path $targetDir "$($file.BaseName).mpg"
-        Write-Host "转换: $($file.Name) -> $($outputPath)"
-        ffmpeg -y -i $file.FullName -c:v mpeg1video -b:v 7M -minrate 7M -maxrate 7M -bufsize 2400k -r 30 -pix_fmt yuv420p -c:a mp2 -b:a 192k -ar 44100 -f mpeg $outputPath
-    }
-}
-
-# 4. 若运行前不存在 root/ 文件夹，则在最后清理删除
-if (-not $rootExistedBefore -and (Test-Path ".\root")) {
-    Write-Host "清理解包临时生成的 root 文件夹..."
-    Remove-Item -Path ".\root" -Recurse -Force
-}
-
-Write-Host "视频转换与修复流程处理完毕。"
-Pause
-```
 
 ## 其他
 
@@ -839,6 +737,42 @@ if __name__ == "__main__":
 打开解压后的文件，发现依然是二进制文件，但是有非常多明文内容，粗略浏览发现有明文台词，于是分别搜索游戏内历史记录的第一句和最后一句，发现正好是文件包含台词的第一句和最后一句，印证了刚才的猜想。
 
 由此可以得知，快速读取之后，虽然这一句不正常，但存档文件只存到这一句，之后游戏就会从修改后的 `.asb` 读取，后续文本都应当是正常的，因此读档后可以放心继续游玩。
+
+### 关于 pfs-tool
+
+在[修复 OP 及其他视频](#修复-op-及其他视频)时，我担心新装版引擎可能只能解析 MPG 格式的视频，导致封包内的 12 个 OGV 也无法播放，保险起见，我决定把 12 个 OGV 也一并转换成 MPG。
+
+最初在 GARbro 发现 12 个 OGV 视频并尝试提取时，没有注意到 GARbro 将 OGV 认为是“音频”类型，也就没有在意提取时默认勾选的“将音频转换为常规格式”，这直接导致提取失败，并让我认为 GARbro 没有提取 OGV 的能力，而我当时恰好忘记了 msg_tool 也可以提取 `.pfs`，于是在 GitHub 搜索 `Artemis engine`，第三个结果就叫做 [pfs_upk](https://github.com/nextgal/pfs_upk)，用其成功将 `root.pfs` 解包，才得到这 12 个 OGV。
+
+`root.pfs` 的 `voice/` 文件夹下有 37923 个 OGG 音频文件，用 pfs_upk 提取 `root.pfs` 的话会一并将其提取出来，非常浪费时间，因此我看到 `movie/` 的 12 个 OGV 提取完成后就 `Ctrl` + `C` 终止任务。但批量方案要是这么写就太不优雅了，最好有一个能够提取文件内指定目录的命令行工具，然而搜索并未发现满足需求的工具。
+
+“或许可以自己改一个？”我萌生了这样的想法。发现 pfs_upk 的代码似乎很简单，包括 CMake 在内的代码文件只有 11 个，不过我的 C++ 知识仅限于信息竞赛，工程实践方面并未涉猎，也不打算理解 `.pfs` 的具体算法，于是直接用 pfs_upk 的代码询问 AI 是否容易实现我的需求，AI 说非常容易，因为 `.pfs` 就像 ZIP 一样，也维护了一个文件索引，支持随机访问（不同的是 `.pfs` 的文件索引在头部）。
+
+于是 fork 一份让 AI 修改代码，实现我的需求。原本 pfs_upk 的用法是
+
+> `pfs_upk <FILENAME.pfs>` for unpack.  
+> `pfs_upk <PATH>` for pack.
+
+我支持了指定路径提取的功能，顺便增加了列出指定路径文件的功能，把名字改成 pfs-tool，用法如下：
+
+```bash
+# List files or directories in an archive
+pfs-tool list <FILENAME.pfs> [PATH] [-r/--recursive]
+
+# Unpack an archive
+pfs-tool unpack <FILENAME.pfs> [PATH]
+
+# Pack a directory into an archive
+pfs-tool pack <PATH> [OUTPUT]
+```
+
+比如 `pfs-tool unpack root.pfs movie` 就会在当前目录生成 `root/movie/`，包含 12 个 OGV。
+
+直到完成三个子命令的测试并发布完 release 之后，我才发现，只要在 GARbro 提取时取消勾选“将音频转换为常规格式”，就可以成功提取 OGV。也就是说，走到这一步就是个乌龙。更乌龙的是，后来我在游戏内玩到了某个 OGV 视频，遂将 `movie/` 删除以测试，发现依然可以正常播放，也就是说，引擎是有播放 OGV 的能力的，其实没有必要转换成 MP4。
+
+但这也并非毫无意义，毕竟 GARbro 不支持 CLI，而支持 CLI 的工具似乎没有支持指定路径提取的，使用 pfs-tool，可以写出“换行”一节的[批量处理代码](#参考批量处理代码)。
+
+> 在测试打包子命令 `pack` 时，还发现了一个意料之外的现象：将 `image/`, `system/`, `/scenario`, `movie/` 全部打包成 `root.pfs.001`（`001` 的读取优先级大于 `000`，依然来源于[这一篇文章](https://www.bilibili.com/opus/568495301662731170)，实验还证明 `000` 的优先级大于无数字后缀的 `root.pfs`），发现前三个文件夹全部生效，但 `movie/` 内的 OP 没有生效，此时在封包外放置 `movie/movie.mpg` 即可生效，这说明 OP 是不从封包内读取的。
 
 ## 环境与工具版本
 
