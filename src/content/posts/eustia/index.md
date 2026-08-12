@@ -18,7 +18,9 @@ lang: ''
     - [方法二](#方法二)
     - [对比](#对比)
 - [同步存档](#同步存档)
-- [整合汉化](#整合汉化)
+- [汉化问题](#汉化问题)
+    - [整合汉化](#整合汉化)
+    - [翻译缺失与错别字](#翻译缺失与错别字)
 - [彻底解决排版问题](#彻底解决排版问题)
     - [历史记录](#历史记录)
     - [换行](#换行)
@@ -232,7 +234,9 @@ system.ini
 
 后来发现 Tyranor 实际可以在设置中改为桌面模式，此前猜想错误，目前原因未知，但忽略 `system.dat` 和 `system.ini` 确实可以解决问题。
 
-## 整合汉化
+## 汉化问题
+
+### 整合汉化
 
 我一开始下载到的汉化硬盘版应该是 2011 年的[《穢翼のユースティア 初回版》](https://vndb.org/r7224)，引擎是 BGI/Ethornell（可执行文件是 `BGI.exe`，资源文件扩展名是 `.arc`），为什么同一个游戏会有两套引擎的版本呢？调查发现，八月社在 2016 年发布了[《穢翼のユースティア～新装版～》](https://vndb.org/r49044)，支持 Windows 和 Android，引擎换成了 Artemis，这就是我手上的 PC + TY 版。
 
@@ -247,6 +251,315 @@ system.ini
 成功了。
 
 > 新装版多出来的 15 个文件怎么办？Artemis 在 `image/obj/dic/` 读取不到会自动继续在 `root.pfs.000` 寻找，所以不会发生错误。
+
+### 翻译缺失与错别字
+
+游玩过程中，发现不少人名没有翻译，也发现了一些错别字，在此整理出。
+
+<details>
+<summary>点击展开</summary>
+
+```yaml
+all:
+  - original: 不蝕金鎖の男
+    correct: 不蚀金锁的男人
+  - original: 聖女
+    correct: 圣女
+  - original: 女性の声
+    correct: 女性的声音
+  - original: 派手な女見物客
+    correct: 打扮花哨的女看客
+  - original: 中年の見物客
+    correct: 中年的看客
+  - original: 柄の悪い見物客
+    correct: 语气恶劣的看客
+  - original: ゴツい見物客
+    correct: 身材魁梧的看客
+  - original: 付き人
+    correct: 侍从
+  - original: "'0': 男\n"
+    correct: "'0': 男子\n"
+  - original: 羽つきの少年
+    correct: 长着翅膀的少年
+  - original: 羽狩りの指揮者
+    correct: 羽狩的指挥者
+  - original: 赤毛の羽狩り
+    correct: 红发的羽狩
+  - original: 羽狩りの副隊長
+    correct: 羽狩的副队长
+  - original: ラング副隊長
+    correct: 兰格副队长
+  - original: 坊主の男
+    correct: 光头男子
+  - original: カイム＆ジーク
+    correct: 凯伊姆＆吉克
+  - original: "'0': 女\n"
+    correct: "'0': 女子\n"
+  - original: ヒゲの酔客
+    correct: 胡子拉碴的醉汉
+  - original: 太鼓腹の酔客
+    correct: 大肚子的醉客
+  - original: 少女の声
+    correct: 少女的声音
+  - original: 薄汚れた男
+    correct: 邋遢的男子
+  - original: 太った男
+    correct: 肥胖的男子
+  - original: 女の主
+    correct: 女主人
+  - original: ただのジーク
+    correct: 普通的吉克
+  - original: 痩せた羽狩り
+    correct: 瘦削的羽狩
+  - original: 高い男の声
+    correct: 尖细的男声
+  - original: 太い男の声
+    correct: 粗沉的男声
+  - original: 鷲鼻の羽狩り
+    correct: 鹰钩鼻的羽狩
+  - original: フィオネ隊長
+    correct: 菲奥奈队长
+  - original: 娼館主
+    correct: 娼馆老板
+  - original: 羽が折れた少女
+    correct: 折翼的少女
+  - original: 隻腕の少女
+    correct: 独臂少女
+  - original: 男の声
+    correct: 男性的声音
+  - original: 中年の乞食
+    correct: 中年乞丐
+  - original: 覆面の男
+    correct: 蒙面男子
+  - original: 鼻血を流している男
+    correct: 流着鼻血的男子
+  - original: 太った羽狩り
+    correct: 肥胖的羽狩
+  - original: 猫背の男
+    correct: 驼背的男子
+  - original: 太った女
+    correct: 肥胖的女子
+  - original: 神経質そうな女
+    correct: 神经质的女子
+  - original: 薄汚いガキ
+    correct: 邋遢的小鬼
+  - original: 痩せた老婆
+    correct: 干瘪的老太婆
+  - original: 女の声
+    correct: 女性的声音
+  - original: 中年の野次馬
+    correct: 中年看客
+  - original: ゴツい野次馬
+    correct: 魁梧的看客
+  - original: 黒羽
+    correct: 黑羽
+  - original: 不蝕金鎖の若い男
+    correct: 不蚀金锁的年轻男子
+  - original: 羽狩りたち
+    correct: 羽狩们
+  - original: 不蝕金鎖の幹部たち
+    correct: 不蚀金锁的干部们
+  - original: クーガー
+    correct: 库格尔
+  - original: 若い羽狩り
+    correct: 年轻的羽狩
+  - original: 常連の男
+    correct: 熟客男子
+  - original: 唇の薄い男
+    correct: 薄唇男子
+  - original: 鯰顔の売人
+    correct: 鲶鱼脸的贩子
+  - original: アイム
+    correct: 阿伊姆
+  - original: 短髪の男
+    correct: 短发男子
+  - original: 片目の男
+    correct: 独眼男子
+  - original: ヒゲの男
+    correct: 留胡子的男子
+  - original: 眉のない男
+    correct: 无眉男子
+  - original: 顎の出た男
+    correct: 凸下巴的男子
+  - original: 精悍な男
+    correct: 精悍的男子
+  - original: 薄汚れた少女
+    correct: 邋遢的少女
+  - original: やつれた少女
+    correct: 憔悴的少女
+  - original: 謎の主
+    correct: 神秘的主人
+  - original: 酒場の客
+    correct: 酒馆的客人
+  - original: 酔っぱらいの男
+    correct: 醉汉男子
+  - original: 聖職者
+    correct: 圣职者
+  - original: 聖職者たち
+    correct: 圣职者们
+  - original: 集まった住民
+    correct: 聚集的居民
+  - original: 背の低い聖職者
+    correct: 身高矮小的圣职者
+  - original: 痩せぎすの聖職者
+    correct: 瘦骨嶙峋的圣职者
+  - original: 無愛想な店主
+    correct: 板着脸的店主
+  - original: 先代の聖女
+    correct: 前任圣女
+  - original: 住民
+    correct: 居民
+  - original: 虚ろな目の男
+    correct: 双眼空洞的男子
+  - original: 無精髭の男
+    correct: 留着胡茬的男子
+  - original: 牢獄の住民
+    correct: 牢狱居民
+  - original: 衛兵
+    correct: 卫兵
+  - original: 果物屋の客
+    correct: 水果店的客人
+  - original: 御者の男
+    correct: 马夫男子
+  - original: 近衛兵
+    correct: 近卫兵
+  - original: 鎧姿の男
+    correct: 身穿铠甲的男子
+  - original: リシア王女
+    correct: 莉西亚公主
+  - original: 召使い
+    correct: 仆人
+  - original: 料理長
+    correct: 厨师长
+  - original: 庭師の老人
+    correct: 园丁老人
+  - original: ネヴィル
+    correct: 奈菲尔
+  - original: 御者の親父
+    correct: 车夫老爹
+  - original: 露店の店主
+    correct: 摊贩老板
+  - original: 乞食の子供
+    correct: 乞丐小孩
+  - original: 坊主頭の羽狩り
+    correct: 光头的羽狩
+  - original: 中年の近衛兵
+    correct: 中年近卫兵
+  - original: 若い近衛兵
+    correct: 年轻的近卫兵
+  - original: 壮年の貴族
+    correct: 壮年贵族
+  - original: 研究員
+    correct: 研究员
+  - original: 若い貴族
+    correct: 年轻贵族
+  - original: 貴族
+    correct: 贵族
+  - original: 母親
+    correct: 母亲
+  - original: 仮面の人物
+    correct: 戴面具的人
+  - original: 主治医
+    correct: 主治医生
+  - original: ヴァリアスの妻
+    correct: 法利亚斯的妻子
+  - original: 大柄な男
+    correct: 身材高大的男子
+  - original: 痩せた男
+    correct: 消瘦的男子
+  - original: 筋肉質の男
+    correct: 健硕的男子
+  - original: でかい賊の男
+    correct: 魁梧的盗贼男子
+  - original: 賊の男
+    correct: 盗贼男子
+  - original: ネヴィル卿
+    correct: 奈菲尔卿
+  - original: 近衛騎士団
+    correct: 近卫骑士团
+  - original: 怪我をした男
+    correct: 受伤的男子
+  - original: 蓬髪の乞食
+    correct: 蓬头垢面的乞丐
+  - original: 隻眼の乞食
+    correct: 独眼乞丐
+  - original: 殺気だった男の声
+    correct: 充满杀气的男声
+  - original: 痩せた兵士
+    correct: 消瘦的士兵
+  - original: 苦しそうな男の声
+    correct: 痛苦的男声
+  - original: 痩せた研究員
+    correct: 消瘦的研究员
+  - original: 信心深い牢獄民
+    correct: 虔诚的牢狱民
+  - original: 怪我をした牢獄民
+    correct: 受伤的牢狱民
+  - original: 初代イレーヌ
+    correct: 初代伊莲
+  - original: 酔客
+    correct: 醉客
+  - original: 露天売り
+    correct: 露天摊贩
+  - original: 酒場の店主
+    correct: 酒馆店主
+  - original: 二人
+    correct: 两人
+  - original: 若手の庭師
+    correct: 年轻的园丁
+  - original: 酔っぱらい
+    correct: 醉汉
+  - original: ルキウス・システィナ
+    correct: 鲁基乌斯·西斯狄娜
+  - original: 吉巴鲁特
+    correct: 吉尔巴鲁特
+aiy20180:
+  - original: 弯向不同方向的额１０根手指。
+    correct: 弯向不同方向的１０根手指。
+aiy20190:
+  - original: 引导到正规上的过程中
+    correct: 引导到正轨上的过程中
+aiy20230:
+  - original: 被子伸了过来
+    correct: 杯子伸了过来
+  - original: 背反
+    correct: 背叛
+  - original: 馬鹿
+    correct: 笨蛋
+aiy30230:
+  - original: 爱慕者
+    correct: 爱慕着
+aiy40190:
+  - original: 奈菲尔请
+    correct: 奈菲尔卿
+aiy40470:
+  - original: 她要我
+    correct: 他要我
+aiy50060:
+  - original: 在长大
+    correct: 再长大
+aiy50100:
+  - original: 塞紧
+    correct: 塞进
+  - original: 把？
+    correct: 吧？
+aiy50110:
+  - original: 不不再
+    correct: 不再
+aiy50220:
+  - original: 不和我口味
+    correct: 不合我口味
+aiy70110:
+  - original: 明天、后年
+    correct: 明年、后年
+aiy70120:
+  - original: 在在意
+    correct: 再在意
+```
+
+</details>
+
+可将以上内容在 PC + TY 版游戏根目录下保存为 `correction.yaml`，然后运行“换行”一节的[参考批量处理代码](#参考批量处理代码)，即可生效。
 
 ## 彻底解决排版问题
 
@@ -511,13 +824,14 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
     > OK: 1, Ignored: 0, Error: 0, Warning: 0
     > ```
 3. 删除所有 `\r\n`。
-4. 使用 msg_tool 将 `.yaml` 转换成 `.asb`，并移动到 `scenario/main/`。
+4. 若游戏根目录存在[翻译缺失与错别字](#翻译缺失与错别字)一节提到的 `correction.yaml`，则执行替换。
+5. 使用 msg_tool 将 `.yaml` 转换成 `.asb`，并移动到 `scenario/main/`。
     > 对于每个文件都应当输出
     > ```
     > OK: 0, Ignored: 0, Error: 0, Warning: 0
     > ```
     > 注意这里虽然输出 `OK: 0`，但实际会生成可用的 `.asb`，日志与实际情况不符的原因不明。
-5. 若原本不存在 `root/`，则删除 `root/`。
+6. 若原本不存在 `root/`，则删除 `root/`。
 
 确保 PC + TY 版游戏根目录下已放置 `pfs-tool.exe` 和 `msg_tool.exe`，然后在该目录运行以下 Python 代码。
 
@@ -525,14 +839,18 @@ README 中导入和创建的部分都只有一个标题和一行命令，没有�
 <summary>点击展开</summary>
 
 ```python
+import os
+import re
 import shutil
 import subprocess
+import yaml
 from pathlib import Path
 
 def main():
     pfs_tool = Path("pfs-tool.exe")
     msg_tool = Path("msg_tool.exe")
     pfs_file = Path("root.pfs")
+    correction_file = Path("correction.yaml")
 
     root_dir = Path("root")
     extracted_scenario_dir = Path("root/scenario/main")
@@ -571,10 +889,41 @@ def main():
         processed_text = text.replace("\r\n", "").replace(r"\r\n", "")
         yaml_file.write_text(processed_text, encoding="utf-8")
 
+    # 步骤 4：若 correction.yaml 存在，读取并替换 .yaml 内容
+    if correction_file.exists():
+        with open(correction_file, "r", encoding="utf-8") as f:
+            corrections = yaml.safe_load(f) or {}
+
+        # 通用规则
+        all_rules = corrections.get("all", [])
+
+        for yaml_file in extracted_scenario_dir.glob("*.yaml"):
+            file_stem = yaml_file.stem  # 例如 'aiy20190'
+            specific_rules = corrections.get(file_stem, [])
+
+            # 合并通用规则与特定文件的规则
+            combined_rules = (all_rules if isinstance(all_rules, list) else []) + \
+                             (specific_rules if isinstance(specific_rules, list) else [])
+
+            if not combined_rules:
+                continue
+
+            text = yaml_file.read_text(encoding="utf-8")
+
+            # 替换
+            for item in combined_rules:
+                if isinstance(item, dict):
+                    orig = item.get("original")
+                    corr = item.get("correct")
+                    if orig is not None and corr is not None:
+                        text = text.replace(str(orig), str(corr))
+
+            yaml_file.write_text(text, encoding="utf-8")
+
     # 确保目标输出目录 scenario/main 存在
     target_scenario_dir.mkdir(parents=True, exist_ok=True)
 
-    # 步骤 4：使用 msg_tool 将 .yaml 转换成 .asb，并将结果移动至 scenario/main
+    # 步骤 5：使用 msg_tool 将 .yaml 转换成 .asb，并将结果移动至 scenario/main
     for yaml_file in extracted_scenario_dir.glob("*.yaml"):
         cmd_create = [
             str(msg_tool),
@@ -590,7 +939,7 @@ def main():
             destination = target_scenario_dir / generated_asb.name
             shutil.move(str(generated_asb), str(destination))
 
-    # 步骤 5：若运行前不存在 root 目录，则在清理时删除
+    # 步骤 6：若运行前不存在 root 目录，则在清理时删除
     if not root_existed_originally and root_dir.exists():
         shutil.rmtree(root_dir)
 
