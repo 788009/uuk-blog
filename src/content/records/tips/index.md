@@ -53,11 +53,21 @@ ffmpeg -i input.mp4 -vf "fps=15,scale=720:-1:flags=lanczos,split[s0][s1];[s0]pal
 
 使用 `robocopy` 将空文件夹镜像到目标文件夹，实现目标文件夹的清空。
 
+#### CMD
+
 ```batch
-robocopy <empty-dir> <target-dir> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL > nul
+mkdir empty
+robocopy empty <target> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL > nul
+rmdir empty
 ```
 
-其中 `<empty-dir>` 是空文件夹路径，`<target-dir>` 是目标文件夹的路径。
+#### PowerShell
+
+```powershell
+mkdir empty | Out-Null
+robocopy empty <target> /MIR /MT:64 /NP /NJS /NJH /NC /NFL /NDL | Out-Null
+rmdir empty
+```
 
 速度参考：SSD（WD PC SN560 SDDPNQE-1T00-1102）清空 42322 个文件、709 MB 的 node_modules 用时 28.6 秒。
 
