@@ -261,258 +261,258 @@ system.ini
 
 ```yaml
 all:
-  - original: 不蝕金鎖の男
-    correct: 不蚀金锁的男人
-  - original: 聖女
-    correct: 圣女
-  - original: 女性の声
-    correct: 女性的声音
-  - original: 派手な女見物客
-    correct: 打扮花哨的女看客
-  - original: 中年の見物客
-    correct: 中年的看客
-  - original: 柄の悪い見物客
-    correct: 语气恶劣的看客
-  - original: ゴツい見物客
-    correct: 身材魁梧的看客
-  - original: 付き人
-    correct: 侍从
+  - original: "'0': 不蝕金鎖の男\n"
+    correct: "'0': 不蚀金锁的男人\n"
+  - original: "'0': 聖女\n"
+    correct: "'0': 圣女\n"
+  - original: "'0': 女性の声\n"
+    correct: "'0': 女性的声音\n"
+  - original: "'0': 派手な女見物客\n"
+    correct: "'0': 打扮花哨的女看客\n"
+  - original: "'0': 中年の見物客\n"
+    correct: "'0': 中年的看客\n"
+  - original: "'0': 柄の悪い見物客\n"
+    correct: "'0': 语气恶劣的看客\n"
+  - original: "'0': ゴツい見物客\n"
+    correct: "'0': 身材魁梧的看客\n"
+  - original: "'0': 付き人\n"
+    correct: "'0': 侍从\n"
   - original: "'0': 男\n"
     correct: "'0': 男子\n"
-  - original: 羽つきの少年
-    correct: 长着翅膀的少年
-  - original: 羽狩りの指揮者
-    correct: 羽狩的指挥者
-  - original: 赤毛の羽狩り
-    correct: 红发的羽狩
-  - original: 羽狩りの副隊長
-    correct: 羽狩的副队长
-  - original: ラング副隊長
-    correct: 兰格副队长
-  - original: 坊主の男
-    correct: 光头男子
-  - original: カイム＆ジーク
-    correct: 凯伊姆＆吉克
+  - original: "'0': 羽つきの少年\n"
+    correct: "'0': 长着翅膀的少年\n"
+  - original: "'0': 羽狩りの指揮者\n"
+    correct: "'0': 羽狩的指挥者\n"
+  - original: "'0': 赤毛の羽狩り\n"
+    correct: "'0': 红发的羽狩\n"
+  - original: "'0': 羽狩りの副隊長\n"
+    correct: "'0': 羽狩的副队长\n"
+  - original: "'0': ラング副隊長\n"
+    correct: "'0': 兰格副队长\n"
+  - original: "'0': 坊主の男\n"
+    correct: "'0': 光头男子\n"
+  - original: "'0': カイム＆ジーク\n"
+    correct: "'0': 凯伊姆＆吉克\n"
   - original: "'0': 女\n"
     correct: "'0': 女子\n"
-  - original: ヒゲの酔客
-    correct: 胡子拉碴的醉汉
-  - original: 太鼓腹の酔客
-    correct: 大肚子的醉客
-  - original: 少女の声
-    correct: 少女的声音
-  - original: 薄汚れた男
-    correct: 邋遢的男子
-  - original: 太った男
-    correct: 肥胖的男子
-  - original: 女の主
-    correct: 女主人
-  - original: ただのジーク
-    correct: 普通的吉克
-  - original: 痩せた羽狩り
-    correct: 瘦削的羽狩
-  - original: 高い男の声
-    correct: 尖细的男声
-  - original: 太い男の声
-    correct: 粗沉的男声
-  - original: 鷲鼻の羽狩り
-    correct: 鹰钩鼻的羽狩
-  - original: フィオネ隊長
-    correct: 菲奥奈队长
-  - original: 娼館主
-    correct: 娼馆老板
-  - original: 羽が折れた少女
-    correct: 折翼的少女
-  - original: 隻腕の少女
-    correct: 独臂少女
-  - original: 男の声
-    correct: 男性的声音
-  - original: 中年の乞食
-    correct: 中年乞丐
-  - original: 覆面の男
-    correct: 蒙面男子
-  - original: 鼻血を流している男
-    correct: 流着鼻血的男子
-  - original: 太った羽狩り
-    correct: 肥胖的羽狩
-  - original: 猫背の男
-    correct: 驼背的男子
-  - original: 太った女
-    correct: 肥胖的女子
-  - original: 神経質そうな女
-    correct: 神经质的女子
-  - original: 薄汚いガキ
-    correct: 邋遢的小鬼
-  - original: 痩せた老婆
-    correct: 干瘪的老太婆
-  - original: 女の声
-    correct: 女性的声音
-  - original: 中年の野次馬
-    correct: 中年看客
-  - original: ゴツい野次馬
-    correct: 魁梧的看客
-  - original: 黒羽
-    correct: 黑羽
-  - original: 不蝕金鎖の若い男
-    correct: 不蚀金锁的年轻男子
-  - original: 羽狩りたち
-    correct: 羽狩们
-  - original: 不蝕金鎖の幹部たち
-    correct: 不蚀金锁的干部们
-  - original: クーガー
-    correct: 库格尔
-  - original: 若い羽狩り
-    correct: 年轻的羽狩
-  - original: 常連の男
-    correct: 熟客男子
-  - original: 唇の薄い男
-    correct: 薄唇男子
-  - original: 鯰顔の売人
-    correct: 鲶鱼脸的贩子
-  - original: アイム
-    correct: 阿伊姆
-  - original: 短髪の男
-    correct: 短发男子
-  - original: 片目の男
-    correct: 独眼男子
-  - original: ヒゲの男
-    correct: 留胡子的男子
-  - original: 眉のない男
-    correct: 无眉男子
-  - original: 顎の出た男
-    correct: 凸下巴的男子
-  - original: 精悍な男
-    correct: 精悍的男子
-  - original: 薄汚れた少女
-    correct: 邋遢的少女
-  - original: やつれた少女
-    correct: 憔悴的少女
-  - original: 謎の主
-    correct: 神秘的主人
-  - original: 酒場の客
-    correct: 酒馆的客人
-  - original: 酔っぱらいの男
-    correct: 醉汉男子
-  - original: 聖職者
-    correct: 圣职者
-  - original: 聖職者たち
-    correct: 圣职者们
-  - original: 集まった住民
-    correct: 聚集的居民
-  - original: 背の低い聖職者
-    correct: 身高矮小的圣职者
-  - original: 痩せぎすの聖職者
-    correct: 瘦骨嶙峋的圣职者
-  - original: 無愛想な店主
-    correct: 板着脸的店主
-  - original: 先代の聖女
-    correct: 前任圣女
-  - original: 住民
-    correct: 居民
-  - original: 虚ろな目の男
-    correct: 双眼空洞的男子
-  - original: 無精髭の男
-    correct: 留着胡茬的男子
-  - original: 牢獄の住民
-    correct: 牢狱居民
-  - original: 衛兵
-    correct: 卫兵
-  - original: 果物屋の客
-    correct: 水果店的客人
-  - original: 御者の男
-    correct: 马夫男子
-  - original: 近衛兵
-    correct: 近卫兵
-  - original: 鎧姿の男
-    correct: 身穿铠甲的男子
-  - original: リシア王女
-    correct: 莉西亚公主
-  - original: 召使い
-    correct: 仆人
-  - original: 料理長
-    correct: 厨师长
-  - original: 庭師の老人
-    correct: 园丁老人
-  - original: ネヴィル
-    correct: 奈菲尔
-  - original: 御者の親父
-    correct: 车夫老爹
-  - original: 露店の店主
-    correct: 摊贩老板
-  - original: 乞食の子供
-    correct: 乞丐小孩
-  - original: 坊主頭の羽狩り
-    correct: 光头的羽狩
-  - original: 中年の近衛兵
-    correct: 中年近卫兵
-  - original: 若い近衛兵
-    correct: 年轻的近卫兵
-  - original: 壮年の貴族
-    correct: 壮年贵族
-  - original: 研究員
-    correct: 研究员
-  - original: 若い貴族
-    correct: 年轻贵族
-  - original: 貴族
-    correct: 贵族
-  - original: 母親
-    correct: 母亲
-  - original: 仮面の人物
-    correct: 戴面具的人
-  - original: 主治医
-    correct: 主治医生
-  - original: ヴァリアスの妻
-    correct: 法利亚斯的妻子
-  - original: 大柄な男
-    correct: 身材高大的男子
-  - original: 痩せた男
-    correct: 消瘦的男子
-  - original: 筋肉質の男
-    correct: 健硕的男子
-  - original: でかい賊の男
-    correct: 魁梧的盗贼男子
-  - original: 賊の男
-    correct: 盗贼男子
-  - original: ネヴィル卿
-    correct: 奈菲尔卿
-  - original: 近衛騎士団
-    correct: 近卫骑士团
-  - original: 怪我をした男
-    correct: 受伤的男子
-  - original: 蓬髪の乞食
-    correct: 蓬头垢面的乞丐
-  - original: 隻眼の乞食
-    correct: 独眼乞丐
-  - original: 殺気だった男の声
-    correct: 充满杀气的男声
-  - original: 痩せた兵士
-    correct: 消瘦的士兵
-  - original: 苦しそうな男の声
-    correct: 痛苦的男声
-  - original: 痩せた研究員
-    correct: 消瘦的研究员
-  - original: 信心深い牢獄民
-    correct: 虔诚的牢狱民
-  - original: 怪我をした牢獄民
-    correct: 受伤的牢狱民
-  - original: 初代イレーヌ
-    correct: 初代伊莲
-  - original: 酔客
-    correct: 醉客
-  - original: 露天売り
-    correct: 露天摊贩
-  - original: 酒場の店主
-    correct: 酒馆店主
-  - original: 二人
-    correct: 两人
-  - original: 若手の庭師
-    correct: 年轻的园丁
-  - original: 酔っぱらい
-    correct: 醉汉
-  - original: ルキウス・システィナ
-    correct: 鲁基乌斯·西斯狄娜
-  - original: 吉巴鲁特
-    correct: 吉尔巴鲁特
+  - original: "'0': ヒゲの酔客\n"
+    correct: "'0': 胡子拉碴的醉汉\n"
+  - original: "'0': 太鼓腹の酔客\n"
+    correct: "'0': 大肚子的醉客\n"
+  - original: "'0': 少女の声\n"
+    correct: "'0': 少女的声音\n"
+  - original: "'0': 薄汚れた男\n"
+    correct: "'0': 邋遢的男子\n"
+  - original: "'0': 太った男\n"
+    correct: "'0': 肥胖的男子\n"
+  - original: "'0': 女の主\n"
+    correct: "'0': 女主人\n"
+  - original: "'0': ただのジーク\n"
+    correct: "'0': 普通的吉克\n"
+  - original: "'0': 痩せた羽狩り\n"
+    correct: "'0': 瘦削的羽狩\n"
+  - original: "'0': 高い男の声\n"
+    correct: "'0': 尖细的男声\n"
+  - original: "'0': 太い男の声\n"
+    correct: "'0': 粗沉的男声\n"
+  - original: "'0': 鷲鼻の羽狩り\n"
+    correct: "'0': 鹰钩鼻的羽狩\n"
+  - original: "'0': フィオネ隊長\n"
+    correct: "'0': 菲奥奈队长\n"
+  - original: "'0': 娼館主\n"
+    correct: "'0': 娼馆老板\n"
+  - original: "'0': 羽が折れた少女\n"
+    correct: "'0': 折翼的少女\n"
+  - original: "'0': 隻腕の少女\n"
+    correct: "'0': 独臂少女\n"
+  - original: "'0': 男の声\n"
+    correct: "'0': 男性的声音\n"
+  - original: "'0': 中年の乞食\n"
+    correct: "'0': 中年乞丐\n"
+  - original: "'0': 覆面の男\n"
+    correct: "'0': 蒙面男子\n"
+  - original: "'0': 鼻血を流している男\n"
+    correct: "'0': 流着鼻血的男子\n"
+  - original: "'0': 太った羽狩り\n"
+    correct: "'0': 肥胖的羽狩\n"
+  - original: "'0': 猫背の男\n"
+    correct: "'0': 驼背的男子\n"
+  - original: "'0': 太った女\n"
+    correct: "'0': 肥胖的女子\n"
+  - original: "'0': 神経質そうな女\n"
+    correct: "'0': 神经质的女子\n"
+  - original: "'0': 薄汚いガキ\n"
+    correct: "'0': 邋遢的小鬼\n"
+  - original: "'0': 痩せた老婆\n"
+    correct: "'0': 干瘪的老太婆\n"
+  - original: "'0': 女の声\n"
+    correct: "'0': 女性的声音\n"
+  - original: "'0': 中年の野次馬\n"
+    correct: "'0': 中年看客\n"
+  - original: "'0': ゴツい野次馬\n"
+    correct: "'0': 魁梧的看客\n"
+  - original: "'0': 黒羽\n"
+    correct: "'0': 黑羽\n"
+  - original: "'0': 不蝕金鎖の若い男\n"
+    correct: "'0': 不蚀金锁的年轻男子\n"
+  - original: "'0': 羽狩りたち\n"
+    correct: "'0': 羽狩们\n"
+  - original: "'0': 不蝕金鎖の幹部たち\n"
+    correct: "'0': 不蚀金锁的干部们\n"
+  - original: "'0': クーガー\n"
+    correct: "'0': 库格尔\n"
+  - original: "'0': 若い羽狩り\n"
+    correct: "'0': 年轻的羽狩\n"
+  - original: "'0': 常連の男\n"
+    correct: "'0': 熟客男子\n"
+  - original: "'0': 唇の薄い男\n"
+    correct: "'0': 薄唇男子\n"
+  - original: "'0': 鯰顔の売人\n"
+    correct: "'0': 鲶鱼脸的贩子\n"
+  - original: "'0': アイム\n"
+    correct: "'0': 阿伊姆\n"
+  - original: "'0': 短髪の男\n"
+    correct: "'0': 短发男子\n"
+  - original: "'0': 片目の男\n"
+    correct: "'0': 独眼男子\n"
+  - original: "'0': ヒゲの男\n"
+    correct: "'0': 留胡子的男子\n"
+  - original: "'0': 眉のない男\n"
+    correct: "'0': 无眉男子\n"
+  - original: "'0': 顎の出た男\n"
+    correct: "'0': 凸下巴的男子\n"
+  - original: "'0': 精悍な男\n"
+    correct: "'0': 精悍的男子\n"
+  - original: "'0': 薄汚れた少女\n"
+    correct: "'0': 邋遢的少女\n"
+  - original: "'0': やつれた少女\n"
+    correct: "'0': 憔悴的少女\n"
+  - original: "'0': 謎の主\n"
+    correct: "'0': 神秘的主人\n"
+  - original: "'0': 酒場の客\n"
+    correct: "'0': 酒馆的客人\n"
+  - original: "'0': 酔っぱらいの男\n"
+    correct: "'0': 醉汉男子\n"
+  - original: "'0': 聖職者\n"
+    correct: "'0': 圣职者\n"
+  - original: "'0': 聖職者たち\n"
+    correct: "'0': 圣职者们\n"
+  - original: "'0': 集まった住民\n"
+    correct: "'0': 聚集的居民\n"
+  - original: "'0': 背の低い聖職者\n"
+    correct: "'0': 身高矮小的圣职者\n"
+  - original: "'0': 痩せぎすの聖職者\n"
+    correct: "'0': 瘦骨嶙峋的圣职者\n"
+  - original: "'0': 無愛想な店主\n"
+    correct: "'0': 板着脸的店主\n"
+  - original: "'0': 先代の聖女\n"
+    correct: "'0': 前任圣女\n"
+  - original: "'0': 住民\n"
+    correct: "'0': 居民\n"
+  - original: "'0': 虚ろな目の男\n"
+    correct: "'0': 双眼空洞的男子\n"
+  - original: "'0': 無精髭の男\n"
+    correct: "'0': 留着胡茬的男子\n"
+  - original: "'0': 牢獄の住民\n"
+    correct: "'0': 牢狱居民\n"
+  - original: "'0': 衛兵\n"
+    correct: "'0': 卫兵\n"
+  - original: "'0': 果物屋の客\n"
+    correct: "'0': 水果店的客人\n"
+  - original: "'0': 御者の男\n"
+    correct: "'0': 马夫男子\n"
+  - original: "'0': 近衛兵\n"
+    correct: "'0': 近卫兵\n"
+  - original: "'0': 鎧姿の男\n"
+    correct: "'0': 身穿铠甲的男子\n"
+  - original: "'0': リシア王女\n"
+    correct: "'0': 莉西亚公主\n"
+  - original: "'0': 召使い\n"
+    correct: "'0': 仆人\n"
+  - original: "'0': 料理長\n"
+    correct: "'0': 厨师长\n"
+  - original: "'0': 庭師の老人\n"
+    correct: "'0': 园丁老人\n"
+  - original: "'0': ネヴィル\n"
+    correct: "'0': 奈菲尔\n"
+  - original: "'0': 御者の親父\n"
+    correct: "'0': 车夫老爹\n"
+  - original: "'0': 露店の店主\n"
+    correct: "'0': 摊贩老板\n"
+  - original: "'0': 乞食の子供\n"
+    correct: "'0': 乞丐小孩\n"
+  - original: "'0': 坊主頭の羽狩り\n"
+    correct: "'0': 光头的羽狩\n"
+  - original: "'0': 中年の近衛兵\n"
+    correct: "'0': 中年近卫兵\n"
+  - original: "'0': 若い近衛兵\n"
+    correct: "'0': 年轻的近卫兵\n"
+  - original: "'0': 壮年の貴族\n"
+    correct: "'0': 壮年贵族\n"
+  - original: "'0': 研究員\n"
+    correct: "'0': 研究员\n"
+  - original: "'0': 若い貴族\n"
+    correct: "'0': 年轻贵族\n"
+  - original: "'0': 貴族\n"
+    correct: "'0': 贵族\n"
+  - original: "'0': 母親\n"
+    correct: "'0': 母亲\n"
+  - original: "'0': 仮面の人物\n"
+    correct: "'0': 戴面具的人\n"
+  - original: "'0': 主治医\n"
+    correct: "'0': 主治医生\n"
+  - original: "'0': ヴァリアスの妻\n"
+    correct: "'0': 法利亚斯的妻子\n"
+  - original: "'0': 大柄な男\n"
+    correct: "'0': 身材高大的男子\n"
+  - original: "'0': 痩せた男\n"
+    correct: "'0': 消瘦的男子\n"
+  - original: "'0': 筋肉質の男\n"
+    correct: "'0': 健硕的男子\n"
+  - original: "'0': でかい賊の男\n"
+    correct: "'0': 魁梧的盗贼男子\n"
+  - original: "'0': 賊の男\n"
+    correct: "'0': 盗贼男子\n"
+  - original: "'0': ネヴィル卿\n"
+    correct: "'0': 奈菲尔卿\n"
+  - original: "'0': 近衛騎士団\n"
+    correct: "'0': 近卫骑士团\n"
+  - original: "'0': 怪我をした男\n"
+    correct: "'0': 受伤的男子\n"
+  - original: "'0': 蓬髪の乞食\n"
+    correct: "'0': 蓬头垢面的乞丐\n"
+  - original: "'0': 隻眼の乞食\n"
+    correct: "'0': 独眼乞丐\n"
+  - original: "'0': 殺気だった男の声\n"
+    correct: "'0': 充满杀气的男声\n"
+  - original: "'0': 痩せた兵士\n"
+    correct: "'0': 消瘦的士兵\n"
+  - original: "'0': 苦しそうな男の声\n"
+    correct: "'0': 痛苦的男声\n"
+  - original: "'0': 痩せた研究員\n"
+    correct: "'0': 消瘦的研究员\n"
+  - original: "'0': 信心深い牢獄民\n"
+    correct: "'0': 虔诚的牢狱民\n"
+  - original: "'0': 怪我をした牢獄民\n"
+    correct: "'0': 受伤的牢狱民\n"
+  - original: "'0': 初代イレーヌ\n"
+    correct: "'0': 初代伊莲\n"
+  - original: "'0': 酔客\n"
+    correct: "'0': 醉客\n"
+  - original: "'0': 露天売り\n"
+    correct: "'0': 露天摊贩\n"
+  - original: "'0': 酒場の店主\n"
+    correct: "'0': 酒馆店主\n"
+  - original: "'0': 二人\n"
+    correct: "'0': 两人\n"
+  - original: "'0': 若手の庭師\n"
+    correct: "'0': 年轻的园丁\n"
+  - original: "'0': 酔っぱらい\n"
+    correct: "'0': 醉汉\n"
+  - original: "'0': ルキウス・システィナ\n"
+    correct: "'0': 鲁基乌斯·西斯狄娜\n"
+  - original: "'0': 吉巴鲁特\n"
+    correct: "'0': 吉尔巴鲁特\n"
 aiy20180:
   - original: 弯向不同方向的额１０根手指。
     correct: 弯向不同方向的１０根手指。
