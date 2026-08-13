@@ -555,6 +555,9 @@ aiy70110:
 aiy70120:
   - original: 在在意
     correct: 再在意
+aiy70410:
+  - original: 大概是把
+    correct: 大概是吧
 ```
 
 </details>
