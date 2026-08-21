@@ -69,3 +69,8 @@ lang: ''
 
 - 将 Markdown 链接改成默认在新标签页打开，相对路径、根路径、页内锚点除外。
     - [`2c47329`](https://github.com/788009/uuk-blog/commit/2c47329f6e4db8b05a419bcf1daba0797d9cd692): 将所有 Markdown 链接改成默认在新标签页打开
+
+### 8.21
+
+- 支持通过 `<picture>` 在亮暗主题使用不同图片（开发模式无法正常显示）
+    - [`6eed908`](https://github.com/788009/uuk-blog/commit/6eed9087172c89a56c25cd5138ac4221df68bacb): 支持通过 `<picture>` 在亮暗主题使用不同图片
