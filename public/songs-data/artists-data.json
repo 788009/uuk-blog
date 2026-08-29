@@ -248,6 +248,30 @@
         "dateSD": 3.41
     },
     {
+        "artist": "ak+q",
+        "count": 6,
+        "songs": "- Axium Crisis\n- Axium Divergence\n- Shades of Light in a Transcendent Realm\n- chronologia\n- ignotus\n- nέο κόsmo\n",
+        "earliestDate": "2022-10-07",
+        "latestDate": "2026-08-25",
+        "dateSD": 565.07
+    },
+    {
+        "artist": "Ceui",
+        "count": 6,
+        "songs": "- Asphodelus\n- Pabilio\n- Propylaia\n- SIROSUNA\n- Stigmata\n- 親愛なる世界へ\n",
+        "earliestDate": "2025-12-20",
+        "latestDate": "2026-08-21",
+        "dateSD": 85.74
+    },
+    {
+        "artist": "小高光太郎",
+        "count": 6,
+        "songs": "- Asphodelus\n- Pabilio\n- Propylaia\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
+        "earliestDate": "2025-01-12",
+        "latestDate": "2026-08-21",
+        "dateSD": 191.66
+    },
+    {
         "artist": "いよわ",
         "count": 6,
         "songs": "- 1000年生きてる\n- あだぽしゃ（尸蜡）\n- きゅうくらりん (Kyu-Kurarin)\n- 少女レイ (いよわ Remix)\n- 熱異常 (feat. 足立レイ)\n- 異星にいこうね\n",
@@ -334,22 +358,6 @@
         "earliestDate": "2025-04-05",
         "latestDate": "2026-07-07",
         "dateSD": 167.0
-    },
-    {
-        "artist": "小高光太郎",
-        "count": 5,
-        "songs": "- Asphodelus\n- Propylaia\n- SIROSUNA\n- Stigmata\n- 雪のエルフィンリート\n",
-        "earliestDate": "2025-01-12",
-        "latestDate": "2026-06-02",
-        "dateSD": 187.54
-    },
-    {
-        "artist": "ak+q",
-        "count": 5,
-        "songs": "- Axium Crisis\n- Axium Divergence\n- Shades of Light in a Transcendent Realm\n- ignotus\n- nέο κόsmo\n",
-        "earliestDate": "2022-10-07",
-        "latestDate": "2026-03-17",
-        "dateSD": 450.22
     },
     {
         "artist": "鏡音レン",
@@ -454,14 +462,6 @@
         "earliestDate": "2026-07-14",
         "latestDate": "2026-07-14",
         "dateSD": 0.0
-    },
-    {
-        "artist": "Ceui",
-        "count": 4,
-        "songs": "- Asphodelus\n- Propylaia\n- SIROSUNA\n- Stigmata\n",
-        "earliestDate": "2025-12-20",
-        "latestDate": "2026-06-02",
-        "dateSD": 68.0
     },
     {
         "artist": "Ashrount",
@@ -630,6 +630,14 @@
         "earliestDate": "2021-07-17",
         "latestDate": "2022-11-20",
         "dateSD": 173.6
+    },
+    {
+        "artist": "スミイ酸",
+        "count": 3,
+        "songs": "- Asphodelus\n- Close My Eyes\n- 親愛なる世界へ\n",
+        "earliestDate": "2025-12-20",
+        "latestDate": "2026-08-13",
+        "dateSD": 111.25
     },
     {
         "artist": "monet",
@@ -878,6 +886,30 @@
         "earliestDate": "2021-04-10",
         "latestDate": "2023-02-01",
         "dateSD": 312.07
+    },
+    {
+        "artist": "nitro",
+        "count": 2,
+        "songs": "- chronologia\n- qualia -ideaesthesia-\n",
+        "earliestDate": "2023-03-15",
+        "latestDate": "2026-08-25",
+        "dateSD": 629.5
+    },
+    {
+        "artist": "さなぎ",
+        "count": 2,
+        "songs": "- Clientesの無垢\n- Close My Eyes\n",
+        "earliestDate": "2026-08-13",
+        "latestDate": "2026-08-16",
+        "dateSD": 1.5
+    },
+    {
+        "artist": "藤井亮太",
+        "count": 2,
+        "songs": "- Clientesの無垢\n- Close My Eyes\n",
+        "earliestDate": "2026-08-13",
+        "latestDate": "2026-08-16",
+        "dateSD": 1.5
     },
     {
         "artist": "はな",
@@ -1568,6 +1600,30 @@
         "dateSD": 16.5
     },
     {
+        "artist": "浅川悠",
+        "count": 1,
+        "songs": "- Clientesの無垢\n",
+        "earliestDate": "2026-08-16",
+        "latestDate": "2026-08-16",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "Ami Fujisaki",
+        "count": 1,
+        "songs": "- Close My Eyes\n",
+        "earliestDate": "2026-08-13",
+        "latestDate": "2026-08-13",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "hanon",
+        "count": 1,
+        "songs": "- 親愛なる世界へ\n",
+        "earliestDate": "2026-08-13",
+        "latestDate": "2026-08-13",
+        "dateSD": 0.0
+    },
+    {
         "artist": "CIEL",
         "count": 1,
         "songs": "- ろうそく（蜡烛）\n",
@@ -1949,14 +2005,6 @@
         "songs": "- 涙の理由\n",
         "earliestDate": "2025-12-27",
         "latestDate": "2025-12-27",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "スミイ酸",
-        "count": 1,
-        "songs": "- Asphodelus\n",
-        "earliestDate": "2025-12-20",
-        "latestDate": "2025-12-20",
         "dateSD": 0.0
     },
     {
@@ -3645,14 +3693,6 @@
         "songs": "- 熱異常 (feat. 足立レイ)\n",
         "earliestDate": "2023-03-23",
         "latestDate": "2023-03-23",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "nitro",
-        "count": 1,
-        "songs": "- qualia -ideaesthesia-\n",
-        "earliestDate": "2023-03-15",
-        "latestDate": "2023-03-15",
         "dateSD": 0.0
     },
     {
