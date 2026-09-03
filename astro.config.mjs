@@ -29,6 +29,7 @@ import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkFixHtmlImages } from "./src/plugins/remark-fix-html-images.js";
+import { remarkImageTitleToFigcaption } from "./src/plugins/remark-image-title-to-figcaption.js";
 import { remarkLinksNewTab } from "./src/plugins/remark-links-new-tab.mjs";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
@@ -139,6 +140,7 @@ export default defineConfig({
 			remarkSectionize,
 			parseDirectiveNode,
 			remarkFixHtmlImages,
+			remarkImageTitleToFigcaption,
 		],
 		rehypePlugins: [
 			rehypeKatex,
