@@ -25,6 +25,7 @@ lang: ''
     - [`--remote-debugging-port=9222` 无效](#--remote-debugging-port9222-无效)
 - [Windows 模拟器](#windows-模拟器)
     - [Winlator 运行白永 FD 有声音无画面](#winlator-运行白永-fd-有声音无画面)
+    - [Winlator 运行景の海のアペイリア花屏/播放动态效果时崩溃](#winlator-运行景の海のアペイリア花屏播放动态效果时崩溃)
 
 </details>
 
@@ -213,3 +214,61 @@ Start-Process chrome -ArgumentList "--remote-debugging-port=9222", "--user-data-
 #### 问题原因
 
 未知。
+
+### Winlator 运行景の海のアペイリア花屏/播放动态效果时崩溃
+
+#### 环境
+
+- 2026.8.19
+- Winlator 11.1
+- 一加 13
+- Android 15
+- ColorOS 15
+- [シルキーズプラスDOLCE] 景の海のアペイリア 流景之海的艾佩理雅 [更新增量补丁] [萌AI同好会]
+
+#### 问题描述
+
+如题，其中花屏对于特定参数稳定发生，崩溃对于特定参数是偶发性的。
+
+#### 解决方案
+
+修改容器参数如下（加粗为非默认）：
+- Graphic Driver
+    - Vulkan: **Vortek**
+        - Adrenotools Driver: System
+        - Vulkan Version: 1.3
+        - Max Device Memory: 0 (No limit)
+        - Resource Memory Type: Auto
+        - Exposed Extensions: 163 of 163 items
+        - Image Cache Size: 256 MB
+    - OpenGL: **VirGL**
+        - OpenGL Version: 3.1
+        - Disable vertex array RGBA: on
+- DX Wrapper
+    - Direct3D: DXVK
+        - Version: 2.4.1
+        - DDraw Wrapper: **CNC DDraw**
+        - Frame Rate: 0 (No limit)
+        - Max Device Memory: 0 (No limit)
+        - Custom Device: None
+    - DirectX 12: VKD3D
+        - Version: 2.14.1
+        - D3D Feature Level: 12.2
+- Audio Driver: ALSA
+- HUD Mode: Disabled
+- WIN COMPONENTS
+    - Direct3D: Native (Windows)
+    - DirectSound: Native (Windows)
+    - DirectMusic: Native (Windows)
+    - DirectShow: **Native (Windows)**
+    - DirectPlay: **Native (Windows)**
+    - XAudio: Native (Windows)
+
+上述配置播放 OP 时有画面无声音，目前尚未找到解决方案。
+
+另外使用盖世游戏并将 Compatibility Layer 改为 `wine10.0-x64-1`，再将 CPU Translator 设置为 `Box64-0.31-b2` 后可以正常游玩，但似乎无法在断网时游玩，OP 播放情况未测试。
+
+#### 问题原因
+
+- 花屏：未知。
+- 崩溃：根据日志，发生在 WineVulkan 加载 Vulkan 驱动函数指针（`vkGetDeviceProcAddr`）的过程中。日志在查询光线追踪扩展函数 `vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT` 时突然中断，未输出后续错误堆栈，说明进程在此处触发了段错误或驱动崩溃，可能是由于 Vulkan 驱动扩展不兼容。
