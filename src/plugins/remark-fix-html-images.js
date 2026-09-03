@@ -1,90 +1,152 @@
 import { visit } from "unist-util-visit";
 
+// Extract light and dark mode image nodes from <picture> tag
+function parsePictureTag(htmlString) {
+	const darkMatch = htmlString.match(
+		/media=["']\(prefers-color-scheme:\s*dark\)["'][\s\S]*?srcset=["']([^"']+)["']/i,
+	);
+	const lightMatch =
+		htmlString.match(
+			/media=["']\(prefers-color-scheme:\s*light\)["'][\s\S]*?srcset=["']([^"']+)["']/i,
+		) || htmlString.match(/<img[\s\S]*?src=["']([^"']+)["']/i);
+	const altMatch = htmlString.match(/alt=["']([^"']*)["']/i);
+
+	if (!darkMatch || !lightMatch) return null;
+
+	const darkSrc = darkMatch[1];
+	const lightSrc = lightMatch[1];
+	const altText = altMatch ? altMatch[1] : "";
+
+	return [
+		{
+			type: "image",
+			url: lightSrc,
+			alt: altText,
+			data: {
+				hProperties: {
+					class: "block dark:hidden",
+				},
+			},
+		},
+		{
+			type: "image",
+			url: darkSrc,
+			alt: altText,
+			data: {
+				hProperties: {
+					class: "hidden dark:block",
+				},
+			},
+		},
+	];
+}
+
+// Extract standard image node from <img> tag
+function parseImgTag(htmlString) {
+	const srcMatch = htmlString.match(/src=["']([^"']+)["']/i);
+	const altMatch = htmlString.match(/alt=["']([^"']*)["']/i);
+
+	if (!srcMatch) return null;
+
+	return [
+		{
+			type: "image",
+			url: srcMatch[1],
+			alt: altMatch ? altMatch[1] : "",
+		},
+	];
+}
+
 export function remarkFixHtmlImages() {
 	return (tree) => {
 		visit(tree, "html", (node, index, parent) => {
-			if (!node.value) return;
+			if (!node.value || typeof index !== "number" || !parent) return;
 
-			// 1. Process <picture> tags
-			if (node.value.includes("<picture")) {
-				const darkMatch = node.value.match(
-					/media=["']\(prefers-color-scheme:\s*dark\)["'][\s\S]*?srcset=["']([^"']+)["']/i,
+			const html = node.value.trim();
+
+			// 1. Handle <figure> wrappers
+			if (html.includes("<figure")) {
+				const figcaptionMatch = html.match(
+					/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i,
 				);
-				const lightMatch =
-					node.value.match(
-						/media=["']\(prefers-color-scheme:\s*light\)["'][\s\S]*?srcset=["']([^"']+)["']/i,
-					) || node.value.match(/<img[\s\S]*?src=["']([^"']+)["']/i);
-				const altMatch = node.value.match(/alt=["']([^"']*)["']/i);
+				const captionText = figcaptionMatch ? figcaptionMatch[1].trim() : "";
 
-				if (!darkMatch || !lightMatch) return;
-
-				const darkSrc = darkMatch[1];
-				const lightSrc = lightMatch[1];
-				const altText = altMatch ? altMatch[1] : "";
-
-				// Construct the image node converted to MDAST, and inject Tailwind class names via hProperties
-				const lightImageNode = {
-					type: "image",
-					url: lightSrc,
-					alt: altText,
-					data: {
-						hProperties: {
-							class: "block dark:hidden",
-						},
-					},
-				};
-
-				const darkImageNode = {
-					type: "image",
-					url: darkSrc,
-					alt: altText,
-					data: {
-						hProperties: {
-							class: "hidden dark:block",
-						},
-					},
-				};
-
-				if (parent && typeof index === "number") {
-					if (parent.type === "root") {
-						parent.children.splice(index, 1, {
-							type: "paragraph",
-							children: [lightImageNode, darkImageNode],
-						});
-					} else {
-						parent.children.splice(index, 1, lightImageNode, darkImageNode);
-					}
-					return [visit.SKIP, index + 1];
+				let imageNodes = null;
+				if (html.includes("<picture")) {
+					imageNodes = parsePictureTag(html);
+				} else if (html.includes("<img")) {
+					imageNodes = parseImgTag(html);
 				}
+
+				if (!imageNodes) return;
+
+				const figureChildren = [...imageNodes];
+
+				// Attach figcaption node using standard block type with hName override
+				if (captionText) {
+					figureChildren.push({
+						type: "blockquote",
+						data: {
+							hName: "figcaption",
+						},
+						children: [
+							{
+								type: "text",
+								value: captionText,
+							},
+						],
+					});
+				}
+
+				// Construct AST figure node using standard block type with hName override
+				const figureNode = {
+					type: "blockquote",
+					data: {
+						hName: "figure",
+					},
+					children: figureChildren,
+				};
+
+				parent.children.splice(index, 1, figureNode);
+				return [visit.SKIP, index + 1];
 			}
 
-			// 2. Process standalone <img> tags
-			if (node.value.includes("<img")) {
-				const srcMatch = node.value.match(/src=["']([^"']+)["']/i);
-				const altMatch = node.value.match(/alt=["']([^"']*)["']/i);
+			// 2. Handle standalone <picture> tags
+			if (html.includes("<picture")) {
+				const imageNodes = parsePictureTag(html);
+				if (!imageNodes) return;
 
-				if (!srcMatch) return;
+				const replacementNode =
+					parent.type === "root"
+						? {
+								type: "paragraph",
+								children: imageNodes,
+							}
+						: imageNodes;
 
-				const src = srcMatch[1];
-				const altText = altMatch ? altMatch[1] : "";
-
-				const imageNode = {
-					type: "image",
-					url: src,
-					alt: altText,
-				};
-
-				if (parent && typeof index === "number") {
-					if (parent.type === "root") {
-						parent.children.splice(index, 1, {
-							type: "paragraph",
-							children: [imageNode],
-						});
-					} else {
-						parent.children.splice(index, 1, imageNode);
-					}
-					return [visit.SKIP, index + 1];
+				if (Array.isArray(replacementNode)) {
+					parent.children.splice(index, 1, ...replacementNode);
+				} else {
+					parent.children.splice(index, 1, replacementNode);
 				}
+				return [visit.SKIP, index + 1];
+			}
+
+			// 3. Handle standalone <img> tags
+			if (html.includes("<img")) {
+				const imageNodes = parseImgTag(html);
+				if (!imageNodes) return;
+
+				const replacementNode =
+					parent.type === "root"
+						? {
+								type: "paragraph",
+								children: imageNodes,
+							}
+						: imageNodes[0];
+
+				parent.children.splice(index, 1, replacementNode);
+				return [visit.SKIP, index + 1];
 			}
 		});
 	};
