@@ -41,6 +41,7 @@ export const siteConfig: SiteConfig = {
 			"/records/": "记录",
 			"/archive/": "归档",
 			"/about/": "关于",
+			"/friends/": "友链",
 			// '/': '主页' // Uncomment to override the default i18n Home
 		},
 	},
@@ -60,6 +61,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		LinkPreset.Records,
+		LinkPreset.Friends,
 		// {
 		// 	name: "GitHub",
 		// 	url: "https://github.com/788009", // Internal links should not include the base path, as it is automatically added
