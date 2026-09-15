@@ -1,5 +1,5 @@
 ---
-title: 如何在 Fuwari 添加一个路由
+title: 如何在 Fuwari 添加一个页面
 published: 2026-09-14
 description: ''
 image: ''
@@ -21,7 +21,7 @@ lang: ''
 - [`.html`](https://docs.astro.build/zh-cn/basics/astro-pages/#html-页面)
 - `.js`/`.ts` (as [endpoints](https://docs.astro.build/zh-cn/guides/endpoints/))
 
-打开 `src/pages/` 目录，可以看到不少 `.astro` 文件，分别对应各个路由，其中最简单的是对应 `/about/` 的 `about.astro`，内容如下：
+打开 `src/pages/` 目录，可以看到不少 `.astro` 文件，分别对应各个页面，其中最简单的是对应 `/about/` 的 `about.astro`，内容如下：
 
 ```astro
 ---
@@ -141,11 +141,11 @@ Fuwari 的 I18n 的相关文件都在 `src/i18n/` 下。I18n 的实现逻辑是�
 
 可以看出 `about.astro` 和 `friends.astro` 的逻辑完全相同，因此可以考虑抽象成一个模板，我暂未实现。
 
-对于单 Markdown 页面，还可以考虑实现一个脚本，只需要 `pnpm new-page {router}` 然后设置 `I18n` 就可以自动完成上述修改，创建新页面，此功能依然未实现。
+对于单 Markdown 页面，还可以考虑实现一个脚本，只需要 `pnpm new-page {pagename}` 然后设置 `I18n` 就可以自动完成上述修改，创建新页面，此功能依然未实现。
 
 ## 更复杂的页面
 
-除了友链页面，我还添加了记录页面 `/records/`，用于记录长期更新的内容，需要与 `/posts/{slug}/` 相同的路由格式，还需要支持在 `src/content/records/` 下添加文件以新建文章，另外将 `/records/` 路由本身作为导航页，使用与 `/about/` 页面相同的方式，即一个 Markdown 文章，自行维护文章列表。
+除了友链页面，我还添加了记录页面 `/records/`，用于记录长期更新的内容，需要与 `/posts/{slug}/` 相同的路由格式，还需要支持在 `src/content/records/` 下添加文件以新建文章，另外将 `/records/` 页面本身作为导航页，使用与 `/about/` 页面相同的方式，即一个 Markdown 文章，自行维护文章列表。
 
 `/records/` 页面采用上述方式实现，而 `/records/{slug}/` 页面则完全参考自 `/posts/{slug}/` 页面，一开始是全局搜索 `post` 和 `posts`，对照着添加，可以参考 [`ec78273`](https://github.com/788009/uuk-blog/commit/ec78273853d7d0a4d03ca6848b425faf7ee4cb0b) 和 [`d5ddbd6`](https://github.com/788009/uuk-blog/commit/d5ddbd68aecf7be0111dc03ea017947c53c55544) 两次 commit。
 
