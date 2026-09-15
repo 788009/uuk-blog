@@ -83,3 +83,8 @@ lang: ''
     - [`aa9bb15`](https://github.com/788009/uuk-blog/commit/aa9bb154efaf0127d15803cdd673567a7f8b3f7b): 支持 `<figcaption>` 图片描述
 - 支持将 `![alt](url "title")` 中的 title 变为 figcaption（在 remark 阶段处理，意在保留直接使用 `<img title="">` 实现不变为 figcaption 的 title 的能力）
     - [`14e4c23`](https://github.com/788009/uuk-blog/commit/14e4c23e4704d23f1c2edef7abda2b181fd95977): 支持将 `![alt](url "title")` 中的 title 变为 figcaption
+
+### 9.15
+
+- 添加友链页面
+    - [`a346f29`](https://github.com/788009/uuk-blog/commit/a346f29deff9a9d75794b6119e9a46a1c2ac2421): 添加友链页面
