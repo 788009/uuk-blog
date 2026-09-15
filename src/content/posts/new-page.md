@@ -63,7 +63,7 @@ const { Content } = await render(aboutPost);
 
 可以看到 `MainGridLayout` 标签的参数 `title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}` 含有 `I18nKey.about`，要是不修改，页面标题和描述就依然会是相应语言的“关于”，因此必须修改。
 
-Fuwari 的 I18n 的相关文件都在 `src/i18n/` 下。I18n 的实现逻辑是，`translation.ts` 定义外部接口；`i18nKey.ts` 定义 `I18nKey` 类型，包含外部使用的所有键；`languages/{language}.ts` 定义每个键对应的具体翻译。因此 `transitions.ts` 不需要修改，需要修改的是 `i18nKey.ts` 和 `languages/` 下的各个语言的翻译。
+Fuwari 的 I18n 的相关文件都在 `src/i18n/` 下。I18n 的实现逻辑是，`translation.ts` 定义外部接口；`i18nKey.ts` 定义 `I18nKey` 类型，包含外部使用的所有键；`languages/{language}.ts` 定义每个键对应的具体翻译。因此 `translation.ts` 不需要修改，需要修改的是 `i18nKey.ts` 和 `languages/` 下的各个语言的翻译。
 
 依然以友链为例，首先在 `i18nKey.ts` 中添加键，Fuwari 使用字符串枚举，因此要在 `I18nKey` 中添加 `friends = "friends",`，然后在 `languages/` 下的各个语言的翻译中添加具体翻译，比如在 `languages/zh_CN.ts` 中的 `zh_CN` 中添加 `[Key.friends]: "友链",`。
 
@@ -87,7 +87,9 @@ Fuwari 的 I18n 的相关文件都在 `src/i18n/` 下。I18n 的实现逻辑是�
 > 		| "id";
 > ```
 >
-> 或者也可以根据默认语言文件自动推导，这样甚至不需要维护 `i18nKey.ts`，只需要把 `transitions.ts` 中的 `Translation` 改成如下写法即可：
+> 调用时写成 `i18n("home")`。
+> 
+> 或者也可以根据默认语言文件自动推导，这样甚至不需要维护 `i18nKey.ts`，只需要把 `translation.ts` 中的 `Translation` 改成如下写法即可：
 >
 > ```ts
 > import { en } from "./languages/en";
