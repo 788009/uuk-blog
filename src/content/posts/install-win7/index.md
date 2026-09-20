@@ -52,7 +52,13 @@ HP Laser Jet Pro MFP M128fn
 
 ![The digital signature for this file couldn't be verified.](images/signature-not-verified.webp)
 
-按照 AI 的回答，按 F10 进入 BIOS，开启 Legacy Support，再次尝试重启，进入了磁盘检查。
+按照 AI 的回答，按 F10 进入 BIOS，开启 Legacy Support。
+
+> [!NOTE]
+>
+> 后来又多次遇到 Boot Device Not Found 的问题，进一步研究发现，其实只需要在 BIOS 开启 Legacy Support 即可，不需要重装系统。而 BIOS 状态重置则是因为电量彻底耗尽，这对于电池彻底损坏的电脑来说就等于断电，因此十分频繁。
+
+再次尝试重启，进入了磁盘检查。
 
 ![磁盘检查](images/check-disk.webp)
 
