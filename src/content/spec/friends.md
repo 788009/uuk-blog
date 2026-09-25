@@ -1,3 +1,3 @@
 # 友链
 
-- [橘子75](https://juzi75.uuk.moe/)
+- [橘子75](https://blog.juzi75.top/)
