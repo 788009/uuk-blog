@@ -11,7 +11,7 @@ lang: ''
 
 ## 背景
 
-UIUC CS 128 课程使用 [cs128.org](https://cs128.org/)，其代码题的评测系统有时会计算函数的 Complexity，阈值为 10，若某函数的 Complexity 超过 $10$ 则扣分。
+UIUC CS 128 课程使用 [cs128.org](https://cs128.org/)，其代码题的评测系统有时会计算函数的 Complexity，在第 4 周的 Command-line Arguments 一课中，Complexity 的阈值为 $10$，若某函数的 Complexity 超过 $10$ 则扣分。
 
 网站没有给出 Complexity 的计算方式，有些同学调得十分痛苦，若能知道计算方式，就可以有针对性地修改代码了。
 
@@ -160,7 +160,7 @@ for {
 $S$ 表示 父节点为 `if` 的循环 之外的节点的集合，$d_s$ 表示节点 $s$ 的深度，$n$ 表示 `else-if` 和 `else` 的数量，则该函数的 Complexity 为
 
 $$
-C = 2 +  n + \sum_{s \in S} (1 + d_s)
+C = 2 + n + \sum_{s \in S} (1 + d_s)
 $$
 
 例如 `if; if; for {if else-if {if} else while; switch {if} {do-while if}}}`：
@@ -202,3 +202,15 @@ $$
 因此，要减少 Complexity，最有效的方法就是减少嵌套层数，首先应当尝试简化逻辑，逻辑实在想不到如何简化的话，可以将几层嵌套封装成函数，这样单个函数内的嵌套就变少了，Complexity 自然也减少，当然，此为下策，这说明并没有想到题目期望的解法，但确实可以通过 Complexity 检查。
 
 另外，关于 Complexity 恰好为 $10$ 时是否 `Passed`，无从得知，但若本文结论正确，Complexity 恰好为 $10$ 时是 `Passed` 的，例如 `if; if; for*3` 的 Complexity 用本文结论计算为 $10$，实际 `Passed`。
+
+## 后续
+
+写完上文的 10 天后，在第 5 周的 Input and Output Streams 一课中再次出现 Complexity 检查，阈值为 $4$，但计算机制有所改变，之前结构一模一样的代码在此次评测中 Complexity 总是少 $2$，因此可以得出结论：
+
+$$
+C = n + \sum_{s \in S} (1 + d_s)
+$$
+
+即少了常数 $2$。
+
+从这两次课来看，每次课 Complexity 计算机制的常数可能不同，但目前只有常数不同，之前得出的方法论依然适用。
