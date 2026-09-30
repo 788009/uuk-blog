@@ -269,3 +269,4 @@ function escapeHtml(str) {
 
 选择手动上传文件部署，但一开始并没有正常工作，最后发现是因为 `_worker.js` 被识别成了静态资源，因此没有运行，详见[这里](/records/troubleshooting/#workers-手动上传文件部署不工作)。
 
+另外发现这种方法实现的短链接还支持锚点，如 [uuk.moe/galgame#steinsgate](https://uuk.moe/galgame#steinsgate)。
