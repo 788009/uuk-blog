@@ -72,19 +72,24 @@ lang: ''
 
 ### 8.21
 
-- 支持通过 `<picture>` 在亮暗主题使用不同图片（开发模式无法正常显示）
+- 支持通过 `<picture>` 在亮暗主题使用不同图片（开发模式无法正常显示）。
     - [`6eed908`](https://github.com/788009/uuk-blog/commit/6eed9087172c89a56c25cd5138ac4221df68bacb): 支持通过 `<picture>` 在亮暗主题使用不同图片
 
 ### 9.3
 
-- 将亮暗模式不同图片的处理从 rehype 阶段移至 remark 阶段，解决在开发模式无法正常显示的问题，且不再需要复制一份相同图片到 public
+- 将亮暗模式不同图片的处理从 rehype 阶段移至 remark 阶段，解决在开发模式无法正常显示的问题，且不再需要复制一份相同图片到 public。
     - [`d0bca3a`](https://github.com/788009/uuk-blog/commit/d0bca3a4a8b298166b7cb51ba251e125175ce059): 将亮暗模式不同图片的处理从 rehype 阶段移至 remark 阶段，解决在开发模式无法正常显示的问题，且不再需要复制一份相同图片到 public
-- 支持 `<figcaption>` 图片描述
+- 支持 `<figcaption>` 图片描述。
     - [`aa9bb15`](https://github.com/788009/uuk-blog/commit/aa9bb154efaf0127d15803cdd673567a7f8b3f7b): 支持 `<figcaption>` 图片描述
-- 支持将 `![alt](url "title")` 中的 title 变为 figcaption（在 remark 阶段处理，意在保留直接使用 `<img title="">` 实现不变为 figcaption 的 title 的能力）
+- 支持将 `![alt](url "title")` 中的 title 变为 figcaption（在 remark 阶段处理，意在保留直接使用 `<img title="">` 实现不变为 figcaption 的 title 的能力）。
     - [`14e4c23`](https://github.com/788009/uuk-blog/commit/14e4c23e4704d23f1c2edef7abda2b181fd95977): 支持将 `![alt](url "title")` 中的 title 变为 figcaption
 
 ### 9.15
 
-- 添加友链页面
+- 添加友链页面。
     - [`a346f29`](https://github.com/788009/uuk-blog/commit/a346f29deff9a9d75794b6119e9a46a1c2ac2421): 添加友链页面
+
+### 9.30
+
+- 使 `<code>` 块中开头与结尾的空格原样渲染，而不是丢弃。
+    - [`ed904e1`](https://github.com/788009/uuk-blog/commit/ed904e1c6692a145588e8ecbb2d151faa4efd866): 使 `<code>` 块中开头与结尾的空格原样渲染，而不是丢弃
