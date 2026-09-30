@@ -16,6 +16,8 @@ lang: ''
     - [MP4 转 GIF](#mp4-转-gif)
 - [快捷指令（iOS / iPadOS）](#快捷指令ios--ipados)
     - [以结构化文本的形式获取指定文件夹下的所有文件](#以结构化文本的形式获取指定文件夹下的所有文件)
+- [VS Code](#vs-code)
+    - [C++ Helper 生成函数实现的左大括号不换行](#c-helper-生成函数实现的左大括号不换行)
 - [其他](#其他)
     - [清空包含大量文件的文件夹](#清空包含大量文件的文件夹)
     - [Galgame 字幕常用字体](#galgame-字幕常用字体)
@@ -42,6 +44,16 @@ ffmpeg -i input.mp4 -vf "fps=15,scale=720:-1:flags=lanczos,split[s0][s1];[s0]pal
 3. 使用[新行]合并[名称]
 
 ![图片](ipad-file-list-shortcut.webp)
+
+## VS Code
+
+### C++ Helper 生成函数实现的左大括号不换行
+
+> [!NOTE]
+>
+> 仅保证适用于 `0.3.4` 版本，但从实现方法来看，其他版本大概率也可用。
+
+用 VS Code 打开 `~/.vscode/extensions/amiralizadeh9480.cpp-helper-0.3.4`，全局搜索 `\n{`（应有 2 处匹配），将所有结果替换为 ` {`，然后重启 VS Code 即可。
 
 ## 其他
 
