@@ -17,7 +17,7 @@ lang: ''
 - [快捷指令（iOS / iPadOS）](#快捷指令ios--ipados)
     - [以结构化文本的形式获取指定文件夹下的所有文件](#以结构化文本的形式获取指定文件夹下的所有文件)
 - [VS Code](#vs-code)
-    - [C++ Helper 生成函数实现的左大括号不换行](#c-helper-生成函数实现的左大括号不换行)
+    - [使 C++ Helper 生成的函数实现的左大括号不换行](#使-c-helper-生成的函数实现的左大括号不换行)
 - [其他](#其他)
     - [清空包含大量文件的文件夹](#清空包含大量文件的文件夹)
     - [Galgame 字幕常用字体](#galgame-字幕常用字体)
@@ -47,7 +47,7 @@ ffmpeg -i input.mp4 -vf "fps=15,scale=720:-1:flags=lanczos,split[s0][s1];[s0]pal
 
 ## VS Code
 
-### C++ Helper 生成函数实现的左大括号不换行
+### 使 C++ Helper 生成的函数实现的左大括号不换行
 
 > [!NOTE]
 >
