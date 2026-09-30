@@ -59,6 +59,8 @@
                 display: none;
             }
         }
+
+        white-space: pre-wrap;
     }
 
     .copy-btn {
