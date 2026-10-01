@@ -11,7 +11,7 @@ lang: ''
 
 ## 背景
 
-UIUC CS 128 课程使用 [cs128.org](https://cs128.org/)，其代码题的评测系统有时会计算函数的 Complexity，在第 4 周的 Command-line Arguments 一课中，Complexity 的阈值为 $10$，若某函数的 Complexity 超过 $10$ 则扣分。
+UIUC CS 128 课程使用 [cs128.org](https://cs128.org/)，其代码题的评测系统有时会计算函数的 Complexity，例如在第 4 周的 Command-line Arguments 一课中，Complexity 的阈值为 $10$，若某函数的 Complexity 超过 $10$ 则扣分。
 
 网站没有给出 Complexity 的计算方式，有些同学调得十分痛苦，若能知道计算方式，就可以有针对性地修改代码了。
 
@@ -37,7 +37,7 @@ bool IsWholeNumber(const std::string& text) {
 }
 ```
 
-以下代码中函数 `IsWholeNumber` 的 Complexity 是 $32$（省略 `IsDigit`）：
+若 Complexity 超过阈值则会显示具体值，例如以下代码中函数 `IsWholeNumber` 的 Complexity 是 $32$（省略 `IsDigit`）：
 
 ```cpp {5}
 bool IsWholeNumber(const std::string& text) {
@@ -51,20 +51,7 @@ bool IsWholeNumber(const std::string& text) {
 }
 ```
 
-以下代码是 `Passed`：
-
-```cpp {3}
-bool IsWholeNumber(const std::string& text) {
-  if (text.empty()) return false;
-  if (text == "-" || (text[0] != '-' && !IsDigit(text[0])) || true || true || true || true || true || true || true || true || true || true || true) return false;
-  for (unsigned i = 1; i < text.size(); ++i) {
-    if (!IsDigit(text[i])) return false;
-  }
-  return true;
-}
-```
-
-以下代码中函数 `IsWholeNumber`的 Complexity 是 $19$：
+以下代码中函数 `IsWholeNumber` 的 Complexity 是 $19$：
 
 ```cpp {5}
 bool IsWholeNumber(const std::string& text) {
@@ -78,92 +65,94 @@ bool IsWholeNumber(const std::string& text) {
 }
 ```
 
-可以猜想 Complexity 与 `for` 和 `if` 有关，与 `&&` 和 `||` 无关。
+以下代码中函数 `IsWholeNumber` 的 Complexity 是 $11$：
 
-## 实验
-
-基于此猜想，我尝试了大量 `for`、`while`、`do-while`、`if`、`else-if`、`else`、`?:`（三目运算符）和 `switch` 的组合，并记录 Complexity，结果如下：
-
-|实验用例|Complexity|
-|-|-|
-|`if; if; for if*6`|$32$|
-|`if; if; for if*5`|$25$|
-|`if; if; for if*4`|$19$|
-|`if; if; for if*3`|$14$|
-|`if; if; for if*2`|`Passed`|
-|`if; if; for if for if`|`Passed`|
-|`if; if; for if for*4 if`|$25$|
-|`​if; if; for if for*3 if`|$19$|
-|`​if; if; for*4 if`|$19$|
-|​`if; if; for if*2 for*3 if`|$25$|
-|`if; if; if for if for`|`Passed`|
-|`if; if; for*3`|`Passed`|
-|`if; if; for*3 if`|$14$|
-|`if; if; for*2 if*2`|$14$|
-|`if; if; for if for if for`|`Passed`|
-|`if; if; for*3 if for`|$14$|
-|`if; if; for if*3 for if`|$19$|
-|`if; if; if; for if*3 for if`|$20$|
-|`if for; if; if; for if*3 for if`|$20$|
-|`if*2; if; if; for if*3 for if`|$22$|
-|`for if*2; if; if; for if*3 for if`|$25$|
-|`for if*2; if*2; if; for if*3 for if`|$27$|
-|`for if*2; if*2; if; for {if*2; if*3 for if}`|$32$|
-|`for if*2; if*2; if; if for {if*2; if*3 for if}`|$32$|
-|`if; if; for {while*2 if while; if}`|$16$|
-|`if; if; for {while*2 if while; do-while if do-while}`|$19$|
-|`if; if; for {while*2 if while; do-while if do-while switch {if} {do-while if}}`|$39$|
-|`if; if; for {if*5; if}`|$27$|
-|`if; if; for {if*5; if else}`|$28$|
-|`if; if; for {if*5; if else-if else}`|$29$|
-|`if; if; for {if*5; if else-if {if} else}`|$32$|
-|`if; if; for {if*5; if else-if {if} else while}`|$32$|
-|`if; if; for {if*5 else-if; if else-if {if} else while}`|$33$|
-|`if; if; for {if else-if {if} else while if; switch {if} {do-while if}}}`|$27$|
-|`if; if; for {if {?:} else-if {if} else while if; switch {if} {do-while if}}}`|$30$|
-
-格式说明：以最后一条为例，相当于
-
-```cpp
-if {}
-if {}
-for {
-    if {
-        ?:
-    }
-    else if {
-        if {}
-    }
-    else {
-        while {
-            if {}
-        }
-    }
-    switch {
-        case: if {}
-        case: do {
-            if {}
-        } while
-    }
+```cpp {3}
+bool IsWholeNumber(const std::string& text) {
+  if (text.empty()) return false;
+  if (text == "-" || (text[0] != '-' && !IsDigit(text[0])) || ((true || true) && ((true && true) || true))) return false;
+  for (unsigned i = 1; i < text.size(); ++i) {
+    if (!IsDigit(text[i])) return false;
+  }
+  return true;
 }
 ```
 
-## 结论
+可以猜想 Complexity 与 `for` 和 `if` 有关，与 `&&` 和 `||` 也有关。
 
-直接把数据给多个 AI 尝试，经过我的整合与修正，得出以下结论：
+## 逻辑运算
+
+### 实验
+
+保持函数其他部分不变，仅修改某一个 `if` 语句内的表达式，记录 Complexity 的变化量，便可以得到表达式本身贡献的 Complexity，结果如下：
+
+|实验用例|Complexity|
+|-|-|
+|`A \|\| B`|$1$|
+|`A && B`|$1$|
+|`A \|\| B \|\| C`|$1$|
+|`A \|\| (B \|\| C)`|$1$|
+|`A && (B && C)`|$1$|
+|`A \|\| (B && C)`|$2$|
+|`(A \|\| B) && C`|$2$|
+|`(A \|\| B) && (C && D)`|$2$|
+|`(A && B) && (C \|\| D)`|$2$|
+|`(A && B) \|\| (C && D)`|$3$|
+|`(A \|\| B) && (C \|\| D)`|$3$|
+|`(A \|\| B) && ((C \|\| D) && E)`|$3$|
+|`(A \|\| B) && (C \|\| (D && E))`|$4$|
+|`(A \|\| B) && (C \|\| (D && !E))`|$4$|
+
+无论位于第几层的 `if` 语句，相同的表达式贡献均相同。
+
+将表达式移出 `if`，用单独的 `bool` 变量存储，再将该变量用于 `if`，Complexity 不变。
+
+将上述所有 `&&` 和 `||` 全部改为 `&` 和 `|`，均可以在评测系统正常运行，且 Complexity 贡献均变为 $0$。
+
+### 结论
+
+对于一个包含 `&&` 或 `||` 的逻辑运算表达式，按照运算顺序将所有运算符看作一棵树，记父子节点运算符不同的组数为 $m$，则该表达式贡献的 Complexity 为
+
+$$
+C = m + 1
+$$
+
+- 与表达式所处的位置无关。
+- `!` 没有影响。
+- 按位与 `&` 和按位或 `|` 没有影响。
+
+如上述最后一例 `(A || B) && (C || (D && !E))`，树形式为
+
+```
+   &&
+  /  \
+||    ||
+        \
+         &&
+```
+
+共有 $3$ 组不同的父子节点，因此贡献的 Complexity 为 $4$，与实际情况吻合。
+
+## 控制流
+
+### 实验
+
+尝试大量 `for`、`while`、`do-while`、`if`、`else-if`、`else`、`?:`（三目运算符）和 `switch` 的组合，并记录 Complexity，由于过于繁琐，不在此列出。
+
+### 结论
 
 - 将函数内所有循环和分支的嵌套结构看作一片森林，每棵树的根节点深度为 $0$
 - 将关联的 `if`、`else-if` 和 `else` 看作一个节点，下文提到的 `if` 包括其关联的 `else-if` 和 `else`
 - `switch` 及其所有 `case` 看作一个节点
-- 计算深度时跳过所有父节点为 `if` 的循环，即这些循环的子节点深度为 `if` 的深度 $+ 1$
+- 计算深度时跳过所有父节点为 `if` 且未被大括号包裹的循环，即这些循环的子节点深度为 `if` 的深度 $+ 1$
 
-$S$ 表示 父节点为 `if` 的循环 之外的节点的集合，$d_s$ 表示节点 $s$ 的深度，$n$ 表示 `else-if` 和 `else` 的数量，则该函数的 Complexity 为
+$S$ 表示 父节点为 `if` 且未被大括号包裹的循环 之外的节点的集合，$d_s$ 表示节点 $s$ 的深度，$n$ 表示 `else-if` 和 `else` 的数量，则控制流贡献的的 Complexity 为
 
 $$
-C = 2 + n + \sum_{s \in S} (1 + d_s)
+C = n + \sum_{s \in S} (d_s + 1)
 $$
 
-例如 `if; if; for {if else-if {if} else while; switch {if} {do-while if}}}`：
+例如以下代码（无 `&&` 或 `||`）：
 
 ```cpp
 if {} // 深度为 0，贡献 1
@@ -176,8 +165,8 @@ for { // 深度为 0，贡献 1
         if {} // 深度为 2，贡献 3
     }
     else { // 视作与 if 相同节点，不单独贡献
-        while { // 紧跟在 if 后，跳过
-            if {} // 深度为 2，贡献 3
+        while { // 紧跟在 if 后但被大括号包裹，不跳过，深度为 2，贡献 3
+            if {} // 深度为 3，贡献 4
         }
     }
     switch { // 深度为 1，贡献 2
@@ -187,71 +176,65 @@ for { // 深度为 0，贡献 1
         } while
     }
 }
+if while { // if 深度为 0，贡献 1；while 紧跟在 if 后且未被大括号包裹，跳过
+    if {} // 深度为 1，贡献 2
+}
 ```
 
-共有一个 `else-if` 和一个 `else`，因此 $n = 2$，再加上常数 $2$，总的 Complexity 为
+共有一个 `else-if` 和一个 `else`，因此 $n = 2$，总的 Complexity 为
 
 $$
-C = 2 + 2 + 1 + 1 + 1 + 2 + 3 + 3 + 3 + 2 + 3 + 3 + 4 = 30
+C = 2 + 1 + 1 + 1 + 2 + 3 + 3 + 3 + 4 + 2 + 3 + 3 + 4 + 1 + 2 = 35
 $$
 
 与实际情况吻合。
 
-实际上，该结论与上述所有测试用例均吻合。
+## 总公式
 
-因此，要减少 Complexity，最有效的方法就是减少嵌套层数，首先应当尝试简化逻辑或优化代码设计（比如函数内抽象层级尽量一致），其次是可以将几层嵌套（机械地）封装成函数，这样单个函数内的嵌套就变少了，每个函数的 Complexity 又是独立计算，所以 Complexity 自然也减少，当然，此为下策，这说明并没有想到题目期望的解法或设计，但确实可以通过 Complexity 检查。
+结合逻辑运算与控制流两大部分贡献的 Complexity，可以得出最终的结论：
 
-另外，关于 Complexity 恰好为 $10$ 时是否 `Passed`，无从得知，但若本文结论正确，Complexity 恰好为 $10$ 时是 `Passed` 的，例如 `if; if; for*3` 的 Complexity 用本文结论计算为 $10$，实际 `Passed`。
+将函数内每一个包含 `&&` 或 `||` 的逻辑运算表达式按照运算顺序将所有运算符都看作一棵树，将第 $i$ 棵树中父子节点运算符不同的组数记为 $m_i$。
 
-## 后续
+- 与表达式所处的位置无关。
+- `!` 没有影响。
+- 按位与 `&` 和按位或 `|` 没有影响。
 
-### 9.26
+对于控制流
 
-在第 5 周的 Input and Output Streams 一课的第一个 Additional Practice 中再次出现 Complexity 检查，阈值为 $4$，但计算机制有所改变，之前结构一模一样的代码在此次评测中 Complexity 总是少 $2$，因此可以得出结论：
+- 将函数内所有循环和分支的嵌套结构看作一片森林，每棵树的根节点深度为 $0$
+- 将关联的 `if`、`else-if` 和 `else` 看作一个节点，下文提到的 `if` 包括其关联的 `else-if` 和 `else`
+- `switch` 及其所有 `case` 看作一个节点
+- 计算深度时跳过所有父节点为 `if` 且未被大括号包裹的循环，即这些循环的子节点深度为 `if` 的深度 $+ 1$
+
+$S$ 表示 父节点为 `if` 且未被大括号包裹的循环 之外的节点的集合，$d_s$ 表示节点 $s$ 的深度，$n$ 表示 `else-if` 和 `else` 的数量。
+
+则 Complexity 为
 
 $$
-C = n + \sum_{s \in S} (1 + d_s)
+C = \sum (m_i + 1) + n + \sum_{s \in S} (d_s + 1)
 $$
 
-即少了常数 $2$。
+## 如何降低 Complexity
 
-从这两次课来看，每次课 Complexity 计算机制的常数可能不同，但目前只有常数不同，之前得出的方法论依然适用。
+从结论出发，要降低 Complexity，有几个方向
+- 正统方法是简化逻辑或优化代码设计，比如函数内抽象层级尽量一致。
+- 其次是若某个 `if` 的代码块仅为一个循环，可以将该 `if` 的大括号删去，这可以直接使得该循环内部的所有控制流深度 $- 1$，有时非常有效，且特意设计这样的机制，可以怀疑这是课程推荐的做法。
+    - 基于此特性，若有 `if (cond1) { if (cond2) }` 的结构，且满足第二个 `if` 是大括号内仅有的代码，以及第二个 `if` 的代码块执行后一定不再满足第二个 `if` 的条件，则可以直接将其改为 `if (cond1) while (cond2)`，当然，这种方法属于投机取巧的下策，显然不是课程所期望的。
+- 最无脑的方法是将逻辑运算改为位运算，或者将逻辑运算转移到单独的函数中，这两种方法各有优劣
+    - 前者降低 Complexity 更彻底，因为后者是将 Complexity 转移到其他函数中，不过由于 Complexity 在各个函数单独计算与检查，且题目会根据本身的逻辑复杂度调整阈值，一般在这个方面前者的优势不明显。
+    - 前者要求表达式不依赖短路求值；若题目不允许添加类内辅助函数，则后者只要求依赖短路求值的部分不需要访问类的私有成员；若允许，则后者没有限制。
+    - 这两种方法都可以在原函数内消除相关部分的 Complexity，当然，两种方法也都属于投机取巧的下策。
+- 其他取巧的方法是将几层控制流嵌套机械地封装成函数，这也是下策，说明并没有想到题目期望的解法或设计，且若题目不允许添加类内辅助函数，这种方法有时也无法使用。
 
-### 9.30
+## 其他
 
-第 6 周的 Operator overloading: member functions 一课也有 Complexity 检查，阈值为 $11$。
+本文最后一次修改于 2026.10.1。
 
-一开始我编写的某个函数结构为
+结论与我在以下课程的题目的测试结果吻合
+- Week 4 Thursday: Command-line Arguments
+- Week 5 Monday: Input and Output Streams (Additional Practice 1)
+- Week 6 Thursday: Operator overloading: member functions
 
-```cpp
-while {
-    if {
-        if {} // *
-        if {}
-    }
-    else if {
-        if {} // *
-        if {}
-    }
-    else {}
-}
-```
+关于 Complexity 恰好为阈值时是否 `Passed`，无从得知，但若本文结论正确，Complexity 恰好为阈值时是 `Passed` 的。
 
-评测系统说该函数的 Complexity 为 $17$，而按照 $C = n + \sum_{s \in S} (1 + d_s)$ 计算正好等于 $17$，说明这次也没有另外添加常数。
-
-我注意到两个标 `*` 的 `if` 代码块执行一次之后必然不满足该 `if` 的条件，而这两个 `if` 的父节点也是 `if`，对 Complexity 的贡献均为 $3$。于是我将这两个 `if` 直接改为 `while`，若依然满足之前得出的结论，Complexity 会降至 $11$，正好通过。然而，评测系统说该函数的 Complexity 依然是 $17$，这说明此次的 Complexity 计算机制不包含“计算深度时跳过所有父节点为 `if` 的循环，即这些循环的子节点深度为 `if` 的深度 $+ 1$”。
-
-后来我将一部分逻辑拆分到其他函数，该函数改为
-
-```cpp
-while {
-    if {
-        if {}
-    }
-    else if {
-        if {}
-    }
-}
-```
-
-Complexity 按照结论计算为 $10$，应当可以 `Passed`，实际确实如此。
+得出结论的过程本质是拟合，因此无法保证结论完全正确，事实上在 2026.9.16 撰写本文之后曾多次出现与实际不吻合的情况，若发现反例，欢迎向我提出。
