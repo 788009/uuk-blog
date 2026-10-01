@@ -120,7 +120,7 @@ bool IsWholeNumber(const std::string& text) {
 |`if; if; for {if*5; if else-if {if} else while}`|$32$|
 |`if; if; for {if*5 else-if; if else-if {if} else while}`|$33$|
 |`if; if; for {if else-if {if} else while if; switch {if} {do-while if}}}`|$27$|
-|`if; if; for {if {?:} else-if {if} else while if; switch {if} {do-while if}}}`|$29$|
+|`if; if; for {if {?:} else-if {if} else while if; switch {if} {do-while if}}}`|$30$|
 
 格式说明：以最后一条为例，相当于
 
@@ -192,7 +192,7 @@ for { // 深度为 0，贡献 1
 共有一个 `else-if` 和一个 `else`，因此 $n = 2$，再加上常数 $2$，总的 Complexity 为
 
 $$
-C = 2 + 2 + 1 + 1 + 1 + 2 + 3 + 3 + 3 + 2 + 3 + 3 + 4 = 29
+C = 2 + 2 + 1 + 1 + 1 + 2 + 3 + 3 + 3 + 2 + 3 + 3 + 4 = 30
 $$
 
 与实际情况吻合。
@@ -205,7 +205,9 @@ $$
 
 ## 后续
 
-写完上文的 10 天后，在第 5 周的 Input and Output Streams 一课中再次出现 Complexity 检查，阈值为 $4$，但计算机制有所改变，之前结构一模一样的代码在此次评测中 Complexity 总是少 $2$，因此可以得出结论：
+### 9.26
+
+在第 5 周的 Input and Output Streams 一课的第一个 Additional Practice 中再次出现 Complexity 检查，阈值为 $4$，但计算机制有所改变，之前结构一模一样的代码在此次评测中 Complexity 总是少 $2$，因此可以得出结论：
 
 $$
 C = n + \sum_{s \in S} (1 + d_s)
@@ -214,3 +216,42 @@ $$
 即少了常数 $2$。
 
 从这两次课来看，每次课 Complexity 计算机制的常数可能不同，但目前只有常数不同，之前得出的方法论依然适用。
+
+### 9.30
+
+第 6 周的 Operator overloading: member functions 一课也有 Complexity 检查，阈值为 $11$。
+
+一开始我编写的某个函数结构为
+
+```cpp
+while {
+    if {
+        if {} // *
+        if {}
+    }
+    else if {
+        if {} // *
+        if {}
+    }
+    else {}
+}
+```
+
+评测系统说该函数的 Complexity 为 $17$，而按照 $C = n + \sum_{s \in S} (1 + d_s)$ 计算正好等于 $17$，说明这次也没有另外添加常数。
+
+我注意到两个标 `*` 的 `if` 代码块执行一次之后必然不满足该 `if` 的条件，而这两个 `if` 的父节点也是 `if`，对 Complexity 的贡献均为 $3$。于是我将这两个 `if` 直接改为 `while`，若依然满足之前得出的结论，Complexity 会降至 $11$，正好通过。然而，评测系统说该函数的 Complexity 依然是 $17$，这说明此次的 Complexity 计算机制不包含“计算深度时跳过所有父节点为 `if` 的循环，即这些循环的子节点深度为 `if` 的深度 $+ 1$”。
+
+后来我将一部分逻辑拆分到其他函数，该函数改为
+
+```cpp
+while {
+    if {
+        if {}
+    }
+    else if {
+        if {}
+    }
+}
+```
+
+Complexity 按照结论计算为 $10$，应当可以 `Passed`，实际确实如此。
