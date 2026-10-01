@@ -170,8 +170,8 @@ for { // 深度为 0，贡献 1
         }
     }
     switch { // 深度为 1，贡献 2
-        case: if {} // 深度为 2，贡献 3
-        case: do { // 深度为 2，贡献 3
+        case: if {} // case 不单独贡献；if 深度为 2，贡献 3
+        case: do { // case 不单独贡献；do-while 深度为 2，贡献 3
             if {} // 深度为 3，贡献 4
         } while
     }
@@ -240,7 +240,7 @@ $$
     - 由于课程编译设置不允许隐式类型转换，前者必须将原本的布尔条件逐一 `static_cast<int>` 后参与位运算，然后再将位运算结果 `static_cast<bool>` 作为最终的条件语句。
 - 将几层控制流嵌套机械地封装成函数（若题目不允许添加类内辅助函数，这种方法有时也无法使用）。
 - （由某同学提出）将 `if` 改为算数组合。
-    - 前提：`if (cond)` 的代码块中没有其他 `if`，且代码块中除了显式的赋值，不直接或间接调用其他有副作用的函数。
+    - 前提：`if (cond)` 的代码块中没有其他 `if`，且代码块中除了显式的赋值，不直接或间接调用其他有副作用的函数，且 `if` 代码块的正常运行不依赖 `if` 的条件。
     - 方法（以变量全为 `int` 为例，其他类型思想相同）：
         - 将 `if (cond)` 改为 `int flag = static_cast<int>(cond);`。
         - 将原来代码块中所有 `a = b` 赋值语句改为 `a = flag * b + (1 - flag) * a`。
@@ -248,6 +248,8 @@ $$
             - `a += b` 可以改为 `a += flag * b`，`-=`、`|=`、`<<=`、`>>=` 同理。
             - `a *= b` 可以改为 `a *= flag * b + (1 - flag)`，`/=` 同理。
             - `a &= b` 可以改为 `a &= b | -(1 - flag)`。
+        - 特别地，对于 `if else`，可以改为更简单的形式，如 `if (cond) a = b; else a = c;` 可以改成 `a = flag * b + (1 - flag) * c;`。
+        - 对于 `else if`，还要额外添加“若此前分支执行，则此分支不执行”的逻辑，这可能需要临时存储 `if` 之前的某些状态。
         - 若原来代码块中含有循环，在循环的条件中添加 `&& cond`（或 `& cond`，取决于是否可行）。
         - 去除一个 `if` 之后，更外层的 `if` 可能也变得满足条件，可以重复这个过程。
     - 局限：符合前提的情况并不常见，比如几乎所有涉及维护 STL 容器的操作（如 `std::vector::push_back()`）都有副作用，无法使用此方法。
@@ -300,9 +302,9 @@ $$
 > ```cpp
 > void Date::Normalize() {
 >     while(static_cast<bool>(static_cast<int>(day_ < 1) | static_cast<int>(day_ > DaysInMonth()))) {
->         int days_this_month = DaysInMonth();
+>         int days_this_month = DaysInMonth(), day = day_;
 > 
->         int flag0 = static_cast<int>(day_ < 1);
+>         int flag0 = static_cast<int>(day < 1);
 >         month_ -= flag0;
 >         int flag1 = static_cast<int>(month_ == 0);
 >         month_ = flag0 * (flag1 * kMonthsPerYear + (1 - flag1) * month_) + (1 - flag0) * month_;
@@ -313,7 +315,7 @@ $$
 >         month_ = flag0 * (flag2 * 1 + (1 - flag2) * month_) + (1 - flag0) * month_;
 >         day_ = flag0 * (flag2 * 1 + (1 - flag2) * day_) + (1 - flag0) * day_;
 > 
->         flag0 = static_cast<int>(day_ > days_this_month);
+>         flag0 = static_cast<int>(day > days_this_month);
 >         month_ += flag0;
 >         day_ -= flag0 * days_this_month;
 >         flag1 = static_cast<int>(month_ > kMonthsPerYear);
