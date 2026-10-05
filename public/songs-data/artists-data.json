@@ -896,6 +896,14 @@
         "dateSD": 312.54
     },
     {
+        "artist": "sajou no hana",
+        "count": 2,
+        "songs": "- エテルネル\n- 青嵐のあとで\n",
+        "earliestDate": "2020-10-21",
+        "latestDate": "2026-10-05",
+        "dateSD": 1087.5
+    },
+    {
         "artist": "まらしぃ",
         "count": 2,
         "songs": "- 夢、時々… feat. reche\n- 青く駆けろ！\n",
@@ -1614,6 +1622,14 @@
         "earliestDate": "2020-11-29",
         "latestDate": "2021-01-01",
         "dateSD": 16.5
+    },
+    {
+        "artist": "ReoNa",
+        "count": 1,
+        "songs": "- Amore\n",
+        "earliestDate": "2026-10-05",
+        "latestDate": "2026-10-05",
+        "dateSD": 0.0
     },
     {
         "artist": "melody.",
@@ -4573,14 +4589,6 @@
         "songs": "- 恋爱サーキュレーション\n",
         "earliestDate": "2020-10-22",
         "latestDate": "2020-10-22",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "sajou no hana",
-        "count": 1,
-        "songs": "- 青嵐のあとで\n",
-        "earliestDate": "2020-10-21",
-        "latestDate": "2020-10-21",
         "dateSD": 0.0
     },
     {
