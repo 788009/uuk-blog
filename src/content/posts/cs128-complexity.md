@@ -111,7 +111,7 @@ bool IsWholeNumber(const std::string& text) {
 
 ### 结论
 
-对于一个包含 `&&` 或 `||` 的逻辑运算表达式，按照运算顺序将所有运算符看作一棵树，记父子节点运算符不同的组数为 $m$，则该表达式贡献的 Complexity 为
+对于一个包含 `&&` 或 `||` 的逻辑运算表达式，按照运算顺序将所有运算符看作一棵树，记父子节点运算符不同的边数为 $m$，则该表达式贡献的 Complexity 为
 
 $$
 C = m + 1
@@ -193,7 +193,7 @@ $$
 
 结合逻辑运算与控制流两大部分贡献的 Complexity，可以得出最终的结论：
 
-将函数内每一个包含 `&&` 或 `||` 的逻辑运算表达式按照运算顺序将所有运算符都看作一棵树，将第 $i$ 棵树中父子节点运算符不同的组数记为 $m_i$。
+将函数内每一个包含 `&&` 或 `||` 的逻辑运算表达式按照运算顺序将所有运算符都看作一棵树，将第 $i$ 棵树中父子节点运算符不同的边数记为 $m_i$。
 
 - 与表达式所处的位置无关。
 - `!` 没有影响。
@@ -223,7 +223,7 @@ $$
 
 > [!NOTE]
 >
-> 虽然怀疑 `if whlie` 是评测系统推荐的做法，但在 Week 2 Monday: Selection 一课的 Nesting 一节末尾明确提到
+> 虽然怀疑 `if while` 是评测系统推荐的做法，但在 Week 2 Monday: Selection 一课的 Nesting 一节末尾明确提到
 >
 > > For clarity and to avoid mistakes that can be hard to isolate, write your branches as compound statements, even when they contain a single statement.
 >
