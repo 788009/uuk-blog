@@ -1,5 +1,29 @@
 [
     {
+        "name": "Magia",
+        "artists": "梶浦由記 / Kalafina",
+        "category": "日语歌/1",
+        "date": "2026-10-10"
+    },
+    {
+        "name": "コネクト",
+        "artists": "ClariS",
+        "category": "日语歌/1",
+        "date": "2026-10-10"
+    },
+    {
+        "name": "Antikythera",
+        "artists": "technoplanet",
+        "category": "纯音乐/1",
+        "date": "2026-10-07"
+    },
+    {
+        "name": "Petrichor",
+        "artists": "void (Mournfinale)",
+        "category": "英文歌",
+        "date": "2026-10-07"
+    },
+    {
         "name": "Amore",
         "artists": "ReoNa",
         "category": "日语歌/1",
@@ -3817,7 +3841,7 @@
     },
     {
         "name": "Testify",
-        "artists": "void(Mournfinale) / 星熊南巫",
+        "artists": "void (Mournfinale) / 星熊南巫",
         "category": "英文歌",
         "date": "2022-07-19"
     },
