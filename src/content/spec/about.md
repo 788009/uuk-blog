@@ -1,3 +1,12 @@
+<style>
+  h1, h2, h3, h4 {
+    text-align: center;
+  }
+  .sub {
+    text-align: center;
+  }
+</style>
+
 # 关于
 
 ## 项目
@@ -12,7 +21,7 @@
 
 #### 可交互表格
 
-> 暂未开源。
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 用于[歌单](/records/songs/)的表格。
 
@@ -22,6 +31,8 @@
 
 #### 可交互关系图
 
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
 用于 [AP Macro 笔记](/records/notes/macro/#关系图)的关系图，基于 Mermaid，支持点击节点以查看节点之间的联系。
 
 > [!NOTE]
@@ -29,6 +40,8 @@
 > 该项目让我熟悉了 Mermaid，对 MDX、Astro 岛屿和 React 的使用经验则是来源于可交互表格。
 
 #### Galgame 时间轴
+
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 用于 [Galgame 记录](/records/galgame/)的时间轴。
 
@@ -68,7 +81,7 @@
 
 ### 科目一刷题工具
 
-> 不公开。
+<p class="sub">不公开&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 驾校指定的刷题软件很难用且很多广告，体验极差，于是我将全部 1703 题爬下来，自己用 Vite + Vue + Tailwind CSS 写了一个纯前端应用，支持顺序刷题、随机刷题、选项乱序、错题本、收藏题目等等功能，精准满足我的需求。
 
@@ -86,7 +99,7 @@
 
 ### StubSync
 
-> 暂未开源。
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 用于解决我的个性化需求：电脑剩余空间无法存储手机所有需要备份的文件，有一个大容量 HDD 但不方便常开，因此需要记录已备份的文件，防止重复备份。
 
@@ -111,7 +124,7 @@
 
 ### Python 常驻脚本管理工具
 
-> 暂未开源。
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 我的电脑常驻运行数个 `.pyw` 程序，遂写一个管理器进行统一管理，支持添加/删除程序、启动时自动启动所有程序、开启/关闭某一个程序、接管程序输出并显示。
 
@@ -139,7 +152,7 @@
 
 #### Clover Day's
 
-> 暂未开源。
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 [Bilibili 合集](https://space.bilibili.com/476232350/lists/8276752)
 
@@ -193,7 +206,7 @@
 
 ### imghash
 
-> 暂未开源。
+<p class="sub">暂未开源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
 基于 pHash 的图片查重工具，用于尽可能确保平时再网上下载的图片不重复。
 
