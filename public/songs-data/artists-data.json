@@ -344,6 +344,14 @@
         "dateSD": 8.05
     },
     {
+        "artist": "wowaka",
+        "count": 5,
+        "songs": "- and I'm home\n- とおせんぼ（禁止通行）\n- アンノウン・マザーグース（不为人知的鹅妈妈童谣）\n- ローリンガール (Rolling Girl)\n- 白塔\n",
+        "earliestDate": "2024-02-20",
+        "latestDate": "2026-10-10",
+        "dateSD": 351.75
+    },
+    {
         "artist": "SCA-自",
         "count": 5,
         "songs": "- ナグルファルの船上にて\n- 神と旋律\n- 空気力学少女と少年の詩\n- 空気力学少女と少年の詩-PianoVocalVer-\n- 鏡の世界には私しかいない-another version-\n",
@@ -600,14 +608,6 @@
         "dateSD": 285.65
     },
     {
-        "artist": "wowaka",
-        "count": 4,
-        "songs": "- とおせんぼ（禁止通行）\n- アンノウン・マザーグース（不为人知的鹅妈妈童谣）\n- ローリンガール (Rolling Girl)\n- 白塔\n",
-        "earliestDate": "2024-02-20",
-        "latestDate": "2024-08-16",
-        "dateSD": 75.54
-    },
-    {
         "artist": "YOASOBI",
         "count": 4,
         "songs": "- 勇者\n- 夜に駆ける\n- 祝福\n- 群青\n",
@@ -638,6 +638,14 @@
         "earliestDate": "2021-07-17",
         "latestDate": "2022-11-19",
         "dateSD": 173.25
+    },
+    {
+        "artist": "Powerless",
+        "count": 3,
+        "songs": "- Ember\n- Innocence\n- Lost Desire\n",
+        "earliestDate": "2023-08-21",
+        "latestDate": "2026-10-16",
+        "dateSD": 500.14
     },
     {
         "artist": "Empty old City",
@@ -894,6 +902,14 @@
         "earliestDate": "2021-04-09",
         "latestDate": "2023-02-01",
         "dateSD": 312.54
+    },
+    {
+        "artist": "Tia",
+        "count": 2,
+        "songs": "- Ember\n- その花は世界を紡ぐ\n",
+        "earliestDate": "2025-07-24",
+        "latestDate": "2026-10-16",
+        "dateSD": 224.5
     },
     {
         "artist": "ClariS",
@@ -1416,14 +1432,6 @@
         "dateSD": 251.5
     },
     {
-        "artist": "Powerless",
-        "count": 2,
-        "songs": "- Innocence\n- Lost Desire\n",
-        "earliestDate": "2023-08-21",
-        "latestDate": "2024-03-23",
-        "dateSD": 107.5
-    },
-    {
         "artist": "ATOLS",
         "count": 2,
         "songs": "- 御伽の国 feat. 可不&裏命\n- 転生\n",
@@ -1640,6 +1648,46 @@
         "dateSD": 16.5
     },
     {
+        "artist": "Eili",
+        "count": 1,
+        "songs": "- Riven Pilgrimage\n",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "Nhato",
+        "count": 1,
+        "songs": "- No Way Back\n",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "Supire",
+        "count": 1,
+        "songs": "- Riven Pilgrimage\n",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "rejection",
+        "count": 1,
+        "songs": "- Riven Pilgrimage\n",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "siqlo",
+        "count": 1,
+        "songs": "- Ember\n",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "dateSD": 0.0
+    },
+    {
         "artist": "Kalafina",
         "count": 1,
         "songs": "- Magia\n",
@@ -1648,9 +1696,33 @@
         "dateSD": 0.0
     },
     {
+        "artist": "とく",
+        "count": 1,
+        "songs": "- and I'm home\n",
+        "earliestDate": "2026-10-10",
+        "latestDate": "2026-10-10",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "喜多村英梨",
+        "count": 1,
+        "songs": "- and I'm home\n",
+        "earliestDate": "2026-10-10",
+        "latestDate": "2026-10-10",
+        "dateSD": 0.0
+    },
+    {
         "artist": "梶浦由記",
         "count": 1,
         "songs": "- Magia\n",
+        "earliestDate": "2026-10-10",
+        "latestDate": "2026-10-10",
+        "dateSD": 0.0
+    },
+    {
+        "artist": "野中藍",
+        "count": 1,
+        "songs": "- and I'm home\n",
         "earliestDate": "2026-10-10",
         "latestDate": "2026-10-10",
         "dateSD": 0.0
@@ -2395,14 +2467,6 @@
         "artist": "Tele",
         "count": 1,
         "songs": "- 硝子の線\n",
-        "earliestDate": "2025-07-24",
-        "latestDate": "2025-07-24",
-        "dateSD": 0.0
-    },
-    {
-        "artist": "Tia",
-        "count": 1,
-        "songs": "- その花は世界を紡ぐ\n",
         "earliestDate": "2025-07-24",
         "latestDate": "2025-07-24",
         "dateSD": 0.0
