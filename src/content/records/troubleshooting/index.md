@@ -26,6 +26,7 @@ lang: ''
 - [Windows 模拟器](#windows-模拟器)
     - [Winlator 运行白永 FD 有声音无画面](#winlator-运行白永-fd-有声音无画面)
     - [Winlator 运行景の海のアペイリア花屏/播放动态效果时崩溃](#winlator-运行景の海のアペイリア花屏播放动态效果时崩溃)
+    - [Winlator 无法运行樱之诗](#winlator-无法运行樱之诗)
 - [Cloudflare](#cloudflare)
     - [Workers 手动上传文件部署不工作](#workers-手动上传文件部署不工作)
 
@@ -274,6 +275,34 @@ Start-Process chrome -ArgumentList "--remote-debugging-port=9222", "--user-data-
 
 - 花屏：未知。
 - 崩溃：根据日志，发生在 WineVulkan 加载 Vulkan 驱动函数指针（`vkGetDeviceProcAddr`）的过程中。日志在查询光线追踪扩展函数 `vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT` 时突然中断，未输出后续错误堆栈，说明进程在此处触发了段错误或驱动崩溃，可能是由于 Vulkan 驱动扩展不兼容。
+
+### Winlator 无法运行樱之诗
+
+#### 环境
+
+- 2026.10.19
+- Winlator ([brunodev85/winlator](https://github.com/brunodev85/winlator)) 11.1
+- 一加 13
+- Android 15
+- ColorOS 15
+- 游戏：2015 版
+- 汉化：lukibluewell V1.2
+
+#### 问题描述
+
+在 Winlator 运行 `BGI.chs.exe` 没有任何反应，也没有进程。
+
+#### 解决方案
+
+使用 Winlator Cmod ([coffincolors/winlator](https://github.com/coffincolors/winlator))，版本为 [v13.1](https://github.com/coffincolors/winlator/releases/tag/cmod_v13.1)，配置为默认，需要自己在 `C:\Windows\Fonts\` 添加字体，否则会乱码。
+
+踩坑
+- [Pipetto-crypto/winlator](https://github.com/Pipetto-crypto/winlator) 的[这一个 action](https://github.com/Pipetto-crypto/winlator/actions/runs/39305680126) 的构建可以打开游戏，但汉化不生效，依然读取日语版素材。
+- 如何取消显示游戏窗口左上角的环境与性能信息：在容器设置中找到环境变量 `DXVK_HUD`，取消勾选所有项即可。
+
+#### 问题原因
+
+未知。
 
 ## Cloudflare
 
