@@ -99,12 +99,19 @@ function prepareYearRows(items) {
 }
 
 function prepareItems(data) {
+	const now = new Date();
+	const todayStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+
 	const rawItems = data
-		.map((item) => ({
-			...item,
-			start: parseDate(item.startDate),
-			end: parseDate(item.finishDate) + DAY,
-		}))
+		.map((item) => {
+			const finishDate = item.finishDate || todayStr;
+			return {
+				...item,
+				finishDate,
+				start: parseDate(item.startDate),
+				end: parseDate(finishDate) + DAY,
+			};
+		})
 		.sort((a, b) => a.start - b.start || a.end - b.end);
 
 	const groupsMap = new Map();
