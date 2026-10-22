@@ -59,21 +59,47 @@ function prepareYearRows(items) {
 				segmentStart: Math.max(item.start, yearStart),
 				segmentEnd: Math.min(item.end, yearEnd),
 			}));
-		const rowEnds = [];
+
+		const groupsMap = new Map();
 		for (const segment of segments) {
-			let row = rowEnds.findIndex((end) => end <= segment.segmentStart);
-			if (row < 0) row = rowEnds.length;
-			segment.tableRow = row;
-			rowEnds[row] = segment.segmentEnd;
+			const key = `${segment.id}|${segment.name}`;
+			if (!groupsMap.has(key)) groupsMap.set(key, []);
+			groupsMap.get(key).push(segment);
 		}
-		years.push({ year, segments, rowCount: Math.max(1, rowEnds.length) });
+		const groups = Array.from(groupsMap.values());
+		const rows = [];
+
+		for (const group of groups) {
+			let rowIndex = 0;
+			while (true) {
+				if (!rows[rowIndex]) rows[rowIndex] = [];
+				const overlap = group.some((seg) =>
+					rows[rowIndex].some(
+						(placed) =>
+							!(
+								seg.segmentEnd <= placed.segmentStart ||
+								seg.segmentStart >= placed.segmentEnd
+							),
+					),
+				);
+				if (!overlap) {
+					for (const seg of group) {
+						seg.tableRow = rowIndex;
+						rows[rowIndex].push(seg);
+					}
+					break;
+				}
+				rowIndex += 1;
+			}
+		}
+		years.push({ year, segments, rowCount: Math.max(1, rows.length) });
 	}
 
 	return years;
 }
 
 function prepareItems(data) {
-	const items = data
+	const rawItems = data
 		.map((item) => ({
 			...item,
 			start: parseDate(item.startDate),
@@ -81,23 +107,48 @@ function prepareItems(data) {
 		}))
 		.sort((a, b) => a.start - b.start || a.end - b.end);
 
-	const rowEnds = [];
-	for (const item of items) {
-		let row = rowEnds.findIndex((end) => end <= item.start);
-		if (row < 0) row = rowEnds.length;
-		item.row = row;
-		rowEnds[row] = item.end;
+	const groupsMap = new Map();
+	for (const item of rawItems) {
+		const key = `${item.id}|${item.name}`;
+		if (!groupsMap.has(key)) groupsMap.set(key, []);
+		groupsMap.get(key).push(item);
+	}
+	const groups = Array.from(groupsMap.values());
+	const rows = [];
+
+	for (const group of groups) {
+		let rowIndex = 0;
+		while (true) {
+			if (!rows[rowIndex]) rows[rowIndex] = [];
+			const overlap = group.some((seg) =>
+				rows[rowIndex].some(
+					(placed) => !(seg.end <= placed.start || seg.start >= placed.end),
+				),
+			);
+			if (!overlap) {
+				for (const seg of group) {
+					seg.row = rowIndex;
+					rows[rowIndex].push(seg);
+				}
+				break;
+			}
+			rowIndex += 1;
+		}
 	}
 
-	// Build adjacency from horizontal neighbours and vertically overlapping bars.
-	const neighbours = items.map(() => new Set());
-	for (let i = 0; i < items.length; i += 1) {
+	// Build adjacency from horizontal neighbours and vertically overlapping bars based on groups.
+	const neighbours = groups.map(() => new Set());
+	for (let i = 0; i < groups.length; i += 1) {
 		for (let j = 0; j < i; j += 1) {
-			const a = items[i];
-			const b = items[j];
-			const horizontal = a.row === b.row;
-			const vertical =
-				Math.abs(a.row - b.row) === 1 && a.start < b.end && b.start < a.end;
+			const a = groups[i];
+			const b = groups[j];
+			const horizontal = a[0].row === b[0].row;
+			let vertical = false;
+			if (Math.abs(a[0].row - b[0].row) === 1) {
+				vertical = a.some((segA) =>
+					b.some((segB) => segA.start < segB.end && segB.start < segA.end),
+				);
+			}
 			if (horizontal || vertical) {
 				neighbours[i].add(j);
 				neighbours[j].add(i);
@@ -105,16 +156,24 @@ function prepareItems(data) {
 		}
 	}
 
-	items.forEach((item, index) => {
+	const items = [];
+	groups.forEach((group, index) => {
 		const unavailable = new Set(
-			[...neighbours[index]].map((other) => items[other].color),
+			[...neighbours[index]].map((other) => groups[other][0].color),
 		);
-		item.color =
-			PALETTE.find((color) => !unavailable.has(color)) ||
+		const color =
+			PALETTE.find((c) => !unavailable.has(c)) ||
 			PALETTE[index % PALETTE.length];
+		for (const seg of group) {
+			seg.color = color;
+			items.push(seg);
+		}
 	});
 
-	return { items, rowCount: rowEnds.length };
+	return {
+		items: items.sort((a, b) => a.start - b.start || a.end - b.end),
+		rowCount: rows.length,
+	};
 }
 
 export default function GalgameTimeline({ dataUrl }) {
