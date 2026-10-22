@@ -213,7 +213,7 @@ export default function GalgameTimeline({ dataUrl }) {
 
 function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 	const [scaleInput, setScaleInput] = useState(String(monthWidth));
-	const [layout, setLayout] = useState("single");
+	const [layout, setLayout] = useState("table");
 	const [activeItem, setActiveItem] = useState(null);
 	const { items, rowCount } = useMemo(() => prepareItems(data), [data]);
 	const yearRows = useMemo(() => prepareYearRows(items), [items]);
@@ -275,17 +275,17 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 				>
 					<button
 						type="button"
-						className={layout === "single" ? "is-active" : ""}
-						onClick={() => setLayout("single")}
-					>
-						单行
-					</button>
-					<button
-						type="button"
 						className={layout === "table" ? "is-active" : ""}
 						onClick={() => setLayout("table")}
 					>
 						表格
+					</button>
+					<button
+						type="button"
+						className={layout === "single" ? "is-active" : ""}
+						onClick={() => setLayout("single")}
+					>
+						单行
 					</button>
 				</fieldset>
 				<label htmlFor="galgame-timeline-scale">时间轴尺度</label>
