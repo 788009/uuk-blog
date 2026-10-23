@@ -395,7 +395,8 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 								/>
 							))}
 							{items.map((item) => {
-								const adjStart = item.start + (item.connectedLeft ? DAY / 2 : 0);
+								const adjStart =
+									item.start + (item.connectedLeft ? DAY / 2 : 0);
 								const adjEnd = item.end - (item.connectedRight ? DAY / 2 : 0);
 								return (
 									<a
@@ -411,9 +412,13 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 											top: item.row * ROW_HEIGHT + 5,
 											backgroundColor: item.color,
 											borderTopLeftRadius: item.connectedLeft ? 0 : undefined,
-											borderBottomLeftRadius: item.connectedLeft ? 0 : undefined,
+											borderBottomLeftRadius: item.connectedLeft
+												? 0
+												: undefined,
 											borderTopRightRadius: item.connectedRight ? 0 : undefined,
-											borderBottomRightRadius: item.connectedRight ? 0 : undefined,
+											borderBottomRightRadius: item.connectedRight
+												? 0
+												: undefined,
 										}}
 										onMouseEnter={() => setActiveItem(item)}
 										onMouseLeave={() => setActiveItem(null)}
@@ -481,9 +486,15 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 												top: item.tableRow * ROW_HEIGHT + 5,
 												backgroundColor: item.color,
 												borderTopLeftRadius: item.connectedLeft ? 0 : undefined,
-												borderBottomLeftRadius: item.connectedLeft ? 0 : undefined,
-												borderTopRightRadius: item.connectedRight ? 0 : undefined,
-												borderBottomRightRadius: item.connectedRight ? 0 : undefined,
+												borderBottomLeftRadius: item.connectedLeft
+													? 0
+													: undefined,
+												borderTopRightRadius: item.connectedRight
+													? 0
+													: undefined,
+												borderBottomRightRadius: item.connectedRight
+													? 0
+													: undefined,
 											}}
 											onMouseEnter={() => setActiveItem(item)}
 											onMouseLeave={() => setActiveItem(null)}
