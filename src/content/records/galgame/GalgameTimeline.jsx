@@ -77,8 +77,8 @@ function prepareYearRows(items) {
 					rows[rowIndex].some(
 						(placed) =>
 							!(
-								seg.segmentEnd <= placed.segmentStart ||
-								seg.segmentStart >= placed.segmentEnd
+								seg.segmentEnd - DAY <= placed.segmentStart ||
+								seg.segmentStart >= placed.segmentEnd - DAY
 							),
 					),
 				);
@@ -92,6 +92,24 @@ function prepareYearRows(items) {
 				rowIndex += 1;
 			}
 		}
+
+		for (const row of rows) {
+			for (let i = 0; i < row.length; i++) {
+				for (let j = 0; j < row.length; j++) {
+					if (i !== j && row[i].end - DAY === row[j].start) {
+						row[i].connectedRight = true;
+						row[j].connectedLeft = true;
+					}
+				}
+			}
+			for (const seg of row) {
+				const adjStart = seg.start + (seg.connectedLeft ? DAY / 2 : 0);
+				const adjEnd = seg.end - (seg.connectedRight ? DAY / 2 : 0);
+				seg.renderSegmentStart = Math.max(adjStart, yearStart);
+				seg.renderSegmentEnd = Math.min(adjEnd, yearEnd);
+			}
+		}
+
 		years.push({ year, segments, rowCount: Math.max(1, rows.length) });
 	}
 
@@ -129,7 +147,8 @@ function prepareItems(data) {
 			if (!rows[rowIndex]) rows[rowIndex] = [];
 			const overlap = group.some((seg) =>
 				rows[rowIndex].some(
-					(placed) => !(seg.end <= placed.start || seg.start >= placed.end),
+					(placed) =>
+						!(seg.end - DAY <= placed.start || seg.start >= placed.end - DAY),
 				),
 			);
 			if (!overlap) {
@@ -143,7 +162,17 @@ function prepareItems(data) {
 		}
 	}
 
-	// Build adjacency from horizontal neighbours and vertically overlapping bars based on groups.
+	for (const row of rows) {
+		for (let i = 0; i < row.length; i++) {
+			for (let j = 0; j < row.length; j++) {
+				if (i !== j && row[i].end - DAY === row[j].start) {
+					row[i].connectedRight = true;
+					row[j].connectedLeft = true;
+				}
+			}
+		}
+	}
+
 	const neighbours = groups.map(() => new Set());
 	for (let i = 0; i < groups.length; i += 1) {
 		for (let j = 0; j < i; j += 1) {
@@ -365,28 +394,36 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 									style={{ left: month.left }}
 								/>
 							))}
-							{items.map((item) => (
-								<a
-									className="no-styling galgame-timeline__item"
-									href={`#${encodeURIComponent(item.id)}`}
-									key={`${item.id}-${item.startDate}`}
-									style={{
-										left: ((item.start - start) / DAY) * pixelsPerDay,
-										width: Math.max(
-											((item.end - item.start) / DAY) * pixelsPerDay,
-											2,
-										),
-										top: item.row * ROW_HEIGHT + 5,
-										backgroundColor: item.color,
-									}}
-									onMouseEnter={() => setActiveItem(item)}
-									onMouseLeave={() => setActiveItem(null)}
-									onFocus={() => setActiveItem(item)}
-									onBlur={() => setActiveItem(null)}
-								>
-									<span>{item.name}</span>
-								</a>
-							))}
+							{items.map((item) => {
+								const adjStart = item.start + (item.connectedLeft ? DAY / 2 : 0);
+								const adjEnd = item.end - (item.connectedRight ? DAY / 2 : 0);
+								return (
+									<a
+										className="no-styling galgame-timeline__item"
+										href={`#${encodeURIComponent(item.id)}`}
+										key={`${item.id}-${item.startDate}`}
+										style={{
+											left: ((adjStart - start) / DAY) * pixelsPerDay,
+											width: Math.max(
+												((adjEnd - adjStart) / DAY) * pixelsPerDay,
+												2,
+											),
+											top: item.row * ROW_HEIGHT + 5,
+											backgroundColor: item.color,
+											borderTopLeftRadius: item.connectedLeft ? 0 : undefined,
+											borderBottomLeftRadius: item.connectedLeft ? 0 : undefined,
+											borderTopRightRadius: item.connectedRight ? 0 : undefined,
+											borderBottomRightRadius: item.connectedRight ? 0 : undefined,
+										}}
+										onMouseEnter={() => setActiveItem(item)}
+										onMouseLeave={() => setActiveItem(null)}
+										onFocus={() => setActiveItem(item)}
+										onBlur={() => setActiveItem(null)}
+									>
+										<span>{item.name}</span>
+									</a>
+								);
+							})}
 						</div>
 					</div>
 				) : (
@@ -424,12 +461,12 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 								))}
 								{segments.map((item) => {
 									const left = positionInYear(
-										item.segmentStart,
+										item.renderSegmentStart,
 										year,
 										monthWidth,
 									);
 									const right = positionInYear(
-										item.segmentEnd,
+										item.renderSegmentEnd,
 										year,
 										monthWidth,
 									);
@@ -443,6 +480,10 @@ function TimelineContent({ data, viewportRef, monthWidth, setMonthWidth }) {
 												width: Math.max(right - left, 2),
 												top: item.tableRow * ROW_HEIGHT + 5,
 												backgroundColor: item.color,
+												borderTopLeftRadius: item.connectedLeft ? 0 : undefined,
+												borderBottomLeftRadius: item.connectedLeft ? 0 : undefined,
+												borderTopRightRadius: item.connectedRight ? 0 : undefined,
+												borderBottomRightRadius: item.connectedRight ? 0 : undefined,
 											}}
 											onMouseEnter={() => setActiveItem(item)}
 											onMouseLeave={() => setActiveItem(null)}
